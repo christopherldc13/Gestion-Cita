@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="CNBarberocs.cs" />
+    <Compile Include="CNBarbero.cs" />
     <Compile Include="CNCita.cs" />
     <Compile Include="CNCliente.cs" />
     <Compile Include="CNEmpresa.cs" />

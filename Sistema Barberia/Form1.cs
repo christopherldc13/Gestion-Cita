@@ -16,5 +16,35 @@ namespace Sistema_Barberia
         {
             InitializeComponent();
         }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void porBarberoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            statusStrip1.Items[1].Text = "Fecha/Hora: " +DateTime.Now.ToString();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void FMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

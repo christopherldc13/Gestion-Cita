@@ -99,7 +99,7 @@ namespace Sistema_Barberia
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.clientesToolStripMenuItem.Text = "&Clientes";
             this.clientesToolStripMenuItem.ToolTipText = "Crear y modificar los Datos del Cliente";
             // 
@@ -107,7 +107,7 @@ namespace Sistema_Barberia
             // 
             this.empleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem.Image")));
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.empleadosToolStripMenuItem.Text = "&Empleados";
             this.empleadosToolStripMenuItem.ToolTipText = "Crear y Modificar los Datos de los Empleados";
             // 
@@ -123,7 +123,7 @@ namespace Sistema_Barberia
             // 
             this.citaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("citaToolStripMenuItem.Image")));
             this.citaToolStripMenuItem.Name = "citaToolStripMenuItem";
-            this.citaToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.citaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.citaToolStripMenuItem.Text = "&Cita";
             this.citaToolStripMenuItem.ToolTipText = "Realización de Cita";
             // 
@@ -143,7 +143,7 @@ namespace Sistema_Barberia
             this.datosGeneralesToolStripMenuItem,
             this.porSuEstadoToolStripMenuItem});
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem1.Text = "&Clientes";
             // 
             // datosGeneralesToolStripMenuItem
@@ -167,26 +167,29 @@ namespace Sistema_Barberia
             this.porEstadoToolStripMenuItem,
             this.porDisponibilidadToolStripMenuItem});
             this.empleadosToolStripMenuItem1.Name = "empleadosToolStripMenuItem1";
-            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.empleadosToolStripMenuItem1.Text = "&Empleados";
             // 
             // datosGeneralesToolStripMenuItem1
             // 
             this.datosGeneralesToolStripMenuItem1.Name = "datosGeneralesToolStripMenuItem1";
-            this.datosGeneralesToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
+            this.datosGeneralesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.datosGeneralesToolStripMenuItem1.Text = "Datos &Generales";
+            this.datosGeneralesToolStripMenuItem1.ToolTipText = "Visualizar e Imprimir los Datos Generales de los Empleados";
             // 
             // porEstadoToolStripMenuItem
             // 
             this.porEstadoToolStripMenuItem.Name = "porEstadoToolStripMenuItem";
-            this.porEstadoToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.porEstadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.porEstadoToolStripMenuItem.Text = "Por &Estado";
+            this.porEstadoToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de los empleados por su Estado";
             // 
             // porDisponibilidadToolStripMenuItem
             // 
             this.porDisponibilidadToolStripMenuItem.Name = "porDisponibilidadToolStripMenuItem";
-            this.porDisponibilidadToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.porDisponibilidadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.porDisponibilidadToolStripMenuItem.Text = "Por &Disponibilidad";
+            this.porDisponibilidadToolStripMenuItem.ToolTipText = "Visualizar e Imprimir la disponibilidad de los empleados";
             // 
             // citasToolStripMenuItem
             // 
@@ -195,26 +198,29 @@ namespace Sistema_Barberia
             this.porClienteToolStripMenuItem,
             this.porBarberoToolStripMenuItem});
             this.citasToolStripMenuItem.Name = "citasToolStripMenuItem";
-            this.citasToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.citasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.citasToolStripMenuItem.Text = "&Citas";
             // 
             // porFechaToolStripMenuItem
             // 
             this.porFechaToolStripMenuItem.Name = "porFechaToolStripMenuItem";
-            this.porFechaToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.porFechaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.porFechaToolStripMenuItem.Text = "Por &Fecha";
+            this.porFechaToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de las citas por fechas";
             // 
             // porClienteToolStripMenuItem
             // 
             this.porClienteToolStripMenuItem.Name = "porClienteToolStripMenuItem";
-            this.porClienteToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.porClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.porClienteToolStripMenuItem.Text = "Por &Cliente";
+            this.porClienteToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de las citas por cliente";
             // 
             // porBarberoToolStripMenuItem
             // 
             this.porBarberoToolStripMenuItem.Name = "porBarberoToolStripMenuItem";
-            this.porBarberoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.porBarberoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.porBarberoToolStripMenuItem.Text = "Por &Empleado";
+            this.porBarberoToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de las citas por empleado";
             this.porBarberoToolStripMenuItem.Click += new System.EventHandler(this.porBarberoToolStripMenuItem_Click);
             // 
             // seguridadToolStripMenuItem
@@ -232,24 +238,24 @@ namespace Sistema_Barberia
             // backupToolStripMenuItem
             // 
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.backupToolStripMenuItem.Text = "&Backup";
             // 
             // restaurarToolStripMenuItem
             // 
             this.restaurarToolStripMenuItem.Name = "restaurarToolStripMenuItem";
-            this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.restaurarToolStripMenuItem.Text = "Restaurar";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // registrarEmpresaToolStripMenuItem
             // 
             this.registrarEmpresaToolStripMenuItem.Name = "registrarEmpresaToolStripMenuItem";
-            this.registrarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.registrarEmpresaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.registrarEmpresaToolStripMenuItem.Text = "Registrar &Empresa";
             // 
             // acercaDeToolStripMenuItem

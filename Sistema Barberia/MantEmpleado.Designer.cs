@@ -31,6 +31,11 @@ namespace Sistema_Barberia
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantEmpleado));
             this.PBotones = new System.Windows.Forms.Panel();
+            this.BSalir = new System.Windows.Forms.Button();
+            this.BCancelar = new System.Windows.Forms.Button();
+            this.BEditar = new System.Windows.Forms.Button();
+            this.BGuardar = new System.Windows.Forms.Button();
+            this.BNuevo = new System.Windows.Forms.Button();
             this.PTitulo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cbEstado = new System.Windows.Forms.ComboBox();
@@ -46,11 +51,6 @@ namespace Sistema_Barberia
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BBuscar = new System.Windows.Forms.Button();
-            this.BSalir = new System.Windows.Forms.Button();
-            this.BCancelar = new System.Windows.Forms.Button();
-            this.BEditar = new System.Windows.Forms.Button();
-            this.BGuardar = new System.Windows.Forms.Button();
-            this.BNuevo = new System.Windows.Forms.Button();
             this.PBotones.SuspendLayout();
             this.PTitulo.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,81 @@ namespace Sistema_Barberia
             this.PBotones.Size = new System.Drawing.Size(805, 75);
             this.PBotones.TabIndex = 30;
             // 
+            // BSalir
+            // 
+            this.BSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BSalir.FlatAppearance.BorderSize = 0;
+            this.BSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BSalir.Image = ((System.Drawing.Image)(resources.GetObject("BSalir.Image")));
+            this.BSalir.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.BSalir.Location = new System.Drawing.Point(672, 13);
+            this.BSalir.Name = "BSalir";
+            this.BSalir.Size = new System.Drawing.Size(76, 45);
+            this.BSalir.TabIndex = 5;
+            this.BSalir.Text = "&Salir";
+            this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BSalir.UseVisualStyleBackColor = true;
+            // 
+            // BCancelar
+            // 
+            this.BCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BCancelar.FlatAppearance.BorderSize = 0;
+            this.BCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BCancelar.Image = ((System.Drawing.Image)(resources.GetObject("BCancelar.Image")));
+            this.BCancelar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.BCancelar.Location = new System.Drawing.Point(415, 14);
+            this.BCancelar.Name = "BCancelar";
+            this.BCancelar.Size = new System.Drawing.Size(90, 45);
+            this.BCancelar.TabIndex = 3;
+            this.BCancelar.Text = "&Cancelar";
+            this.BCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BCancelar.UseVisualStyleBackColor = true;
+            // 
+            // BEditar
+            // 
+            this.BEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BEditar.FlatAppearance.BorderSize = 0;
+            this.BEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BEditar.Image = ((System.Drawing.Image)(resources.GetObject("BEditar.Image")));
+            this.BEditar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.BEditar.Location = new System.Drawing.Point(288, 14);
+            this.BEditar.Name = "BEditar";
+            this.BEditar.Size = new System.Drawing.Size(90, 45);
+            this.BEditar.TabIndex = 2;
+            this.BEditar.Text = "&Editar";
+            this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BEditar.UseVisualStyleBackColor = true;
+            // 
+            // BGuardar
+            // 
+            this.BGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BGuardar.FlatAppearance.BorderSize = 0;
+            this.BGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BGuardar.Image = ((System.Drawing.Image)(resources.GetObject("BGuardar.Image")));
+            this.BGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.BGuardar.Location = new System.Drawing.Point(153, 14);
+            this.BGuardar.Name = "BGuardar";
+            this.BGuardar.Size = new System.Drawing.Size(90, 45);
+            this.BGuardar.TabIndex = 1;
+            this.BGuardar.Text = "&Guardar";
+            this.BGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BGuardar.UseVisualStyleBackColor = true;
+            // 
+            // BNuevo
+            // 
+            this.BNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BNuevo.FlatAppearance.BorderSize = 0;
+            this.BNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNuevo.Image = ((System.Drawing.Image)(resources.GetObject("BNuevo.Image")));
+            this.BNuevo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.BNuevo.Location = new System.Drawing.Point(19, 14);
+            this.BNuevo.Name = "BNuevo";
+            this.BNuevo.Size = new System.Drawing.Size(90, 45);
+            this.BNuevo.TabIndex = 0;
+            this.BNuevo.Text = "&Nuevo";
+            this.BNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BNuevo.UseVisualStyleBackColor = true;
+            // 
             // PTitulo
             // 
             this.PTitulo.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -84,7 +159,7 @@ namespace Sistema_Barberia
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(178, 10);
+            this.label1.Location = new System.Drawing.Point(164, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(473, 38);
             this.label1.TabIndex = 1;
@@ -214,81 +289,6 @@ namespace Sistema_Barberia
             this.BBuscar.Text = "&Buscar";
             this.BBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BBuscar.UseVisualStyleBackColor = false;
-            // 
-            // BSalir
-            // 
-            this.BSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BSalir.FlatAppearance.BorderSize = 0;
-            this.BSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BSalir.Image = ((System.Drawing.Image)(resources.GetObject("BSalir.Image")));
-            this.BSalir.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BSalir.Location = new System.Drawing.Point(672, 13);
-            this.BSalir.Name = "BSalir";
-            this.BSalir.Size = new System.Drawing.Size(76, 45);
-            this.BSalir.TabIndex = 5;
-            this.BSalir.Text = "&Salir";
-            this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BSalir.UseVisualStyleBackColor = true;
-            // 
-            // BCancelar
-            // 
-            this.BCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BCancelar.FlatAppearance.BorderSize = 0;
-            this.BCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BCancelar.Image = ((System.Drawing.Image)(resources.GetObject("BCancelar.Image")));
-            this.BCancelar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BCancelar.Location = new System.Drawing.Point(415, 14);
-            this.BCancelar.Name = "BCancelar";
-            this.BCancelar.Size = new System.Drawing.Size(90, 45);
-            this.BCancelar.TabIndex = 3;
-            this.BCancelar.Text = "&Cancelar";
-            this.BCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BCancelar.UseVisualStyleBackColor = true;
-            // 
-            // BEditar
-            // 
-            this.BEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BEditar.FlatAppearance.BorderSize = 0;
-            this.BEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BEditar.Image = ((System.Drawing.Image)(resources.GetObject("BEditar.Image")));
-            this.BEditar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BEditar.Location = new System.Drawing.Point(288, 14);
-            this.BEditar.Name = "BEditar";
-            this.BEditar.Size = new System.Drawing.Size(90, 45);
-            this.BEditar.TabIndex = 2;
-            this.BEditar.Text = "&Editar";
-            this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BEditar.UseVisualStyleBackColor = true;
-            // 
-            // BGuardar
-            // 
-            this.BGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BGuardar.FlatAppearance.BorderSize = 0;
-            this.BGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BGuardar.Image = ((System.Drawing.Image)(resources.GetObject("BGuardar.Image")));
-            this.BGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BGuardar.Location = new System.Drawing.Point(153, 14);
-            this.BGuardar.Name = "BGuardar";
-            this.BGuardar.Size = new System.Drawing.Size(90, 45);
-            this.BGuardar.TabIndex = 1;
-            this.BGuardar.Text = "&Guardar";
-            this.BGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BGuardar.UseVisualStyleBackColor = true;
-            // 
-            // BNuevo
-            // 
-            this.BNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BNuevo.FlatAppearance.BorderSize = 0;
-            this.BNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNuevo.Image = ((System.Drawing.Image)(resources.GetObject("BNuevo.Image")));
-            this.BNuevo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BNuevo.Location = new System.Drawing.Point(19, 14);
-            this.BNuevo.Name = "BNuevo";
-            this.BNuevo.Size = new System.Drawing.Size(90, 45);
-            this.BNuevo.TabIndex = 0;
-            this.BNuevo.Text = "&Nuevo";
-            this.BNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BNuevo.UseVisualStyleBackColor = true;
             // 
             // MantEmpleado
             // 

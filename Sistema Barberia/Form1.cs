@@ -56,5 +56,15 @@ namespace Sistema_Barberia
         {
 
         }
+
+        private void FMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Esto le hará salir de la Aplicación!n Seguro que desea hacerlo?",
+                "Mensaje de SIGEN", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                e.Cancel = false;
+            else
+                e.Cancel = true;
+        }
     }
 }

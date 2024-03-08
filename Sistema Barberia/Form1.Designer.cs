@@ -99,7 +99,7 @@ namespace Sistema_Barberia
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.clientesToolStripMenuItem.Text = "&Clientes";
             this.clientesToolStripMenuItem.ToolTipText = "Crear y modificar los Datos del Cliente";
             // 
@@ -107,7 +107,7 @@ namespace Sistema_Barberia
             // 
             this.empleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem.Image")));
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.empleadosToolStripMenuItem.Text = "&Empleados";
             this.empleadosToolStripMenuItem.ToolTipText = "Crear y Modificar los Datos de los Empleados";
             // 
@@ -175,18 +175,21 @@ namespace Sistema_Barberia
             this.datosGeneralesToolStripMenuItem1.Name = "datosGeneralesToolStripMenuItem1";
             this.datosGeneralesToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
             this.datosGeneralesToolStripMenuItem1.Text = "Datos &Generales";
+            this.datosGeneralesToolStripMenuItem1.ToolTipText = "Visualizar e Imprimir los Datos Generales de los Empleados";
             // 
             // porEstadoToolStripMenuItem
             // 
             this.porEstadoToolStripMenuItem.Name = "porEstadoToolStripMenuItem";
             this.porEstadoToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.porEstadoToolStripMenuItem.Text = "Por &Estado";
+            this.porEstadoToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de los empleados por su Estado";
             // 
             // porDisponibilidadToolStripMenuItem
             // 
             this.porDisponibilidadToolStripMenuItem.Name = "porDisponibilidadToolStripMenuItem";
             this.porDisponibilidadToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.porDisponibilidadToolStripMenuItem.Text = "Por &Disponibilidad";
+            this.porDisponibilidadToolStripMenuItem.ToolTipText = "Visualizar e Imprimir la disponibilidad de los empleados";
             // 
             // citasToolStripMenuItem
             // 
@@ -203,18 +206,21 @@ namespace Sistema_Barberia
             this.porFechaToolStripMenuItem.Name = "porFechaToolStripMenuItem";
             this.porFechaToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.porFechaToolStripMenuItem.Text = "Por &Fecha";
+            this.porFechaToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de las citas por fechas";
             // 
             // porClienteToolStripMenuItem
             // 
             this.porClienteToolStripMenuItem.Name = "porClienteToolStripMenuItem";
             this.porClienteToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.porClienteToolStripMenuItem.Text = "Por &Cliente";
+            this.porClienteToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de las citas por cliente";
             // 
             // porBarberoToolStripMenuItem
             // 
             this.porBarberoToolStripMenuItem.Name = "porBarberoToolStripMenuItem";
             this.porBarberoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.porBarberoToolStripMenuItem.Text = "Por &Empleado";
+            this.porBarberoToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de las citas por empleado";
             this.porBarberoToolStripMenuItem.Click += new System.EventHandler(this.porBarberoToolStripMenuItem_Click);
             // 
             // seguridadToolStripMenuItem
@@ -273,7 +279,7 @@ namespace Sistema_Barberia
             this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.ToolTipText = "Salir del Sistema";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
@@ -344,6 +350,7 @@ namespace Sistema_Barberia
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Gestión De Citas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMenu_FormClosing);
             this.Load += new System.EventHandler(this.FMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

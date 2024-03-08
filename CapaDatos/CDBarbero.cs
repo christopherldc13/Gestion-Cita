@@ -71,7 +71,7 @@ namespace CapaDatos
             {
                 //asignamos a sqlCon la conexión con las base de datos a traves de la clase que creamos
                 sqlCon.ConnectionString = ConexionDB.miconexion;
-                //Escribo el nombre del procedimiento almacenado que utilizaré, en este caso SuplidorInsertar
+                //Escribo el nombre del procedimiento almacenado que utilizaré, en este caso BarberoInsertar
                 SqlCommand micomando = new SqlCommand("BarberoInsertar", sqlCon);
                 sqlCon.Open(); //Abro la conexión
                                //indico que se ejecutara un procedimiento almacenado
@@ -97,7 +97,7 @@ namespace CapaDatos
             return mensaje;
 
         }//Metodo
-         //método para actualizar los datos del Suplidor. Recibirá el objeto objSuplidor como parámetro
+         //método para actualizar los datos del Barbero. Recibirá el objeto objBarbero como parámetro
         public string Actualizar(CDBarbero objBarbero)
         {
             string mensaje = "";
@@ -131,7 +131,7 @@ namespace CapaDatos
         //Método para consultar datos filtrados de la tabla. Se recibe el valor del parámetro
         public DataTable BarberoConsultar(String miparametro)
         {
-            DataTable dt = new DataTable(); //Se Crea DataTable que tomará los datos de los Suplidores
+            DataTable dt = new DataTable(); //Se Crea DataTable que tomará los datos de los Barberos
             SqlDataReader leerDatos; //Creamos el DataReader
             try
             {

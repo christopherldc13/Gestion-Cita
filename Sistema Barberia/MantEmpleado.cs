@@ -21,5 +21,10 @@ namespace Sistema_Barberia
         {
 
         }
+
+        private void MantEmpleado_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

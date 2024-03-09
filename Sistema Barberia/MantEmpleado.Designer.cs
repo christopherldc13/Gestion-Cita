@@ -312,6 +312,7 @@ namespace Sistema_Barberia
             this.Controls.Add(this.PTitulo);
             this.Name = "MantEmpleado";
             this.Text = "MantEmpleado";
+            this.Load += new System.EventHandler(this.MantEmpleado_Load);
             this.PBotones.ResumeLayout(false);
             this.PTitulo.ResumeLayout(false);
             this.PTitulo.PerformLayout();

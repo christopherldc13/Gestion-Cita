@@ -120,7 +120,7 @@ namespace Sistema_Barberia
             tbTelefono.Enabled = valor;
             tbCorreo.Enabled = valor;
             cbEstado.Enabled = valor;
-            if (nuevo)
+            if (Program.nuevo)
                 cbEstado.SelectedIndex = 0;
         }
 

@@ -31,8 +31,13 @@ namespace Sistema_Barberia
 
         private void MantCliente_Load(object sender, EventArgs e)
         {
+            Program.nuevo = false; //Valores de las variables globales nuevo y modificar
+            Program.modificar = false;
+            HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
+
 
         }
+
 
         private void label1_Click_1(object sender, EventArgs e)
         {
@@ -83,17 +88,64 @@ namespace Sistema_Barberia
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
-
+            //Validamos los datos requeridos entes de Insertar o Actualizar
+            if (tbNombre.Text == String.Empty) //Si el textbox está vacío mostrar un error y ubicar
+            { // el cursor en dicho textbox
+                MessageBox.Show("Debe indicar el Nombre del Cliente!");
+                tbNombre.Focus();
+            }
+            else
+            if (tbApellido.Text == String.Empty)
+            {
+                MessageBox.Show("Debe indicar el Apellido del Cliente!");
+                tbApellido.Focus();
+            }
+            else
+            if (tbTelefono.Text == String.Empty)
+            {
+                MessageBox.Show("Debe indicar el Teléfono del Cliente!");
+                tbTelefono.Focus();
+            }
+            else
+            if (tbCorreo.Text == String.Empty)
+            {
+                MessageBox.Show("Debe indicar el Correo del Cliente!");
+                tbCorreo.Focus();
+            }
+            else
+            if (cbEstado.Text == String.Empty)
+            {
+                MessageBox.Show("Debe indicar el Correo del Cliente!");
+                cbEstado.Focus();
+            }
+            else
+            {
+                //Si todo es correcto procede a Insertar o actualizar según corresponda, usaremos las variables globales a toda la solución contenidas en Program.CS
+                if (Program.nuevo) ; //Si la variable nuevo llega con valor true se van a Insertar nuevos datos
+            }
+            //Se llama al método Insertar de la clase CNSuplidor de la capa de negocio
+            //pasándole como parámetros los valores leídos en los controles del formulario. como:
+            //textbox, combobox, DateTimePicker, etc.
+            //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            //Si no ha seleccionado un Suplidor no se puede modificar
+            if (!tbIdCliente.Equals(""))
+            {
+                Program.modificar = true; //el formulaario se prepara para modificar datos
+                HabilitaBotones();
+            }
+            else
+            {
+                MessageBox.Show("Debe de buscar un Cliente para poder Modificar sus datos!");
+            }
         }
 
         private void BSalir_Click_1(object sender, EventArgs e)
@@ -104,12 +156,16 @@ namespace Sistema_Barberia
 
         private void BBuscar_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void BNuevo_Click(object sender, EventArgs e)
         {
-
+            LimpiaObjetos(); //LLama al método LimpiaObjetos para prepararlos para la nueva entrada
+            Program.nuevo = true; //Se especifica que se agregará un nuevo registro
+            Program.modificar = false;
+            HabilitaBotones(); //Se habilitan solo aquellos botones que sean necesarios
+            tbNombre.Focus(); //Coloca el cursor en el TextBox indicado
         }
 
         private void label1_Click_2(object sender, EventArgs e)
@@ -130,9 +186,49 @@ namespace Sistema_Barberia
                 cbEstado.SelectedIndex = 0;
         }
 
-       
+        private void BCancelar_Click(object sender, EventArgs e)
+        {
+            Program.nuevo = false;
+            Program.modificar = false;
+            HabilitaBotones(); //Habilita los objetos y botones correspondientes
+            LimpiaObjetos(); //Llama al método LimpiaObjetos
+        }
+
+        private void MantCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+
+        }
+
+        //Habilita los botones según el valor que tengan las variables globales nuevo y modificar
+        private void HabilitaBotones()
+        {
+            if (Program.nuevo || Program.modificar)
+            {
+                HabilitaControles(true); //Llamada al método para habilitar los objetos
+                BNuevo.Enabled = false;
+                BGuardar.Enabled = true;
+                BEditar.Enabled = false;
+                BBuscar.Enabled = false;
+                BCancelar.Enabled = true;
+            }
+            else
+            {
+                HabilitaControles(false); //Llamada al método para inhabilitar los objetos
+                BNuevo.Enabled = true;
+                BGuardar.Enabled = false;
+                BEditar.Enabled = false;
+                BBuscar.Enabled = true;
+                BCancelar.Enabled = false;
+            }
 
 
+
+        }
 
     }
+
 }

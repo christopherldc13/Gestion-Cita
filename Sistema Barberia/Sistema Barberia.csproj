@@ -76,6 +76,24 @@
     <Compile Include="MantEmpleado.Designer.cs">
       <DependentUpon>MantEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="MantEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantEmpresa.Designer.cs">
+      <DependentUpon>MantEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantPago.Designer.cs">
+      <DependentUpon>MantPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantUsuario.Designer.cs">
+      <DependentUpon>MantUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -92,6 +110,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MantEmpleado.resx">
       <DependentUpon>MantEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantEmpresa.resx">
+      <DependentUpon>MantEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantPago.resx">
+      <DependentUpon>MantPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantUsuario.resx">
+      <DependentUpon>MantUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

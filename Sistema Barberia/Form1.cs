@@ -89,5 +89,23 @@ namespace Sistema_Barberia
             MantCita formulario = new MantCita();
             formulario.ShowDialog();
         }
+
+        private void registrarEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantEmpresa formulario = new MantEmpresa();
+            formulario.ShowDialog();
+        }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantUsuario formulario = new MantUsuario();
+            formulario.ShowDialog();
+        }
+
+        private void pagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantPago formulario = new MantPago();
+            formulario.ShowDialog();
+        }
     }
 }

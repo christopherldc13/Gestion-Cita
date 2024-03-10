@@ -70,7 +70,7 @@ namespace Sistema_Barberia
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(195, 9);
+            this.label1.Location = new System.Drawing.Point(181, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(423, 38);
             this.label1.TabIndex = 0;
@@ -232,6 +232,7 @@ namespace Sistema_Barberia
             this.BCancelar.Text = "&Cancelar";
             this.BCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BCancelar.UseVisualStyleBackColor = true;
+            this.BCancelar.Click += new System.EventHandler(this.BCancelar_Click);
             // 
             // BEditar
             // 
@@ -320,10 +321,14 @@ namespace Sistema_Barberia
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MantCliente";
             this.Text = "MantCliente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MantCliente_FormClosing);
             this.Load += new System.EventHandler(this.MantCliente_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MantCliente_KeyDown);
             this.PTitulo.ResumeLayout(false);
             this.PTitulo.PerformLayout();
             this.PBotones.ResumeLayout(false);

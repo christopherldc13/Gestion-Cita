@@ -10,24 +10,34 @@ using System.Windows.Forms;
 
 namespace Sistema_Barberia
 {
-    public partial class MantEmpleado : Form
+    public partial class MantEmpresa : Form
     {
-        public MantEmpleado()
+        public MantEmpresa()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void MantEmpleado_Load(object sender, EventArgs e)
+        private void MantEmpresa_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void MantEmpleado_FormClosing(object sender, FormClosingEventArgs e)
+        private void PTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void BSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MantEmpresa_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
                                 "Mensaje de JAC",
@@ -39,9 +49,9 @@ namespace Sistema_Barberia
                 e.Cancel = true;
         }
 
-        private void BSalir_Click(object sender, EventArgs e)
+        private void label8_Click(object sender, EventArgs e)
         {
-            this.Close();
+
         }
     }
 }

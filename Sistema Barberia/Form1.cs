@@ -54,7 +54,7 @@ namespace Sistema_Barberia
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void FMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -70,6 +70,24 @@ namespace Sistema_Barberia
         private void seguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantCliente formulario = new MantCliente();
+            formulario.ShowDialog();
+        }
+
+        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantEmpleado formulario = new MantEmpleado();
+            formulario.ShowDialog();
+        }
+
+        private void citaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantCita formulario = new MantCita();
+            formulario.ShowDialog();
         }
     }
 }

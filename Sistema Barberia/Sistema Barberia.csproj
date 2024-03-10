@@ -58,6 +58,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MantCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantCita.Designer.cs">
+      <DependentUpon>MantCita.cs</DependentUpon>
+    </Compile>
     <Compile Include="MantCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantCita.resx">
+      <DependentUpon>MantCita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MantCliente.resx">
       <DependentUpon>MantCliente.cs</DependentUpon>

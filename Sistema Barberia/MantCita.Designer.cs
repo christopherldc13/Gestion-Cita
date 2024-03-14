@@ -312,10 +312,12 @@ namespace Sistema_Barberia
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PBotones);
             this.Controls.Add(this.PTitulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MantCita";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MantCita";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MantCita_FormClosing);
             this.Load += new System.EventHandler(this.MantCita_Load);

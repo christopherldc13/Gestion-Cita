@@ -325,6 +325,7 @@ namespace Sistema_Barberia
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MantCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MantCliente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MantCliente_FormClosing);
             this.Load += new System.EventHandler(this.MantCliente_Load);

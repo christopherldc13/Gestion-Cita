@@ -24,7 +24,7 @@ namespace Sistema_Barberia
 
         private void porBarberoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+         
         }
 
         private void toolStripStatusLabel4_Click(object sender, EventArgs e)
@@ -106,6 +106,61 @@ namespace Sistema_Barberia
         {
             MantPago formulario = new MantPago();
             formulario.ShowDialog();
+        }
+
+        private void datosGeneralesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteCliente formulario = new ReporteCliente();
+            formulario.ShowDialog();
+        }
+
+        private void datosGeneralesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void porFechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteCitaFech formulario = new ReporteCitaFech();
+            formulario.ShowDialog();
+        }
+
+        private void porClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteCitas formulario = new ReporteCitas();
+            formulario.ShowDialog();
+        }
+
+        private void porClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportesPagos formulario = new ReportesPagos();
+            formulario.ShowDialog();
+        }
+
+        private void pagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void porFechaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void porFechaToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            ReportePagoFecha formulario = new ReportePagoFecha();
+            formulario.ShowDialog();
+        }
+
+        private void porNombreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -83,8 +83,8 @@ namespace CapaDatos
                 micomando.Parameters.AddWithValue("@pCorreo", objCliente.Correo);
                 micomando.Parameters.AddWithValue("@pEstado", objCliente.Estado);
                 //Metodo Insertar
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos actualizados correctamente!" :
-                                                             "No se pudo actualizar correctamente los datos!";
+                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos insertados correctamente!" :
+                                                             "No se pudo insertar correctamente los datos!";
             }
             catch (Exception ex)
             {

@@ -31,13 +31,14 @@ namespace Sistema_Barberia
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +46,7 @@ namespace Sistema_Barberia
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PowderBlue;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label3);
@@ -56,36 +58,21 @@ namespace Sistema_Barberia
             this.panel1.Size = new System.Drawing.Size(356, 398);
             this.panel1.TabIndex = 0;
             // 
-            // pictureBox1
+            // textBox2
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.PowderBlue;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(112, 14);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(138, 131);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            this.textBox2.Font = new System.Drawing.Font("Corbel", 8.25F);
+            this.textBox2.Location = new System.Drawing.Point(149, 273);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(132, 21);
+            this.textBox2.TabIndex = 6;
             // 
-            // label1
+            // textBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(68, 148);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(213, 21);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Sistema Gestor de Citas";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(80, 239);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Usuario";
+            this.textBox1.Font = new System.Drawing.Font("Corbel", 8.25F);
+            this.textBox1.Location = new System.Drawing.Point(149, 234);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(132, 21);
+            this.textBox1.TabIndex = 5;
             // 
             // label3
             // 
@@ -98,21 +85,46 @@ namespace Sistema_Barberia
             this.label3.Text = "Clave";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Font = new System.Drawing.Font("Corbel", 8.25F);
-            this.textBox1.Location = new System.Drawing.Point(149, 234);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 21);
-            this.textBox1.TabIndex = 5;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(80, 239);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Usuario";
             // 
-            // textBox2
+            // label1
             // 
-            this.textBox2.Font = new System.Drawing.Font("Corbel", 8.25F);
-            this.textBox2.Location = new System.Drawing.Point(149, 273);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 21);
-            this.textBox2.TabIndex = 6;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(68, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(213, 21);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Sistema Gestor de Citas";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.PowderBlue;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(112, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(138, 131);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(149, 327);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(84, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Iniciar Sesion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Login
             // 
@@ -139,5 +151,6 @@ namespace Sistema_Barberia
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -89,8 +89,8 @@ namespace CapaDatos
                 micomando.Parameters.AddWithValue("@pLogo", objEmpresa.Logo);
                 micomando.Parameters.AddWithValue("@pEslogan", objEmpresa.Eslogan);
                 //Metodo Insertar
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos actualizados correctamente!" :
-                                                 "No se pudo actualizar correctamente los datos!";
+                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos insertados correctamente!" :
+                                                 "No se pudo insertar correctamente los datos!";
             }
             catch (Exception ex)
             {

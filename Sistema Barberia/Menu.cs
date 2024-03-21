@@ -116,7 +116,8 @@ namespace Sistema_Barberia
 
         private void datosGeneralesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            ReporteEmpleado formulario = new ReporteEmpleado();
+            formulario.ShowDialog();
         }
 
         private void porFechaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,6 +162,22 @@ namespace Sistema_Barberia
         private void porNombreToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void porEstadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void porDisponibilidadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void consultarClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FConsultaCliente formulario = new FConsultaCliente();
+            formulario.ShowDialog();
         }
     }
 }

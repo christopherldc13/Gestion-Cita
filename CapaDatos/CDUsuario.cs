@@ -82,8 +82,8 @@ namespace CapaDatos
                 micomando.Parameters.AddWithValue("@pEstado", objUsuario.Estado);
                 micomando.Parameters.AddWithValue("@pIdBarbero", objUsuario.IdBarbero);
                 //Metodo Insertar
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos actualizados correctamente!" :
-                                                             "No se pudo actualizar correctamente los datos!";
+                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos insertados correctamente!" :
+                                                             "No se pudo insertar correctamente los datos!";
             }
             catch (Exception ex)
             {

@@ -248,7 +248,7 @@ namespace Sistema_Barberia
             this.BEditar.Text = "&Editar";
             this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BEditar.UseVisualStyleBackColor = true;
-            this.BEditar.Click += new System.EventHandler(this.button1_Click_1);
+            this.BEditar.Click += new System.EventHandler(this.BEditar_Click);
             // 
             // BGuardar
             // 
@@ -264,7 +264,7 @@ namespace Sistema_Barberia
             this.BGuardar.Text = "&Guardar";
             this.BGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BGuardar.UseVisualStyleBackColor = true;
-            this.BGuardar.Click += new System.EventHandler(this.button1_Click);
+            this.BGuardar.Click += new System.EventHandler(this.BGuardar_Click);
             // 
             // BNuevo
             // 
@@ -322,6 +322,7 @@ namespace Sistema_Barberia
             this.Controls.Add(this.PTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MantCliente";

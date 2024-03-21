@@ -121,32 +121,45 @@ namespace Sistema_Barberia
             else
             {
                 //Si todo es correcto procede a Insertar o actualizar según corresponda, usaremos las variables globales a toda la solución contenidas en Program.CS
-                if (Program.nuevo) ; //Si la variable nuevo llega con valor true se van a Insertar nuevos datos
-            }
-            //Se llama al método Insertar de la clase CNSuplidor de la capa de negocio
-            //pasándole como parámetros los valores leídos en los controles del formulario. como:
-            //textbox, combobox, DateTimePicker, etc.
-            //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
-        }
+                if (Program.nuevo)//Si la variable nuevo llega con valor true se van a Insertar nuevos datos
+                {
+                    //Se llama al método Insertar de la clase CNSuplidor de la capa de negocio
+                    //pasándole como parámetros los valores leídos en los controles del formulario. como:
+                    //textbox, combobox, DateTimePicker, etc.
+                    //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
+                    mensaje = CNCliente.Insertar(Program.vidCliente, tbNombre.Text, tbApellido.Text,
+                     tbTelefono.Text, tbCorreo.Text, cbEstado.Text);
+                }
+                else //de lo contrario se Modificarán los datos del registro correspondiente
+                {
+                    //Se llama al método Insertar de la clase CNSuplidor de la capa de negocio
+                    //pasándole como parámetros los valores leídos en los controles del formulario.
+                    // como: textbox, combobox, DateTimePicker, etc.
+                    //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
+                    mensaje = CNCliente.Actualizar(Program.vidCliente, tbNombre.Text, tbApellido.Text,
+                      tbTelefono.Text, tbCorreo.Text, cbEstado.Text);
+                }
+            }
+                //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
+                MessageBox.Show(mensaje, "Mensage de JAC", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            //Si no ha seleccionado un Suplidor no se puede modificar
-            if (!tbIdCliente.Equals(""))
-            {
-                Program.modificar = true; //el formulaario se prepara para modificar datos
-                HabilitaBotones();
-            }
-            else
-            {
-                MessageBox.Show("Debe de buscar un Cliente para poder Modificar sus datos!");
-            }
-        }
+                //Se prepara todo para la próxima operación
+                Program.nuevo = false;
+                Program.modificar = false;
+                HabilitaBotones(); //Habilita los objetos y botones correspondientes
+                LimpiaObjetos(); //Llama al método LimpiaObjetos
+            } //Fin del else para validar los datos
+
+        
+
+        //Se llama al método Insertar de la clase CNSuplidor de la capa de negocio
+        //pasándole como parámetros los valores leídos en los controles del formulario. como:
+        //textbox, combobox, DateTimePicker, etc.
+        //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
+    
+
 
         private void BSalir_Click_1(object sender, EventArgs e)
         {
@@ -156,8 +169,40 @@ namespace Sistema_Barberia
 
         private void BBuscar_Click(object sender, EventArgs e)
         {
-            
+           
+            //Creamos la instancia del formulario de búsqueda y lo mostramos
+            FConsultaCliente fConsultaCliente = new FConsultaCliente();
+            fConsultaCliente.ShowDialog();
+            if (Program.modificar) //Si se está en modo de edición
+            {
+                RecuperaDatos(); //Llamo al método para recuperar el registro seleccionado
+                BEditar_Click(sender, e); //Llamo el método del botón Editar
+            }
+            else //Si no estamos en modo de edición no permite la acción.
+            {
+                LimpiaObjetos(); //Llama al método LimpiaObjetos
+                BBuscar.Focus();
+            }
         }
+        public void RecuperaDatos()
+        {
+            string vparametro = Program.vidCliente.ToString();
+            CNCliente cNCliente = new CNCliente();
+            DataTable dt = new DataTable(); //creamos un nuevo DataTable
+            dt = cNCliente.ObtenerCliente(vparametro); //Llenamos el DataTable
+                                                              //Recorremos cada fila del DataTable asignando a los controles de edición los valores de
+                                                              //los campos correspondientes
+            foreach (DataRow row in dt.Rows)
+            {
+                tbIdCliente.Text = row["IdCliente"].ToString();
+                tbNombre.Text = row["Nombre"].ToString();
+                tbApellido.Text = row["Apellido"].ToString();
+                tbTelefono.Text = row["Telefono"].ToString();
+                tbCorreo.Text = row["Correo"].ToString();
+                cbEstado.Text = row["Estado"].ToString();
+            }
+        } //Fin del metodo RecuperarDatos
+
 
         private void BNuevo_Click(object sender, EventArgs e)
         {
@@ -202,6 +247,27 @@ namespace Sistema_Barberia
             }
 
         }
+
+        private void BEditar_Click(object sender, EventArgs e)
+        {
+            //Si no ha seleccionado un Suplidor no se puede modificar
+            if (!tbIdCliente.Equals(""))
+            {
+                Program.modificar = true; //el formulaario se prepara para modificar datos
+                HabilitaBotones();
+            }
+            else
+            {
+                MessageBox.Show("Debe de buscar un Cliente para poder Modificar sus datos!");
+            }
+        }
+
+        private void BGuardar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         //Habilita los botones según el valor que tengan las variables globales nuevo y modificar
         private void HabilitaBotones()

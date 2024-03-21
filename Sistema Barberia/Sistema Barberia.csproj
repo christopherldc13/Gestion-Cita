@@ -101,6 +101,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCitaDataSetCitasFech.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DBCitaDataSetEmpleado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCitaDataSetEmpleado.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DBCitaDataSetPagoFecha.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,6 +118,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FConsultaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FConsultaCliente.Designer.cs">
+      <DependentUpon>FConsultaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -182,6 +193,12 @@
     <Compile Include="ReporteCitaFech.Designer.cs">
       <DependentUpon>ReporteCitaFech.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReporteEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteEmpleado.Designer.cs">
+      <DependentUpon>ReporteEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportePagoFecha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +212,9 @@
       <DependentUpon>ReportesPagos.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="FConsultaCliente.resx">
+      <DependentUpon>FConsultaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +260,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteCitasFech.rdlc" />
     <EmbeddedResource Include="ReporteCliente.rdlc" />
+    <EmbeddedResource Include="ReporteEmpleado.rdlc" />
+    <EmbeddedResource Include="ReporteEmpleado.resx">
+      <DependentUpon>ReporteEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteEmpleadoEstado.rdlc" />
     <EmbeddedResource Include="ReportePagoFecha.rdlc" />
     <EmbeddedResource Include="ReportePagoFecha.resx">
       <DependentUpon>ReportePagoFecha.cs</DependentUpon>
@@ -304,6 +329,17 @@
     <None Include="DBCitaDataSetCitasFech.xss">
       <DependentUpon>DBCitaDataSetCitasFech.xsd</DependentUpon>
     </None>
+    <None Include="DBCitaDataSetEmpleado.xsc">
+      <DependentUpon>DBCitaDataSetEmpleado.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetEmpleado.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCitaDataSetEmpleado.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCitaDataSetEmpleado.xss">
+      <DependentUpon>DBCitaDataSetEmpleado.xsd</DependentUpon>
+    </None>
     <None Include="DBCitaDataSetPagoFecha.xsc">
       <DependentUpon>DBCitaDataSetPagoFecha.xsd</DependentUpon>
     </None>
@@ -341,6 +377,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{0a526af0-be02-4e16-8916-76ab96ae021f}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaNegocios\CapaNegocios.csproj">
       <Project>{8a67453b-fe50-49f6-a32a-58f1dcf0b73c}</Project>
       <Name>CapaNegocios</Name>

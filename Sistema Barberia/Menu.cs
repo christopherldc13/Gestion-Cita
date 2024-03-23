@@ -159,8 +159,7 @@ namespace Sistema_Barberia
 
         private void porNombreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormPagoNombre formulario = new FormPagoNombre();
-            formulario.ShowDialog();
+
         }
 
         private void porEstadoToolStripMenuItem_Click(object sender, EventArgs e)

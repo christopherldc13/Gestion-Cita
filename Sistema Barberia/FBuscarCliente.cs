@@ -11,11 +11,11 @@ using CapaNegocios;
 
 namespace Sistema_Barberia
 {
-    public partial class FConsultaCliente : Form
+    public partial class FBuscarCliente : Form
     {
         public int indice = 0, vtieneparametro = 0;
         public string valorparametro = "";
-        public FConsultaCliente()
+        public FBuscarCliente()
         {
             InitializeComponent();
         }

@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultasCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultasCliente.Designer.cs">
+      <DependentUpon>ConsultasCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBCitaDataSet.cs">
       <DependentUpon>DBCitaDataSet.xsd</DependentUpon>
     </Compile>
@@ -79,6 +85,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCitaDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBCitaDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCitaDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBCitaDataSetCita.cs">
       <DependentUpon>DBCitaDataSetCita.xsd</DependentUpon>
@@ -106,6 +117,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCitaDataSetEmpleado.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DBCitaDataSetPagoCita.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCitaDataSetPagoCita.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DBCitaDataSetPagoFecha.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,11 +135,47 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FConsultaCliente.cs">
+    <Compile Include="FBuscarBarbero.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FConsultaCliente.Designer.cs">
-      <DependentUpon>FConsultaCliente.cs</DependentUpon>
+    <Compile Include="FBuscarBarbero.Designer.cs">
+      <DependentUpon>FBuscarBarbero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBuscarCliente.Designer.cs">
+      <DependentUpon>FBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBuscarEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBuscarEmpresa.Designer.cs">
+      <DependentUpon>FBuscarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBuscarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBuscarUsuario.Designer.cs">
+      <DependentUpon>FBuscarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBarbero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBarbero.Designer.cs">
+      <DependentUpon>FormBarbero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FPagoFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FPagoFecha.Designer.cs">
+      <DependentUpon>FPagoFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantEmpresa.Designer.cs">
+      <DependentUpon>MantEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -167,12 +219,6 @@
     <Compile Include="MantEmpleado.Designer.cs">
       <DependentUpon>MantEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="MantEmpresa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MantEmpresa.Designer.cs">
-      <DependentUpon>MantEmpresa.cs</DependentUpon>
-    </Compile>
     <Compile Include="MantPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,23 +233,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReporteCitaFech.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReporteCitaFech.Designer.cs">
-      <DependentUpon>ReporteCitaFech.cs</DependentUpon>
-    </Compile>
     <Compile Include="ReporteEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReporteEmpleado.Designer.cs">
       <DependentUpon>ReporteEmpleado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportePagoFecha.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportePagoFecha.Designer.cs">
-      <DependentUpon>ReportePagoFecha.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportesPagos.cs">
       <SubType>Form</SubType>
@@ -212,8 +246,29 @@
       <DependentUpon>ReportesPagos.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="FConsultaCliente.resx">
-      <DependentUpon>FConsultaCliente.cs</DependentUpon>
+    <EmbeddedResource Include="ConsultasCliente.resx">
+      <DependentUpon>ConsultasCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBuscarBarbero.resx">
+      <DependentUpon>FBuscarBarbero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBuscarCliente.resx">
+      <DependentUpon>FBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBuscarEmpresa.resx">
+      <DependentUpon>FBuscarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FBuscarUsuario.resx">
+      <DependentUpon>FBuscarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBarbero.resx">
+      <DependentUpon>FormBarbero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FPagoFecha.resx">
+      <DependentUpon>FPagoFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantEmpresa.resx">
+      <DependentUpon>MantEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -236,9 +291,6 @@
     <EmbeddedResource Include="MantEmpleado.resx">
       <DependentUpon>MantEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MantEmpresa.resx">
-      <DependentUpon>MantEmpresa.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MantPago.resx">
       <DependentUpon>MantPago.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,10 +307,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReporteCitaFech.resx">
-      <DependentUpon>ReporteCitaFech.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReporteCitasFech.rdlc" />
     <EmbeddedResource Include="ReporteCliente.rdlc" />
     <EmbeddedResource Include="ReporteEmpleado.rdlc" />
     <EmbeddedResource Include="ReporteEmpleado.resx">
@@ -266,9 +314,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteEmpleadoEstado.rdlc" />
     <EmbeddedResource Include="ReportePagoFecha.rdlc" />
-    <EmbeddedResource Include="ReportePagoFecha.resx">
-      <DependentUpon>ReportePagoFecha.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReportePagos.rdlc" />
     <EmbeddedResource Include="ReportesCitas.rdlc" />
     <EmbeddedResource Include="ReportesPagos.resx">
@@ -295,6 +340,17 @@
     </None>
     <None Include="DBCitaDataSet1.xss">
       <DependentUpon>DBCitaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSet2.xsc">
+      <DependentUpon>DBCitaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCitaDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCitaDataSet2.xss">
+      <DependentUpon>DBCitaDataSet2.xsd</DependentUpon>
     </None>
     <None Include="DBCitaDataSetCita.xsc">
       <DependentUpon>DBCitaDataSetCita.xsd</DependentUpon>
@@ -339,6 +395,17 @@
     </None>
     <None Include="DBCitaDataSetEmpleado.xss">
       <DependentUpon>DBCitaDataSetEmpleado.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetPagoCita.xsc">
+      <DependentUpon>DBCitaDataSetPagoCita.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetPagoCita.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCitaDataSetPagoCita.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCitaDataSetPagoCita.xss">
+      <DependentUpon>DBCitaDataSetPagoCita.xsd</DependentUpon>
     </None>
     <None Include="DBCitaDataSetPagoFecha.xsc">
       <DependentUpon>DBCitaDataSetPagoFecha.xsd</DependentUpon>

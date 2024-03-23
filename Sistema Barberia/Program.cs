@@ -10,7 +10,11 @@ namespace Sistema_Barberia
     {
         //Variables globales para todo el proyecto/solución.
         public static int vidCliente = 0; //variables que tomarán el valor de la clave
-                                          //primaria de la tabla correspondiente
+        public static int vidBarbero = 0;
+        public static int vidEmpresa = 0;
+        public static int vidUsuario = 0;
+        public static int vidCita = 0;
+        //primaria de la tabla correspondiente
         public static int vidDepto = 0; //colocar una por cada clave primaria que tengamos
                                         //en nuestra base de datos
         public static bool nuevo = false; //variable usada para identificar si se trabaja con

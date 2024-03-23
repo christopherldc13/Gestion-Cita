@@ -115,7 +115,7 @@ namespace Sistema_Barberia
             else
             if (cbEstado.Text == String.Empty)
             {
-                MessageBox.Show("Debe indicar el Correo del Cliente!");
+                MessageBox.Show("Debe indicar el Estado del Cliente!");
                 cbEstado.Focus();
             }
             else
@@ -142,7 +142,7 @@ namespace Sistema_Barberia
                 }
             }
                 //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
-                MessageBox.Show(mensaje, "Mensage de JAC", MessageBoxButtons.OK,
+                MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
                 //Se prepara todo para la próxima operación
@@ -171,7 +171,7 @@ namespace Sistema_Barberia
         {
            
             //Creamos la instancia del formulario de búsqueda y lo mostramos
-            FConsultaCliente fConsultaCliente = new FConsultaCliente();
+            FBuscarCliente fConsultaCliente = new FBuscarCliente();
             fConsultaCliente.ShowDialog();
             if (Program.modificar) //Si se está en modo de edición
             {
@@ -267,8 +267,6 @@ namespace Sistema_Barberia
 
         }
 
-
-
         //Habilita los botones según el valor que tengan las variables globales nuevo y modificar
         private void HabilitaBotones()
         {
@@ -290,9 +288,6 @@ namespace Sistema_Barberia
                 BBuscar.Enabled = true;
                 BCancelar.Enabled = false;
             }
-
-
-
         }
 
     }

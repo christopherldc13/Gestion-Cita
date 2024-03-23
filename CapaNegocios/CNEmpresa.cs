@@ -20,7 +20,7 @@ namespace CapaNegocios
             objEmpresa.IdEmpresa = pIdEmpresa;
             objEmpresa.Nombre = pNombre;
             objEmpresa.Telefono = pTelefono;
-            objEmpresa.Telefono = pDireccion;
+            objEmpresa.Direccion = pDireccion;
             objEmpresa.Correo = pCorreo;
             objEmpresa.Logo = pLogo;
             objEmpresa.Eslogan = pEslogan;

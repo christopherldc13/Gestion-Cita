@@ -38,7 +38,7 @@ namespace Sistema_Barberia
             this.BNuevo = new System.Windows.Forms.Button();
             this.BBuscar = new System.Windows.Forms.Button();
             this.cbEstado = new System.Windows.Forms.ComboBox();
-            this.tbIdBarbero = new System.Windows.Forms.TextBox();
+            this.tbNombreEmpleado = new System.Windows.Forms.TextBox();
             this.tbRol = new System.Windows.Forms.TextBox();
             this.tbClave = new System.Windows.Forms.TextBox();
             this.tbUsuario = new System.Windows.Forms.TextBox();
@@ -99,6 +99,7 @@ namespace Sistema_Barberia
             this.BCancelar.Text = "&Cancelar";
             this.BCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BCancelar.UseVisualStyleBackColor = true;
+            this.BCancelar.Click += new System.EventHandler(this.BCancelar_Click);
             // 
             // BEditar
             // 
@@ -114,6 +115,7 @@ namespace Sistema_Barberia
             this.BEditar.Text = "&Editar";
             this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BEditar.UseVisualStyleBackColor = true;
+            this.BEditar.Click += new System.EventHandler(this.BEditar_Click);
             // 
             // BGuardar
             // 
@@ -129,6 +131,7 @@ namespace Sistema_Barberia
             this.BGuardar.Text = "&Guardar";
             this.BGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BGuardar.UseVisualStyleBackColor = true;
+            this.BGuardar.Click += new System.EventHandler(this.BGuardar_Click);
             // 
             // BNuevo
             // 
@@ -144,6 +147,7 @@ namespace Sistema_Barberia
             this.BNuevo.Text = "&Nuevo";
             this.BNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BNuevo.UseVisualStyleBackColor = true;
+            this.BNuevo.Click += new System.EventHandler(this.BNuevo_Click);
             // 
             // BBuscar
             // 
@@ -161,6 +165,7 @@ namespace Sistema_Barberia
             this.BBuscar.Text = "&Buscar";
             this.BBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BBuscar.UseVisualStyleBackColor = false;
+            this.BBuscar.Click += new System.EventHandler(this.BBuscar_Click);
             // 
             // cbEstado
             // 
@@ -170,18 +175,18 @@ namespace Sistema_Barberia
             this.cbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbEstado.Location = new System.Drawing.Point(490, 187);
+            this.cbEstado.Location = new System.Drawing.Point(489, 209);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(184, 21);
             this.cbEstado.TabIndex = 30;
             // 
-            // tbIdBarbero
+            // tbNombreEmpleado
             // 
-            this.tbIdBarbero.Location = new System.Drawing.Point(490, 310);
-            this.tbIdBarbero.Name = "tbIdBarbero";
-            this.tbIdBarbero.Size = new System.Drawing.Size(184, 20);
-            this.tbIdBarbero.TabIndex = 29;
-            this.tbIdBarbero.TextChanged += new System.EventHandler(this.tbIdUsuario_TextChanged);
+            this.tbNombreEmpleado.Location = new System.Drawing.Point(490, 352);
+            this.tbNombreEmpleado.Name = "tbNombreEmpleado";
+            this.tbNombreEmpleado.Size = new System.Drawing.Size(184, 20);
+            this.tbNombreEmpleado.TabIndex = 29;
+            this.tbNombreEmpleado.TextChanged += new System.EventHandler(this.tbIdUsuario_TextChanged);
             // 
             // tbRol
             // 
@@ -217,17 +222,17 @@ namespace Sistema_Barberia
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(539, 249);
+            this.label7.Location = new System.Drawing.Point(501, 288);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 20);
+            this.label7.Size = new System.Drawing.Size(166, 20);
             this.label7.TabIndex = 24;
-            this.label7.Text = "Id Barbero";
+            this.label7.Text = "Nombre del Empleado";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(539, 134);
+            this.label6.Location = new System.Drawing.Point(541, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 20);
             this.label6.TabIndex = 23;
@@ -304,7 +309,7 @@ namespace Sistema_Barberia
             this.Controls.Add(this.PBotones);
             this.Controls.Add(this.BBuscar);
             this.Controls.Add(this.cbEstado);
-            this.Controls.Add(this.tbIdBarbero);
+            this.Controls.Add(this.tbNombreEmpleado);
             this.Controls.Add(this.tbRol);
             this.Controls.Add(this.tbClave);
             this.Controls.Add(this.tbUsuario);
@@ -316,11 +321,15 @@ namespace Sistema_Barberia
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PTitulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MantUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MantUsuario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MantUsuario_FormClosing);
+            this.Load += new System.EventHandler(this.MantUsuario_Load);
             this.PBotones.ResumeLayout(false);
             this.PTitulo.ResumeLayout(false);
             this.PTitulo.PerformLayout();
@@ -339,7 +348,7 @@ namespace Sistema_Barberia
         private System.Windows.Forms.Button BNuevo;
         private System.Windows.Forms.Button BBuscar;
         private System.Windows.Forms.ComboBox cbEstado;
-        private System.Windows.Forms.TextBox tbIdBarbero;
+        private System.Windows.Forms.TextBox tbNombreEmpleado;
         private System.Windows.Forms.TextBox tbRol;
         private System.Windows.Forms.TextBox tbClave;
         private System.Windows.Forms.TextBox tbUsuario;

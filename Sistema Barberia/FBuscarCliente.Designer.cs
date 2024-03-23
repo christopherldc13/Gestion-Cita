@@ -1,7 +1,7 @@
 ﻿
 namespace Sistema_Barberia
 {
-    partial class FConsultaCliente
+    partial class FBuscarCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Sistema_Barberia
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FConsultaCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FBuscarCliente));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,12 +64,12 @@ namespace Sistema_Barberia
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(231, 7);
+            this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(227, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(365, 46);
+            this.label1.Size = new System.Drawing.Size(401, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Consultas de Clientes";
+            this.label1.Text = "Busqueda de Clientes";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
@@ -90,7 +90,7 @@ namespace Sistema_Barberia
             this.BBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
             this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBuscar.Location = new System.Drawing.Point(465, 4);
+            this.BBuscar.Location = new System.Drawing.Point(396, 6);
             this.BBuscar.Name = "BBuscar";
             this.BBuscar.Size = new System.Drawing.Size(75, 32);
             this.BBuscar.TabIndex = 2;
@@ -206,11 +206,11 @@ namespace Sistema_Barberia
             this.DGVDatos.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGVDatos_CellMouseDoubleClick);
             this.DGVDatos.CurrentCellChanged += new System.EventHandler(this.DGVDatos_CurrentCellChanged);
             // 
-            // FConsultaCliente
+            // FBuscarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 559);
+            this.ClientSize = new System.Drawing.Size(865, 565);
             this.Controls.Add(this.DGVDatos);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -218,9 +218,9 @@ namespace Sistema_Barberia
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FConsultaCliente";
+            this.Name = "FBuscarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FConsultaCliente";
+            this.Text = "Busqueda de Cliente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FConsultaCliente_FormClosing);
             this.Load += new System.EventHandler(this.FConsultaCliente_Load);
             this.panel1.ResumeLayout(false);

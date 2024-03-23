@@ -99,6 +99,7 @@ namespace Sistema_Barberia
             this.BCancelar.Text = "&Cancelar";
             this.BCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BCancelar.UseVisualStyleBackColor = true;
+            this.BCancelar.Click += new System.EventHandler(this.BCancelar_Click);
             // 
             // BEditar
             // 
@@ -114,6 +115,7 @@ namespace Sistema_Barberia
             this.BEditar.Text = "&Editar";
             this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BEditar.UseVisualStyleBackColor = true;
+            this.BEditar.Click += new System.EventHandler(this.BEditar_Click);
             // 
             // BGuardar
             // 
@@ -129,6 +131,7 @@ namespace Sistema_Barberia
             this.BGuardar.Text = "&Guardar";
             this.BGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BGuardar.UseVisualStyleBackColor = true;
+            this.BGuardar.Click += new System.EventHandler(this.BGuardar_Click);
             // 
             // BNuevo
             // 
@@ -144,6 +147,7 @@ namespace Sistema_Barberia
             this.BNuevo.Text = "&Nuevo";
             this.BNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BNuevo.UseVisualStyleBackColor = true;
+            this.BNuevo.Click += new System.EventHandler(this.BNuevo_Click);
             // 
             // PTitulo
             // 
@@ -210,7 +214,7 @@ namespace Sistema_Barberia
             // 
             // tbIdBarbero
             // 
-            this.tbIdBarbero.Location = new System.Drawing.Point(127, 99);
+            this.tbIdBarbero.Location = new System.Drawing.Point(128, 99);
             this.tbIdBarbero.Name = "tbIdBarbero";
             this.tbIdBarbero.Size = new System.Drawing.Size(142, 20);
             this.tbIdBarbero.TabIndex = 38;
@@ -291,6 +295,7 @@ namespace Sistema_Barberia
             this.BBuscar.Text = "&Buscar";
             this.BBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BBuscar.UseVisualStyleBackColor = false;
+            this.BBuscar.Click += new System.EventHandler(this.BBuscar_Click);
             // 
             // MantEmpleado
             // 
@@ -312,13 +317,17 @@ namespace Sistema_Barberia
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PBotones);
             this.Controls.Add(this.PTitulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MantEmpleado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MantEmpleado";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MantEmpleado_FormClosing);
             this.Load += new System.EventHandler(this.MantEmpleado_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MantEmpleado_KeyDown);
             this.PBotones.ResumeLayout(false);
             this.PTitulo.ResumeLayout(false);
             this.PTitulo.PerformLayout();

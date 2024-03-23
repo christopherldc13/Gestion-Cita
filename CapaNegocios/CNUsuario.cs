@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using CapaDatos;
+using System.Windows.Forms;
 
 namespace CapaNegocios
 {
@@ -50,6 +51,11 @@ namespace CapaNegocios
                                             //El DataTable se llena con todos los datos devueltos
             dt = objUsuario.UsuarioConsultar(miparametro);
             return dt; //Se retorna el DataTable con los datos adquiridos
+        }
+
+        public static string Insertar(int vidUsuario, string text1, string text2, string text3, string text4, TextBox tbNombreEmpleado)
+        {
+            throw new NotImplementedException();
         }
     }
 

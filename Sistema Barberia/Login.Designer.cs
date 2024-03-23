@@ -31,14 +31,14 @@ namespace Sistema_Barberia
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.bIniciarSesion = new System.Windows.Forms.Button();
+            this.tbClave = new System.Windows.Forms.TextBox();
+            this.tbUsuario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,9 +46,9 @@ namespace Sistema_Barberia
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PowderBlue;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.bIniciarSesion);
+            this.panel1.Controls.Add(this.tbClave);
+            this.panel1.Controls.Add(this.tbUsuario);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -57,22 +57,33 @@ namespace Sistema_Barberia
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(356, 398);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // textBox2
+            // bIniciarSesion
             // 
-            this.textBox2.Font = new System.Drawing.Font("Corbel", 8.25F);
-            this.textBox2.Location = new System.Drawing.Point(149, 273);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 21);
-            this.textBox2.TabIndex = 6;
+            this.bIniciarSesion.Location = new System.Drawing.Point(149, 327);
+            this.bIniciarSesion.Name = "bIniciarSesion";
+            this.bIniciarSesion.Size = new System.Drawing.Size(84, 23);
+            this.bIniciarSesion.TabIndex = 7;
+            this.bIniciarSesion.Text = "Iniciar Sesion";
+            this.bIniciarSesion.UseVisualStyleBackColor = true;
+            this.bIniciarSesion.Click += new System.EventHandler(this.bIniciarSesion_Click);
             // 
-            // textBox1
+            // tbClave
             // 
-            this.textBox1.Font = new System.Drawing.Font("Corbel", 8.25F);
-            this.textBox1.Location = new System.Drawing.Point(149, 234);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 21);
-            this.textBox1.TabIndex = 5;
+            this.tbClave.Font = new System.Drawing.Font("Corbel", 8.25F);
+            this.tbClave.Location = new System.Drawing.Point(149, 273);
+            this.tbClave.Name = "tbClave";
+            this.tbClave.Size = new System.Drawing.Size(132, 21);
+            this.tbClave.TabIndex = 6;
+            // 
+            // tbUsuario
+            // 
+            this.tbUsuario.Font = new System.Drawing.Font("Corbel", 8.25F);
+            this.tbUsuario.Location = new System.Drawing.Point(149, 234);
+            this.tbUsuario.Name = "tbUsuario";
+            this.tbUsuario.Size = new System.Drawing.Size(132, 21);
+            this.tbUsuario.TabIndex = 5;
             // 
             // label3
             // 
@@ -116,24 +127,17 @@ namespace Sistema_Barberia
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(149, 327);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Iniciar Sesion";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 422);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -149,8 +153,8 @@ namespace Sistema_Barberia
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbClave;
+        private System.Windows.Forms.TextBox tbUsuario;
+        private System.Windows.Forms.Button bIniciarSesion;
     }
 }

@@ -127,6 +127,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCitaDataSetPagoFecha.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DBCitaDataSetPagoNombre1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCitaDataSetPagoNombre1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DBCitaDataSetPagos.cs">
       <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
     </Compile>
@@ -164,6 +169,12 @@
     </Compile>
     <Compile Include="FormBarbero.Designer.cs">
       <DependentUpon>FormBarbero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPagoNombre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPagoNombre.Designer.cs">
+      <DependentUpon>FormPagoNombre.cs</DependentUpon>
     </Compile>
     <Compile Include="FPagoFecha.cs">
       <SubType>Form</SubType>
@@ -264,6 +275,9 @@
     <EmbeddedResource Include="FormBarbero.resx">
       <DependentUpon>FormBarbero.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPagoNombre.resx">
+      <DependentUpon>FormPagoNombre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FPagoFecha.resx">
       <DependentUpon>FPagoFecha.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +328,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteEmpleadoEstado.rdlc" />
     <EmbeddedResource Include="ReportePagoFecha.rdlc" />
+    <EmbeddedResource Include="ReportePagoNombre.rdlc" />
     <EmbeddedResource Include="ReportePagos.rdlc" />
     <EmbeddedResource Include="ReportesCitas.rdlc" />
     <EmbeddedResource Include="ReportesPagos.resx">
@@ -417,6 +432,17 @@
     </None>
     <None Include="DBCitaDataSetPagoFecha.xss">
       <DependentUpon>DBCitaDataSetPagoFecha.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetPagoNombre1.xsc">
+      <DependentUpon>DBCitaDataSetPagoNombre1.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetPagoNombre1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCitaDataSetPagoNombre1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCitaDataSetPagoNombre1.xss">
+      <DependentUpon>DBCitaDataSetPagoNombre1.xsd</DependentUpon>
     </None>
     <None Include="DBCitaDataSetPagos.xsc">
       <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>

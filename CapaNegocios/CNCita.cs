@@ -39,7 +39,7 @@ namespace CapaNegocios
             objCita.Estado = pEstado;
             //Llamamos al método insertar del suplidor pasándole el objeto creado
             //y retornando el mensaje que indica si se pudo o no realizar la acción
-            return objCita.Insertar(objCita);
+            return objCita.Actualizar(objCita);
         } //Fin del método Actualizar
           //Método utilizado para obtener un DataTable con todos los datos de la tabla
           //correspondiente

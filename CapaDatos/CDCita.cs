@@ -107,6 +107,7 @@ namespace CapaDatos
                 SqlCommand micomando = new SqlCommand("CitaActualizar", sqlCon);
                 sqlCon.Open();
                 micomando.CommandType = CommandType.StoredProcedure;
+                micomando.Parameters.AddWithValue("@pIdCita", objCita.IdCita);
                 micomando.Parameters.AddWithValue("@pIdCliente", objCita.IdCliente);
                 micomando.Parameters.AddWithValue("@pIdBarbero", objCita.IdBarbero);
                 micomando.Parameters.AddWithValue("@pFecha", objCita.Fecha);

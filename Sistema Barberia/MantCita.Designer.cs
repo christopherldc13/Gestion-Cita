@@ -360,7 +360,7 @@ namespace Sistema_Barberia
             // 
             // tbIdEmpleado
             // 
-            this.tbIdEmpleado.Location = new System.Drawing.Point(423, 286);
+            this.tbIdEmpleado.Location = new System.Drawing.Point(423, 288);
             this.tbIdEmpleado.Name = "tbIdEmpleado";
             this.tbIdEmpleado.Size = new System.Drawing.Size(89, 20);
             this.tbIdEmpleado.TabIndex = 69;

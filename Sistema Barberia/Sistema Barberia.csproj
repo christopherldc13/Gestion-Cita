@@ -135,11 +135,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DBCitaDataSetPrueba.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCitaDataSetPrueba.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FBuscarBarbero.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FBuscarBarbero.Designer.cs">
       <DependentUpon>FBuscarBarbero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FBuscarCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBuscarCita.Designer.cs">
+      <DependentUpon>FBuscarCita.cs</DependentUpon>
     </Compile>
     <Compile Include="FBuscarCliente.cs">
       <SubType>Form</SubType>
@@ -170,6 +181,12 @@
     </Compile>
     <Compile Include="FPagoFecha.Designer.cs">
       <DependentUpon>FPagoFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FPrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FPrueba.Designer.cs">
+      <DependentUpon>FPrueba.cs</DependentUpon>
     </Compile>
     <Compile Include="MantEmpresa.cs">
       <SubType>Form</SubType>
@@ -252,6 +269,9 @@
     <EmbeddedResource Include="FBuscarBarbero.resx">
       <DependentUpon>FBuscarBarbero.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FBuscarCita.resx">
+      <DependentUpon>FBuscarCita.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FBuscarCliente.resx">
       <DependentUpon>FBuscarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FPagoFecha.resx">
       <DependentUpon>FPagoFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FPrueba.resx">
+      <DependentUpon>FPrueba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MantEmpresa.resx">
       <DependentUpon>MantEmpresa.cs</DependentUpon>
@@ -315,6 +338,7 @@
     <EmbeddedResource Include="ReporteEmpleadoEstado.rdlc" />
     <EmbeddedResource Include="ReportePagoFecha.rdlc" />
     <EmbeddedResource Include="ReportePagos.rdlc" />
+    <EmbeddedResource Include="ReportePrueba.rdlc" />
     <EmbeddedResource Include="ReportesCitas.rdlc" />
     <EmbeddedResource Include="ReportesPagos.resx">
       <DependentUpon>ReportesPagos.cs</DependentUpon>
@@ -428,6 +452,17 @@
     </None>
     <None Include="DBCitaDataSetPagos.xss">
       <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetPrueba.xsc">
+      <DependentUpon>DBCitaDataSetPrueba.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetPrueba.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCitaDataSetPrueba.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCitaDataSetPrueba.xss">
+      <DependentUpon>DBCitaDataSetPrueba.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

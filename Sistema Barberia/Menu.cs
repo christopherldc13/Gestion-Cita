@@ -192,8 +192,13 @@ namespace Sistema_Barberia
 
         private void pruebaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormBarbero formulario = new FormBarbero();
+            FPrueba formulario = new FPrueba();
             formulario.ShowDialog();
+        }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -18,7 +18,8 @@ namespace Sistema_Barberia
     public partial class MantCita : Form
     {
         public string valorparametro = "", mensaje = "";
-        public static bool nuevo = false;
+        //public static bool nuevo = true;
+
         public MantCita()
         {
             InitializeComponent();
@@ -31,6 +32,9 @@ namespace Sistema_Barberia
 
         private void MantCita_Load(object sender, EventArgs e)
         {
+            Program.nuevo = false; //Valores de las variables globales nuevo y modificar
+            Program.modificar = false;
+            HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
 
         }
 
@@ -74,8 +78,12 @@ namespace Sistema_Barberia
             cbEstado.SelectedItem = 0;
             tbIdCliente.Clear(); //Para limpiar TextBox.
             tbNombreCliente.Clear(); //Para limpiar TextBox.
+            tbApellidoCliente.Clear();
+            tbTelefonoCliente.Clear();
             tbIdEmpleado.Clear(); //Para limpiar TextBox.
             tbNombreEmpleado.Clear();
+            tbTelefonoEmpleado.Clear();
+            
         } //Fin del método LimpiaObjetos
 
         //Habilita / inhabilita los objetos del formulario segun lo indicado por el parámetro valor
@@ -84,10 +92,12 @@ namespace Sistema_Barberia
             tbIdCita.ReadOnly = true; //la propiedad ReadOnly hace de solo lectura un objeto
             dtpFecha.Enabled = valor; //la propiedad Enabled habilita o inhabilita un objeto
             cbEstado.Enabled = valor;
-            tbIdCliente.ReadOnly = valor;
-            tbNombreCliente.Enabled = valor;
-            tbIdEmpleado.Enabled = valor;
-            if (nuevo)
+            tbIdCliente.ReadOnly = true;
+            tbNombreCliente.ReadOnly = true;
+            tbApellidoCliente.ReadOnly = true;
+            tbTelefonoCliente.ReadOnly = true;
+            tbIdEmpleado.ReadOnly = true;
+            if (Program.nuevo)
                 cbEstado.SelectedIndex = 0;
         } //Fin del método HabilitaControles
 
@@ -98,6 +108,7 @@ namespace Sistema_Barberia
             Program.modificar = false;
             HabilitaBotones(); //Se habilitan solo aquellos botones que sean necesarios
             dtpFecha.Focus(); //Coloca el cursor en el TextBox indicado
+
 
         }
 
@@ -125,7 +136,7 @@ namespace Sistema_Barberia
             if (tbIdCliente.Text == String.Empty)
             {
                 MessageBox.Show("Debe indicar el Cliente que desea hacer la Cita!");
-                BBuscarCliente.Focus();
+                tbIdCliente.Focus();
             }
             else
             if (tbIdEmpleado.Text == String.Empty)
@@ -142,24 +153,25 @@ namespace Sistema_Barberia
                     //pasándole como parámetros los valores leídos en los controles del formulario. como:
                     //textbox, combobox, DateTimePicker, etc.
                     //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
-
+                    MessageBox.Show("Entre a nuevo"+Program.vidCliente.ToString() + " " + Program.vidBarbero.ToString());
                     mensaje = CNCita.Insertar(Program.vidCita, Program.vidCliente, Program.vidBarbero,
-                     dtpFecha.MaxDate, dtpHora.MaxDate, cbEstado.Text);
+                     dtpFecha.Value, dtpHora.Value, cbEstado.Text);
                 }
-                else //de lo contrario se Modificarán los datos del registro correspondiente
+                else  //de lo contrario se Modificarán los datos del registro correspondiente
                 {
+
                     //Se llama al método Insertar de la clase CNSuplidor de la capa de negocio
                     //pasándole como parámetros los valores leídos en los controles del formulario.
                     // como: textbox, combobox, DateTimePicker, etc.
                     //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
+                    MessageBox.Show("Entre a Actualizar" + Program.vidCliente.ToString() + " " + Program.vidBarbero.ToString());
                     mensaje = CNCita.Actualizar(Program.vidCita, Program.vidCliente, Program.vidBarbero,
                      dtpFecha.Value, dtpHora.Value, cbEstado.Text);
                 }
-            }
+            
             //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
-            MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
-
+            MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,  MessageBoxIcon.Information);
+            }
             //Se prepara todo para la próxima operación
             Program.nuevo = false;
             Program.modificar = false;
@@ -170,12 +182,12 @@ namespace Sistema_Barberia
         private void BBuscarCita_Click(object sender, EventArgs e)
         {
             //Creamos la instancia del formulario de búsqueda y lo mostramos
-            FBuscarCliente fConsultaCliente = new FBuscarCliente();
-            fConsultaCliente.ShowDialog();
+            FBuscarCita fConsultaCita = new FBuscarCita();
+            fConsultaCita.ShowDialog();
             if (Program.modificar) //Si se está en modo de edición
             {
                 RecuperaDatosCita(); //Llamo al método para recuperar el registro seleccionado
-                BEditar_Click(sender, e); //Llamo el método del botón Editar
+                BEditar_Click(sender, e); //Llamo al método editar
             }
             else //Si no estamos en modo de edición no permite la acción.
             {
@@ -194,28 +206,40 @@ namespace Sistema_Barberia
                                                        //los campos correspondientes
             foreach (DataRow row in dt.Rows)
             {
+                
                 tbIdCita.Text = row["IdCita"].ToString();
                 tbIdCliente.Text = row["IdCliente"].ToString();
+                tbNombreCliente.Text = row["NombreCliente"].ToString();
+                tbApellidoCliente.Text = row["Apellido"].ToString();
+                tbTelefonoCliente.Text = row["Telefono"].ToString();
                 tbIdEmpleado.Text = row["IdBarbero"].ToString();
+                tbNombreEmpleado.Text = row["NombreBarbero"].ToString();
+                tbTelefonoEmpleado.Text = row["Telefono"].ToString();
                 dtpFecha.Text = row["Fecha"].ToString();
                 dtpHora.Text = row["Hora"].ToString();
                 cbEstado.Text = row["Estado"].ToString();
+                Program.vidBarbero = Convert.ToInt32(tbIdEmpleado.Text);
+                Program.vidCliente = Convert.ToInt32(tbIdCliente.Text);
             }
+            
         } //Fin del metodo RecuperarDatos
+
+
 
         private void BEditar_Click(object sender, EventArgs e)
         {
             //Si no ha seleccionado un Suplidor no se puede modificar
             if (!tbIdCita.Equals(""))
             {
+                
                 Program.modificar = true; //el formulaario se prepara para modificar datos
                 HabilitaBotones();
+
             }
             else
             {
-                MessageBox.Show("Debe de buscar un Suplidor para poder Modificar sus datos!");
+                MessageBox.Show("Debe de buscar un Cliente para poder Modificar sus datos!");
             }
-
         }
 
         private void BBuscarCliente_Click(object sender, EventArgs e)
@@ -226,7 +250,7 @@ namespace Sistema_Barberia
             if (Program.modificar) //Si se está en modo de edición
             {
                 RecuperaDatosCliente(); //Llamo al método para recuperar el registro seleccionado
-                BEditar_Click(sender, e); //Llamo el método del botón Editar
+                //BEditar_Click(sender, e); //Llamo el método del botón Editar
             }
             else //Si no estamos en modo de edición no permite la acción.
             {
@@ -307,9 +331,7 @@ namespace Sistema_Barberia
                 BNuevo.Enabled = false;
                 BGuardar.Enabled = true;
                 BEditar.Enabled = false;
-                BBuscarCita.Enabled = true;
-                BBuscarCliente.Enabled = true;
-                BBuscarEmpleado.Enabled = true;
+                BBuscarCita.Enabled = false;
                 BCancelar.Enabled = true;
             }
             else
@@ -319,8 +341,6 @@ namespace Sistema_Barberia
                 BGuardar.Enabled = false;
                 BEditar.Enabled = false;
                 BBuscarCita.Enabled = true;
-                BBuscarCliente.Enabled = true;
-                BBuscarEmpleado.Enabled = true;
                 BCancelar.Enabled = false;
             }
         }

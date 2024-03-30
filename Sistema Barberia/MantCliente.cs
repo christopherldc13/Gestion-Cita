@@ -140,11 +140,11 @@ namespace Sistema_Barberia
                     mensaje = CNCliente.Actualizar(Program.vidCliente, tbNombre.Text, tbApellido.Text,
                       tbTelefono.Text, tbCorreo.Text, cbEstado.Text);
                 }
-            }
                 //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
                 MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
+            }
                 //Se prepara todo para la próxima operación
                 Program.nuevo = false;
                 Program.modificar = false;

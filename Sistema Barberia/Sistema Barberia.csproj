@@ -51,7 +51,9 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -70,75 +72,55 @@
     <Compile Include="ConsultasCliente.Designer.cs">
       <DependentUpon>ConsultasCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBCitaDataSet.cs">
-      <DependentUpon>DBCitaDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCitaDataSet.Designer.cs">
+    <Compile Include="DBCitaDataSetBarberoEstado.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSet.xsd</DependentUpon>
+      <DependentUpon>DBCitaDataSetBarberoEstado.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBCitaDataSet1.cs">
-      <DependentUpon>DBCitaDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCitaDataSet1.Designer.cs">
+    <Compile Include="DBCitaDataSetCitaCliente.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSet1.xsd</DependentUpon>
+      <DependentUpon>DBCitaDataSetCitaCliente.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBCitaDataSet2.Designer.cs">
+    <Compile Include="DBCitaDataSetCitaEmpleado.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSet2.xsd</DependentUpon>
+      <DependentUpon>DBCitaDataSetCitaEmpleado.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBCitaDataSetCita.cs">
-      <DependentUpon>DBCitaDataSetCita.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCitaDataSetCita.Designer.cs">
+    <Compile Include="DBCitaDataSetCitaFecha.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSetCita.xsd</DependentUpon>
+      <DependentUpon>DBCitaDataSetCitaFecha.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBCitaDataSetCitaBarbero.Designer.cs">
+    <Compile Include="DBCitaDataSetClienteEstado.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSetCitaBarbero.xsd</DependentUpon>
+      <DependentUpon>DBCitaDataSetClienteEstado.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBCitaDataSetCitasFech.cs">
-      <DependentUpon>DBCitaDataSetCitasFech.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCitaDataSetCitasFech.Designer.cs">
+    <Compile Include="DBCitaDataSetClienteGeneral.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSetCitasFech.xsd</DependentUpon>
+      <DependentUpon>DBCitaDataSetClienteGeneral.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBCitaDataSetEmpleado.Designer.cs">
+    <Compile Include="DBCitaDataSetEmpleadoGeneral.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSetEmpleado.xsd</DependentUpon>
+      <DependentUpon>DBCitaDataSetEmpleadoGeneral.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBCitaDataSetPagoCita.Designer.cs">
+    <Compile Include="DBCitaDataSetPagoCliente.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSetPagoCita.xsd</DependentUpon>
+      <DependentUpon>DBCitaDataSetPagoCliente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBCitaDataSetPagoEstado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCitaDataSetPagoEstado.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBCitaDataSetPagoFecha.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCitaDataSetPagoFecha.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCitaDataSetPagos.cs">
-      <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCitaDataSetPagos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCitaDataSetPrueba.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBCitaDataSetPrueba.xsd</DependentUpon>
     </Compile>
     <Compile Include="FBuscarBarbero.cs">
       <SubType>Form</SubType>
@@ -170,23 +152,65 @@
     <Compile Include="FBuscarUsuario.Designer.cs">
       <DependentUpon>FBuscarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormBarbero.cs">
+    <Compile Include="FBuscarPago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBarbero.Designer.cs">
-      <DependentUpon>FormBarbero.cs</DependentUpon>
+    <Compile Include="FBuscarPago.Designer.cs">
+      <DependentUpon>FBuscarPago.cs</DependentUpon>
     </Compile>
-    <Compile Include="FPagoFecha.cs">
+    <Compile Include="FReporteClientesGenerales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FPagoFecha.Designer.cs">
-      <DependentUpon>FPagoFecha.cs</DependentUpon>
+    <Compile Include="FReporteClientesGenerales.Designer.cs">
+      <DependentUpon>FReporteClientesGenerales.cs</DependentUpon>
     </Compile>
-    <Compile Include="FPrueba.cs">
+    <Compile Include="FReporteBarberoEstado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FPrueba.Designer.cs">
-      <DependentUpon>FPrueba.cs</DependentUpon>
+    <Compile Include="FReporteBarberoEstado.Designer.cs">
+      <DependentUpon>FReporteBarberoEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReporteClienteEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReporteClienteEstado.Designer.cs">
+      <DependentUpon>FReporteClienteEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReporteCitaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReporteCitaCliente.Designer.cs">
+      <DependentUpon>FReporteCitaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReporteCitaFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReporteCitaFecha.Designer.cs">
+      <DependentUpon>FReporteCitaFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReporteCitaEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReporteCitaEmpleado.Designer.cs">
+      <DependentUpon>FReporteCitaEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReporteEmpleadoGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReporteEmpleadoGeneral.Designer.cs">
+      <DependentUpon>FReporteEmpleadoGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReportePagoEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReportePagoEstado.Designer.cs">
+      <DependentUpon>FReportePagoEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReportePagoFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReportePagoFecha.Designer.cs">
+      <DependentUpon>FReportePagoFecha.cs</DependentUpon>
     </Compile>
     <Compile Include="MantEmpresa.cs">
       <SubType>Form</SubType>
@@ -199,18 +223,6 @@
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReporteCitas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReporteCitas.Designer.cs">
-      <DependentUpon>ReporteCitas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReporteCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReporteCliente.Designer.cs">
-      <DependentUpon>ReporteCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -250,17 +262,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReporteEmpleado.cs">
+    <Compile Include="FReportePagoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReporteEmpleado.Designer.cs">
-      <DependentUpon>ReporteEmpleado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportesPagos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportesPagos.Designer.cs">
-      <DependentUpon>ReportesPagos.cs</DependentUpon>
+    <Compile Include="FReportePagoCliente.Designer.cs">
+      <DependentUpon>FReportePagoCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="ConsultasCliente.resx">
@@ -281,26 +287,41 @@
     <EmbeddedResource Include="FBuscarUsuario.resx">
       <DependentUpon>FBuscarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormBarbero.resx">
-      <DependentUpon>FormBarbero.cs</DependentUpon>
+    <EmbeddedResource Include="FBuscarPago.resx">
+      <DependentUpon>FBuscarPago.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FPagoFecha.resx">
-      <DependentUpon>FPagoFecha.cs</DependentUpon>
+    <EmbeddedResource Include="FReporteClientesGenerales.resx">
+      <DependentUpon>FReporteClientesGenerales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FPrueba.resx">
-      <DependentUpon>FPrueba.cs</DependentUpon>
+    <EmbeddedResource Include="FReporteBarberoEstado.resx">
+      <DependentUpon>FReporteBarberoEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReporteClienteEstado.resx">
+      <DependentUpon>FReporteClienteEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReporteCitaCliente.resx">
+      <DependentUpon>FReporteCitaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReporteCitaFecha.resx">
+      <DependentUpon>FReporteCitaFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReporteCitaEmpleado.resx">
+      <DependentUpon>FReporteCitaEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReporteEmpleadoGeneral.resx">
+      <DependentUpon>FReporteEmpleadoGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReportePagoEstado.resx">
+      <DependentUpon>FReportePagoEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReportePagoFecha.resx">
+      <DependentUpon>FReportePagoFecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MantEmpresa.resx">
       <DependentUpon>MantEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReporteCitas.resx">
-      <DependentUpon>ReporteCitas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReporteCliente.resx">
-      <DependentUpon>ReporteCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -330,106 +351,118 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReporteCliente.rdlc" />
-    <EmbeddedResource Include="ReporteEmpleado.rdlc" />
-    <EmbeddedResource Include="ReporteEmpleado.resx">
-      <DependentUpon>ReporteEmpleado.cs</DependentUpon>
+    <EmbeddedResource Include="FReportePagoCliente.resx">
+      <DependentUpon>FReportePagoCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCitaCliente.rdlc" />
+    <EmbeddedResource Include="ReporteCitaEmpleado.rdlc" />
+    <EmbeddedResource Include="ReporteCitaFecha.rdlc" />
+    <EmbeddedResource Include="ReporteClienteEstado.rdlc" />
+    <EmbeddedResource Include="ReporteClienteGeneral.rdlc" />
     <EmbeddedResource Include="ReporteEmpleadoEstado.rdlc" />
+    <EmbeddedResource Include="ReporteEmpleadoGeneral.rdlc" />
+    <EmbeddedResource Include="ReportePagoCliente.rdlc" />
+    <EmbeddedResource Include="ReportePagoEstado.rdlc" />
     <EmbeddedResource Include="ReportePagoFecha.rdlc" />
-    <EmbeddedResource Include="ReportePagos.rdlc" />
-    <EmbeddedResource Include="ReportePrueba.rdlc" />
-    <EmbeddedResource Include="ReportesCitas.rdlc" />
-    <EmbeddedResource Include="ReportesPagos.resx">
-      <DependentUpon>ReportesPagos.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="DBCitaDataSet.xsc">
-      <DependentUpon>DBCitaDataSet.xsd</DependentUpon>
+    <EmbeddedResource Include="ReportePagoFecha1.rdlc" />
+    <None Include="DBCitaDataSetBarberoEstado.xsc">
+      <DependentUpon>DBCitaDataSetBarberoEstado.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSet.xsd">
+    <None Include="DBCitaDataSetBarberoEstado.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCitaDataSetBarberoEstado.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBCitaDataSet.xss">
-      <DependentUpon>DBCitaDataSet.xsd</DependentUpon>
+    <None Include="DBCitaDataSetBarberoEstado.xss">
+      <DependentUpon>DBCitaDataSetBarberoEstado.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSet1.xsc">
-      <DependentUpon>DBCitaDataSet1.xsd</DependentUpon>
+    <None Include="DBCitaDataSetCitaCliente.xsc">
+      <DependentUpon>DBCitaDataSetCitaCliente.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSet1.xsd">
+    <None Include="DBCitaDataSetCitaCliente.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCitaDataSetCitaCliente.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBCitaDataSet1.xss">
-      <DependentUpon>DBCitaDataSet1.xsd</DependentUpon>
+    <None Include="DBCitaDataSetCitaCliente.xss">
+      <DependentUpon>DBCitaDataSetCitaCliente.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSet2.xsc">
-      <DependentUpon>DBCitaDataSet2.xsd</DependentUpon>
+    <None Include="DBCitaDataSetCitaEmpleado.xsc">
+      <DependentUpon>DBCitaDataSetCitaEmpleado.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSet2.xsd">
+    <None Include="DBCitaDataSetCitaEmpleado.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSet2.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCitaDataSetCitaEmpleado.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBCitaDataSet2.xss">
-      <DependentUpon>DBCitaDataSet2.xsd</DependentUpon>
+    <None Include="DBCitaDataSetCitaEmpleado.xss">
+      <DependentUpon>DBCitaDataSetCitaEmpleado.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetCita.xsc">
-      <DependentUpon>DBCitaDataSetCita.xsd</DependentUpon>
+    <None Include="DBCitaDataSetCitaFecha.xsc">
+      <DependentUpon>DBCitaDataSetCitaFecha.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetCita.xsd">
+    <None Include="DBCitaDataSetCitaFecha.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSetCita.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCitaDataSetCitaFecha.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBCitaDataSetCita.xss">
-      <DependentUpon>DBCitaDataSetCita.xsd</DependentUpon>
+    <None Include="DBCitaDataSetCitaFecha.xss">
+      <DependentUpon>DBCitaDataSetCitaFecha.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetCitaBarbero.xsc">
-      <DependentUpon>DBCitaDataSetCitaBarbero.xsd</DependentUpon>
+    <None Include="DBCitaDataSetClienteEstado.xsc">
+      <DependentUpon>DBCitaDataSetClienteEstado.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetCitaBarbero.xsd">
+    <None Include="DBCitaDataSetClienteEstado.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSetCitaBarbero.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCitaDataSetClienteEstado.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBCitaDataSetCitaBarbero.xss">
-      <DependentUpon>DBCitaDataSetCitaBarbero.xsd</DependentUpon>
+    <None Include="DBCitaDataSetClienteEstado.xss">
+      <DependentUpon>DBCitaDataSetClienteEstado.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetCitasFech.xsc">
-      <DependentUpon>DBCitaDataSetCitasFech.xsd</DependentUpon>
+    <None Include="DBCitaDataSetClienteGeneral.xsc">
+      <DependentUpon>DBCitaDataSetClienteGeneral.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetCitasFech.xsd">
+    <None Include="DBCitaDataSetClienteGeneral.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSetCitasFech.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCitaDataSetClienteGeneral.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBCitaDataSetCitasFech.xss">
-      <DependentUpon>DBCitaDataSetCitasFech.xsd</DependentUpon>
+    <None Include="DBCitaDataSetClienteGeneral.xss">
+      <DependentUpon>DBCitaDataSetClienteGeneral.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetEmpleado.xsc">
-      <DependentUpon>DBCitaDataSetEmpleado.xsd</DependentUpon>
+    <None Include="DBCitaDataSetEmpleadoGeneral.xsc">
+      <DependentUpon>DBCitaDataSetEmpleadoGeneral.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetEmpleado.xsd">
+    <None Include="DBCitaDataSetEmpleadoGeneral.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSetEmpleado.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCitaDataSetEmpleadoGeneral.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBCitaDataSetEmpleado.xss">
-      <DependentUpon>DBCitaDataSetEmpleado.xsd</DependentUpon>
+    <None Include="DBCitaDataSetEmpleadoGeneral.xss">
+      <DependentUpon>DBCitaDataSetEmpleadoGeneral.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetPagoCita.xsc">
-      <DependentUpon>DBCitaDataSetPagoCita.xsd</DependentUpon>
+    <None Include="DBCitaDataSetPagoCliente.xsc">
+      <DependentUpon>DBCitaDataSetPagoCliente.xsd</DependentUpon>
     </None>
-    <None Include="DBCitaDataSetPagoCita.xsd">
+    <None Include="DBCitaDataSetPagoCliente.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSetPagoCita.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBCitaDataSetPagoCliente.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBCitaDataSetPagoCita.xss">
-      <DependentUpon>DBCitaDataSetPagoCita.xsd</DependentUpon>
+    <None Include="DBCitaDataSetPagoCliente.xss">
+      <DependentUpon>DBCitaDataSetPagoCliente.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetPagoEstado.xsc">
+      <DependentUpon>DBCitaDataSetPagoEstado.xsd</DependentUpon>
+    </None>
+    <None Include="DBCitaDataSetPagoEstado.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCitaDataSetPagoEstado.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCitaDataSetPagoEstado.xss">
+      <DependentUpon>DBCitaDataSetPagoEstado.xsd</DependentUpon>
     </None>
     <None Include="DBCitaDataSetPagoFecha.xsc">
       <DependentUpon>DBCitaDataSetPagoFecha.xsd</DependentUpon>
@@ -441,28 +474,6 @@
     </None>
     <None Include="DBCitaDataSetPagoFecha.xss">
       <DependentUpon>DBCitaDataSetPagoFecha.xsd</DependentUpon>
-    </None>
-    <None Include="DBCitaDataSetPagos.xsc">
-      <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
-    </None>
-    <None Include="DBCitaDataSetPagos.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSetPagos.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBCitaDataSetPagos.xss">
-      <DependentUpon>DBCitaDataSetPagos.xsd</DependentUpon>
-    </None>
-    <None Include="DBCitaDataSetPrueba.xsc">
-      <DependentUpon>DBCitaDataSetPrueba.xsd</DependentUpon>
-    </None>
-    <None Include="DBCitaDataSetPrueba.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCitaDataSetPrueba.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBCitaDataSetPrueba.xss">
-      <DependentUpon>DBCitaDataSetPrueba.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

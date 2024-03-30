@@ -143,6 +143,11 @@ namespace Sistema_Barberia
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void DGVDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 

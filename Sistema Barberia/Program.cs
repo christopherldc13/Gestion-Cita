@@ -14,6 +14,7 @@ namespace Sistema_Barberia
         public static int vidEmpresa = 0;
         public static int vidUsuario = 0;
         public static int vidCita = 0;
+        public static int vidPago = 0;
         //primaria de la tabla correspondiente
         public static int vidDepto = 0; //colocar una por cada clave primaria que tengamos
                                         //en nuestra base de datos
@@ -29,7 +30,7 @@ namespace Sistema_Barberia
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FMenu());
+            Application.Run(new Login());
         }
 
     }

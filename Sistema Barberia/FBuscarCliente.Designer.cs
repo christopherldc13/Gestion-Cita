@@ -88,11 +88,12 @@ namespace Sistema_Barberia
             this.BBuscar.BackColor = System.Drawing.Color.Transparent;
             this.BBuscar.FlatAppearance.BorderSize = 0;
             this.BBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BBuscar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
             this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBuscar.Location = new System.Drawing.Point(396, 6);
+            this.BBuscar.Location = new System.Drawing.Point(430, 6);
             this.BBuscar.Name = "BBuscar";
-            this.BBuscar.Size = new System.Drawing.Size(75, 32);
+            this.BBuscar.Size = new System.Drawing.Size(82, 32);
             this.BBuscar.TabIndex = 2;
             this.BBuscar.Text = "Buscar";
             this.BBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -102,17 +103,17 @@ namespace Sistema_Barberia
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(14, 15);
+            this.label2.Location = new System.Drawing.Point(14, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 19);
+            this.label2.Size = new System.Drawing.Size(206, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ingrese los datos a buscar";
             // 
             // tbBuscar
             // 
-            this.tbBuscar.Location = new System.Drawing.Point(189, 15);
+            this.tbBuscar.Location = new System.Drawing.Point(224, 11);
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(196, 20);
             this.tbBuscar.TabIndex = 0;
@@ -134,27 +135,40 @@ namespace Sistema_Barberia
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(761, 18);
+            this.bAceptar.FlatAppearance.BorderSize = 0;
+            this.bAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAceptar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAceptar.Image = ((System.Drawing.Image)(resources.GetObject("bAceptar.Image")));
+            this.bAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bAceptar.Location = new System.Drawing.Point(744, 18);
             this.bAceptar.Name = "bAceptar";
-            this.bAceptar.Size = new System.Drawing.Size(75, 33);
+            this.bAceptar.Size = new System.Drawing.Size(92, 33);
             this.bAceptar.TabIndex = 5;
             this.bAceptar.Text = "Acept&ar";
+            this.bAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bAceptar.UseVisualStyleBackColor = true;
             this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(625, 18);
+            this.bCancelar.FlatAppearance.BorderSize = 0;
+            this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bCancelar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bCancelar.Image = ((System.Drawing.Image)(resources.GetObject("bCancelar.Image")));
+            this.bCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bCancelar.Location = new System.Drawing.Point(606, 13);
             this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(75, 33);
+            this.bCancelar.Size = new System.Drawing.Size(104, 45);
             this.bCancelar.TabIndex = 4;
             this.bCancelar.Text = "&Cancelar";
+            this.bCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bCancelar.UseVisualStyleBackColor = true;
             this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // bUltimo
             // 
-            this.bUltimo.Location = new System.Drawing.Point(358, 18);
+            this.bUltimo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bUltimo.Location = new System.Drawing.Point(361, 19);
             this.bUltimo.Name = "bUltimo";
             this.bUltimo.Size = new System.Drawing.Size(75, 33);
             this.bUltimo.TabIndex = 3;
@@ -164,7 +178,8 @@ namespace Sistema_Barberia
             // 
             // bSiguiente
             // 
-            this.bSiguiente.Location = new System.Drawing.Point(250, 18);
+            this.bSiguiente.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bSiguiente.Location = new System.Drawing.Point(251, 19);
             this.bSiguiente.Name = "bSiguiente";
             this.bSiguiente.Size = new System.Drawing.Size(75, 33);
             this.bSiguiente.TabIndex = 2;
@@ -174,17 +189,19 @@ namespace Sistema_Barberia
             // 
             // bAnterior
             // 
-            this.bAnterior.Location = new System.Drawing.Point(132, 18);
+            this.bAnterior.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAnterior.Location = new System.Drawing.Point(140, 19);
             this.bAnterior.Name = "bAnterior";
             this.bAnterior.Size = new System.Drawing.Size(75, 33);
             this.bAnterior.TabIndex = 1;
-            this.bAnterior.Text = "&Anterios";
+            this.bAnterior.Text = "&Anterior";
             this.bAnterior.UseVisualStyleBackColor = true;
             this.bAnterior.Click += new System.EventHandler(this.bAnterior_Click);
             // 
             // bPrimero
             // 
-            this.bPrimero.Location = new System.Drawing.Point(33, 18);
+            this.bPrimero.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bPrimero.Location = new System.Drawing.Point(33, 19);
             this.bPrimero.Name = "bPrimero";
             this.bPrimero.Size = new System.Drawing.Size(75, 33);
             this.bPrimero.TabIndex = 0;

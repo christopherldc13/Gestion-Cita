@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Sistema_Barberia
 {
     public partial class FMenu : Form
     {
+
         public FMenu()
         {
             InitializeComponent();
@@ -24,7 +26,8 @@ namespace Sistema_Barberia
 
         private void porBarberoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         
+            FReporteCitaEmpleado fReporteEmpleado = new FReporteCitaEmpleado();
+            fReporteEmpleado.ShowDialog();
         }
 
         private void toolStripStatusLabel4_Click(object sender, EventArgs e)
@@ -110,31 +113,31 @@ namespace Sistema_Barberia
 
         private void datosGeneralesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReporteCliente formulario = new ReporteCliente();
-            formulario.ShowDialog();
+            FReporteClientesGenerales fReporteClientesGenerales = new FReporteClientesGenerales();
+            fReporteClientesGenerales.ShowDialog();
         }
 
         private void datosGeneralesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ReporteEmpleado formulario = new ReporteEmpleado();
-            formulario.ShowDialog();
+            FReporteEmpleadoGeneral fReporteEmpleadoGeneral = new FReporteEmpleadoGeneral();
+            fReporteEmpleadoGeneral.ShowDialog();
         }
 
         private void porFechaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FReporteCitaFecha fReporteCitaFecha = new FReporteCitaFecha();
+            fReporteCitaFecha.ShowDialog();
         }
 
         private void porClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReporteCitas formulario = new ReporteCitas();
-            formulario.ShowDialog();
+            FReporteCitaCliente fReporteCitaCliente = new FReporteCitaCliente();
+            fReporteCitaCliente.ShowDialog();
         }
 
         private void porClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportesPagos formulario = new ReportesPagos();
-            formulario.ShowDialog();
+            
         }
 
         private void pagosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,17 +157,20 @@ namespace Sistema_Barberia
 
         private void porFechaToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-
+            FReportePagoFecha fPagoFech = new FReportePagoFecha();
+            fPagoFech.ShowDialog();
         }
 
         private void porNombreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FReportePagoCliente fReportePagoCliente = new FReportePagoCliente();
+            fReportePagoCliente.ShowDialog();
         }
 
         private void porEstadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FReporteBarberoEstado fReporteBarberoEstado = new FReporteBarberoEstado();
+            fReporteBarberoEstado.ShowDialog();
         }
 
         private void porDisponibilidadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -192,7 +198,7 @@ namespace Sistema_Barberia
 
         private void pruebaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FPrueba formulario = new FPrueba();
+            FReportePagoFecha formulario = new FReportePagoFecha();
             formulario.ShowDialog();
         }
 
@@ -200,5 +206,30 @@ namespace Sistema_Barberia
         {
 
         }
+
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pruebaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            FReportePagoCliente fReportePagoCliente = new FReportePagoCliente();
+            fReportePagoCliente.ShowDialog();
+        }
+
+        private void porSuEstadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FReporteClienteEstado fReporteClienteEstado = new FReporteClienteEstado();
+            fReporteClienteEstado.ShowDialog();
+        }
+
+        private void porEstadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FReportePagoEstado fReportePagoEstado = new FReportePagoEstado();
+            fReportePagoEstado.ShowDialog();
+        }
+
+        
     }
 }

@@ -876,13 +876,14 @@ namespace Sistema_Barberia.DBCitaDataSetPagoFechaTableAdapters {
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha1", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha2", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DBCitaDataSetPagoFecha.PagoFechaDataTable dataTable, global::System.Nullable<global::System.DateTime> fecha1, global::System.Nullable<global::System.DateTime> fecha2) {
+        public virtual int Fill(DBCitaDataSetPagoFecha.PagoFechaDataTable dataTable, global::System.Nullable<global::System.DateTime> fecha1, global::System.Nullable<global::System.DateTime> fecha2, string Estado) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((fecha1.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(fecha1.Value));
@@ -895,6 +896,12 @@ namespace Sistema_Barberia.DBCitaDataSetPagoFechaTableAdapters {
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Estado == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Estado));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -907,7 +914,7 @@ namespace Sistema_Barberia.DBCitaDataSetPagoFechaTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DBCitaDataSetPagoFecha.PagoFechaDataTable GetData(global::System.Nullable<global::System.DateTime> fecha1, global::System.Nullable<global::System.DateTime> fecha2) {
+        public virtual DBCitaDataSetPagoFecha.PagoFechaDataTable GetData(global::System.Nullable<global::System.DateTime> fecha1, global::System.Nullable<global::System.DateTime> fecha2, string Estado) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((fecha1.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(fecha1.Value));
@@ -920,6 +927,12 @@ namespace Sistema_Barberia.DBCitaDataSetPagoFechaTableAdapters {
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Estado == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Estado));
             }
             DBCitaDataSetPagoFecha.PagoFechaDataTable dataTable = new DBCitaDataSetPagoFecha.PagoFechaDataTable();
             this.Adapter.Fill(dataTable);

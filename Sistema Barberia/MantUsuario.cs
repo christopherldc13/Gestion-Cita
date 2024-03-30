@@ -68,7 +68,9 @@ namespace Sistema_Barberia
 
         private void MantUsuario_Load(object sender, EventArgs e)
         {
-
+            Program.nuevo = false; //Valores de las variables globales nuevo y modificar
+            Program.modificar = false;
+            HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
         }
         public void LimpiaObjetos()
         {
@@ -156,11 +158,11 @@ namespace Sistema_Barberia
                     mensaje = CNUsuario.Actualizar(Program.vidUsuario, tbUsuario.Text, tbClave.Text,
                      tbRol.Text, cbEstado.Text, Program.vidBarbero);
                 }
-            }
-            //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
-            MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
+                //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
+                MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
 
+            }
             //Se prepara todo para la próxima operación
             Program.nuevo = false;
             Program.modificar = false;
@@ -200,7 +202,8 @@ namespace Sistema_Barberia
                 tbClave.Text = row["Clave"].ToString();
                 tbRol.Text = row["Role"].ToString();
                 cbEstado.Text = row["Estado"].ToString();
-                tbNombreEmpleado.Text = row["IdBarbero"].ToString();
+                tbIdEmpleado.Text = row["IdBarbero"].ToString();
+                tbNombreEmpleado.Text = row["Nombre"].ToString();
             }
         } //Fin del metodo RecuperarDatos
 
@@ -225,6 +228,39 @@ namespace Sistema_Barberia
             HabilitaBotones(); //Habilita los objetos y botones correspondientes
             LimpiaObjetos(); //Llama al método LimpiaObjetos
         }
+
+        private void bBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+            //Creamos la instancia del formulario de búsqueda y lo mostramos
+            FBuscarBarbero fBuscarBarbero = new FBuscarBarbero();
+            fBuscarBarbero.ShowDialog();
+            if (Program.modificar) //Si se está en modo de edición
+            {
+                RecuperaDatosEmpleados(); //Llamo al método para recuperar el registro seleccionado
+                //BEditar_Click(sender, e); //Llamo el método del botón Editar
+            }
+            else //Si no estamos en modo de edición no permite la acción.
+            {
+                //LimpiaObjetos(); //Llama al método LimpiaObjetos
+                //BBuscar.Focus();
+            }
+        }
+
+        public void RecuperaDatosEmpleados()
+        {
+            string vparametro = Program.vidBarbero.ToString();
+            CNBarbero cNBarbero = new CNBarbero();
+            DataTable dt = new DataTable(); //creamos un nuevo DataTable
+            dt = cNBarbero.ObtenerBarbero(vparametro); //Llenamos el DataTable
+                                                       //Recorremos cada fila del DataTable asignando a los controles de edición los valores de
+                                                       //los campos correspondientes
+            foreach (DataRow row in dt.Rows)
+            {
+                tbIdEmpleado.Text = row["IdBarbero"].ToString();
+                tbNombreEmpleado.Text = row["Nombre"].ToString();
+                
+            }
+        } //Fin del metodo RecuperarDatos
 
         //Habilita los botones según el valor que tengan las variables globales nuevo y modificar
         private void HabilitaBotones()

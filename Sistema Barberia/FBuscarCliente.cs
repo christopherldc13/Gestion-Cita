@@ -102,7 +102,6 @@ namespace Sistema_Barberia
                 DGVDatos.CurrentCell =
                DGVDatos.Rows[indice].Cells[DGVDatos.CurrentCell.ColumnIndex];
             }
-
         }
 
         private void bUltimo_Click(object sender, EventArgs e)

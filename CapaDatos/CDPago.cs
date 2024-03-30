@@ -100,6 +100,7 @@ namespace CapaDatos
                 SqlCommand micomando = new SqlCommand("PagoActualizar", sqlCon);
                 sqlCon.Open();
                 micomando.CommandType = CommandType.StoredProcedure;
+                micomando.Parameters.AddWithValue("@pIdPago", objPago.IdPago);
                 micomando.Parameters.AddWithValue("@pIdCliente", objPago.IdCliente);
                 micomando.Parameters.AddWithValue("@pIdCita", objPago.IdCita);
                 micomando.Parameters.AddWithValue("@pPrecioServicio", objPago.PrecioServicio);

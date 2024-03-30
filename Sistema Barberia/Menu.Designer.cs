@@ -57,7 +57,7 @@ namespace Sistema_Barberia
             this.porClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.porFechaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.porNombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pruebaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.porEstadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +65,7 @@ namespace Sistema_Barberia
             this.registrarEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarDeDatosEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pruebaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -171,8 +172,7 @@ namespace Sistema_Barberia
             this.clientesToolStripMenuItem1,
             this.empleadosToolStripMenuItem1,
             this.citasToolStripMenuItem,
-            this.pagosToolStripMenuItem,
-            this.pruebaToolStripMenuItem});
+            this.pagosToolStripMenuItem});
             this.consultasYReportesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.consultasYReportesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("consultasYReportesToolStripMenuItem.Image")));
             this.consultasYReportesToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -188,7 +188,7 @@ namespace Sistema_Barberia
             this.consultarClientesToolStripMenuItem});
             this.clientesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem1.Image")));
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
             this.clientesToolStripMenuItem1.Text = "&Clientes";
             this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
             // 
@@ -206,6 +206,7 @@ namespace Sistema_Barberia
             this.porSuEstadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.porSuEstadoToolStripMenuItem.Text = "Por su Estado";
             this.porSuEstadoToolStripMenuItem.ToolTipText = "Visualizar e Imprimir los Datos de los Clientes por su Estado";
+            this.porSuEstadoToolStripMenuItem.Click += new System.EventHandler(this.porSuEstadoToolStripMenuItem_Click);
             // 
             // consultarClientesToolStripMenuItem
             // 
@@ -223,7 +224,7 @@ namespace Sistema_Barberia
             this.consultarBarberosToolStripMenuItem});
             this.empleadosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem1.Image")));
             this.empleadosToolStripMenuItem1.Name = "empleadosToolStripMenuItem1";
-            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
             this.empleadosToolStripMenuItem1.Text = "&Empleados";
             // 
             // datosGeneralesToolStripMenuItem1
@@ -265,7 +266,7 @@ namespace Sistema_Barberia
             this.porBarberoToolStripMenuItem});
             this.citasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("citasToolStripMenuItem.Image")));
             this.citasToolStripMenuItem.Name = "citasToolStripMenuItem";
-            this.citasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.citasToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.citasToolStripMenuItem.Text = "&Citas";
             // 
             // porFechaToolStripMenuItem
@@ -297,10 +298,11 @@ namespace Sistema_Barberia
             this.pagosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.porClientesToolStripMenuItem,
             this.porFechaToolStripMenuItem1,
-            this.porNombreToolStripMenuItem});
+            this.porNombreToolStripMenuItem,
+            this.porEstadoToolStripMenuItem1});
             this.pagosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagosToolStripMenuItem.Image")));
             this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.pagosToolStripMenuItem.Text = "&Pagos";
             this.pagosToolStripMenuItem.Click += new System.EventHandler(this.pagosToolStripMenuItem_Click);
             // 
@@ -325,12 +327,12 @@ namespace Sistema_Barberia
             this.porNombreToolStripMenuItem.Text = "Por nombre";
             this.porNombreToolStripMenuItem.Click += new System.EventHandler(this.porNombreToolStripMenuItem_Click);
             // 
-            // pruebaToolStripMenuItem
+            // porEstadoToolStripMenuItem1
             // 
-            this.pruebaToolStripMenuItem.Name = "pruebaToolStripMenuItem";
-            this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pruebaToolStripMenuItem.Text = "Prueba";
-            this.pruebaToolStripMenuItem.Click += new System.EventHandler(this.pruebaToolStripMenuItem_Click);
+            this.porEstadoToolStripMenuItem1.Name = "porEstadoToolStripMenuItem1";
+            this.porEstadoToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
+            this.porEstadoToolStripMenuItem1.Text = "Por Estado";
+            this.porEstadoToolStripMenuItem1.Click += new System.EventHandler(this.porEstadoToolStripMenuItem1_Click);
             // 
             // seguridadToolStripMenuItem
             // 
@@ -384,12 +386,21 @@ namespace Sistema_Barberia
             // 
             // acercaDeToolStripMenuItem
             // 
+            this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pruebaToolStripMenuItem});
             this.acercaDeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.acercaDeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("acercaDeToolStripMenuItem.Image")));
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(95, 21);
             this.acercaDeToolStripMenuItem.Text = "Acerca De";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            // 
+            // pruebaToolStripMenuItem
+            // 
+            this.pruebaToolStripMenuItem.Name = "pruebaToolStripMenuItem";
+            this.pruebaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.pruebaToolStripMenuItem.Text = "Prueba";
+            this.pruebaToolStripMenuItem.Click += new System.EventHandler(this.pruebaToolStripMenuItem_Click_1);
             // 
             // salidaToolStripMenuItem
             // 
@@ -429,7 +440,7 @@ namespace Sistema_Barberia
             // 
             this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(395, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(384, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "Copyright JAC-Software 2024 ,La Vega Rep. Dominicana";
             // 
@@ -437,9 +448,10 @@ namespace Sistema_Barberia
             // 
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(395, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(384, 17);
             this.toolStripStatusLabel2.Spring = true;
             this.toolStripStatusLabel2.Text = "Fecha/Hora:";
+            this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
             // 
             // toolStripStatusLabel3
             // 
@@ -450,7 +462,7 @@ namespace Sistema_Barberia
             // 
             this.toolStripStatusLabel4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(395, 17);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(384, 17);
             this.toolStripStatusLabel4.Spring = true;
             this.toolStripStatusLabel4.Text = "Usuario: Admin";
             this.toolStripStatusLabel4.Click += new System.EventHandler(this.toolStripStatusLabel4_Click);
@@ -535,5 +547,6 @@ namespace Sistema_Barberia
         private System.Windows.Forms.ToolStripMenuItem consultarBarberosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarDeDatosEmpresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pruebaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem porEstadoToolStripMenuItem1;
     }
 }

@@ -152,6 +152,43 @@ namespace CapaDatos
             return dt; ////Se retorna el DataTable segun lo ocurrido arriba
         } //Fin del método MostrarConFiltro
 
+        public bool AutenticarUsuario(string usuario, string clave)
+        {
+            bool autenticado = false;
+            SqlConnection sqlCon = new SqlConnection();
+
+            try
+            {
+                sqlCon.ConnectionString = ConexionDB.miconexion;
+                SqlCommand sqlCommand = new SqlCommand("AutenticarUsuario", sqlCon);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue("@Usuario", usuario);
+                sqlCommand.Parameters.AddWithValue("@Clave", clave);
+
+                sqlCon.Open();
+                int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
+
+                if (count == 1)
+                {
+                    autenticado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar excepciones adecuadamente, por ejemplo, registrando en un archivo de registro.
+                // Aquí solo se muestra un mensaje en la consola.
+                Console.WriteLine("Error al autenticar usuario: " + ex.Message);
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                    sqlCon.Close();
+            }
+
+            return autenticado;
+        }
+
 
     }
 }//Fin de la clase CDCliente

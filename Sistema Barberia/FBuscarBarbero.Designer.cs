@@ -81,21 +81,33 @@ namespace Sistema_Barberia
             // 
             // bAceptar
             // 
-            this.bAceptar.Location = new System.Drawing.Point(761, 18);
+            this.bAceptar.FlatAppearance.BorderSize = 0;
+            this.bAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAceptar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAceptar.Image = ((System.Drawing.Image)(resources.GetObject("bAceptar.Image")));
+            this.bAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bAceptar.Location = new System.Drawing.Point(732, 17);
             this.bAceptar.Name = "bAceptar";
-            this.bAceptar.Size = new System.Drawing.Size(75, 33);
+            this.bAceptar.Size = new System.Drawing.Size(99, 33);
             this.bAceptar.TabIndex = 5;
             this.bAceptar.Text = "Acept&ar";
+            this.bAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bAceptar.UseVisualStyleBackColor = true;
             this.bAceptar.Click += new System.EventHandler(this.bAceptar_Click);
             // 
             // bCancelar
             // 
-            this.bCancelar.Location = new System.Drawing.Point(625, 18);
+            this.bCancelar.FlatAppearance.BorderSize = 0;
+            this.bCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bCancelar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bCancelar.Image = ((System.Drawing.Image)(resources.GetObject("bCancelar.Image")));
+            this.bCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bCancelar.Location = new System.Drawing.Point(589, 16);
             this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(75, 33);
+            this.bCancelar.Size = new System.Drawing.Size(102, 36);
             this.bCancelar.TabIndex = 4;
             this.bCancelar.Text = "&Cancelar";
+            this.bCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bCancelar.UseVisualStyleBackColor = true;
             this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
@@ -155,9 +167,10 @@ namespace Sistema_Barberia
             this.BBuscar.BackColor = System.Drawing.Color.Transparent;
             this.BBuscar.FlatAppearance.BorderSize = 0;
             this.BBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BBuscar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
             this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBuscar.Location = new System.Drawing.Point(415, 8);
+            this.BBuscar.Location = new System.Drawing.Point(425, 9);
             this.BBuscar.Name = "BBuscar";
             this.BBuscar.Size = new System.Drawing.Size(80, 32);
             this.BBuscar.TabIndex = 2;
@@ -169,17 +182,17 @@ namespace Sistema_Barberia
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(14, 15);
+            this.label2.Location = new System.Drawing.Point(14, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 19);
+            this.label2.Size = new System.Drawing.Size(206, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ingrese los datos a buscar";
             // 
             // tbBuscar
             // 
-            this.tbBuscar.Location = new System.Drawing.Point(189, 15);
+            this.tbBuscar.Location = new System.Drawing.Point(221, 15);
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(196, 20);
             this.tbBuscar.TabIndex = 0;
@@ -196,15 +209,15 @@ namespace Sistema_Barberia
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(235, 13);
+            this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(232, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(361, 46);
+            this.label1.Size = new System.Drawing.Size(400, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Consultas de Barbero";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // FConsultaBarbero
+            // FBuscarBarbero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -217,7 +230,7 @@ namespace Sistema_Barberia
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FConsultaBarbero";
+            this.Name = "FBuscarBarbero";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FConsultaBarbero";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FConsultaBarbero_FormClosing);

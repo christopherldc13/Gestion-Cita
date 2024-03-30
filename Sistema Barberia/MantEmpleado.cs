@@ -174,10 +174,10 @@ namespace Sistema_Barberia
                     mensaje = CNBarbero.Actualizar(Program.vidBarbero, tbNombre.Text, tbApellido.Text,
                       tbTelefono.Text, tbDisponibilidad.Text, cbEstado.Text);
                 }
+                //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
+                MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             }
-            //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
-            MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
 
             //Se prepara todo para la próxima operación
             Program.nuevo = false;

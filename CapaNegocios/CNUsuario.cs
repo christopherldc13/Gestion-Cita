@@ -53,10 +53,25 @@ namespace CapaNegocios
             return dt; //Se retorna el DataTable con los datos adquiridos
         }
 
-        public static string Insertar(int vidUsuario, string text1, string text2, string text3, string text4, TextBox tbNombreEmpleado)
+        public bool AutenticarUsuario(string usuario, string clave)
         {
-            throw new NotImplementedException();
+            bool autenticado = false;
+            CDUsuario objUsuario = new CDUsuario();
+
+            try
+            {
+                autenticado = objUsuario.AutenticarUsuario(usuario, clave);
+            }
+            catch (Exception ex)
+            {
+                // Manejar excepciones adecuadamente, por ejemplo, registrando en un archivo de registro.
+                // Aquí solo se muestra un mensaje en la consola.
+                Console.WriteLine("Error al autenticar usuario desde la capa de negocios: " + ex.Message);
+            }
+
+            return autenticado;
         }
+
 
     }
 

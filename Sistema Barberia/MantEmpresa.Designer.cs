@@ -29,6 +29,7 @@ namespace Sistema_Barberia
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantEmpresa));
             this.tbEslogan = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -54,80 +55,89 @@ namespace Sistema_Barberia
             this.PTitulo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.PBotones.SuspendLayout();
             this.PTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbEslogan
             // 
-            this.tbEslogan.Location = new System.Drawing.Point(530, 306);
+            this.tbEslogan.Location = new System.Drawing.Point(522, 289);
             this.tbEslogan.Multiline = true;
             this.tbEslogan.Name = "tbEslogan";
-            this.tbEslogan.Size = new System.Drawing.Size(230, 107);
+            this.tbEslogan.Size = new System.Drawing.Size(238, 107);
             this.tbEslogan.TabIndex = 80;
+            this.toolTip1.SetToolTip(this.tbEslogan, "Eslogan de la Empresa");
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(602, 256);
+            this.label9.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(600, 245);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 20);
+            this.label9.Size = new System.Drawing.Size(77, 26);
             this.label9.TabIndex = 79;
             this.label9.Text = "Eslogan";
             // 
             // tbLogo
             // 
-            this.tbLogo.Location = new System.Drawing.Point(530, 148);
+            this.tbLogo.Location = new System.Drawing.Point(522, 142);
             this.tbLogo.Multiline = true;
             this.tbLogo.Name = "tbLogo";
-            this.tbLogo.Size = new System.Drawing.Size(230, 81);
+            this.tbLogo.Size = new System.Drawing.Size(238, 81);
             this.tbLogo.TabIndex = 78;
+            this.toolTip1.SetToolTip(this.tbLogo, "Logo de la Empresa");
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(612, 106);
+            this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(611, 106);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 20);
+            this.label8.Size = new System.Drawing.Size(54, 26);
             this.label8.TabIndex = 77;
             this.label8.Text = "Logo";
             // 
             // tbCorreo
             // 
-            this.tbCorreo.Location = new System.Drawing.Point(126, 377);
+            this.tbCorreo.Location = new System.Drawing.Point(126, 373);
             this.tbCorreo.Name = "tbCorreo";
-            this.tbCorreo.Size = new System.Drawing.Size(330, 20);
+            this.tbCorreo.Size = new System.Drawing.Size(320, 20);
             this.tbCorreo.TabIndex = 76;
+            this.toolTip1.SetToolTip(this.tbCorreo, "Correo de la Empresa");
             // 
             // tbDireccion
             // 
             this.tbDireccion.Location = new System.Drawing.Point(126, 294);
             this.tbDireccion.Name = "tbDireccion";
-            this.tbDireccion.Size = new System.Drawing.Size(330, 20);
+            this.tbDireccion.Size = new System.Drawing.Size(320, 20);
             this.tbDireccion.TabIndex = 75;
+            this.toolTip1.SetToolTip(this.tbDireccion, "Dirección de la Empresa");
             // 
             // tbTelefono
             // 
-            this.tbTelefono.Location = new System.Drawing.Point(126, 221);
+            this.tbTelefono.Location = new System.Drawing.Point(126, 219);
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(185, 20);
+            this.tbTelefono.Size = new System.Drawing.Size(178, 20);
             this.tbTelefono.TabIndex = 74;
+            this.toolTip1.SetToolTip(this.tbTelefono, "Telefono de la Empresa");
             // 
             // tbNombre
             // 
             this.tbNombre.Location = new System.Drawing.Point(126, 146);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(330, 20);
+            this.tbNombre.Size = new System.Drawing.Size(320, 20);
             this.tbNombre.TabIndex = 73;
+            this.toolTip1.SetToolTip(this.tbNombre, "Nombre de la Empresa");
             // 
             // tbIdEmpresa
             // 
-            this.tbIdEmpresa.Location = new System.Drawing.Point(126, 83);
+            this.tbIdEmpresa.Location = new System.Drawing.Point(142, 96);
             this.tbIdEmpresa.Name = "tbIdEmpresa";
-            this.tbIdEmpresa.Size = new System.Drawing.Size(142, 20);
+            this.tbIdEmpresa.Size = new System.Drawing.Size(162, 20);
             this.tbIdEmpresa.TabIndex = 72;
+            this.toolTip1.SetToolTip(this.tbIdEmpresa, "Id Empresa");
             // 
             // label7
             // 
@@ -141,50 +151,50 @@ namespace Sistema_Barberia
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(52, 377);
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(47, 368);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 20);
+            this.label6.Size = new System.Drawing.Size(67, 26);
             this.label6.TabIndex = 70;
             this.label6.Text = "Correo";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 292);
+            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(39, 289);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 20);
+            this.label5.Size = new System.Drawing.Size(90, 26);
             this.label5.TabIndex = 69;
             this.label5.Text = "Dirección";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(45, 220);
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(43, 213);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 20);
+            this.label4.Size = new System.Drawing.Size(84, 26);
             this.label4.TabIndex = 68;
             this.label4.Text = "Telefono";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(48, 146);
+            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(46, 141);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.Size = new System.Drawing.Size(82, 26);
             this.label3.TabIndex = 67;
             this.label3.Text = "Nombre";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(35, 83);
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(30, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 20);
+            this.label2.Size = new System.Drawing.Size(108, 26);
             this.label2.TabIndex = 65;
             this.label2.Text = "Id Empresa";
             // 
@@ -206,14 +216,16 @@ namespace Sistema_Barberia
             // 
             this.BCancelar.FlatAppearance.BorderSize = 0;
             this.BCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BCancelar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BCancelar.Image = ((System.Drawing.Image)(resources.GetObject("BCancelar.Image")));
             this.BCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BCancelar.Location = new System.Drawing.Point(428, 9);
             this.BCancelar.Name = "BCancelar";
-            this.BCancelar.Size = new System.Drawing.Size(98, 43);
+            this.BCancelar.Size = new System.Drawing.Size(105, 43);
             this.BCancelar.TabIndex = 6;
             this.BCancelar.Text = "&Cancelar";
             this.BCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.BCancelar, "Cancelar modificación de registro");
             this.BCancelar.UseVisualStyleBackColor = true;
             this.BCancelar.Click += new System.EventHandler(this.BCancelar_Click);
             // 
@@ -222,6 +234,7 @@ namespace Sistema_Barberia
             this.BSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BSalir.FlatAppearance.BorderSize = 0;
             this.BSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BSalir.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BSalir.Image = ((System.Drawing.Image)(resources.GetObject("BSalir.Image")));
             this.BSalir.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BSalir.Location = new System.Drawing.Point(666, 7);
@@ -230,6 +243,7 @@ namespace Sistema_Barberia
             this.BSalir.TabIndex = 5;
             this.BSalir.Text = "&Salir";
             this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.BSalir, "Salir de la Ventana");
             this.BSalir.UseVisualStyleBackColor = true;
             this.BSalir.Click += new System.EventHandler(this.BSalir_Click);
             // 
@@ -239,6 +253,7 @@ namespace Sistema_Barberia
             this.BEditar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BEditar.FlatAppearance.BorderSize = 0;
             this.BEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BEditar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BEditar.Image = ((System.Drawing.Image)(resources.GetObject("BEditar.Image")));
             this.BEditar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BEditar.Location = new System.Drawing.Point(288, 9);
@@ -247,6 +262,7 @@ namespace Sistema_Barberia
             this.BEditar.TabIndex = 2;
             this.BEditar.Text = "&Editar";
             this.BEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.BEditar, "Editar registro");
             this.BEditar.UseVisualStyleBackColor = true;
             this.BEditar.Click += new System.EventHandler(this.BEditar_Click);
             // 
@@ -256,14 +272,16 @@ namespace Sistema_Barberia
             this.BGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BGuardar.FlatAppearance.BorderSize = 0;
             this.BGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BGuardar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BGuardar.Image = ((System.Drawing.Image)(resources.GetObject("BGuardar.Image")));
             this.BGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BGuardar.Location = new System.Drawing.Point(153, 8);
             this.BGuardar.Name = "BGuardar";
-            this.BGuardar.Size = new System.Drawing.Size(90, 45);
+            this.BGuardar.Size = new System.Drawing.Size(99, 45);
             this.BGuardar.TabIndex = 1;
             this.BGuardar.Text = "&Guardar";
             this.BGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.BGuardar, "Guardar cambios o nuevo registro");
             this.BGuardar.UseVisualStyleBackColor = true;
             this.BGuardar.Click += new System.EventHandler(this.BGuardar_Click);
             // 
@@ -272,6 +290,7 @@ namespace Sistema_Barberia
             this.BNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BNuevo.FlatAppearance.BorderSize = 0;
             this.BNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNuevo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BNuevo.Image = ((System.Drawing.Image)(resources.GetObject("BNuevo.Image")));
             this.BNuevo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BNuevo.Location = new System.Drawing.Point(19, 9);
@@ -280,6 +299,7 @@ namespace Sistema_Barberia
             this.BNuevo.TabIndex = 0;
             this.BNuevo.Text = "&Nuevo";
             this.BNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.BNuevo, "Nuevo registro");
             this.BNuevo.UseVisualStyleBackColor = true;
             this.BNuevo.Click += new System.EventHandler(this.BNuevo_Click);
             // 
@@ -298,7 +318,7 @@ namespace Sistema_Barberia
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(164, 9);
+            this.label1.Location = new System.Drawing.Point(162, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(453, 38);
             this.label1.TabIndex = 1;
@@ -306,19 +326,31 @@ namespace Sistema_Barberia
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(322, 72);
+            this.button2.Location = new System.Drawing.Point(309, 85);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 45);
             this.button2.TabIndex = 82;
             this.button2.Text = "&Buscar";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.button2, "Buscar Datos de la empresa");
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(20, 77);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(761, 342);
+            this.flowLayoutPanel1.TabIndex = 83;
             // 
             // MantEmpresa
             // 
@@ -343,13 +375,14 @@ namespace Sistema_Barberia
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PBotones);
             this.Controls.Add(this.PTitulo);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MantEmpresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mantenimiento Empresa";
+            this.Text = "Registro Empresa";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MantEmpresa_FormClosing);
             this.Load += new System.EventHandler(this.MantEmpresa_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MantEmpresa_KeyDown);
@@ -387,5 +420,7 @@ namespace Sistema_Barberia
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BCancelar;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocios;
 
 
 namespace Sistema_Barberia
@@ -32,7 +33,7 @@ namespace Sistema_Barberia
 
         private void toolStripStatusLabel4_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace Sistema_Barberia
 
         private void FMenu_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void salidaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -192,8 +193,9 @@ namespace Sistema_Barberia
 
         private void consultarBarberosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FBuscarBarbero fConsultaBarbero = new FBuscarBarbero();
-            fConsultaBarbero.ShowDialog();
+            ConsultasEmpleado consultasEmpleado = new ConsultasEmpleado();
+            consultasEmpleado.ShowDialog();
+        
         }
 
         private void pruebaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -214,8 +216,8 @@ namespace Sistema_Barberia
 
         private void pruebaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            FReportePagoCliente fReportePagoCliente = new FReportePagoCliente();
-            fReportePagoCliente.ShowDialog();
+            FAcercaDe fAcerca = new FAcercaDe();
+            fAcerca.ShowDialog();
         }
 
         private void porSuEstadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -230,6 +232,38 @@ namespace Sistema_Barberia
             fReportePagoEstado.ShowDialog();
         }
 
-        
+        private void consultarCitasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FConsultasCita fConsultasCita = new FConsultasCita();
+            fConsultasCita.ShowDialog();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consultarPagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultaPago consultaPago = new ConsultaPago();
+            consultaPago.ShowDialog();
+        }
+
+        private void servicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantServicio mantServicio = new MantServicio();
+            mantServicio.ShowDialog();
+        }
+
+        private void consultaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultaServicio consultaServicio = new ConsultaServicio();
+            consultaServicio.ShowDialog();
+        }
     }
 }

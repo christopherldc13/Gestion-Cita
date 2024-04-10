@@ -15,6 +15,7 @@ namespace Sistema_Barberia
         public static int vidUsuario = 0;
         public static int vidCita = 0;
         public static int vidPago = 0;
+        public static int vidServicio = 0;
         //primaria de la tabla correspondiente
         public static int vidDepto = 0; //colocar una por cada clave primaria que tengamos
                                         //en nuestra base de datos

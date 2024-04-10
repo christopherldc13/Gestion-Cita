@@ -287,7 +287,11 @@ namespace Sistema_Barberia {
             
             private global::System.Data.DataColumn columnHora;
             
-            private global::System.Data.DataColumn columnPrecioServicio;
+            private global::System.Data.DataColumn columnServicio;
+            
+            private global::System.Data.DataColumn columnPrecio;
+            
+            private global::System.Data.DataColumn columnConceptoPago;
             
             private global::System.Data.DataColumn columnEstado;
             
@@ -358,9 +362,25 @@ namespace Sistema_Barberia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PrecioServicioColumn {
+            public global::System.Data.DataColumn ServicioColumn {
                 get {
-                    return this.columnPrecioServicio;
+                    return this.columnServicio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PrecioColumn {
+                get {
+                    return this.columnPrecio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ConceptoPagoColumn {
+                get {
+                    return this.columnConceptoPago;
                 }
             }
             
@@ -409,14 +429,16 @@ namespace Sistema_Barberia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PagoFechaRow AddPagoFechaRow(string NombreCliente, System.DateTime Fecha, System.TimeSpan Hora, int PrecioServicio, string Estado) {
+            public PagoFechaRow AddPagoFechaRow(string NombreCliente, System.DateTime Fecha, System.TimeSpan Hora, string Servicio, int Precio, string ConceptoPago, string Estado) {
                 PagoFechaRow rowPagoFechaRow = ((PagoFechaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         NombreCliente,
                         Fecha,
                         Hora,
-                        PrecioServicio,
+                        Servicio,
+                        Precio,
+                        ConceptoPago,
                         Estado};
                 rowPagoFechaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPagoFechaRow);
@@ -451,7 +473,9 @@ namespace Sistema_Barberia {
                 this.columnNombreCliente = base.Columns["NombreCliente"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnHora = base.Columns["Hora"];
-                this.columnPrecioServicio = base.Columns["PrecioServicio"];
+                this.columnServicio = base.Columns["Servicio"];
+                this.columnPrecio = base.Columns["Precio"];
+                this.columnConceptoPago = base.Columns["ConceptoPago"];
                 this.columnEstado = base.Columns["Estado"];
             }
             
@@ -466,8 +490,12 @@ namespace Sistema_Barberia {
                 base.Columns.Add(this.columnFecha);
                 this.columnHora = new global::System.Data.DataColumn("Hora", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHora);
-                this.columnPrecioServicio = new global::System.Data.DataColumn("PrecioServicio", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrecioServicio);
+                this.columnServicio = new global::System.Data.DataColumn("Servicio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServicio);
+                this.columnPrecio = new global::System.Data.DataColumn("Precio", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrecio);
+                this.columnConceptoPago = new global::System.Data.DataColumn("ConceptoPago", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnConceptoPago);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -480,7 +508,11 @@ namespace Sistema_Barberia {
                 this.columnNombreCliente.MaxLength = 50;
                 this.columnFecha.AllowDBNull = false;
                 this.columnHora.AllowDBNull = false;
-                this.columnPrecioServicio.AllowDBNull = false;
+                this.columnServicio.AllowDBNull = false;
+                this.columnServicio.MaxLength = 50;
+                this.columnPrecio.AllowDBNull = false;
+                this.columnConceptoPago.AllowDBNull = false;
+                this.columnConceptoPago.MaxLength = 100;
                 this.columnEstado.AllowDBNull = false;
                 this.columnEstado.MaxLength = 10;
             }
@@ -669,12 +701,34 @@ namespace Sistema_Barberia {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int PrecioServicio {
+            public string Servicio {
                 get {
-                    return ((int)(this[this.tablePagoFecha.PrecioServicioColumn]));
+                    return ((string)(this[this.tablePagoFecha.ServicioColumn]));
                 }
                 set {
-                    this[this.tablePagoFecha.PrecioServicioColumn] = value;
+                    this[this.tablePagoFecha.ServicioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Precio {
+                get {
+                    return ((int)(this[this.tablePagoFecha.PrecioColumn]));
+                }
+                set {
+                    this[this.tablePagoFecha.PrecioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ConceptoPago {
+                get {
+                    return ((string)(this[this.tablePagoFecha.ConceptoPagoColumn]));
+                }
+                set {
+                    this[this.tablePagoFecha.ConceptoPagoColumn] = value;
                 }
             }
             
@@ -853,7 +907,9 @@ namespace Sistema_Barberia.DBCitaDataSetPagoFechaTableAdapters {
             tableMapping.ColumnMappings.Add("NombreCliente", "NombreCliente");
             tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("Hora", "Hora");
-            tableMapping.ColumnMappings.Add("PrecioServicio", "PrecioServicio");
+            tableMapping.ColumnMappings.Add("Servicio", "Servicio");
+            tableMapping.ColumnMappings.Add("Precio", "Precio");
+            tableMapping.ColumnMappings.Add("ConceptoPago", "ConceptoPago");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
             this._adapter.TableMappings.Add(tableMapping);
         }

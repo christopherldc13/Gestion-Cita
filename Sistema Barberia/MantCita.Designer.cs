@@ -71,6 +71,15 @@ namespace Sistema_Barberia
             this.tbTelefonoEmpleado = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tbServicio = new System.Windows.Forms.TextBox();
+            this.tbPrecio = new System.Windows.Forms.TextBox();
+            this.tbIdServicio = new System.Windows.Forms.TextBox();
+            this.bBuscarServicio = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.PBotones.SuspendLayout();
             this.PTitulo.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +93,7 @@ namespace Sistema_Barberia
             this.BBuscarCita.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BBuscarCita.Image = ((System.Drawing.Image)(resources.GetObject("BBuscarCita.Image")));
             this.BBuscarCita.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BBuscarCita.Location = new System.Drawing.Point(197, 106);
+            this.BBuscarCita.Location = new System.Drawing.Point(197, 103);
             this.BBuscarCita.Name = "BBuscarCita";
             this.BBuscarCita.Size = new System.Drawing.Size(83, 38);
             this.BBuscarCita.TabIndex = 47;
@@ -101,11 +110,12 @@ namespace Sistema_Barberia
             this.cbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Items.AddRange(new object[] {
+            "Cancelada",
             "Pendiente",
             "Realizado"});
-            this.cbEstado.Location = new System.Drawing.Point(50, 367);
+            this.cbEstado.Location = new System.Drawing.Point(101, 209);
             this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(198, 21);
+            this.cbEstado.Size = new System.Drawing.Size(152, 21);
             this.cbEstado.TabIndex = 58;
             this.toolTip1.SetToolTip(this.cbEstado, "Estado de la Cita");
             this.cbEstado.SelectedIndexChanged += new System.EventHandler(this.cbEstado_SelectedIndexChanged);
@@ -120,7 +130,7 @@ namespace Sistema_Barberia
             // 
             // tbIdCita
             // 
-            this.tbIdCita.Location = new System.Drawing.Point(99, 116);
+            this.tbIdCita.Location = new System.Drawing.Point(99, 108);
             this.tbIdCita.Name = "tbIdCita";
             this.tbIdCita.Size = new System.Drawing.Size(89, 20);
             this.tbIdCita.TabIndex = 53;
@@ -130,7 +140,7 @@ namespace Sistema_Barberia
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(111, 330);
+            this.label7.Location = new System.Drawing.Point(22, 207);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 26);
             this.label7.TabIndex = 52;
@@ -140,22 +150,22 @@ namespace Sistema_Barberia
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(80, 166);
+            this.label5.Location = new System.Drawing.Point(22, 140);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 26);
+            this.label5.Size = new System.Drawing.Size(60, 26);
             this.label5.TabIndex = 50;
-            this.label5.Text = "Fecha de la Cita";
+            this.label5.Text = "Fecha";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(92, 252);
+            this.label4.Location = new System.Drawing.Point(23, 174);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 26);
+            this.label4.Size = new System.Drawing.Size(54, 26);
             this.label4.TabIndex = 49;
-            this.label4.Text = "Hora de Cita";
+            this.label4.Text = "Hora";
             // 
             // label3
             // 
@@ -171,7 +181,7 @@ namespace Sistema_Barberia
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 111);
+            this.label2.Location = new System.Drawing.Point(21, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 26);
             this.label2.TabIndex = 46;
@@ -188,9 +198,9 @@ namespace Sistema_Barberia
             this.PBotones.Controls.Add(this.BGuardar);
             this.PBotones.Controls.Add(this.BNuevo);
             this.PBotones.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PBotones.Location = new System.Drawing.Point(0, 417);
+            this.PBotones.Location = new System.Drawing.Point(0, 422);
             this.PBotones.Name = "PBotones";
-            this.PBotones.Size = new System.Drawing.Size(800, 75);
+            this.PBotones.Size = new System.Drawing.Size(800, 70);
             this.PBotones.TabIndex = 45;
             // 
             // BSalir
@@ -299,11 +309,11 @@ namespace Sistema_Barberia
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(240, 9);
+            this.label1.Location = new System.Drawing.Point(239, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 38);
+            this.label1.Size = new System.Drawing.Size(294, 38);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Gestión de Cita";
+            this.label1.Text = "Proceso de Cita";
             // 
             // tbNombreEmpleado
             // 
@@ -345,11 +355,13 @@ namespace Sistema_Barberia
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(50, 208);
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFecha.Location = new System.Drawing.Point(99, 144);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(152, 20);
             this.dtpFecha.TabIndex = 65;
             this.toolTip1.SetToolTip(this.dtpFecha, "Fecha de la Cita");
+            this.dtpFecha.Value = new System.DateTime(2024, 4, 7, 0, 0, 0, 0);
             // 
             // tbIdCliente
             // 
@@ -410,13 +422,13 @@ namespace Sistema_Barberia
             // dtpHora
             // 
             this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpHora.Location = new System.Drawing.Point(50, 294);
+            this.dtpHora.Location = new System.Drawing.Point(99, 177);
             this.dtpHora.Name = "dtpHora";
             this.dtpHora.ShowUpDown = true;
-            this.dtpHora.Size = new System.Drawing.Size(198, 20);
+            this.dtpHora.Size = new System.Drawing.Size(152, 20);
             this.dtpHora.TabIndex = 71;
             this.toolTip1.SetToolTip(this.dtpHora, "Hora de la Cita");
-            this.dtpHora.Value = new System.DateTime(2024, 3, 23, 14, 2, 0, 0);
+            this.dtpHora.Value = new System.DateTime(2024, 4, 7, 14, 2, 0, 0);
             // 
             // flowLayoutPanel1
             // 
@@ -425,7 +437,7 @@ namespace Sistema_Barberia
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.Location = new System.Drawing.Point(19, 99);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(285, 306);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 136);
             this.flowLayoutPanel1.TabIndex = 72;
             // 
             // label6
@@ -474,7 +486,7 @@ namespace Sistema_Barberia
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(84, 26);
             this.label12.TabIndex = 77;
-            this.label12.Text = "Telefono";
+            this.label12.Text = "Teléfono";
             // 
             // tbTelefonoCliente
             // 
@@ -512,7 +524,7 @@ namespace Sistema_Barberia
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(84, 26);
             this.label14.TabIndex = 81;
-            this.label14.Text = "Telefono";
+            this.label14.Text = "Teléfono";
             // 
             // tbTelefonoEmpleado
             // 
@@ -532,11 +544,116 @@ namespace Sistema_Barberia
             this.label15.TabIndex = 83;
             this.label15.Text = "Datos del Empleado";
             // 
+            // tbServicio
+            // 
+            this.tbServicio.Location = new System.Drawing.Point(106, 328);
+            this.tbServicio.Name = "tbServicio";
+            this.tbServicio.Size = new System.Drawing.Size(174, 20);
+            this.tbServicio.TabIndex = 85;
+            this.toolTip1.SetToolTip(this.tbServicio, "Id del Cliente");
+            // 
+            // tbPrecio
+            // 
+            this.tbPrecio.Location = new System.Drawing.Point(107, 368);
+            this.tbPrecio.Name = "tbPrecio";
+            this.tbPrecio.Size = new System.Drawing.Size(155, 20);
+            this.tbPrecio.TabIndex = 87;
+            this.toolTip1.SetToolTip(this.tbPrecio, "Id del Cliente");
+            // 
+            // tbIdServicio
+            // 
+            this.tbIdServicio.Location = new System.Drawing.Point(121, 289);
+            this.tbIdServicio.Name = "tbIdServicio";
+            this.tbIdServicio.Size = new System.Drawing.Size(95, 20);
+            this.tbIdServicio.TabIndex = 90;
+            this.toolTip1.SetToolTip(this.tbIdServicio, "Id del Cliente");
+            // 
+            // bBuscarServicio
+            // 
+            this.bBuscarServicio.BackColor = System.Drawing.Color.Transparent;
+            this.bBuscarServicio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bBuscarServicio.FlatAppearance.BorderSize = 0;
+            this.bBuscarServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bBuscarServicio.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bBuscarServicio.Image = ((System.Drawing.Image)(resources.GetObject("bBuscarServicio.Image")));
+            this.bBuscarServicio.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.bBuscarServicio.Location = new System.Drawing.Point(218, 284);
+            this.bBuscarServicio.Name = "bBuscarServicio";
+            this.bBuscarServicio.Size = new System.Drawing.Size(83, 38);
+            this.bBuscarServicio.TabIndex = 91;
+            this.bBuscarServicio.Text = "&Buscar";
+            this.bBuscarServicio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.bBuscarServicio, "Buscar Cita");
+            this.bBuscarServicio.UseVisualStyleBackColor = false;
+            this.bBuscarServicio.Click += new System.EventHandler(this.bBuscarServicio_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(21, 325);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 26);
+            this.label16.TabIndex = 84;
+            this.label16.Text = "Servicio";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(25, 363);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 26);
+            this.label17.TabIndex = 86;
+            this.label17.Text = "Precio";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(19, 280);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(287, 125);
+            this.flowLayoutPanel4.TabIndex = 88;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(22, 287);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 26);
+            this.label18.TabIndex = 89;
+            this.label18.Text = "Id Servicio";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(76, 250);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(160, 26);
+            this.label19.TabIndex = 92;
+            this.label19.Text = "Datos del Servicio";
+            // 
             // MantCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 492);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.bBuscarServicio);
+            this.Controls.Add(this.tbIdServicio);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.tbPrecio);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.tbServicio);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.tbTelefonoEmpleado);
             this.Controls.Add(this.label14);
@@ -570,6 +687,7 @@ namespace Sistema_Barberia
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel3);
+            this.Controls.Add(this.flowLayoutPanel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -631,5 +749,14 @@ namespace Sistema_Barberia
         private System.Windows.Forms.TextBox tbTelefonoEmpleado;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tbServicio;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tbPrecio;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tbIdServicio;
+        private System.Windows.Forms.Button bBuscarServicio;
+        private System.Windows.Forms.Label label19;
     }
 }

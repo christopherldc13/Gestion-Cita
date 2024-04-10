@@ -34,8 +34,6 @@ namespace Sistema_Barberia
             Program.nuevo = false; //Valores de las variables globales nuevo y modificar
             Program.modificar = false;
             HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
-
-
         }
 
 
@@ -193,6 +191,7 @@ namespace Sistema_Barberia
                                                               //Recorremos cada fila del DataTable asignando a los controles de edición los valores de
                                                               //los campos correspondientes
             foreach (DataRow row in dt.Rows)
+            
             {
                 tbIdCliente.Text = row["IdCliente"].ToString();
                 tbNombre.Text = row["Nombre"].ToString();

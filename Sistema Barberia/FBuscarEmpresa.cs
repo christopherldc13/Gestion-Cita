@@ -148,6 +148,14 @@ namespace Sistema_Barberia
 
         }
 
+        private void FBuscarEmpresa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
         private void DGVDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 

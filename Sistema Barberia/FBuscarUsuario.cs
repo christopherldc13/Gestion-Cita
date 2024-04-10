@@ -132,6 +132,19 @@ namespace Sistema_Barberia
             MostrarDatos(); //Se llama al método MostrarDatos
         }
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FBuscarUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();

@@ -74,6 +74,8 @@ namespace Sistema_Barberia
                 tbNombre.Text = row["NombreCliente"].ToString();
                 dtpFecha.Text = row["Fecha"].ToString();
                 dtpHora.Text = row["Hora"].ToString();
+                tbServicio.Text = row["Servicio"].ToString();
+                tbPrecio.Text = row["Precio"].ToString();
                 cbEstado.Text = row["Estado"].ToString();
                 Program.vidCita = Convert.ToInt32(tbIdCita.Text);
                 Program.vidCliente = Convert.ToInt32(tbIdCliente.Text);
@@ -87,18 +89,11 @@ namespace Sistema_Barberia
             Program.nuevo = true; //Se especifica que se agregará un nuevo registro
             Program.modificar = false;
             HabilitaBotones(); //Se habilitan solo aquellos botones que sean necesarios
-            tbPrecioServicio.Focus(); //Coloca el cursor en el TextBox indicado
+            
         }
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
-            int precioServicio;
-            if (!int.TryParse(tbPrecioServicio.Text, out precioServicio)) //Si el textbox no contiene un número entero válido
-            {
-                MessageBox.Show("Debe indicar el precio del Servicio en un formato válido!");
-                dtpFecha.Focus();
-            }
-            else
             if (cbEstado.Text == String.Empty)
             {
                 MessageBox.Show("Debes de Indicar el Estado del Pago de la Cita");
@@ -114,8 +109,7 @@ namespace Sistema_Barberia
                     //textbox, combobox, DateTimePicker, etc.
                     //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
                     //MessageBox.Show("Entre a nuevo" + Program.vidCliente.ToString() + " " + Program.vidBarbero.ToString());
-                    mensaje = CNPago.Insertar(Program.vidPago, Program.vidCliente, Program.vidCita,
-                        precioServicio, cbEstado.Text);
+                    mensaje = CNPago.Insertar(Program.vidPago, Program.vidCita, tbConceptoPago.Text, cbEstado.Text);
                 }
                 else  //de lo contrario se Modificarán los datos del registro correspondiente
                 {
@@ -125,8 +119,7 @@ namespace Sistema_Barberia
                     // como: textbox, combobox, DateTimePicker, etc.
                     //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
                     //MessageBox.Show("Entre a Actualizar" + Program.vidCliente.ToString() + " " + Program.vidBarbero.ToString());
-                    mensaje = CNPago.Actualizar(Program.vidPago, Program.vidCliente, Program.vidCita,
-                       precioServicio, cbEstado.Text);
+                    mensaje = CNPago.Actualizar(Program.vidPago, Program.vidCita, tbConceptoPago.Text, cbEstado.Text);
                 }
 
                 //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
@@ -149,24 +142,28 @@ namespace Sistema_Barberia
         public void LimpiaObjetos()
         {
             tbIdPago.Clear(); //Para limpiar TextBox.
-            tbPrecioServicio.Clear(); //Para limpiar TextBox.
             cbEstado.SelectedItem = 0;
             tbIdCita.Clear(); //Para limpiar TextBox.
             dtpFecha.Value = DateTime.Today;
             dtpHora.Value = DateTime.Today;
+            tbServicio.Clear();
+            tbPrecio.Clear();
             tbIdCliente.Clear();
             tbNombre.Clear();
+            tbConceptoPago.Clear();
 
         } //Fin del método LimpiaObjetos
           //Habilita / inhabilita los objetos del formulario segun lo indicado por el parámetro valor
         private void HabilitaControles(bool valor)
         {
             tbIdPago.ReadOnly = true; //la propiedad ReadOnly hace de solo lectura un objeto
-            tbPrecioServicio.Enabled = valor; //la propiedad Enabled habilita o inhabilita un objeto
             cbEstado.Enabled = valor;
             tbIdCita.Enabled = false;
             dtpFecha.Enabled = false;
-            dtpHora.Enabled = true;
+            dtpHora.Enabled = false;
+            tbServicio.Enabled = false;
+            tbPrecio.Enabled = false;
+            tbConceptoPago.Enabled = valor;
             tbIdCliente.Enabled = false; 
             tbNombre.Enabled = false;
             if (Program.nuevo)
@@ -225,7 +222,7 @@ namespace Sistema_Barberia
             {
 
                 tbIdPago.Text = row["IdPago"].ToString();
-                tbPrecioServicio.Text = row["PrecioServicio"].ToString();
+                tbConceptoPago.Text = row["ConceptoPago"].ToString();
                 cbEstado.Text = row["Estado"].ToString();
                 tbIdCita.Text = row["IdCita"].ToString();
                 dtpFecha.Text = row["Fecha"].ToString();
@@ -233,7 +230,6 @@ namespace Sistema_Barberia
                 tbIdCliente.Text = row["IdCliente"].ToString();
                 tbNombre.Text = row["NombreCliente"].ToString();
                 Program.vidCita = Convert.ToInt32(tbIdCita.Text);
-                Program.vidCliente = Convert.ToInt32(tbIdCliente.Text);
                 Program.vidPago = Convert.ToInt32(tbIdPago.Text);
             }
 

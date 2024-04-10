@@ -12,18 +12,19 @@ namespace CapaDatos
 {
     public class CDCita
     {
-        private int dIdCita, dIdCliente, dIdBarbero;
+        private int dIdCita, dIdCliente, dIdBarbero, dIdServicio;
         private String dEstado;
         private DateTime dFecha, dHora;
 
         public CDCita() { }
-        public CDCita(int pIdCita, int pIdCliente, int pIdBarbero, DateTime pFecha, DateTime pHora, string pEstado)
+        public CDCita(int pIdCita, int pIdCliente, int pIdBarbero, DateTime pFecha, DateTime pHora, int pIdServicio, string pEstado)
         {
             this.dIdCita = pIdCita;
             this.dIdCliente = pIdCliente;
             this.dIdBarbero = pIdBarbero;
             this.dFecha = pFecha;
             this.dHora = pHora;
+            this.dIdServicio = pIdServicio;
             this.dEstado = pEstado;
         }
         public int IdCita
@@ -55,6 +56,11 @@ namespace CapaDatos
             set { dHora = value; }
         }
 
+        public int IdServicio
+        {
+            get { return dIdServicio; }
+            set { dIdServicio = value; }
+        }
         public string Estado
         {
             get { return dEstado; }
@@ -80,6 +86,7 @@ namespace CapaDatos
                 micomando.Parameters.AddWithValue("@pIdBarbero", objCita.IdBarbero);
                 micomando.Parameters.AddWithValue("@pFecha", objCita.Fecha);
                 micomando.Parameters.AddWithValue("@pHora", objCita.Hora);
+                micomando.Parameters.AddWithValue("@pIdServicio", objCita.IdServicio);
                 micomando.Parameters.AddWithValue("@pEstado", objCita.Estado);
                 //Metodo Insertar
                 mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos insertados correctamente!" :
@@ -112,6 +119,7 @@ namespace CapaDatos
                 micomando.Parameters.AddWithValue("@pIdBarbero", objCita.IdBarbero);
                 micomando.Parameters.AddWithValue("@pFecha", objCita.Fecha);
                 micomando.Parameters.AddWithValue("@pHora", objCita.Hora);
+                micomando.Parameters.AddWithValue("@pIdServicio", objCita.IdServicio);
                 micomando.Parameters.AddWithValue("@pEstado", objCita.Estado);
                 mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos actualizados correctamente!" :
                 "No se pudo actualizar correctamente los datos!";
@@ -150,6 +158,9 @@ namespace CapaDatos
             }
             return dt; ////Se retorna el DataTable segun lo ocurrido arriba
         }//Fin del método MostrarConFiltro
+
+     
+
 
     }
 }//Fin de la clase CDCliente

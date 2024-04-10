@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PagoFechaTableAdapter" GeneratorDataComponentClassName="PagoFechaTableAdapter" Name="PagoFecha" UserDataComponentName="PagoFechaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="DBCitaConnectionString (Settings)" DbObjectName="[C:\CRISTOPHER-SOFTWARE\GESTION-CITA\CAPADATOS\DBCITA.MDF].dbo.PagoFecha" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="DBCitaConnectionString (Settings)" DbObjectName="dbo.PagoFecha" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.PagoFecha</CommandText>
@@ -28,7 +28,9 @@
               <Mapping SourceColumn="NombreCliente" DataSetColumn="NombreCliente" />
               <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
               <Mapping SourceColumn="Hora" DataSetColumn="Hora" />
-              <Mapping SourceColumn="PrecioServicio" DataSetColumn="PrecioServicio" />
+              <Mapping SourceColumn="Servicio" DataSetColumn="Servicio" />
+              <Mapping SourceColumn="Precio" DataSetColumn="Precio" />
+              <Mapping SourceColumn="ConceptoPago" DataSetColumn="ConceptoPago" />
               <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
             </Mappings>
             <Sources />
@@ -41,7 +43,7 @@
   <xs:element name="DBCitaDataSetPagoFecha" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DBCitaDataSetPagoFecha" msprop:Generator_UserDSName="DBCitaDataSetPagoFecha">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PagoFecha" msprop:Generator_TableClassName="PagoFechaDataTable" msprop:Generator_TableVarName="tablePagoFecha" msprop:Generator_RowChangedName="PagoFechaRowChanged" msprop:Generator_TablePropName="PagoFecha" msprop:Generator_RowDeletingName="PagoFechaRowDeleting" msprop:Generator_RowChangingName="PagoFechaRowChanging" msprop:Generator_RowEvHandlerName="PagoFechaRowChangeEventHandler" msprop:Generator_RowDeletedName="PagoFechaRowDeleted" msprop:Generator_RowClassName="PagoFechaRow" msprop:Generator_UserTableName="PagoFecha" msprop:Generator_RowEvArgName="PagoFechaRowChangeEvent">
+        <xs:element name="PagoFecha" msprop:Generator_TableClassName="PagoFechaDataTable" msprop:Generator_TableVarName="tablePagoFecha" msprop:Generator_TablePropName="PagoFecha" msprop:Generator_RowDeletingName="PagoFechaRowDeleting" msprop:Generator_RowChangingName="PagoFechaRowChanging" msprop:Generator_RowEvHandlerName="PagoFechaRowChangeEventHandler" msprop:Generator_RowDeletedName="PagoFechaRowDeleted" msprop:Generator_UserTableName="PagoFecha" msprop:Generator_RowChangedName="PagoFechaRowChanged" msprop:Generator_RowEvArgName="PagoFechaRowChangeEvent" msprop:Generator_RowClassName="PagoFechaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdPago" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnIdPago" msprop:Generator_ColumnPropNameInRow="IdPago" msprop:Generator_ColumnPropNameInTable="IdPagoColumn" msprop:Generator_UserColumnName="IdPago" type="xs:int" />
@@ -54,7 +56,21 @@
               </xs:element>
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" />
               <xs:element name="Hora" msprop:Generator_ColumnVarNameInTable="columnHora" msprop:Generator_ColumnPropNameInRow="Hora" msprop:Generator_ColumnPropNameInTable="HoraColumn" msprop:Generator_UserColumnName="Hora" type="xs:duration" />
-              <xs:element name="PrecioServicio" msprop:Generator_ColumnVarNameInTable="columnPrecioServicio" msprop:Generator_ColumnPropNameInRow="PrecioServicio" msprop:Generator_ColumnPropNameInTable="PrecioServicioColumn" msprop:Generator_UserColumnName="PrecioServicio" type="xs:int" />
+              <xs:element name="Servicio" msprop:Generator_ColumnVarNameInTable="columnServicio" msprop:Generator_ColumnPropNameInRow="Servicio" msprop:Generator_ColumnPropNameInTable="ServicioColumn" msprop:Generator_UserColumnName="Servicio">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_UserColumnName="Precio" type="xs:int" />
+              <xs:element name="ConceptoPago" msprop:Generator_ColumnVarNameInTable="columnConceptoPago" msprop:Generator_ColumnPropNameInRow="ConceptoPago" msprop:Generator_ColumnPropNameInTable="ConceptoPagoColumn" msprop:Generator_UserColumnName="ConceptoPago">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_UserColumnName="Estado">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

@@ -14,7 +14,7 @@ namespace CapaNegocios
     {
         //Preparamos los datos para insertar un nuevo Suplidor. A los parametros recibidos les pongo el prefijo p
         public static string Insertar(int pIdCita, int pIdCliente, int pIdBarbero, DateTime pFecha,
-            DateTime pHora, string pEstado)
+            DateTime pHora, int pIdServicio, string pEstado)
         {
             CDCita objCita = new CDCita();
             objCita.IdCita = pIdCita;
@@ -22,13 +22,14 @@ namespace CapaNegocios
             objCita.IdBarbero = pIdBarbero;
             objCita.Fecha = pFecha;
             objCita.Hora = pHora;
+            objCita.IdServicio = pIdServicio;
             objCita.Estado = pEstado;
             //Llamamos al método insertar del suplidor pasándole el objeto creado
             //y retornando el mensaje que indica si se pudo o no realizar la acción
             return objCita.Insertar(objCita);
         } //Fin del método Insertar
         public static string Actualizar(int pIdCita, int pIdCliente, int pIdBarbero, DateTime pFecha,
-            DateTime pHora, string pEstado)
+            DateTime pHora, int pIdServicio, string pEstado)
         {
             CDCita objCita = new CDCita();
             objCita.IdCita = pIdCita;
@@ -36,6 +37,7 @@ namespace CapaNegocios
             objCita.IdBarbero = pIdBarbero;
             objCita.Fecha = pFecha;
             objCita.Hora = pHora;
+            objCita.IdServicio = pIdServicio;
             objCita.Estado = pEstado;
             //Llamamos al método insertar del suplidor pasándole el objeto creado
             //y retornando el mensaje que indica si se pudo o no realizar la acción

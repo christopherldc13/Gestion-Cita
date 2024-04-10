@@ -17,6 +17,8 @@ namespace Sistema_Barberia
         public Login()
         {
             InitializeComponent();
+            tbClave.PasswordChar = '*';
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -54,8 +56,8 @@ namespace Sistema_Barberia
             {
                 MessageBox.Show("Inicio de sesión exitoso");
                 this.Hide();
-                FMenu fMenu = new FMenu();
-                fMenu.ShowDialog();
+                FBienvenida fBienvenida = new FBienvenida();
+                fBienvenida.ShowDialog();
                 this.Close();
                 // Aquí puedes abrir el formulario principal o realizar otras acciones
                 //FMenu fMenu = new FMenu();
@@ -93,6 +95,26 @@ namespace Sistema_Barberia
         private void tbMensaje_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            tbClave.PasswordChar = checkBox1.Checked ? '\0' : '*';
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -167,45 +167,65 @@ namespace Sistema_Barberia
             // 
             // bUltimo
             // 
+            this.bUltimo.FlatAppearance.BorderSize = 0;
+            this.bUltimo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bUltimo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bUltimo.Location = new System.Drawing.Point(361, 19);
+            this.bUltimo.Image = ((System.Drawing.Image)(resources.GetObject("bUltimo.Image")));
+            this.bUltimo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bUltimo.Location = new System.Drawing.Point(403, 19);
             this.bUltimo.Name = "bUltimo";
-            this.bUltimo.Size = new System.Drawing.Size(75, 33);
+            this.bUltimo.Size = new System.Drawing.Size(86, 33);
             this.bUltimo.TabIndex = 3;
             this.bUltimo.Text = "&Ultimo";
+            this.bUltimo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bUltimo.UseVisualStyleBackColor = true;
             this.bUltimo.Click += new System.EventHandler(this.bUltimo_Click);
             // 
             // bSiguiente
             // 
+            this.bSiguiente.FlatAppearance.BorderSize = 0;
+            this.bSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSiguiente.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bSiguiente.Location = new System.Drawing.Point(251, 19);
+            this.bSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("bSiguiente.Image")));
+            this.bSiguiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bSiguiente.Location = new System.Drawing.Point(264, 19);
             this.bSiguiente.Name = "bSiguiente";
-            this.bSiguiente.Size = new System.Drawing.Size(75, 33);
+            this.bSiguiente.Size = new System.Drawing.Size(107, 33);
             this.bSiguiente.TabIndex = 2;
             this.bSiguiente.Text = "&Siguiente";
+            this.bSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bSiguiente.UseVisualStyleBackColor = true;
             this.bSiguiente.Click += new System.EventHandler(this.bSiguiente_Click);
             // 
             // bAnterior
             // 
+            this.bAnterior.FlatAppearance.BorderSize = 0;
+            this.bAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bAnterior.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAnterior.Location = new System.Drawing.Point(140, 19);
+            this.bAnterior.Image = ((System.Drawing.Image)(resources.GetObject("bAnterior.Image")));
+            this.bAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bAnterior.Location = new System.Drawing.Point(139, 19);
             this.bAnterior.Name = "bAnterior";
-            this.bAnterior.Size = new System.Drawing.Size(75, 33);
+            this.bAnterior.Size = new System.Drawing.Size(98, 33);
             this.bAnterior.TabIndex = 1;
             this.bAnterior.Text = "&Anterior";
+            this.bAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bAnterior.UseVisualStyleBackColor = true;
             this.bAnterior.Click += new System.EventHandler(this.bAnterior_Click);
             // 
             // bPrimero
             // 
+            this.bPrimero.FlatAppearance.BorderSize = 0;
+            this.bPrimero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bPrimero.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bPrimero.Location = new System.Drawing.Point(33, 19);
+            this.bPrimero.Image = ((System.Drawing.Image)(resources.GetObject("bPrimero.Image")));
+            this.bPrimero.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bPrimero.Location = new System.Drawing.Point(28, 19);
             this.bPrimero.Name = "bPrimero";
-            this.bPrimero.Size = new System.Drawing.Size(75, 33);
+            this.bPrimero.Size = new System.Drawing.Size(89, 33);
             this.bPrimero.TabIndex = 0;
             this.bPrimero.Text = "&Primero";
+            this.bPrimero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bPrimero.UseVisualStyleBackColor = true;
             this.bPrimero.Click += new System.EventHandler(this.bPrimero_Click);
             // 
@@ -233,6 +253,8 @@ namespace Sistema_Barberia
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FBuscarCliente";
@@ -240,6 +262,7 @@ namespace Sistema_Barberia
             this.Text = "Busqueda de Cliente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FConsultaCliente_FormClosing);
             this.Load += new System.EventHandler(this.FConsultaCliente_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FBuscarCliente_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

@@ -80,6 +80,7 @@
     <Compile Include="CDCliente.cs" />
     <Compile Include="CDEmpresa.cs" />
     <Compile Include="CDPago.cs" />
+    <Compile Include="CDServicios.cs" />
     <Compile Include="CDUsuario.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ConexionDB.cs" />

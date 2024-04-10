@@ -142,6 +142,14 @@ namespace Sistema_Barberia
             bAceptar_Click(sender, e); //Se ejecuta el método del botón Aceptar
         }
 
+        private void FBuscarBarbero_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();

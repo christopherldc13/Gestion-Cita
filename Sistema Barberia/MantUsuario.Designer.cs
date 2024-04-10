@@ -54,9 +54,9 @@ namespace Sistema_Barberia
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label8 = new System.Windows.Forms.Label();
             this.tbIdEmpleado = new System.Windows.Forms.TextBox();
             this.bBuscarEmpleado = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.PBotones.SuspendLayout();
             this.PTitulo.SuspendLayout();
             this.SuspendLayout();
@@ -319,11 +319,11 @@ namespace Sistema_Barberia
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(167, 9);
+            this.label1.Location = new System.Drawing.Point(217, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(436, 38);
+            this.label1.Size = new System.Drawing.Size(371, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Mantenimiento Usuario";
+            this.label1.Text = "Registro de Usuario";
             // 
             // flowLayoutPanel1
             // 
@@ -334,16 +334,6 @@ namespace Sistema_Barberia
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(761, 319);
             this.flowLayoutPanel1.TabIndex = 73;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(538, 220);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 26);
-            this.label8.TabIndex = 74;
-            this.label8.Text = "Id Empleado";
             // 
             // tbIdEmpleado
             // 
@@ -373,6 +363,16 @@ namespace Sistema_Barberia
             this.bBuscarEmpleado.UseVisualStyleBackColor = false;
             this.bBuscarEmpleado.Click += new System.EventHandler(this.bBuscarEmpleado_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(538, 220);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(119, 26);
+            this.label8.TabIndex = 74;
+            this.label8.Text = "Id Empleado";
+            // 
             // MantUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,6 +399,7 @@ namespace Sistema_Barberia
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MantUsuario";
@@ -407,6 +408,7 @@ namespace Sistema_Barberia
             this.toolTip1.SetToolTip(this, "Estado del Usuario");
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MantUsuario_FormClosing);
             this.Load += new System.EventHandler(this.MantUsuario_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MantUsuario_KeyDown);
             this.PBotones.ResumeLayout(false);
             this.PTitulo.ResumeLayout(false);
             this.PTitulo.PerformLayout();

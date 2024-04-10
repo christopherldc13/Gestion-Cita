@@ -71,11 +71,11 @@ namespace Sistema_Barberia
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(182, 9);
+            this.label1.Location = new System.Drawing.Point(247, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(423, 38);
+            this.label1.Size = new System.Drawing.Size(304, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Mantenimiento Cliente";
+            this.label1.Text = "Registro Cliente";
             this.label1.Click += new System.EventHandler(this.label1_Click_2);
             // 
             // label2

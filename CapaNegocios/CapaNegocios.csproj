@@ -60,12 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="CNBarbero.cs" />
     <Compile Include="CNCita.cs" />
     <Compile Include="CNCliente.cs" />
     <Compile Include="CNEmpresa.cs" />
     <Compile Include="CNPago.cs" />
+    <Compile Include="CNServicio.cs" />
     <Compile Include="CNUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />

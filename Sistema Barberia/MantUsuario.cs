@@ -79,6 +79,7 @@ namespace Sistema_Barberia
             tbClave.Clear(); //Para limpiar TextBox.
             tbRol.Clear(); //Para limpiar TextBox.
             cbEstado.SelectedItem = 0; //Para limpiar TextBox.
+            tbIdEmpleado.Clear();
             tbNombreEmpleado.Clear(); //Establece el valor por defecto del Combobox
         } //Fin del método LimpiaObjetos
 
@@ -90,7 +91,8 @@ namespace Sistema_Barberia
             tbClave.Enabled = valor;
             tbRol.Enabled = valor;
             cbEstado.Enabled = valor;
-            tbNombreEmpleado.Enabled = valor;
+            tbIdEmpleado.Enabled = false;
+            tbNombreEmpleado.Enabled = false;
 
         } //Fin del método HabilitaControles
 
@@ -109,33 +111,28 @@ namespace Sistema_Barberia
             //Validamos los datos requeridos entes de Insertar o Actualizar
             if (tbUsuario.Text == String.Empty) //Si el textbox está vacío mostrar un error y ubicar
             { // el cursor en dicho textbox
-                MessageBox.Show("Debe indicar el Nombre del Barbero!");
+                MessageBox.Show("Debe indicar el Nombre del Empleado!");
                 tbUsuario.Focus();
             }
             else
             if (tbClave.Text == String.Empty)
             {
-                MessageBox.Show("Debe indicar el Apellido del Barbero!");
+                MessageBox.Show("Debe indicar el Apellido del Empleado!");
                 tbClave.Focus();
             }
             else
             if (tbRol.Text == String.Empty)
             {
-                MessageBox.Show("Debe indicar el Teléfono del Barbero!");
+                MessageBox.Show("Debe indicar el Teléfono del Empleado!");
                 tbRol.Focus();
             }
             else
             if (cbEstado.Text == String.Empty)
             {
-                MessageBox.Show("Debe indicar la Disponibilidad del Barbero!");
+                MessageBox.Show("Debe indicar la Disponibilidad del Empleado!");
                 cbEstado.Focus();
             }
-            else
-            if (tbNombreEmpleado.Text == String.Empty)
-            {
-                MessageBox.Show("Debe indicar el Estado del Barbero!");
-                tbNombreEmpleado.Focus();
-            }
+
             else
             {
                 //Si todo es correcto procede a Insertar o actualizar según corresponda, usaremos las variables globales a toda la solución contenidas en Program.CS
@@ -261,6 +258,14 @@ namespace Sistema_Barberia
                 
             }
         } //Fin del metodo RecuperarDatos
+
+        private void MantUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
 
         //Habilita los botones según el valor que tengan las variables globales nuevo y modificar
         private void HabilitaBotones()

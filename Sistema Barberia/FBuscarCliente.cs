@@ -153,6 +153,14 @@ namespace Sistema_Barberia
 
         }
 
+        private void FBuscarCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();

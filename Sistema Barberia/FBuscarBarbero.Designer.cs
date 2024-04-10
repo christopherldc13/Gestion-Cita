@@ -57,10 +57,10 @@ namespace Sistema_Barberia
             this.DGVDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVDatos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DGVDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVDatos.Location = new System.Drawing.Point(1, 113);
+            this.DGVDatos.Location = new System.Drawing.Point(-6, 113);
             this.DGVDatos.Name = "DGVDatos";
             this.DGVDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVDatos.Size = new System.Drawing.Size(871, 386);
+            this.DGVDatos.Size = new System.Drawing.Size(878, 386);
             this.DGVDatos.TabIndex = 7;
             this.DGVDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVDatos_CellDoubleClick);
             this.DGVDatos.CurrentCellChanged += new System.EventHandler(this.DGVDatos_CurrentCellChanged);
@@ -74,9 +74,9 @@ namespace Sistema_Barberia
             this.panel3.Controls.Add(this.bSiguiente);
             this.panel3.Controls.Add(this.bAnterior);
             this.panel3.Controls.Add(this.bPrimero);
-            this.panel3.Location = new System.Drawing.Point(2, 499);
+            this.panel3.Location = new System.Drawing.Point(-6, 499);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(870, 70);
+            this.panel3.Size = new System.Drawing.Size(878, 70);
             this.panel3.TabIndex = 6;
             // 
             // bAceptar
@@ -113,41 +113,65 @@ namespace Sistema_Barberia
             // 
             // bUltimo
             // 
-            this.bUltimo.Location = new System.Drawing.Point(358, 18);
+            this.bUltimo.FlatAppearance.BorderSize = 0;
+            this.bUltimo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bUltimo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bUltimo.Image = ((System.Drawing.Image)(resources.GetObject("bUltimo.Image")));
+            this.bUltimo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bUltimo.Location = new System.Drawing.Point(400, 18);
             this.bUltimo.Name = "bUltimo";
-            this.bUltimo.Size = new System.Drawing.Size(75, 33);
+            this.bUltimo.Size = new System.Drawing.Size(84, 33);
             this.bUltimo.TabIndex = 3;
             this.bUltimo.Text = "&Ultimo";
+            this.bUltimo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bUltimo.UseVisualStyleBackColor = true;
             this.bUltimo.Click += new System.EventHandler(this.bUltimo_Click);
             // 
             // bSiguiente
             // 
-            this.bSiguiente.Location = new System.Drawing.Point(250, 18);
+            this.bSiguiente.FlatAppearance.BorderSize = 0;
+            this.bSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSiguiente.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("bSiguiente.Image")));
+            this.bSiguiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bSiguiente.Location = new System.Drawing.Point(262, 18);
             this.bSiguiente.Name = "bSiguiente";
-            this.bSiguiente.Size = new System.Drawing.Size(75, 33);
+            this.bSiguiente.Size = new System.Drawing.Size(104, 33);
             this.bSiguiente.TabIndex = 2;
             this.bSiguiente.Text = "&Siguiente";
+            this.bSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bSiguiente.UseVisualStyleBackColor = true;
             this.bSiguiente.Click += new System.EventHandler(this.bSiguiente_Click);
             // 
             // bAnterior
             // 
-            this.bAnterior.Location = new System.Drawing.Point(132, 18);
+            this.bAnterior.FlatAppearance.BorderSize = 0;
+            this.bAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAnterior.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAnterior.Image = ((System.Drawing.Image)(resources.GetObject("bAnterior.Image")));
+            this.bAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bAnterior.Location = new System.Drawing.Point(135, 18);
             this.bAnterior.Name = "bAnterior";
-            this.bAnterior.Size = new System.Drawing.Size(75, 33);
+            this.bAnterior.Size = new System.Drawing.Size(95, 33);
             this.bAnterior.TabIndex = 1;
-            this.bAnterior.Text = "&Anterios";
+            this.bAnterior.Text = "&Anterior";
+            this.bAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bAnterior.UseVisualStyleBackColor = true;
             this.bAnterior.Click += new System.EventHandler(this.bAnterior_Click);
             // 
             // bPrimero
             // 
-            this.bPrimero.Location = new System.Drawing.Point(33, 18);
+            this.bPrimero.FlatAppearance.BorderSize = 0;
+            this.bPrimero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bPrimero.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bPrimero.Image = ((System.Drawing.Image)(resources.GetObject("bPrimero.Image")));
+            this.bPrimero.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bPrimero.Location = new System.Drawing.Point(21, 18);
             this.bPrimero.Name = "bPrimero";
-            this.bPrimero.Size = new System.Drawing.Size(75, 33);
+            this.bPrimero.Size = new System.Drawing.Size(93, 33);
             this.bPrimero.TabIndex = 0;
             this.bPrimero.Text = "&Primero";
+            this.bPrimero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bPrimero.UseVisualStyleBackColor = true;
             this.bPrimero.Click += new System.EventHandler(this.bPrimero_Click);
             // 
@@ -210,11 +234,11 @@ namespace Sistema_Barberia
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(232, 15);
+            this.label1.Location = new System.Drawing.Point(227, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(400, 38);
+            this.label1.Size = new System.Drawing.Size(432, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Consultas de Barbero";
+            this.label1.Text = "Busqueda de Empleado";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FBuscarBarbero
@@ -227,14 +251,16 @@ namespace Sistema_Barberia
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FBuscarBarbero";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FConsultaBarbero";
+            this.Text = "Busqueda de Empleados";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FConsultaBarbero_FormClosing);
             this.Load += new System.EventHandler(this.FConsultaBarbero_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FBuscarBarbero_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.DGVDatos)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

@@ -77,6 +77,9 @@ namespace Sistema_Barberia
             dtpFecha.Value = DateTime.Today; //Para limpiar TextBox.
             dtpHora.Value = DateTime.Now;
             cbEstado.SelectedItem = 0;
+            tbServicio.Clear();
+            tbPrecio.Clear();
+            tbIdServicio.Clear();
             tbIdCliente.Clear(); //Para limpiar TextBox.
             tbNombreCliente.Clear(); //Para limpiar TextBox.
             tbApellidoCliente.Clear();
@@ -91,7 +94,7 @@ namespace Sistema_Barberia
         private void HabilitaControles(bool valor)
         {
             tbIdCita.ReadOnly = true; //la propiedad ReadOnly hace de solo lectura un objeto
-            dtpFecha.Enabled = valor; //la propiedad Enabled habilita o inhabilita un objeto
+            //la propiedad Enabled habilita o inhabilita un objeto
             cbEstado.Enabled = valor;
             tbIdCliente.ReadOnly = true;
             tbNombreCliente.ReadOnly = true;
@@ -157,7 +160,7 @@ namespace Sistema_Barberia
                     //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
                     //MessageBox.Show("Entre a nuevo"+Program.vidCliente.ToString() + " " + Program.vidBarbero.ToString());
                     mensaje = CNCita.Insertar(Program.vidCita, Program.vidCliente, Program.vidBarbero,
-                     dtpFecha.Value, dtpHora.Value, cbEstado.Text);
+                     dtpFecha.Value, dtpHora.Value, Program.vidServicio, cbEstado.Text);
                 }
                 else  //de lo contrario se Modificarán los datos del registro correspondiente
                 {
@@ -168,7 +171,7 @@ namespace Sistema_Barberia
                     //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
                     //MessageBox.Show("Entre a Actualizar" + Program.vidCliente.ToString() + " " + Program.vidBarbero.ToString());
                     mensaje = CNCita.Actualizar(Program.vidCita, Program.vidCliente, Program.vidBarbero,
-                     dtpFecha.Value, dtpHora.Value, cbEstado.Text);
+                     dtpFecha.Value, dtpHora.Value, Program.vidServicio, cbEstado.Text);
                 }
             
             //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
@@ -219,9 +222,13 @@ namespace Sistema_Barberia
                 tbTelefonoEmpleado.Text = row["Telefono"].ToString();
                 dtpFecha.Text = row["Fecha"].ToString();
                 dtpHora.Text = row["Hora"].ToString();
+                tbIdServicio.Text = row["IdServicio"].ToString();
+                tbServicio.Text = row["Servicio"].ToString();
+                tbPrecio.Text = row["Precio"].ToString();
                 cbEstado.Text = row["Estado"].ToString();
                 Program.vidBarbero = Convert.ToInt32(tbIdEmpleado.Text);
                 Program.vidCliente = Convert.ToInt32(tbIdCliente.Text);
+                Program.vidServicio = Convert.ToInt32(tbIdServicio.Text);
             }
             
         } //Fin del metodo RecuperarDatos
@@ -287,6 +294,7 @@ namespace Sistema_Barberia
             {
                 RecuperaDatosBarbero(); //Llamo al método para recuperar el registro seleccionado
                 BEditar_Click(sender, e); //Llamo el método del botón Editar
+                cbEstado.Enabled = false;
                 
             }
             else //Si no estamos en modo de edición no permite la acción.
@@ -327,6 +335,45 @@ namespace Sistema_Barberia
             }
         }
 
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bBuscarServicio_Click(object sender, EventArgs e)
+        {
+            //Creamos la instancia del formulario de búsqueda y lo mostramos
+            FBuscarServicio fConsultaServicio = new FBuscarServicio();
+            fConsultaServicio.ShowDialog();
+            if (Program.modificar) //Si se está en modo de edición
+            {
+                RecuperaDatosServicio(); //Llamo al método para recuperar el registro seleccionado
+                //BEditar_Click(sender, e); //Llamo al método editar
+            }
+            else //Si no estamos en modo de edición no permite la acción.
+            {
+                LimpiaObjetos(); //Llama al método LimpiaObjetos
+                //BBuscarCita.Focus();
+            }
+        }
+
+
+        public void RecuperaDatosServicio()
+        {
+            string vparametro = Program.vidServicio.ToString();
+            CNServicio cNServicio = new CNServicio();
+            DataTable dt = new DataTable(); //creamos un nuevo DataTable
+            dt = cNServicio.ObtenerServicio(vparametro); //Llenamos el DataTable
+                                                       //Recorremos cada fila del DataTable asignando a los controles de edición los valores de
+                                                       //los campos correspondientes
+            foreach (DataRow row in dt.Rows)
+            {
+                tbIdServicio.Text = row["IdServicio"].ToString();
+                tbServicio.Text = row["NombreServicio"].ToString();
+                tbPrecio.Text = row["Precio"].ToString();
+            }
+        } //Fin del metodo RecuperarDatos
+
         private void HabilitaBotones()
         {
             if (Program.nuevo || Program.modificar)
@@ -346,6 +393,10 @@ namespace Sistema_Barberia
                 tbNombreEmpleado.Enabled = false;
                 tbTelefonoEmpleado.Enabled = false;
                 dtpHora.Enabled = true;
+                cbEstado.Enabled = false;
+                tbIdServicio.Enabled = false;
+                tbServicio.Enabled = false;
+                tbPrecio.Enabled = false;
             }
             else
             {
@@ -355,7 +406,7 @@ namespace Sistema_Barberia
                 BEditar.Enabled = false;
                 BBuscarCita.Enabled = true;
                 BCancelar.Enabled = false;
-                cbEstado.SelectedItem = 0;
+         
                 cbEstado.Enabled = true;
 
                 

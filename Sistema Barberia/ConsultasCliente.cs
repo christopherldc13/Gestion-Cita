@@ -114,6 +114,28 @@ namespace Sistema_Barberia
 
         }
 
+        private void LCantidadCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ConsultasCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
 
         private void MostrarDatos()
         {
@@ -132,7 +154,7 @@ namespace Sistema_Barberia
             else
                 MessageBox.Show("No se retorno ningun valor!");
             DGVDatos.Refresh(); //Se refresca el DataGripView
-            LCantidadCliente.Text = Convert.ToString(DGVDatos.RowCount); //Se muestra la cantidad de datos
+            LCantidadCliente.Text = "Cantidad de Clientes: " + Convert.ToString(DGVDatos.RowCount); //Se muestra la cantidad de datos
             if (DGVDatos.RowCount <= 0) //Si no se obtienen datos de retorno
             {
                 MessageBox.Show("Ningún dato que mostrar!"); //Se muestra un mensaje de error

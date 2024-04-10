@@ -12,24 +12,22 @@ namespace CapaNegocios
 {
     public class CNPago
     {
-        public static string Insertar(int pIdPago, int pIdCliente, int pIdCita, int pPrecioServicio, string pEstado)
+        public static string Insertar(int pIdPago, int pIdCita, string pConceptoPago, string pEstado)
         {
             CDPago objPago = new CDPago();
             objPago.IdPago = pIdPago;
-            objPago.IdCliente = pIdCliente;
             objPago.IdCita = pIdCita;
-            objPago.PrecioServicio = pPrecioServicio;
+            objPago.ConceptoPago = pConceptoPago;
             objPago.Estado = pEstado;
             return objPago.Insertar(objPago);
         }
 
-        public static string Actualizar(int pIdPago, int pIdCliente, int pIdCita, int pPrecioServicio, string pEstado)
+        public static string Actualizar(int pIdPago, int pIdCita, string pConceptoPago, string pEstado)
         {
             CDPago objPago = new CDPago();
             objPago.IdPago = pIdPago;
-            objPago.IdCliente = pIdCliente;
             objPago.IdCita = pIdCita;
-            objPago.PrecioServicio = pPrecioServicio;
+            objPago.ConceptoPago = pConceptoPago;
             objPago.Estado = pEstado;
             return objPago.Actualizar(objPago);
         }

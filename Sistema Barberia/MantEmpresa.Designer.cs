@@ -176,7 +176,7 @@ namespace Sistema_Barberia
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 26);
             this.label4.TabIndex = 68;
-            this.label4.Text = "Telefono";
+            this.label4.Text = "Teléfono";
             // 
             // label3
             // 
@@ -377,6 +377,7 @@ namespace Sistema_Barberia
             this.Controls.Add(this.PTitulo);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -12,16 +12,15 @@ namespace CapaDatos
 {
     public class CDPago
     {
-        private int dIdPago, dIdCliente, dIdCita, dPrecioServicio;
-        private String dEstado;
+        private int dIdPago, dIdCita;
+        private String dConceptoPago, dEstado;
 
         public CDPago() { }
-        public CDPago(int pIdPago, int pIdCliente, int pIdCita, int pPrecioServicio, string pEstado)
+        public CDPago(int pIdPago, int pIdCita, string pConceptoPago, string pEstado)
         {
             this.dIdPago = pIdPago;
-            this.dIdCliente = pIdCliente;
             this.dIdCita = pIdCita;
-            this.dPrecioServicio = pPrecioServicio;
+            this.dConceptoPago = pConceptoPago;
             this.dEstado = pEstado;
         }
         public int IdPago
@@ -30,11 +29,6 @@ namespace CapaDatos
             set { dIdPago = value; }
         }
 
-        public int IdCliente
-        {
-            get { return dIdCliente; }
-            set { dIdCliente = value; }
-        }
 
         public int IdCita
         {
@@ -42,12 +36,11 @@ namespace CapaDatos
             set { dIdCita = value; }
         }
 
-        public int PrecioServicio
+        public string ConceptoPago
         {
-            get { return dPrecioServicio; }
-            set { dPrecioServicio = value; }
+            get { return dConceptoPago; }
+            set { dConceptoPago = value; }
         }
-
         public string Estado
         {
             get { return dEstado; }
@@ -69,9 +62,8 @@ namespace CapaDatos
                 sqlCon.Open(); //Abro la conexión
                                //indico que se ejecutara un procedimiento almacenado
                 micomando.CommandType = CommandType.StoredProcedure;
-                micomando.Parameters.AddWithValue("@pIdCliente", objPago.IdCliente);
                 micomando.Parameters.AddWithValue("@pIdCita", objPago.IdCita);
-                micomando.Parameters.AddWithValue("@pPrecioServicio", objPago.PrecioServicio);
+                micomando.Parameters.AddWithValue("@pConceptoPago", objPago.ConceptoPago);
                 micomando.Parameters.AddWithValue("@pEstado", objPago.Estado);
                 //Metodo Insertar
                 mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos insertados correctamente!" :
@@ -101,9 +93,8 @@ namespace CapaDatos
                 sqlCon.Open();
                 micomando.CommandType = CommandType.StoredProcedure;
                 micomando.Parameters.AddWithValue("@pIdPago", objPago.IdPago);
-                micomando.Parameters.AddWithValue("@pIdCliente", objPago.IdCliente);
                 micomando.Parameters.AddWithValue("@pIdCita", objPago.IdCita);
-                micomando.Parameters.AddWithValue("@pPrecioServicio", objPago.PrecioServicio);
+                micomando.Parameters.AddWithValue("@pConceptoPago", objPago.ConceptoPago);
                 micomando.Parameters.AddWithValue("@pEstado", objPago.Estado);
                 mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos actualizados correctamente!" :
                  "No se pudo actualizar correctamente los datos!";

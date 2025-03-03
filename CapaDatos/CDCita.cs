@@ -12,16 +12,16 @@ namespace CapaDatos
 {
     public class CDCita
     {
-        private int dIdCita, dIdCliente, dIdBarbero, dIdServicio;
+        private int dIdCita, dIdCliente, dIdEmpleado, dIdServicio;
         private String dEstado;
         private DateTime dFecha, dHora;
 
         public CDCita() { }
-        public CDCita(int pIdCita, int pIdCliente, int pIdBarbero, DateTime pFecha, DateTime pHora, int pIdServicio, string pEstado)
+        public CDCita(int pIdCita, int pIdCliente, int pIdEmpleado, DateTime pFecha, DateTime pHora, int pIdServicio, string pEstado)
         {
             this.dIdCita = pIdCita;
             this.dIdCliente = pIdCliente;
-            this.dIdBarbero = pIdBarbero;
+            this.dIdEmpleado = pIdEmpleado;
             this.dFecha = pFecha;
             this.dHora = pHora;
             this.dIdServicio = pIdServicio;
@@ -39,10 +39,10 @@ namespace CapaDatos
             set { dIdCliente = value; }
         }
 
-        public int IdBarbero
+        public int IdEmpleado
         {
-            get { return dIdBarbero; }
-            set { dIdBarbero = value; }
+            get { return dIdEmpleado; }
+            set { dIdEmpleado = value; }
         }
         public DateTime Fecha
         {
@@ -70,59 +70,22 @@ namespace CapaDatos
         public string Insertar(CDCita objCita)
         {
             string mensaje = "";
-            //creamos un nuevo objeto de tipo SqlConnection
             SqlConnection sqlCon = new SqlConnection();
-            //trataremos de hacer algunas operaciones con la tabla
             try
             {
-                //asignamos a sqlCon la conexión con las base de datos a traves de la clase que creamos
                 sqlCon.ConnectionString = ConexionDB.miconexion;
-                //Escribo el nombre del procedimiento almacenado que utilizaré, en este caso SuplidorInsertar
                 SqlCommand micomando = new SqlCommand("CitaInsertar", sqlCon);
-                sqlCon.Open(); //Abro la conexióna
-                               //indico que se ejecutara un procedimiento almacenado
-                micomando.CommandType = CommandType.StoredProcedure;
-                micomando.Parameters.AddWithValue("@pIdCliente", objCita.IdCliente);
-                micomando.Parameters.AddWithValue("@pIdBarbero", objCita.IdBarbero);
-                micomando.Parameters.AddWithValue("@pFecha", objCita.Fecha);
-                micomando.Parameters.AddWithValue("@pHora", objCita.Hora);
-                micomando.Parameters.AddWithValue("@pIdServicio", objCita.IdServicio);
-                micomando.Parameters.AddWithValue("@pEstado", objCita.Estado);
-                //Metodo Insertar
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos insertados correctamente!" :
-                                                 "No se pudo insertar correctamente los datos!";
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-            }
-            finally
-            {
-                if (sqlCon.State == ConnectionState.Open)
-                    sqlCon.Close();
-            }
-            return mensaje;
-        }//Metodo
-         //método para actualizar los datos del Suplidor. Recibirá el objeto objSuplidor como parámetro
-        public string Actualizar(CDCita objCita)
-        {
-            string mensaje = "";
-            SqlConnection sqlCon = new SqlConnection();
-            try
-            {
-                sqlCon.ConnectionString = ConexionDB.miconexion;
-                SqlCommand micomando = new SqlCommand("CitaActualizar", sqlCon);
                 sqlCon.Open();
+                              
                 micomando.CommandType = CommandType.StoredProcedure;
-                micomando.Parameters.AddWithValue("@pIdCita", objCita.IdCita);
                 micomando.Parameters.AddWithValue("@pIdCliente", objCita.IdCliente);
-                micomando.Parameters.AddWithValue("@pIdBarbero", objCita.IdBarbero);
+                micomando.Parameters.AddWithValue("@pIdEmpleado", objCita.IdEmpleado);
                 micomando.Parameters.AddWithValue("@pFecha", objCita.Fecha);
                 micomando.Parameters.AddWithValue("@pHora", objCita.Hora);
                 micomando.Parameters.AddWithValue("@pIdServicio", objCita.IdServicio);
                 micomando.Parameters.AddWithValue("@pEstado", objCita.Estado);
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos actualizados correctamente!" :
-                "No se pudo actualizar correctamente los datos!";
+                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos de la Cita insertados correctamente!" :
+                                                 "No se pudo insertar correctamente los datos de la Cita!";
             }
             catch (Exception ex)
             {
@@ -135,32 +98,164 @@ namespace CapaDatos
             }
             return mensaje;
         }
-        //Método para consultar datos filtrados de la tabla. Se recibe el valor del parámetro
-        public DataTable CitaConsultar(String miparametro)
+        public string Actualizar(CDCita objCita)
         {
-            DataTable dt = new DataTable(); //Se Crea DataTable que tomará los datos de los Suplidores
-            SqlDataReader leerDatos; //Creamos el DataReader
+            string mensaje = "";
+            SqlConnection sqlCon = new SqlConnection();
             try
             {
-                SqlCommand sqlCmd = new SqlCommand(); //Establecer el comando
-                sqlCmd.Connection = new ConexionDB().dbconexion; //Conexión que va a usar el comando
-                sqlCmd.Connection.Open(); //Se abre la conexión
-                sqlCmd.CommandText = "CitaConsultar"; //Nombre del Proc. Almacenado a usar
-                sqlCmd.CommandType = CommandType.StoredProcedure; //Se trata de un proc. almacenado
-                sqlCmd.Parameters.AddWithValue("@pvalor", miparametro); //Se pasa el valor a buscar
-                leerDatos = sqlCmd.ExecuteReader(); //Llenamos el SqlDataReader con los datos resultantes
-                dt.Load(leerDatos); //Se cargan los registros devueltos al DataTable
-                sqlCmd.Connection.Close(); //Se cierra la conexión
+                sqlCon.ConnectionString = ConexionDB.miconexion;
+                SqlCommand micomando = new SqlCommand("CitaActualizar", sqlCon);
+                sqlCon.Open();
+                micomando.CommandType = CommandType.StoredProcedure;
+                micomando.Parameters.AddWithValue("@pIdCita", objCita.IdCita);
+                micomando.Parameters.AddWithValue("@pIdCliente", objCita.IdCliente);
+                micomando.Parameters.AddWithValue("@pIdEmpleado", objCita.IdEmpleado);
+                micomando.Parameters.AddWithValue("@pFecha", objCita.Fecha);
+                micomando.Parameters.AddWithValue("@pHora", objCita.Hora);
+                micomando.Parameters.AddWithValue("@pIdServicio", objCita.IdServicio);
+                micomando.Parameters.AddWithValue("@pEstado", objCita.Estado);
+                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos de la Cita actualizados correctamente!" :
+                "No se pudo actualizar correctamente los datos de la Cita!";
             }
             catch (Exception ex)
             {
-                dt = null; //Si ocurre algun error se anula el DataTable
+                mensaje = ex.Message;
             }
-            return dt; ////Se retorna el DataTable segun lo ocurrido arriba
-        }//Fin del método MostrarConFiltro
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                    sqlCon.Close();
+            }
+            return mensaje;
+        }
 
-     
+        public DataTable CitaConsultar(String miparametro)
+        {
+            DataTable dt = new DataTable(); 
+            SqlDataReader leerDatos; 
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand(); 
+                sqlCmd.Connection = new ConexionDB().dbconexion; 
+                sqlCmd.Connection.Open(); 
+                sqlCmd.CommandText = "CitaConsultar"; 
+                sqlCmd.CommandType = CommandType.StoredProcedure; 
+                sqlCmd.Parameters.AddWithValue("@pvalor", miparametro); 
+                leerDatos = sqlCmd.ExecuteReader(); 
+                dt.Load(leerDatos); 
+                sqlCmd.Connection.Close(); 
+            }
+            catch (Exception ex)
+            {
+                dt = null;
+            }
+            return dt; 
+        }
 
+        public DataTable ObtenerCitasPorFechaYHora()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection sqlCon = new SqlConnection(ConexionDB.miconexion))
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand("CitaObtenerPorFechaYHora", sqlCon))
+                    {
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
 
+                        sqlCon.Open();
+                        SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+                        sqlDa.Fill(dt);
+                    }
+                }
+            }
+            catch
+            {
+                dt = null; 
+            }
+            return dt;
+        }
+
+        public decimal ObtenerGananciaDiaria()
+        {
+            decimal ganancia = 0;
+            try
+            {
+                using (SqlConnection sqlCon = new SqlConnection(ConexionDB.miconexion))
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand("ObtenerGananciaDiariaActual", sqlCon))
+                    {
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCon.Open();
+
+                        object resultado = sqlCmd.ExecuteScalar();
+                        if (resultado != DBNull.Value)
+                        {
+                            ganancia = Convert.ToDecimal(resultado);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                ganancia = 0; 
+            }
+            return ganancia;
+        }
+
+        public decimal ObtenerGananciasMensuales()
+        {
+            decimal ganancia = 0;
+            try
+            {
+                using (SqlConnection sqlCon = new SqlConnection(ConexionDB.miconexion))
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand("ObtenerGananciasMensuales", sqlCon))
+                    {
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCon.Open();
+
+                        object resultado = sqlCmd.ExecuteScalar();
+                        if (resultado != DBNull.Value)
+                        {
+                            ganancia = Convert.ToDecimal(resultado);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                ganancia = 0; 
+            }
+            return ganancia;
+        }
+
+        public decimal ObtenerGananciasSemanales()
+        {
+            decimal ganancia = 0;
+            try
+            {
+                using (SqlConnection sqlCon = new SqlConnection(ConexionDB.miconexion))
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand("ObtenerGananciasSemanales", sqlCon))
+                    {
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCon.Open();
+
+                        object resultado = sqlCmd.ExecuteScalar();
+                        if (resultado != DBNull.Value)
+                        {
+                            ganancia = Convert.ToDecimal(resultado);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                ganancia = 0; 
+            }
+            return ganancia;
+        }
     }
-}//Fin de la clase CDCliente
+}

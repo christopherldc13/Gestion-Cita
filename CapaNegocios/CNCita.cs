@@ -12,47 +12,65 @@ namespace CapaNegocios
 {
     public class CNCita
     {
-        //Preparamos los datos para insertar un nuevo Suplidor. A los parametros recibidos les pongo el prefijo p
-        public static string Insertar(int pIdCita, int pIdCliente, int pIdBarbero, DateTime pFecha,
+        public static string Insertar(int pIdCita, int pIdCliente, int pIdEmpleado, DateTime pFecha,
             DateTime pHora, int pIdServicio, string pEstado)
         {
             CDCita objCita = new CDCita();
             objCita.IdCita = pIdCita;
             objCita.IdCliente = pIdCliente;
-            objCita.IdBarbero = pIdBarbero;
+            objCita.IdEmpleado = pIdEmpleado;
             objCita.Fecha = pFecha;
             objCita.Hora = pHora;
             objCita.IdServicio = pIdServicio;
             objCita.Estado = pEstado;
-            //Llamamos al método insertar del suplidor pasándole el objeto creado
-            //y retornando el mensaje que indica si se pudo o no realizar la acción
             return objCita.Insertar(objCita);
-        } //Fin del método Insertar
-        public static string Actualizar(int pIdCita, int pIdCliente, int pIdBarbero, DateTime pFecha,
+        } 
+        public static string Actualizar(int pIdCita, int pIdCliente, int pIdEmpleado, DateTime pFecha,
             DateTime pHora, int pIdServicio, string pEstado)
         {
             CDCita objCita = new CDCita();
             objCita.IdCita = pIdCita;
             objCita.IdCliente = pIdCliente;
-            objCita.IdBarbero = pIdBarbero;
+            objCita.IdEmpleado = pIdEmpleado;
             objCita.Fecha = pFecha;
             objCita.Hora = pHora;
             objCita.IdServicio = pIdServicio;
             objCita.Estado = pEstado;
-            //Llamamos al método insertar del suplidor pasándole el objeto creado
-            //y retornando el mensaje que indica si se pudo o no realizar la acción
             return objCita.Actualizar(objCita);
-        } //Fin del método Actualizar
-          //Método utilizado para obtener un DataTable con todos los datos de la tabla
-          //correspondiente
+        } 
+
         public DataTable ObtenerCita(string miparametro)
         {
             CDCita objCita = new CDCita();
-            DataTable dt = new DataTable(); //creamos un nuevo DataTable
-                                            //El DataTable se llena con todos los datos devueltos
+            DataTable dt = new DataTable(); 
             dt = objCita.CitaConsultar(miparametro);
-            return dt; //Se retorna el DataTable con los datos adquiridos
+            return dt; 
         }
-    }
 
+        public static DataTable ObtenerCitasPorFechaYHora()
+        {
+            try
+            {
+                return new CDCita().ObtenerCitasPorFechaYHora();
+            }
+            catch
+            {
+                return null; 
+            }
+        }
+        public static decimal ObtenerGananciaDiaria()
+        {
+            return new CDCita().ObtenerGananciaDiaria();
+        }
+
+        public static decimal ObtenerGananciasMensuales()
+        {
+            return new CDCita().ObtenerGananciasMensuales();
+        }
+
+        public static decimal ObtenerGananciasSemanales()
+        {
+            return new CDCita().ObtenerGananciasSemanales();
+        }
+    }
 }

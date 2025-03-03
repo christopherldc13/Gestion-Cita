@@ -35,10 +35,9 @@ namespace CapaNegocios
         public DataTable ObtenerPago(string miparametro)
         {
             CDPago objPago = new CDPago();
-            DataTable dt = new DataTable(); //creamos un nuevo DataTable
-                                            //El DataTable se llena con todos los datos devueltos
+            DataTable dt = new DataTable(); 
             dt = objPago.PagoConsultar(miparametro);
-            return dt; //Se retorna el DataTable con los datos adquiridos
+            return dt; 
         }
 
     }

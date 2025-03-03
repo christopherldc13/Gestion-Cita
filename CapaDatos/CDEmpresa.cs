@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Data.Sql;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -70,14 +71,10 @@ namespace CapaDatos
         public string Insertar(CDEmpresa objEmpresa)
         {
             string mensaje = "";
-            //creamos un nuevo objeto de tipo SqlConnection
             SqlConnection sqlCon = new SqlConnection();
-            //trataremos de hacer algunas operaciones con la tabla
             try
             {
-                //asignamos a sqlCon la conexión con las base de datos a traves de la clase que creamos
                 sqlCon.ConnectionString = ConexionDB.miconexion;
-                //Escribo el nombre del procedimiento almacenado que utilizaré, en este caso SuplidorInsertar
                 SqlCommand micomando = new SqlCommand("EmpresaInsertar", sqlCon);
                 sqlCon.Open(); //Abro la conexióna
                                //indico que se ejecutara un procedimiento almacenado
@@ -88,9 +85,8 @@ namespace CapaDatos
                 micomando.Parameters.AddWithValue("@pCorreo", objEmpresa.Correo);
                 micomando.Parameters.AddWithValue("@pLogo", objEmpresa.Logo);
                 micomando.Parameters.AddWithValue("@pEslogan", objEmpresa.Eslogan);
-                //Metodo Insertar
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos insertados correctamente!" :
-                                                 "No se pudo insertar correctamente los datos!";
+                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos de la Empresa insertados correctamente!" :
+                                                 "No se pudo insertar correctamente los datos de la Empresa!";
             }
             catch (Exception ex)
             {
@@ -102,8 +98,8 @@ namespace CapaDatos
                     sqlCon.Close();
             }
             return mensaje;
-        }//Metodo
-         //método para actualizar los datos del Suplidor. Recibirá el objeto objSuplidor como parámetro
+        }
+
         public string Actualizar(CDEmpresa objEmpresa)
         {
             string mensaje = "";
@@ -113,12 +109,16 @@ namespace CapaDatos
                 sqlCon.ConnectionString = ConexionDB.miconexion;
                 SqlCommand micomando = new SqlCommand("EmpresaActualizar", sqlCon);
                 sqlCon.Open();
+                micomando.CommandType = CommandType.StoredProcedure;
+                micomando.Parameters.AddWithValue("@pIdEmpresa", objEmpresa.IdEmpresa);
                 micomando.Parameters.AddWithValue("@pNombre", objEmpresa.Nombre);
                 micomando.Parameters.AddWithValue("@pTelefono", objEmpresa.Telefono);
                 micomando.Parameters.AddWithValue("@pDireccion", objEmpresa.Direccion);
                 micomando.Parameters.AddWithValue("@pCorreo", objEmpresa.Correo);
                 micomando.Parameters.AddWithValue("@pLogo", objEmpresa.Logo);
                 micomando.Parameters.AddWithValue("@pEslogan", objEmpresa.Eslogan);
+                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Pago actualizados correctamente!" :
+                 "No se pudo actualizar correctamente los datos del Pago!";
             }
             catch (Exception ex)
             {
@@ -134,26 +134,53 @@ namespace CapaDatos
         //Método para consultar datos filtrados de la tabla. Se recibe el valor del parámetro
         public DataTable EmpresaConsultar(String miparametro)
         {
-            DataTable dt = new DataTable(); //Se Crea DataTable que tomará los datos de los Suplidores
-            SqlDataReader leerDatos; //Creamos el DataReader
+            DataTable dt = new DataTable(); 
+            SqlDataReader leerDatos; 
             try
             {
-                SqlCommand sqlCmd = new SqlCommand(); //Establecer el comando
-                sqlCmd.Connection = new ConexionDB().dbconexion; //Conexión que va a usar el comando
-                sqlCmd.Connection.Open(); //Se abre la conexión
-                sqlCmd.CommandText = "EmpresaConsultar"; //Nombre del Proc. Almacenado a usar
-                sqlCmd.CommandType = CommandType.StoredProcedure; //Se trata de un proc. almacenado
-                sqlCmd.Parameters.AddWithValue("@pvalor", miparametro); //Se pasa el valor a buscar
-                leerDatos = sqlCmd.ExecuteReader(); //Llenamos el SqlDataReader con los datos resultantes
-                dt.Load(leerDatos); //Se cargan los registros devueltos al DataTable
-                sqlCmd.Connection.Close(); //Se cierra la conexión
+                SqlCommand sqlCmd = new SqlCommand(); 
+                sqlCmd.Connection = new ConexionDB().dbconexion; 
+                sqlCmd.Connection.Open(); 
+                sqlCmd.CommandText = "EmpresaConsultar"; 
+                sqlCmd.CommandType = CommandType.StoredProcedure; 
+                sqlCmd.Parameters.AddWithValue("@pvalor", miparametro);
+                leerDatos = sqlCmd.ExecuteReader(); 
+                dt.Load(leerDatos); 
+                sqlCmd.Connection.Close(); 
             }
             catch (Exception ex)
             {
-                dt = null; //Si ocurre algun error se anula el DataTable
+                dt = null; 
             }
-            return dt; ////Se retorna el DataTable segun lo ocurrido arriba
-        }//Fin del método MostrarConFiltro
+            return dt; 
+        }
 
+        public string ObtenerRutaImagenDesdeBD()
+        {
+            string ruta = "";
+            SqlConnection sqlCon = new SqlConnection(ConexionDB.miconexion);
+
+            try
+            {
+                sqlCon.Open();
+                SqlCommand cmd = new SqlCommand("SELECT Logo FROM Empresa WHERE IdEmpresa = 1", sqlCon);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    ruta = reader["Logo"].ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la imagen: " + ex.Message);
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+            return ruta;
+        }
     }
-}//Fin de la clase CDCliente
+}

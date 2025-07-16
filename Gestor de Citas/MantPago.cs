@@ -11,6 +11,8 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using CapaNegocios;
+using System.Net.Mail;
+using System.Net;
 
 namespace Gestor_de_Citas
 {
@@ -30,10 +32,10 @@ namespace Gestor_de_Citas
         private void MantPago_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("¡Esto hara salir del formulario! \n ¿Seguro que desea hacerlo?",
-                                "Mensaje de JAC",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Warning,
-                                MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                               "Mensaje de" + " " + Program.copyright,
+                               MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question,
+                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 e.Cancel = false;
             else
                 e.Cancel = true;
@@ -44,148 +46,246 @@ namespace Gestor_de_Citas
             //Creamos la instancia del formulario de búsqueda y lo mostramos
             FBuscarCita fConsultaCita = new FBuscarCita();
             fConsultaCita.ShowDialog();
-            if (Program.modificar) //Si se está en modo de edición
+            if (Program.modificar) 
             {
-                RecuperaDatosCita(); //Llamo al método para recuperar el registro seleccionado
-                //BEditar_Click(sender, e); //Llamo al método editar
+                RecuperaDatosCita();
+                cbEstado.SelectedIndex = 0;
+                //BEditar_Click(sender, e); 
             }
-            else //Si no estamos en modo de edición no permite la acción.
+            else 
             {
-                LimpiaObjetos(); //Llama al método LimpiaObjetos
+                //LimpiaObjetos(); 
                 bBuscarCita.Focus();
             }
         }
+
+        //public void RecuperaDatosCita()
+        //{
+        //    string vparametro = Program.vidCita.ToString();
+        //    CNCita cNCita = new CNCita();
+        //    DataTable dt = new DataTable(); //creamos un nuevo DataTable
+        //    dt = cNCita.ObtenerCita(vparametro); //Llenamos el DataTable
+
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+
+        //        tbIdCita.Text = row["ID"].ToString();
+        //        tbIdCliente.Text = row["IdCliente"].ToString();
+        //        tbNombre.Text = row["Cliente"].ToString();
+        //        dtpFecha.Text = row["Fecha"].ToString();
+        //        dtpHora.Text = row["Hora"].ToString();
+        //        tbServicio.Text = row["Servicio"].ToString();
+        //        tbPrecio.Text = row["Precio"].ToString();
+        //        cbEstado.Text = row["Estado"].ToString();
+        //        Program.vidCita = Convert.ToInt32(tbIdCita.Text);
+        //        Program.vidCliente = Convert.ToInt32(tbIdCliente.Text);
+        //    }
+
+        //}
 
         public void RecuperaDatosCita()
         {
             string vparametro = Program.vidCita.ToString();
             CNCita cNCita = new CNCita();
-            DataTable dt = new DataTable(); //creamos un nuevo DataTable
-            dt = cNCita.ObtenerCita(vparametro); //Llenamos el DataTable
+            DataTable dt = new DataTable();
+            dt = cNCita.ObtenerCita(vparametro);
 
-            foreach (DataRow row in dt.Rows)
+            if (dt.Rows.Count > 0)
             {
+                foreach (DataRow row in dt.Rows)
+                {
+                    string estadoCita = row["Estado"].ToString(); // Asegúrate de que el campo se llama "Estado"
 
-                tbIdCita.Text = row["ID"].ToString();
-                tbIdCliente.Text = row["IdCliente"].ToString();
-                tbNombre.Text = row["Cliente"].ToString();
-                dtpFecha.Text = row["Fecha"].ToString();
-                dtpHora.Text = row["Hora"].ToString();
-                tbServicio.Text = row["Servicio"].ToString();
-                tbPrecio.Text = row["Precio"].ToString();
-                cbEstado.Text = row["Estado"].ToString();
-                Program.vidCita = Convert.ToInt32(tbIdCita.Text);
-                Program.vidCliente = Convert.ToInt32(tbIdCliente.Text);
+                    // Verificamos si la cita está cancelada
+                    if (estadoCita.Equals("Cancelada", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("No se puede cargar esta cita porque ha sido cancelada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        tbIdCita.Clear();
+                        tbServicio.Clear();
+                        tbPrecio.Clear();
+                        tbIdCliente.Clear();
+                        tbNombre.Clear();
+                        tbCorreo.Clear();
+                        return; // Salimos del método para evitar seguir cargando los datos
+                    }
+
+                    // Verificamos si la cita está marcada como "No Realizada"
+                    if (estadoCita.Equals("No Realizada", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("La cita está vencida y ha sido marcada como 'No Realizada'. No se puede cargar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        tbIdCita.Clear();
+                        tbServicio.Clear();
+                        tbPrecio.Clear();
+                        tbIdCliente.Clear();
+                        tbNombre.Clear();
+                        tbCorreo.Clear();
+                        return; // Salimos del método para evitar seguir cargando los datos
+                    }
+
+                    // Si la cita no está cancelada ni "No Realizada", asignamos los datos a los controles
+                    tbIdCita.Text = row["ID"].ToString();
+                    tbIdCliente.Text = row["IdCliente"].ToString();
+                    tbNombre.Text = row["Cliente"].ToString();
+                    tbCorreo.Text = row["Correo"].ToString();
+                    dtpFecha.Text = row["Fecha"].ToString();
+                    dtpHora.Text = row["Hora"].ToString();
+                    tbServicio.Text = row["Servicio"].ToString();
+                    tbPrecio.Text = row["Precio"].ToString();
+                    cbEstado.Text = estadoCita;
+                    Program.vidCita = Convert.ToInt32(tbIdCita.Text);
+                    Program.vidCliente = Convert.ToInt32(tbIdCliente.Text);
+                }
             }
-
+            else
+            {
+                MessageBox.Show("No se encontró la cita.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BNuevo_Click(object sender, EventArgs e)
         {
-            LimpiaObjetos(); //LLama al método LimpiaObjetos para prepararlos para la nueva entrada
-            Program.nuevo = true; //Se especifica que se agregará un nuevo registro
+            LimpiaObjetos(); 
+            Program.nuevo = true; 
             Program.modificar = false;
-            HabilitaBotones(); //Se habilitan solo aquellos botones que sean necesarios
-            tbConceptoPago.Focus();
-
+            HabilitaBotones(); 
+            cbMetodo.Focus();
         }
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
-
-            if (tbConceptoPago.Text == String.Empty)
+            if (cbMetodo.Text == String.Empty)
             {
-                MessageBox.Show("Debes de Indicar el concepto del Pago de la Cita");
-                tbConceptoPago.Focus();
+                MessageBox.Show("Debes de Indicar el Método de Pago de la Cita");
+                cbMetodo.Focus();
+                return;
             }
             else
             if (cbEstado.Text == String.Empty)
             {
                 MessageBox.Show("Debes de Indicar el Estado del Pago de la Cita");
                 cbEstado.Focus();
+                return;
             }
             else
             if (tbIdCita.Text == String.Empty)
             {
                 MessageBox.Show("Debes de Indicar el ID de la Cita");
                 bBuscarCita.Focus();
+                return;
             }
             else
             {
-                //Si todo es correcto procede a Insertar o actualizar según corresponda, usaremos las variables globales a toda la solución contenidas en Program.CS
-                if (Program.nuevo)//Si la variable nuevo llega con valor true se van a Insertar nuevos datos
+                if (Program.nuevo)
                 {
 
-                    mensaje = CNPago.Insertar(Program.vidPago, Program.vidCita, tbConceptoPago.Text, cbEstado.Text);
+                    mensaje = CNPago.Insertar(Program.vidPago, Program.vidCita, cbMetodo.Text, cbEstado.Text);
+                    if (mensaje == "Datos del Pago insertados correctamente!")
+                    {
+                            EnviarCorreoPagoRealizado(
+                            tbCorreo.Text,             // correoDestino
+                            tbNombre.Text,             // nombre
+                            "",                        // apellido (valor vacío)
+                            tbCorreo.Text,             // correoCliente (usamos el mismo que correoDestino)
+                            tbServicio.Text,           // servicio
+                            dtpFecha.Text,             // fecha
+                            dtpHora.Text,              // hora
+                            tbPrecio.Text,             // precio
+                            cbMetodo.Text,             // metodoPago
+                            cbEstado.Text             // estadoPago
+                     // referenciaPago (valor vacío)
+                         );
+                    }
+
+
                 }
                 else
                 {
-                    mensaje = CNPago.Actualizar(Program.vidPago, Program.vidCita, tbConceptoPago.Text, cbEstado.Text);
+                    mensaje = CNPago.Actualizar(Program.vidPago, Program.vidCita, cbMetodo.Text, cbEstado.Text);
+                    if (mensaje == "Datos del Pago actualizados correctamente!")
+                    {
+                        EnviarCorreoPagoActualizado(
+                        tbCorreo.Text,             // correoDestino
+                        tbNombre.Text,             // nombre
+                        "",                        // apellido (valor vacío)
+                        tbCorreo.Text,             // correoCliente (usamos el mismo que correoDestino)
+                        tbServicio.Text,           // servicio
+                        dtpFecha.Text,             // fecha
+                        dtpHora.Text,              // hora
+                        tbPrecio.Text,             // precio
+                        cbMetodo.Text,             // metodoPago
+                        cbEstado.Text             // estadoPago
+                                                  // referenciaPago (valor vacío)
+                     );
+                    }
                 }
 
 
-                MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(mensaje, "Mensaje de " + Program.copyright, MessageBoxButtons.OK, MessageBoxIcon.None);
             }
-            //Se prepara todo para la próxima operación
-            Program.nuevo = false;
-            Program.modificar = false;
-            HabilitaBotones(); //Habilita los objetos y botones correspondientes
-            LimpiaObjetos(); //Llama al método LimpiaObjetos
+            if (mensaje.Contains("insertados correctamente") || mensaje.Contains("actualizados correctamente"))
+            {
+                Program.nuevo = false;
+                Program.modificar = false;
+                HabilitaBotones();
+                LimpiaObjetos();
+            }
         }
 
         private void MantPago_Load(object sender, EventArgs e)
         {
-            Program.nuevo = false; //Valores de las variables globales nuevo y modificar
+            Program.nuevo = false;
             Program.modificar = false;
-            HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
+            HabilitaBotones();
+            dtpHora.CustomFormat = "hh:mm tt";
+            dtpHora.Format = DateTimePickerFormat.Custom;
         }
 
         public void LimpiaObjetos()
         {
-            tbIdPago.Clear(); //Para limpiar TextBox.
-            cbEstado.SelectedItem = 0;
-            tbIdCita.Clear(); //Para limpiar TextBox.
+            tbIdPago.Clear();
+            cbEstado.SelectedIndex = -1;
+            tbIdCita.Clear(); 
             dtpFecha.Value = DateTime.Today;
             dtpHora.Value = DateTime.Today;
             tbServicio.Clear();
             tbPrecio.Clear();
             tbIdCliente.Clear();
             tbNombre.Clear();
-            tbConceptoPago.Clear();
+            tbCorreo.Clear();
+            cbMetodo.SelectedIndex = -1;
 
-        } //Fin del método LimpiaObjetos
-          //Habilita / inhabilita los objetos del formulario segun lo indicado por el parámetro valor
+        } 
+
         private void HabilitaControles(bool valor)
         {
-            tbIdPago.Enabled = false; //la propiedad ReadOnly hace de solo lectura un objeto
+            tbIdPago.Enabled = false;
             cbEstado.Enabled = valor;
             tbIdCita.Enabled = false;
             dtpFecha.Enabled = false;
             dtpHora.Enabled = false;
             tbServicio.Enabled = false;
             tbPrecio.Enabled = false;
-            tbConceptoPago.Enabled = valor;
+            cbMetodo.Enabled = valor;
             tbIdCliente.Enabled = false;
             tbNombre.Enabled = false;
+            tbCorreo.Enabled = false;
             if (Program.nuevo)
                 cbEstado.SelectedIndex = 0;
-        } //Fin del método HabilitaControl
+        } 
 
         private void BCancelar_Click(object sender, EventArgs e)
         {
             Program.nuevo = false;
             Program.modificar = false;
-            HabilitaBotones(); //Habilita los objetos y botones correspondientes
-            LimpiaObjetos(); //Llama al método LimpiaObjetos
-
+            HabilitaBotones(); 
+            LimpiaObjetos(); 
         }
 
         private void BEditar_Click(object sender, EventArgs e)
         {
-            //Si no ha seleccionado un Suplidor no se puede modificar
             if (!tbIdPago.Equals(""))
             {
-                Program.modificar = true; //el formulaario se prepara para modificar datos
+                Program.modificar = true; 
                 HabilitaBotones();
             }
             else
@@ -196,54 +296,87 @@ namespace Gestor_de_Citas
 
         private void BBuscar_Click(object sender, EventArgs e)
         {
-            //Creamos la instancia del formulario de búsqueda y lo mostramos
             FBuscarPago fBuscarPago = new FBuscarPago();
             fBuscarPago.ShowDialog();
             if (Program.modificar) //Si se está en modo de edición
             {
-                RecuperaDatosPago(); //Llamo al método para recuperar el registro seleccionado
-                BEditar_Click(sender, e); //Llamo al método editar
+                RecuperaDatosPago(); 
+                //BEditar_Click(sender, e); 
             }
-            else //Si no estamos en modo de edición no permite la acción.
+            else 
             {
-                LimpiaObjetos(); //Llama al método LimpiaObjetos
+                LimpiaObjetos();
                 bBuscarCita.Focus();
             }
         }
+
+        //public void RecuperaDatosPago()
+        //{
+        //    string vparametro = Program.vidPago.ToString();
+        //    CNPago cNPago = new CNPago();
+        //    DataTable dt = new DataTable(); 
+        //    dt = cNPago.ObtenerPago(vparametro); 
+
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+        //        tbIdPago.Text = row["ID"].ToString();
+        //        tbConceptoPago.Text = row["Concepto Pago"].ToString();
+        //        cbEstado.Text = row["Estado"].ToString();
+        //        tbIdCita.Text = row["ID Cita"].ToString();
+        //        dtpFecha.Text = row["Fecha"].ToString();
+        //        dtpHora.Text = row["Hora"].ToString();
+        //        tbPrecio.Text = row["Precio"].ToString();
+        //        tbServicio.Text = row["Servicio"].ToString();
+        //        tbIdCliente.Text = row["ID Cliente"].ToString();
+        //        tbNombre.Text = row["Cliente"].ToString();
+        //        Program.vidCita = Convert.ToInt32(tbIdCita.Text);
+        //        Program.vidPago = Convert.ToInt32(tbIdPago.Text);
+        //    }
+        //} 
 
         public void RecuperaDatosPago()
         {
             string vparametro = Program.vidPago.ToString();
             CNPago cNPago = new CNPago();
-            DataTable dt = new DataTable(); //creamos un nuevo DataTable
-            dt = cNPago.ObtenerPago(vparametro); //Llenamos el DataTable
-                                                 //Recorremos cada fila del DataTable asignando a los controles de edición los valores de
-                                                 //los campos correspondientes
+            DataTable dt = new DataTable();
+            dt = cNPago.ObtenerPago(vparametro);
+
             foreach (DataRow row in dt.Rows)
             {
+                string estadoPago = row["Estado"].ToString();
 
-                tbIdPago.Text = row["ID"].ToString();
-                tbConceptoPago.Text = row["Concepto Pago"].ToString();
-                cbEstado.Text = row["Estado"].ToString();
-                tbIdCita.Text = row["ID Cita"].ToString();
-                dtpFecha.Text = row["Fecha"].ToString();
-                dtpHora.Text = row["Hora"].ToString();
-                tbIdCliente.Text = row["ID Cliente"].ToString();
-                tbNombre.Text = row["Cliente"].ToString();
-                Program.vidCita = Convert.ToInt32(tbIdCita.Text);
-                Program.vidPago = Convert.ToInt32(tbIdPago.Text);
-
+                if (Program.Rol == "SuperAdmin" || Program.Rol == "Admin" || estadoPago == "Pendiente")
+                {
+                    tbIdPago.Text = row["ID"].ToString();
+                    cbMetodo.Text = row["Concepto Pago"].ToString();
+                    cbEstado.Text = estadoPago;
+                    tbIdCita.Text = row["ID Cita"].ToString();
+                    dtpFecha.Text = row["Fecha"].ToString();
+                    dtpHora.Text = row["Hora"].ToString();
+                    tbPrecio.Text = row["Precio"].ToString();
+                    tbServicio.Text = row["Servicio"].ToString();
+                    tbIdCliente.Text = row["ID Cliente"].ToString();
+                    tbNombre.Text = row["Cliente"].ToString();
+                    tbCorreo.Text = row["Correo"].ToString();
+                    Program.vidCita = Convert.ToInt32(tbIdCita.Text);
+                    Program.vidPago = Convert.ToInt32(tbIdPago.Text);
+                }
+                else if (estadoPago == "Pagado")
+                {
+                    MessageBox.Show("No tienes suficientes privilegios para cargar estos datos.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
+            BEditar_Click(sender: null, e: null);
+        }
 
-        } //Fin del metodo RecuperarDatos
 
         private void MantPago_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Esto evita que el sonido de la tecla sea reproducido
+                e.SuppressKeyPress = true; 
                 SendKeys.Send("{TAB}");
-
             }
         }
 
@@ -256,7 +389,7 @@ namespace Gestor_de_Citas
         {
             if (Program.nuevo || Program.modificar)
             {
-                HabilitaControles(true); //Llamada al método para habilitar los objetos
+                HabilitaControles(true); 
                 BNuevo.Enabled = false;
                 BGuardar.Enabled = true;
                 BEditar.Enabled = false;
@@ -265,15 +398,143 @@ namespace Gestor_de_Citas
             }
             else
             {
-                HabilitaControles(false); //Llamada al método para inhabilitar los objetos
+                HabilitaControles(false); 
                 BNuevo.Enabled = true;
                 BGuardar.Enabled = false;
                 BEditar.Enabled = false;
                 BBuscar.Enabled = true;
                 BCancelar.Enabled = false;
             }
-
         }
+
+        private void EnviarCorreoPagoRealizado(
+            string correoDestino,
+            string nombre,
+            string apellido,
+            string correoCliente,
+            string servicio,
+            string fecha,
+            string hora,
+            string precio,
+            string metodoPago,
+            string estadoPago
+        )
+        {
+            try
+            {
+                MailAddress addressFrom = new MailAddress("g.cita.express@gmail.com", "CitaExpress");
+                MailAddress addressTo = new MailAddress(correoDestino);
+                MailMessage message = new MailMessage(addressFrom, addressTo);
+
+                message.Subject = "Confirmación de Pago - CitaExpress";
+                message.IsBodyHtml = true;
+
+                message.Body = $@"
+                <div style='font-family: Arial, sans-serif; color: #333; padding: 20px;'>
+                    <h2 style='color: #28a745;'>Hola {nombre},</h2>
+                    <p>Hemos recibido tu pago en <strong>CitaExpress</strong>. A continuación, los detalles de tu transacción:</p>
+
+                    <h3 style='margin-top: 20px;'>💳 Detalles del Pago:</h3>
+                    <ul style='line-height: 1.8;'>
+                        <li><strong>Nombre del cliente:</strong> {nombre} {apellido}</li>
+                        <li><strong>Correo del cliente:</strong> {correoCliente}</li>
+                        <li><strong>Servicio pagado:</strong> {servicio}</li>
+                        <li><strong>Fecha de la cita:</strong> {fecha}</li>
+                        <li><strong>Hora de la cita:</strong> {hora}</li>
+                        <li><strong>Monto pagado:</strong> RD${precio}</li>
+                        <li><strong>Método de pago:</strong> {metodoPago}</li>
+                        <li><strong>Estado del pago:</strong> {estadoPago}</li>
+                    </ul>
+
+                    <p style='margin-top: 20px;'>Gracias por confiar en nosotros. Si tienes alguna pregunta, no dudes en contactarnos.</p>
+
+                    <br/>
+                    <p style='color: #888;'>Este mensaje fue enviado automáticamente. Por favor, no respondas a este correo.</p>
+                    <hr/>
+                    <p style='font-size: 12px;'>© {DateTime.Now.Year} CitaExpress. Todos los derechos reservados.</p>
+                </div>";
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    EnableSsl = true,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("g.cita.express@gmail.com", "lwff mklg eryo ekqu")
+                };
+
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al enviar el correo de pago: " + ex.Message);
+            }
+        }
+
+        private void EnviarCorreoPagoActualizado(
+            string correoDestino,
+            string nombre,
+            string apellido,
+            string correoCliente,
+            string servicio,
+            string fecha,
+            string hora,
+            string precio,
+            string metodoPago,
+            string estadoPago
+            )
+        {
+            try
+            {
+                MailAddress addressFrom = new MailAddress("g.cita.express@gmail.com", "CitaExpress");
+                MailAddress addressTo = new MailAddress(correoDestino);
+                MailMessage message = new MailMessage(addressFrom, addressTo);
+
+                message.Subject = "Actualización de Pago - CitaExpress";
+                message.IsBodyHtml = true;
+
+                message.Body = $@"
+                <div style='font-family: Arial, sans-serif; color: #333; padding: 20px;'>
+                    <h2 style='color: #ffc107;'>Hola {nombre},</h2>
+                    <p>Queremos informarte que se ha realizado una <strong>actualización en los detalles de tu pago</strong> en <strong>CitaExpress</strong>. A continuación, te presentamos la información actualizada:</p>
+
+                    <h3 style='margin-top: 20px;'>📋 Detalles Actualizados del Pago:</h3>
+                    <ul style='line-height: 1.8;'>
+                        <li><strong>Nombre del cliente:</strong> {nombre} {apellido}</li>
+                        <li><strong>Correo del cliente:</strong> {correoCliente}</li>
+                        <li><strong>Servicio:</strong> {servicio}</li>
+                        <li><strong>Fecha de la cita:</strong> {fecha}</li>
+                        <li><strong>Hora de la cita:</strong> {hora}</li>
+                        <li><strong>Monto:</strong> RD${precio}</li>
+                        <li><strong>Método de pago:</strong> {metodoPago}</li>
+                        <li><strong>Estado del pago:</strong> {estadoPago}</li>
+                    </ul>
+
+                    <p style='margin-top: 20px;'>Gracias por mantenerte al tanto. Si tienes dudas, no dudes en contactarnos.</p>
+
+                    <br/>
+                    <p style='color: #888;'>Este mensaje fue enviado automáticamente. Por favor, no respondas a este correo.</p>
+                    <hr/>
+                    <p style='font-size: 12px;'>© {DateTime.Now.Year} CitaExpress. Todos los derechos reservados.</p>
+                </div>";
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    EnableSsl = true,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("g.cita.express@gmail.com", "lwff mklg eryo ekqu")
+                };
+
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al enviar el correo de actualización de pago: " + ex.Message);
+            }
+        }
+
+
+
 
     }
 }

@@ -287,13 +287,23 @@ namespace Gestor_de_Citas {
             
             private global::System.Data.DataColumn columnHora;
             
-            private global::System.Data.DataColumn columnNombre_Servicio;
+            private global::System.Data.DataColumn columnNombreServicio;
             
             private global::System.Data.DataColumn columnPrecio;
             
-            private global::System.Data.DataColumn columnConcepto_Pago;
+            private global::System.Data.DataColumn columnConceptoPago;
             
             private global::System.Data.DataColumn columnEstado;
+            
+            private global::System.Data.DataColumn columnEmpresa;
+            
+            private global::System.Data.DataColumn columnDireccion;
+            
+            private global::System.Data.DataColumn columnTelefono;
+            
+            private global::System.Data.DataColumn columnCorreo;
+            
+            private global::System.Data.DataColumn columnEslogan;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -362,9 +372,9 @@ namespace Gestor_de_Citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Nombre_ServicioColumn {
+            public global::System.Data.DataColumn NombreServicioColumn {
                 get {
-                    return this.columnNombre_Servicio;
+                    return this.columnNombreServicio;
                 }
             }
             
@@ -378,9 +388,9 @@ namespace Gestor_de_Citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Concepto_PagoColumn {
+            public global::System.Data.DataColumn ConceptoPagoColumn {
                 get {
-                    return this.columnConcepto_Pago;
+                    return this.columnConceptoPago;
                 }
             }
             
@@ -389,6 +399,46 @@ namespace Gestor_de_Citas {
             public global::System.Data.DataColumn EstadoColumn {
                 get {
                     return this.columnEstado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EmpresaColumn {
+                get {
+                    return this.columnEmpresa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DireccionColumn {
+                get {
+                    return this.columnDireccion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TelefonoColumn {
+                get {
+                    return this.columnTelefono;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CorreoColumn {
+                get {
+                    return this.columnCorreo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EsloganColumn {
+                get {
+                    return this.columnEslogan;
                 }
             }
             
@@ -429,27 +479,25 @@ namespace Gestor_de_Citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PagoEstadoRow AddPagoEstadoRow(string Cliente, System.DateTime Fecha, System.TimeSpan Hora, string Nombre_Servicio, int Precio, string Concepto_Pago, string Estado) {
+            public PagoEstadoRow AddPagoEstadoRow(string Cliente, System.DateTime Fecha, System.TimeSpan Hora, string NombreServicio, int Precio, string ConceptoPago, string Estado, string Empresa, string Direccion, string Telefono, string Correo, string Eslogan) {
                 PagoEstadoRow rowPagoEstadoRow = ((PagoEstadoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Cliente,
                         Fecha,
                         Hora,
-                        Nombre_Servicio,
+                        NombreServicio,
                         Precio,
-                        Concepto_Pago,
-                        Estado};
+                        ConceptoPago,
+                        Estado,
+                        Empresa,
+                        Direccion,
+                        Telefono,
+                        Correo,
+                        Eslogan};
                 rowPagoEstadoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPagoEstadoRow);
                 return rowPagoEstadoRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PagoEstadoRow FindByID(int ID) {
-                return ((PagoEstadoRow)(this.Rows.Find(new object[] {
-                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -473,10 +521,15 @@ namespace Gestor_de_Citas {
                 this.columnCliente = base.Columns["Cliente"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnHora = base.Columns["Hora"];
-                this.columnNombre_Servicio = base.Columns["Nombre Servicio"];
+                this.columnNombreServicio = base.Columns["NombreServicio"];
                 this.columnPrecio = base.Columns["Precio"];
-                this.columnConcepto_Pago = base.Columns["Concepto Pago"];
+                this.columnConceptoPago = base.Columns["ConceptoPago"];
                 this.columnEstado = base.Columns["Estado"];
+                this.columnEmpresa = base.Columns["Empresa"];
+                this.columnDireccion = base.Columns["Direccion"];
+                this.columnTelefono = base.Columns["Telefono"];
+                this.columnCorreo = base.Columns["Correo"];
+                this.columnEslogan = base.Columns["Eslogan"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -490,31 +543,44 @@ namespace Gestor_de_Citas {
                 base.Columns.Add(this.columnFecha);
                 this.columnHora = new global::System.Data.DataColumn("Hora", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHora);
-                this.columnNombre_Servicio = new global::System.Data.DataColumn("Nombre Servicio", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombre_Servicio);
+                this.columnNombreServicio = new global::System.Data.DataColumn("NombreServicio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNombreServicio);
                 this.columnPrecio = new global::System.Data.DataColumn("Precio", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrecio);
-                this.columnConcepto_Pago = new global::System.Data.DataColumn("Concepto Pago", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnConcepto_Pago);
+                this.columnConceptoPago = new global::System.Data.DataColumn("ConceptoPago", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnConceptoPago);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
+                this.columnEmpresa = new global::System.Data.DataColumn("Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmpresa);
+                this.columnDireccion = new global::System.Data.DataColumn("Direccion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDireccion);
+                this.columnTelefono = new global::System.Data.DataColumn("Telefono", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTelefono);
+                this.columnCorreo = new global::System.Data.DataColumn("Correo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCorreo);
+                this.columnEslogan = new global::System.Data.DataColumn("Eslogan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEslogan);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
+                                this.columnID}, false));
                 this.columnID.AutoIncrement = true;
-                this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
                 this.columnCliente.ReadOnly = true;
                 this.columnCliente.MaxLength = 101;
-                this.columnFecha.AllowDBNull = false;
-                this.columnHora.AllowDBNull = false;
-                this.columnNombre_Servicio.AllowDBNull = false;
-                this.columnNombre_Servicio.MaxLength = 50;
-                this.columnPrecio.AllowDBNull = false;
-                this.columnConcepto_Pago.AllowDBNull = false;
-                this.columnConcepto_Pago.MaxLength = 100;
-                this.columnEstado.AllowDBNull = false;
+                this.columnNombreServicio.MaxLength = 50;
+                this.columnConceptoPago.MaxLength = 100;
                 this.columnEstado.MaxLength = 10;
+                this.columnEmpresa.AllowDBNull = false;
+                this.columnEmpresa.MaxLength = 100;
+                this.columnDireccion.AllowDBNull = false;
+                this.columnDireccion.MaxLength = 100;
+                this.columnTelefono.AllowDBNull = false;
+                this.columnTelefono.MaxLength = 14;
+                this.columnCorreo.AllowDBNull = false;
+                this.columnCorreo.MaxLength = 100;
+                this.columnEslogan.AllowDBNull = false;
+                this.columnEslogan.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -659,7 +725,12 @@ namespace Gestor_de_Citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int ID {
                 get {
-                    return ((int)(this[this.tablePagoEstado.IDColumn]));
+                    try {
+                        return ((int)(this[this.tablePagoEstado.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ID\' de la tabla \'PagoEstado\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePagoEstado.IDColumn] = value;
@@ -686,7 +757,12 @@ namespace Gestor_de_Citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime Fecha {
                 get {
-                    return ((global::System.DateTime)(this[this.tablePagoEstado.FechaColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tablePagoEstado.FechaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha\' de la tabla \'PagoEstado\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePagoEstado.FechaColumn] = value;
@@ -697,7 +773,12 @@ namespace Gestor_de_Citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.TimeSpan Hora {
                 get {
-                    return ((global::System.TimeSpan)(this[this.tablePagoEstado.HoraColumn]));
+                    try {
+                        return ((global::System.TimeSpan)(this[this.tablePagoEstado.HoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Hora\' de la tabla \'PagoEstado\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePagoEstado.HoraColumn] = value;
@@ -706,12 +787,17 @@ namespace Gestor_de_Citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Nombre_Servicio {
+            public string NombreServicio {
                 get {
-                    return ((string)(this[this.tablePagoEstado.Nombre_ServicioColumn]));
+                    try {
+                        return ((string)(this[this.tablePagoEstado.NombreServicioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NombreServicio\' de la tabla \'PagoEstado\' es DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tablePagoEstado.Nombre_ServicioColumn] = value;
+                    this[this.tablePagoEstado.NombreServicioColumn] = value;
                 }
             }
             
@@ -719,7 +805,12 @@ namespace Gestor_de_Citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int Precio {
                 get {
-                    return ((int)(this[this.tablePagoEstado.PrecioColumn]));
+                    try {
+                        return ((int)(this[this.tablePagoEstado.PrecioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Precio\' de la tabla \'PagoEstado\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePagoEstado.PrecioColumn] = value;
@@ -728,12 +819,17 @@ namespace Gestor_de_Citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Concepto_Pago {
+            public string ConceptoPago {
                 get {
-                    return ((string)(this[this.tablePagoEstado.Concepto_PagoColumn]));
+                    try {
+                        return ((string)(this[this.tablePagoEstado.ConceptoPagoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ConceptoPago\' de la tabla \'PagoEstado\' es DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tablePagoEstado.Concepto_PagoColumn] = value;
+                    this[this.tablePagoEstado.ConceptoPagoColumn] = value;
                 }
             }
             
@@ -741,11 +837,83 @@ namespace Gestor_de_Citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Estado {
                 get {
-                    return ((string)(this[this.tablePagoEstado.EstadoColumn]));
+                    try {
+                        return ((string)(this[this.tablePagoEstado.EstadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Estado\' de la tabla \'PagoEstado\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePagoEstado.EstadoColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Empresa {
+                get {
+                    return ((string)(this[this.tablePagoEstado.EmpresaColumn]));
+                }
+                set {
+                    this[this.tablePagoEstado.EmpresaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Direccion {
+                get {
+                    return ((string)(this[this.tablePagoEstado.DireccionColumn]));
+                }
+                set {
+                    this[this.tablePagoEstado.DireccionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Telefono {
+                get {
+                    return ((string)(this[this.tablePagoEstado.TelefonoColumn]));
+                }
+                set {
+                    this[this.tablePagoEstado.TelefonoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Correo {
+                get {
+                    return ((string)(this[this.tablePagoEstado.CorreoColumn]));
+                }
+                set {
+                    this[this.tablePagoEstado.CorreoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Eslogan {
+                get {
+                    return ((string)(this[this.tablePagoEstado.EsloganColumn]));
+                }
+                set {
+                    this[this.tablePagoEstado.EsloganColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIDNull() {
+                return this.IsNull(this.tablePagoEstado.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIDNull() {
+                this[this.tablePagoEstado.IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -758,6 +926,78 @@ namespace Gestor_de_Citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetClienteNull() {
                 this[this.tablePagoEstado.ClienteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaNull() {
+                return this.IsNull(this.tablePagoEstado.FechaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaNull() {
+                this[this.tablePagoEstado.FechaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsHoraNull() {
+                return this.IsNull(this.tablePagoEstado.HoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetHoraNull() {
+                this[this.tablePagoEstado.HoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNombreServicioNull() {
+                return this.IsNull(this.tablePagoEstado.NombreServicioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNombreServicioNull() {
+                this[this.tablePagoEstado.NombreServicioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPrecioNull() {
+                return this.IsNull(this.tablePagoEstado.PrecioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPrecioNull() {
+                this[this.tablePagoEstado.PrecioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsConceptoPagoNull() {
+                return this.IsNull(this.tablePagoEstado.ConceptoPagoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetConceptoPagoNull() {
+                this[this.tablePagoEstado.ConceptoPagoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEstadoNull() {
+                return this.IsNull(this.tablePagoEstado.EstadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEstadoNull() {
+                this[this.tablePagoEstado.EstadoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -924,10 +1164,15 @@ namespace Gestor_de_Citas.DataSetPagoEstadoTableAdapters {
             tableMapping.ColumnMappings.Add("Cliente", "Cliente");
             tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("Hora", "Hora");
-            tableMapping.ColumnMappings.Add("Nombre Servicio", "Nombre Servicio");
+            tableMapping.ColumnMappings.Add("NombreServicio", "NombreServicio");
             tableMapping.ColumnMappings.Add("Precio", "Precio");
-            tableMapping.ColumnMappings.Add("Concepto Pago", "Concepto Pago");
+            tableMapping.ColumnMappings.Add("ConceptoPago", "ConceptoPago");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
+            tableMapping.ColumnMappings.Add("Empresa", "Empresa");
+            tableMapping.ColumnMappings.Add("Direccion", "Direccion");
+            tableMapping.ColumnMappings.Add("Telefono", "Telefono");
+            tableMapping.ColumnMappings.Add("Correo", "Correo");
+            tableMapping.ColumnMappings.Add("Eslogan", "Eslogan");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -948,19 +1193,26 @@ namespace Gestor_de_Citas.DataSetPagoEstadoTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FiltroFecha", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetPagoEstado.PagoEstadoDataTable dataTable, string Estado) {
+        public virtual int Fill(DataSetPagoEstado.PagoEstadoDataTable dataTable, string Estado, string FiltroFecha) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Estado == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Estado));
+            }
+            if ((FiltroFecha == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(FiltroFecha));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -973,13 +1225,19 @@ namespace Gestor_de_Citas.DataSetPagoEstadoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetPagoEstado.PagoEstadoDataTable GetData(string Estado) {
+        public virtual DataSetPagoEstado.PagoEstadoDataTable GetData(string Estado, string FiltroFecha) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Estado == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Estado));
+            }
+            if ((FiltroFecha == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(FiltroFecha));
             }
             DataSetPagoEstado.PagoEstadoDataTable dataTable = new DataSetPagoEstado.PagoEstadoDataTable();
             this.Adapter.Fill(dataTable);

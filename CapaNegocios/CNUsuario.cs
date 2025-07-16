@@ -13,26 +13,26 @@ namespace CapaNegocios
 {
     public class CNUsuario
     {
-        public static string Insertar(int pIdUsuario, string pUsuario, string pClave, string pRole,
+        public static string Insertar(int pIdUsuario, string pUsuario, string pClave, int pIdRol,
          string pEstado, int pIdEmpleado)
         {
             CDUsuario objUsuario = new CDUsuario();
             objUsuario.IdUsuario = pIdUsuario;
             objUsuario.Usuario = pUsuario;
             objUsuario.Clave = pClave;
-            objUsuario.Role = pRole;
+            objUsuario.IdRol = pIdRol;
             objUsuario.Estado = pEstado;
             objUsuario.IdEmpleado = pIdEmpleado;
             return objUsuario.Insertar(objUsuario);
         } 
-        public static string Actualizar(int pIdUsuario, string pUsuario, string pClave, string pRole,
+        public static string Actualizar(int pIdUsuario, string pUsuario, string pClave, int pIdRol,
          string pEstado, int pIdEmpleado)
         {
             CDUsuario objUsuario = new CDUsuario();
             objUsuario.IdUsuario = pIdUsuario;
             objUsuario.Usuario = pUsuario;
             objUsuario.Clave = pClave;
-            objUsuario.Role = pRole;
+            objUsuario.IdRol = pIdRol;
             objUsuario.Estado = pEstado;
             objUsuario.IdEmpleado = pIdEmpleado;
 
@@ -47,19 +47,31 @@ namespace CapaNegocios
             return dt; 
         }
 
-        public bool AutenticarUsuario(string usuario, string clave)
+        //public bool AutenticarUsuario(string usuario, string clave)
+        //{
+        //    bool autenticado = false;
+        //    CDUsuario objUsuario = new CDUsuario();
+        //    try
+        //    {
+        //        autenticado = objUsuario.AutenticarUsuario(usuario, clave);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error al autenticar usuario desde la capa de negocios: " + ex.Message);
+        //    }
+        //    return autenticado;
+        //}
+
+        //public string AutenticarUsuario(string usuario, string clave)
+        //{
+        //    CDUsuario objUsuario = new CDUsuario();
+        //    return objUsuario.AutenticarUsuario(usuario, clave);
+        //}
+
+        public (string mensaje, string rol) AutenticarUsuario(string usuario, string clave)
         {
-            bool autenticado = false;
             CDUsuario objUsuario = new CDUsuario();
-            try
-            {
-                autenticado = objUsuario.AutenticarUsuario(usuario, clave);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al autenticar usuario desde la capa de negocios: " + ex.Message);
-            }
-            return autenticado;
+            return objUsuario.AutenticarUsuario(usuario, clave);
         }
     }
 }

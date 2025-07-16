@@ -215,6 +215,7 @@ namespace Gestor_de_Citas
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(196, 20);
             this.tbBuscar.TabIndex = 0;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
             // 
             // panel1
             // 
@@ -230,7 +231,7 @@ namespace Gestor_de_Citas
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(173, 10);
+            this.label1.Location = new System.Drawing.Point(172, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(538, 38);
             this.label1.TabIndex = 0;

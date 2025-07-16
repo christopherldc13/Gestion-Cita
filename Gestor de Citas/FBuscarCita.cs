@@ -22,14 +22,14 @@ namespace Gestor_de_Citas
 
         private void FBuscarCita_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                              "Mensaje de JAC",
-                              MessageBoxButtons.YesNo,
-                              MessageBoxIcon.Question,
-                              MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            //if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
+            //                  "Mensaje de JAC",
+            //                  MessageBoxButtons.YesNo,
+            //                  MessageBoxIcon.Question,
+            //                  MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //    e.Cancel = false;
+            //else
+            //    e.Cancel = true;
         }
 
         private void FBuscarCita_Load(object sender, EventArgs e)
@@ -130,34 +130,84 @@ namespace Gestor_de_Citas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 SendKeys.Send("{TAB}");
             }
+        }
+
+        //private void MostrarDatos()
+        //{
+        //    valorparametro = tbBuscar.Text.Trim();
+        //    CNCita objCita = new CNCita();
+        //    if (objCita.ObtenerCita(valorparametro) != null)
+        //    {
+
+
+        //        string[] headers = { "ID Cita", "ID Cliente", "Cliente", "Apellido", "Teléfono Cliente",
+        //                                 "ID Empleado", "Empleado", "Teléfono Empleado", "Fecha", "Hora",
+        //                                 "ID Servicio", "Servicio", "Precio", "Duración", "Estado" };
+        //        DGVDatos.DataSource = objCita.ObtenerCita(valorparametro);
+        //        DGVDatos.Columns[0].Width = 60; //IdCita
+        //        DGVDatos.Columns[1].Width = 60;//IdCliente
+        //        DGVDatos.Columns[2].Width = 80;//Nombre del Cliente
+        //        DGVDatos.Columns[3].Width = 75;//Apellido
+        //        DGVDatos.Columns[4].Width = 90;//telefono
+        //        DGVDatos.Columns[5].Width = 70;//IdEmpleado
+        //        DGVDatos.Columns[6].Width = 90;//Nombre
+        //        DGVDatos.Columns[7].Width = 100;//telefono
+        //        DGVDatos.Columns[8].Width = 80;//Fecha
+        //        DGVDatos.Columns[9].Width = 70;//Hora
+        //        DGVDatos.Columns[10].Width = 60;//IdServicio
+        //        DGVDatos.Columns[11].Width = 90;//Servicio
+        //        DGVDatos.Columns[12].Width = 50;//Servicio
+        //        DGVDatos.Columns[13].Width = 60;//Servicio
+        //    }
+        //    else
+        //        MessageBox.Show("No se retorno ningun valor!");
+        //    DGVDatos.Refresh();
+        //}
+
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            valorparametro = tbBuscar.Text.Trim(); // Obtener el texto ingresado
+            vtieneparametro = string.IsNullOrEmpty(valorparametro) ? 0 : 1; // Si el texto está vacío, no hay filtro
+
+            MostrarDatos(); // Filtrar y mostrar los datos
         }
 
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();
             CNCita objCita = new CNCita();
-            if (objCita.ObtenerCita(valorparametro) != null)
+
+            var datos = objCita.ObtenerCita(valorparametro);
+
+            if (datos != null)
             {
-                DGVDatos.DataSource = objCita.ObtenerCita(valorparametro);
-                DGVDatos.Columns[0].Width = 60; //IdCita
-                DGVDatos.Columns[1].Width = 60;//IdCliente
-                DGVDatos.Columns[2].Width = 80;//Nombre del Cliente
-                DGVDatos.Columns[3].Width = 80;//Apellido
-                DGVDatos.Columns[4].Width = 90;//telefono
-                DGVDatos.Columns[5].Width = 70;//IdEmpleado
-                DGVDatos.Columns[6].Width = 90;//Nombre
-                DGVDatos.Columns[7].Width = 100;//telefono
-                DGVDatos.Columns[8].Width = 80;//Fecha
-                DGVDatos.Columns[9].Width = 70;//Hora
-                DGVDatos.Columns[10].Width = 60;//IdServicio
-                DGVDatos.Columns[11].Width = 90;//Servicio
-                DGVDatos.Columns[12].Width = 60;//Servicio
+                string[] headers = { "ID Cita", "ID Cliente", "Cliente", "Apellido", "Correo Cliente",
+                             "ID Empleado", "Empleado", "Teléfono Empleado", "Fecha", "Hora",
+                             "ID Servicio", "Servicio", "Precio", "Duración", "Estado" };
+
+                DGVDatos.DataSource = datos;
+                DGVDatos.AllowUserToResizeRows = false;
+                DGVDatos.AllowUserToOrderColumns = false;
+                DGVDatos.AllowUserToResizeColumns = false;
+
+                int[] widths = { 60, 60, 75, 70, 90, 70, 90, 85, 80, 70, 55, 90, 65, 60, 85 };
+
+                for (int i = 0; i < headers.Length && i < DGVDatos.Columns.Count; i++)
+                {
+                    DGVDatos.Columns[i].HeaderText = headers[i];
+                    DGVDatos.Columns[i].Width = widths[i];
+                }
             }
             else
-                MessageBox.Show("No se retorno ningun valor!");
-                DGVDatos.Refresh(); 
+            {
+                MessageBox.Show("No se retornó ningún valor!");
+            }
+
+            DGVDatos.Refresh();
         }
     }
 }

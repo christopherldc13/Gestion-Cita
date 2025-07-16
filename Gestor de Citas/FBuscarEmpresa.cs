@@ -46,35 +46,67 @@ namespace Gestor_de_Citas
 
         private void FConsultaEmpresa_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                               "Mensaje de JAC",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question,
-                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            //if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
+            //                   "Mensaje de JAC",
+            //                   MessageBoxButtons.YesNo,
+            //                   MessageBoxIcon.Question,
+            //                   MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //    e.Cancel = false;
+            //else
+            //    e.Cancel = true;
         }
+
+        //private void MostrarDatos()
+        //{
+        //    valorparametro = tbBuscar.Text.Trim();
+        //    CNEmpresa objEmpresa = new CNEmpresa();
+        //    if (objEmpresa.ObtenerEmpresa(valorparametro) != null)
+        //    {
+        //        DGVDatos.DataSource = objEmpresa.ObtenerEmpresa(valorparametro);
+        //        DGVDatos.Columns[0].Width = 70; //IdEmpresa
+        //        DGVDatos.Columns[1].Width = 200;//Nombre
+        //        DGVDatos.Columns[2].Width = 90;//Telefono
+        //        DGVDatos.Columns[3].Width = 100;//Direccion
+        //        DGVDatos.Columns[4].Width = 125;//Correo
+        //        DGVDatos.Columns[5].Width = 125;//Logo
+        //        DGVDatos.Columns[6].Width = 150;//Eslogan
+        //    }
+        //    else
+        //        MessageBox.Show("No se retorno ningun valor!");
+        //        DGVDatos.Refresh(); 
+        //}
 
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();
             CNEmpresa objEmpresa = new CNEmpresa();
-            if (objEmpresa.ObtenerEmpresa(valorparametro) != null)
+
+            var datos = objEmpresa.ObtenerEmpresa(valorparametro);
+
+            if (datos != null)
             {
-                DGVDatos.DataSource = objEmpresa.ObtenerEmpresa(valorparametro);
-                DGVDatos.Columns[0].Width = 70; 
-                DGVDatos.Columns[1].Width = 200;
-                DGVDatos.Columns[2].Width = 90;
-                DGVDatos.Columns[3].Width = 100;
-                DGVDatos.Columns[4].Width = 125;
-                DGVDatos.Columns[5].Width = 125;
-                DGVDatos.Columns[6].Width = 150;
+                string[] headers = { "ID Empresa", "Nombre", "Teléfono", "Dirección", "Correo", "Logo", "Eslogan" };
+                int[] widths = { 70, 200, 90, 100, 125, 125, 150 };
+
+                DGVDatos.DataSource = datos;
+
+                for (int i = 0; i < headers.Length && i < DGVDatos.Columns.Count; i++)
+                {
+                    DGVDatos.Columns[i].HeaderText = headers[i];
+                    DGVDatos.Columns[i].Width = widths[i];
+                    DGVDatos.AllowUserToResizeRows = false;
+                    DGVDatos.AllowUserToOrderColumns = false;
+                    DGVDatos.AllowUserToResizeColumns = false;
+                }
             }
             else
-                MessageBox.Show("No se retorno ningun valor!");
-                DGVDatos.Refresh(); 
+            {
+                MessageBox.Show("No se retornó ningún valor!");
+            }
+
+            DGVDatos.Refresh();
         }
+
 
         private void DGVDatos_CurrentCellChanged(object sender, EventArgs e)
         {

@@ -38,7 +38,7 @@ namespace Gestor_de_Citas
             this.tbTelefono = new System.Windows.Forms.TextBox();
             this.tbApellido = new System.Windows.Forms.TextBox();
             this.tbNombre = new System.Windows.Forms.TextBox();
-            this.tbIdBarbero = new System.Windows.Forms.TextBox();
+            this.tbIdEmpleado = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -68,12 +68,13 @@ namespace Gestor_de_Citas
             this.PTitulo.Name = "PTitulo";
             this.PTitulo.Size = new System.Drawing.Size(814, 62);
             this.PTitulo.TabIndex = 17;
+            this.PTitulo.Paint += new System.Windows.Forms.PaintEventHandler(this.PTitulo_Paint);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(198, 10);
+            this.label1.Location = new System.Drawing.Point(201, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(408, 38);
             this.label1.TabIndex = 1;
@@ -84,18 +85,20 @@ namespace Gestor_de_Citas
             this.cbEstado.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEstado.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
             this.cbEstado.Location = new System.Drawing.Point(487, 345);
             this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(200, 21);
+            this.cbEstado.Size = new System.Drawing.Size(200, 25);
             this.cbEstado.TabIndex = 43;
             this.toolTip1.SetToolTip(this.cbEstado, "Estado del Empleado");
             // 
             // tbDisponibilidad
             // 
+            this.tbDisponibilidad.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDisponibilidad.Location = new System.Drawing.Point(438, 195);
             this.tbDisponibilidad.Multiline = true;
             this.tbDisponibilidad.Name = "tbDisponibilidad";
@@ -105,35 +108,39 @@ namespace Gestor_de_Citas
             // 
             // tbTelefono
             // 
+            this.tbTelefono.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTelefono.Location = new System.Drawing.Point(82, 363);
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(224, 20);
+            this.tbTelefono.Size = new System.Drawing.Size(224, 24);
             this.tbTelefono.TabIndex = 41;
             this.toolTip1.SetToolTip(this.tbTelefono, "Telefono del Empleado");
             // 
             // tbApellido
             // 
+            this.tbApellido.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbApellido.Location = new System.Drawing.Point(82, 281);
             this.tbApellido.Name = "tbApellido";
-            this.tbApellido.Size = new System.Drawing.Size(224, 20);
+            this.tbApellido.Size = new System.Drawing.Size(224, 24);
             this.tbApellido.TabIndex = 40;
             this.toolTip1.SetToolTip(this.tbApellido, "Apellido del Empleado");
             // 
             // tbNombre
             // 
+            this.tbNombre.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNombre.Location = new System.Drawing.Point(82, 200);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(224, 20);
+            this.tbNombre.Size = new System.Drawing.Size(224, 24);
             this.tbNombre.TabIndex = 39;
             this.toolTip1.SetToolTip(this.tbNombre, "Nombre del Empleado");
             // 
-            // tbIdBarbero
+            // tbIdEmpleado
             // 
-            this.tbIdBarbero.Location = new System.Drawing.Point(172, 111);
-            this.tbIdBarbero.Name = "tbIdBarbero";
-            this.tbIdBarbero.Size = new System.Drawing.Size(142, 20);
-            this.tbIdBarbero.TabIndex = 38;
-            this.toolTip1.SetToolTip(this.tbIdBarbero, "Id del Empleado");
+            this.tbIdEmpleado.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdEmpleado.Location = new System.Drawing.Point(173, 109);
+            this.tbIdEmpleado.Name = "tbIdEmpleado";
+            this.tbIdEmpleado.Size = new System.Drawing.Size(142, 24);
+            this.tbIdEmpleado.TabIndex = 38;
+            this.toolTip1.SetToolTip(this.tbIdEmpleado, "Id del Empleado");
             // 
             // label7
             // 
@@ -340,7 +347,7 @@ namespace Gestor_de_Citas
             this.Controls.Add(this.tbTelefono);
             this.Controls.Add(this.tbApellido);
             this.Controls.Add(this.tbNombre);
-            this.Controls.Add(this.tbIdBarbero);
+            this.Controls.Add(this.tbIdEmpleado);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -378,7 +385,7 @@ namespace Gestor_de_Citas
         private System.Windows.Forms.TextBox tbTelefono;
         private System.Windows.Forms.TextBox tbApellido;
         private System.Windows.Forms.TextBox tbNombre;
-        private System.Windows.Forms.TextBox tbIdBarbero;
+        private System.Windows.Forms.TextBox tbIdEmpleado;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;

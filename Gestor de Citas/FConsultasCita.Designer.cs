@@ -216,6 +216,7 @@ namespace Gestor_de_Citas
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(196, 20);
             this.tbBuscar.TabIndex = 0;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
             // 
             // panel1
             // 
@@ -231,7 +232,7 @@ namespace Gestor_de_Citas
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(330, 12);
+            this.label1.Location = new System.Drawing.Point(335, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(483, 38);
             this.label1.TabIndex = 0;
@@ -256,6 +257,7 @@ namespace Gestor_de_Citas
             this.Text = "Consulta de Citas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FConsultasCita_FormClosing);
             this.Load += new System.EventHandler(this.FConsultasCita_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FConsultasCita_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.DGVDatos)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

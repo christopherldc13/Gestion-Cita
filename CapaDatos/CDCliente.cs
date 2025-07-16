@@ -61,6 +61,86 @@ namespace CapaDatos
             set { dEstado = value; }
         }
 
+        //public string Insertar(CDCliente objCliente)
+        //{
+        //    string mensaje = "";
+        //    SqlConnection sqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand micomando = new SqlCommand("ClienteInsertar", sqlCon);
+        //        sqlCon.Open(); //Abro la conexión
+        //                       //indico que se ejecutara un procedimiento almacenado
+        //        micomando.CommandType = CommandType.StoredProcedure;
+        //        micomando.Parameters.AddWithValue("@pNombre", objCliente.Nombre);
+        //        micomando.Parameters.AddWithValue("@pApellido", objCliente.Apellido);
+        //        micomando.Parameters.AddWithValue("@pTelefono", objCliente.Telefono);
+        //        micomando.Parameters.AddWithValue("@pCorreo", objCliente.Correo);
+        //        micomando.Parameters.AddWithValue("@pEstado", objCliente.Estado);
+        //        mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Cliente insertados correctamente!" :
+        //                                                     "No se pudo insertar correctamente los datos del Cliente!";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mensaje = ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //            sqlCon.Close();
+        //    }
+        //    return mensaje;
+        //}
+
+        //public string Insertar(CDCliente objCliente)
+        //{
+        //    string mensaje = "";
+        //    SqlConnection sqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand micomando = new SqlCommand("ClienteInsertar", sqlCon);
+        //        sqlCon.Open();
+        //        micomando.CommandType = CommandType.StoredProcedure;
+        //        micomando.Parameters.AddWithValue("@pNombre", objCliente.Nombre);
+        //        micomando.Parameters.AddWithValue("@pApellido", objCliente.Apellido);
+        //        micomando.Parameters.AddWithValue("@pTelefono", objCliente.Telefono);
+        //        micomando.Parameters.AddWithValue("@pCorreo", objCliente.Correo);
+        //        micomando.Parameters.AddWithValue("@pEstado", objCliente.Estado);
+
+        //        SqlParameter outputId = new SqlParameter("@pIdCliente", SqlDbType.Int);
+        //        outputId.Direction = ParameterDirection.Output;
+        //        micomando.Parameters.Add(outputId);
+
+        //        int result = micomando.ExecuteNonQuery();
+        //        if (result > 0)
+        //        {
+        //            mensaje = "Datos del Cliente insertados correctamente!";
+        //        }
+        //        else
+        //        {
+        //            mensaje = "No se pudo insertar correctamente los datos del Cliente!";
+        //        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        if (ex.Number == 50000) // Número de error lanzado por RAISERROR
+        //        {
+        //            mensaje = "Error: Este Cliente ya esta Registrado en el Sistema.";
+        //        }
+        //        else
+        //        {
+        //            mensaje = ex.Message;
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //            sqlCon.Close();
+        //    }
+        //    return mensaje;
+        //}
+
         public string Insertar(CDCliente objCliente)
         {
             string mensaje = "";
@@ -69,18 +149,26 @@ namespace CapaDatos
             {
                 sqlCon.ConnectionString = ConexionDB.miconexion;
                 SqlCommand micomando = new SqlCommand("ClienteInsertar", sqlCon);
-                sqlCon.Open(); //Abro la conexión
-                               //indico que se ejecutara un procedimiento almacenado
+                sqlCon.Open();
                 micomando.CommandType = CommandType.StoredProcedure;
                 micomando.Parameters.AddWithValue("@pNombre", objCliente.Nombre);
                 micomando.Parameters.AddWithValue("@pApellido", objCliente.Apellido);
                 micomando.Parameters.AddWithValue("@pTelefono", objCliente.Telefono);
                 micomando.Parameters.AddWithValue("@pCorreo", objCliente.Correo);
                 micomando.Parameters.AddWithValue("@pEstado", objCliente.Estado);
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Cliente insertados correctamente!" :
-                                                             "No se pudo insertar correctamente los datos del Cliente!";
+
+                SqlParameter outputId = new SqlParameter("@pIdCliente", SqlDbType.Int);
+                outputId.Direction = ParameterDirection.Output;
+                micomando.Parameters.Add(outputId);
+
+                micomando.ExecuteNonQuery();
+
+                if (outputId.Value != DBNull.Value)
+                {
+                    mensaje = "Datos del Cliente insertados correctamente!";
+                }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 mensaje = ex.Message;
             }
@@ -91,6 +179,90 @@ namespace CapaDatos
             }
             return mensaje;
         }
+
+
+
+        //public string Actualizar(CDCliente objCliente)
+        //{
+        //    string mensaje = "";
+        //    SqlConnection sqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand micomando = new SqlCommand("ClienteActualizar", sqlCon);
+        //        sqlCon.Open();
+        //        micomando.CommandType = CommandType.StoredProcedure;
+        //        micomando.Parameters.AddWithValue("@pIdCliente", objCliente.IdCliente);
+        //        micomando.Parameters.AddWithValue("@pNombre", objCliente.Nombre);
+        //        micomando.Parameters.AddWithValue("@pApellido", objCliente.Apellido);
+        //        micomando.Parameters.AddWithValue("@pTelefono", objCliente.Telefono);
+        //        micomando.Parameters.AddWithValue("@pCorreo", objCliente.Correo);
+        //        micomando.Parameters.AddWithValue("@pEstado", objCliente.Estado);
+        //        mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Cliente actualizados correctamente!" :
+        //         "No se pudo actualizar correctamente los datos del Cliente!";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mensaje = ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //            sqlCon.Close();
+        //    }
+        //    return mensaje;
+        //}
+
+        //public string Actualizar(CDCliente objCliente)
+        //{
+        //    string mensaje = "";
+        //    SqlConnection sqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand micomando = new SqlCommand("ClienteActualizar", sqlCon);
+        //        sqlCon.Open();
+        //        micomando.CommandType = CommandType.StoredProcedure;
+        //        micomando.Parameters.AddWithValue("@pIdCliente", objCliente.IdCliente);
+        //        micomando.Parameters.AddWithValue("@pNombre", objCliente.Nombre);
+        //        micomando.Parameters.AddWithValue("@pApellido", objCliente.Apellido);
+        //        micomando.Parameters.AddWithValue("@pTelefono", objCliente.Telefono);
+        //        micomando.Parameters.AddWithValue("@pCorreo", objCliente.Correo);
+        //        micomando.Parameters.AddWithValue("@pEstado", objCliente.Estado);
+
+        //        int result = micomando.ExecuteNonQuery();
+
+        //        if (result > 0)
+        //        {
+        //            mensaje = "Datos del Cliente actualizados correctamente!";
+        //        }
+        //        else
+        //        {
+        //            mensaje = "No se pudo actualizar correctamente los datos del Cliente!";
+        //        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        if (ex.Number == 50000) // Error lanzado por RAISERROR en SQL
+        //        {
+        //            mensaje = "Error: " + ex.Message;
+        //        }
+        //        else
+        //        {
+        //            mensaje = "Error SQL: " + ex.Message;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mensaje = "Error en la aplicación: " + ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //            sqlCon.Close();
+        //    }
+        //    return mensaje;
+        //}
 
         public string Actualizar(CDCliente objCliente)
         {
@@ -108,10 +280,15 @@ namespace CapaDatos
                 micomando.Parameters.AddWithValue("@pTelefono", objCliente.Telefono);
                 micomando.Parameters.AddWithValue("@pCorreo", objCliente.Correo);
                 micomando.Parameters.AddWithValue("@pEstado", objCliente.Estado);
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Cliente actualizados correctamente!" :
-                 "No se pudo actualizar correctamente los datos del Cliente!";
+
+                int result = micomando.ExecuteNonQuery();
+
+                if (result > 0)
+                {
+                    mensaje = "Datos del Cliente actualizados correctamente!";
+                }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 mensaje = ex.Message;
             }
@@ -123,7 +300,6 @@ namespace CapaDatos
             return mensaje;
         }
 
-        //Método para consultar datos filtrados de la tabla. Se recibe el valor del parámetro
         public DataTable ClienteConsultar(String miparametro)
         {
             DataTable dt = new DataTable(); 
@@ -138,13 +314,44 @@ namespace CapaDatos
                 sqlCmd.Parameters.AddWithValue("@pvalor", miparametro); 
                 leerDatos = sqlCmd.ExecuteReader(); 
                 dt.Load(leerDatos); 
-                sqlCmd.Connection.Close(); //Se cierra la conexión
+                sqlCmd.Connection.Close(); 
             }
             catch (Exception ex)
             {
                 dt = null; //Si ocurre algun error se anula el DataTable
             }
             return dt; 
-        } 
+        }
+
+        //Cuadro de Cliente: Cliente activos
+        public int ObtenerCantidadClientesActivos()
+        {
+            int cantidad = 0;
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon.ConnectionString = ConexionDB.miconexion;
+                SqlCommand micomando = new SqlCommand("CantidadCliente", sqlCon);
+                micomando.CommandType = CommandType.StoredProcedure;
+                sqlCon.Open();
+
+                object resultado = micomando.ExecuteScalar();
+                if (resultado != null && resultado != DBNull.Value)
+                {
+                    cantidad = Convert.ToInt32(resultado);
+                }
+            }
+            catch (Exception ex)
+            {
+                cantidad = -1; // podrías manejarlo con un valor de error si es necesario
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                    sqlCon.Close();
+            }
+            return cantidad;
+        }
+
     }
 }

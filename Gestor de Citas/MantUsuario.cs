@@ -7,11 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//para poder utilizar las instrucciones de SQL
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
-//Para acceder a la capa de negocio
 using CapaNegocios;
 
 namespace Gestor_de_Citas
@@ -22,7 +20,15 @@ namespace Gestor_de_Citas
         public MantUsuario()
         {
             InitializeComponent();
+            tbClave.PasswordChar = '*';
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            tbClave.PasswordChar = checkBox1.Checked ? '\0' : '*';
+        }
+
 
         private void BSalir_Click(object sender, EventArgs e)
         {
@@ -32,10 +38,10 @@ namespace Gestor_de_Citas
         private void MantUsuario_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("¡Esto hara salir del formulario! \n ¿Seguro que desea hacerlo?",
-                                "Mensaje de JAC",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Warning,
-                                MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                               "Mensaje de" + " " + Program.copyright,
+                               MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question,
+                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 e.Cancel = false;
             else
                 e.Cancel = true;
@@ -45,92 +51,113 @@ namespace Gestor_de_Citas
         {
             Program.nuevo = false; //Valores de las variables globales nuevo y modificar
             Program.modificar = false;
-            HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
+            HabilitaBotones(); 
         }
         public void LimpiaObjetos()
         {
-            tbIdUsuario.Clear(); //Para limpiar TextBox.
-            tbUsuario.Clear(); //Para limpiar TextBox.
-            tbClave.Clear(); //Para limpiar TextBox.
-            tbRol.Clear(); //Para limpiar TextBox.
-            cbEstado.SelectedItem = 0; //Para limpiar TextBox.
+            tbIdUsuario.Clear(); 
+            tbUsuario.Clear(); 
+            tbClave.Clear(); 
+            cbEstado.SelectedIndex = -1; 
             tbIdEmpleado.Clear();
-            tbNombreEmpleado.Clear(); //Establece el valor por defecto del Combobox
+            tbNombreEmpleado.Clear(); 
+            tbIdRol.Clear();
+            tbNombreRol.Clear();
         } //Fin del método LimpiaObjetos
 
         private void HabilitaControles(bool valor)
         {
-            tbIdUsuario.ReadOnly = true; //la propiedad ReadOnly hace de solo lectura un objeto
+            tbIdUsuario.Enabled = false ; //la propiedad ReadOnly hace de solo lectura un objeto
             tbUsuario.Enabled = valor; //la propiedad Enabled habilita o inhabilita un objeto
             tbClave.Enabled = valor;
-            tbRol.Enabled = valor;
             cbEstado.Enabled = valor;
             tbIdEmpleado.Enabled = false;
             tbNombreEmpleado.Enabled = false;
+            tbIdRol.Enabled = false;
+            tbNombreRol.Enabled = false;
+            if (Program.nuevo)
+            {
+                cbEstado.SelectedIndex = 0;
+                cbEstado.Enabled = false;
+            }
+           
 
         } //Fin del método HabilitaControles
 
         private void BNuevo_Click(object sender, EventArgs e)
         {
-            LimpiaObjetos(); //LLama al método LimpiaObjetos para prepararlos para la nueva entrada
-            Program.nuevo = true; //Se especifica que se agregará un nuevo registro
+            LimpiaObjetos(); 
+            Program.nuevo = true; 
             Program.modificar = false;
-            HabilitaBotones(); //Se habilitan solo aquellos botones que sean necesarios
-            tbUsuario.Focus(); //Coloca el cursor en el TextBox indicado
+            HabilitaBotones(); 
+            tbUsuario.Focus(); 
+            //cbEstado.SelectedIndex = 0;
         }
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
             //Validamos los datos requeridos entes de Insertar o Actualizar
             if (tbUsuario.Text == String.Empty) //Si el textbox está vacío mostrar un error y ubicar
-            { // el cursor en dicho textbox
-                MessageBox.Show("Debe indicar el Nombre del Empleado!");
+            { 
+                MessageBox.Show("Debe indicar el usuario!");
                 tbUsuario.Focus();
+                return;
             }
             else
             if (tbClave.Text == String.Empty)
             {
-                MessageBox.Show("Debe indicar el Apellido del Empleado!");
+                MessageBox.Show("Debe indicar la clave del usuario!");
                 tbClave.Focus();
-            }
-            else
-            if (tbRol.Text == String.Empty)
-            {
-                MessageBox.Show("Debe indicar el Teléfono del Empleado!");
-                tbRol.Focus();
+                return;
             }
             else
             if (cbEstado.Text == String.Empty)
             {
-                MessageBox.Show("Debe indicar la Disponibilidad del Empleado!");
+                MessageBox.Show("Debe indicar el estado del usuario");
                 cbEstado.Focus();
+                return;
             }
-
+            else
+            if (tbIdRol.Text == String.Empty)
+            {
+                MessageBox.Show("Debe indicar el ID del rol que tendra el usuario!");
+                bBuscarRol.Focus();
+                return;
+            }
+            else
+            if(tbIdEmpleado.Text == String.Empty)
+            {
+                MessageBox.Show("Debe indicar el ID del Empleado al cual registra un usuario");
+                bBuscarEmpleado.Focus();
+                return;
+            }
             else
             {
-                //Si todo es correcto procede a Insertar o actualizar según corresponda, usaremos las variables globales a toda la solución contenidas en Program.CS
+               
                 if (Program.nuevo)//Si la variable nuevo llega con valor true se van a Insertar nuevos datos
                 {
 
                     mensaje = CNUsuario.Insertar(Program.vidUsuario, tbUsuario.Text, tbClave.Text,
-                     tbRol.Text, cbEstado.Text, Program.vidEmpleado);
+                     Program.vidRol, cbEstado.Text, Program.vidEmpleado);
                 }
                 else //de lo contrario se Modificarán los datos del registro correspondiente
                 {
 
                     mensaje = CNUsuario.Actualizar(Program.vidUsuario, tbUsuario.Text, tbClave.Text,
-                     tbRol.Text, cbEstado.Text, Program.vidEmpleado);
+                     Program.vidRol, cbEstado.Text, Program.vidEmpleado);
                 }
                 //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
-                MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                MessageBox.Show(mensaje, "Mensaje de " + Program.copyright, MessageBoxButtons.OK,
+                MessageBoxIcon.None);
 
             }
-            //Se prepara todo para la próxima operación
-            Program.nuevo = false;
-            Program.modificar = false;
-            HabilitaBotones(); //Habilita los objetos y botones correspondientes
-            LimpiaObjetos(); //Llama al método LimpiaObjetos
+            if (mensaje.Contains("insertados correctamente") || mensaje.Contains("actualizados correctamente"))
+            {
+                Program.nuevo = false;
+                Program.modificar = false;
+                HabilitaBotones();
+                LimpiaObjetos();
+            }
         }
 
         private void BBuscar_Click(object sender, EventArgs e)
@@ -161,11 +188,13 @@ namespace Gestor_de_Citas
                 tbIdUsuario.Text = row["ID"].ToString();
                 tbUsuario.Text = row["Usuario"].ToString();
                 tbClave.Text = row["Clave"].ToString();
-                tbRol.Text = row["Role"].ToString();
+                tbIdRol.Text = row["IdRol"].ToString();
+                tbNombreRol.Text = row["Rol"].ToString();
                 cbEstado.Text = row["Estado"].ToString();
                 tbIdEmpleado.Text = row["IDEmp"].ToString();
                 tbNombreEmpleado.Text = row["Nombre"].ToString();
                 Program.vidEmpleado = Convert.ToInt32(tbIdEmpleado.Text);
+                Program.vidRol = Convert.ToInt32(tbIdRol.Text);
 
             }
         } //Fin del metodo RecuperarDatos
@@ -180,7 +209,7 @@ namespace Gestor_de_Citas
             }
             else
             {
-                MessageBox.Show("Debe de buscar un Barbero para poder Modificar sus datos!");
+                MessageBox.Show("Debe de buscar un usuario para poder Modificar sus datos!");
             }
         }
         private void BCancelar_Click(object sender, EventArgs e)
@@ -194,14 +223,14 @@ namespace Gestor_de_Citas
         private void bBuscarEmpleado_Click(object sender, EventArgs e)
         {
             //Creamos la instancia del formulario de búsqueda y lo mostramos
-            FBuscarEmpleado fBuscarBarbero = new FBuscarEmpleado();
-            fBuscarBarbero.ShowDialog();
+            FBuscarEmpleado fBuscarEmpleado = new FBuscarEmpleado();
+            fBuscarEmpleado.ShowDialog();
             if (Program.modificar) //Si se está en modo de edición
             {
                 RecuperaDatosEmpleados(); //Llamo al método para recuperar el registro seleccionado
                 //BEditar_Click(sender, e); //Llamo el método del botón Editar
             }
-            else //Si no estamos en modo de edición no permite la acción.
+            else 
             {
                 //LimpiaObjetos(); //Llama al método LimpiaObjetos
                 //BBuscar.Focus();
@@ -218,8 +247,8 @@ namespace Gestor_de_Citas
             foreach (DataRow row in dt.Rows)
             {
                 tbIdEmpleado.Text = row["ID"].ToString();
-                tbNombreEmpleado.Text = row["Nombre"].ToString();
-                
+                tbNombreEmpleado.Text = row["Nombre"].ToString() + " " + row["Apellido"].ToString();
+
             }
         } //Fin del metodo RecuperarDatos
 
@@ -229,6 +258,48 @@ namespace Gestor_de_Citas
             {
                 e.SuppressKeyPress = true; // Esto evita que el sonido de la tecla sea reproducido
                 SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void bBuscarRol_Click(object sender, EventArgs e)
+        {
+            FBuscarRol fBuscarRol = new FBuscarRol();
+            fBuscarRol.ShowDialog();
+            if (Program.modificar) //Si se está en modo de edición
+            {
+                RecuperaDatosRol(); //Llamo al método para recuperar el registro seleccionado
+                //BEditar_Click(sender, e); //Llamo el método del botón Editar
+            }
+            else //Si no estamos en modo de edición no permite la acción.
+            {
+                //LimpiaObjetos(); //Llama al método LimpiaObjetos
+                //bBuscarRol.Focus();
+            }
+        }
+
+        public void RecuperaDatosRol()
+        {
+            string vparametro = Program.vidRol.ToString();
+            CNRol cNRol = new CNRol();
+            DataTable dt = new DataTable(); // Creamos un nuevo DataTable
+            dt = cNRol.ObtenerRol(vparametro); // Llenamos el DataTable
+
+            // Verificamos si se recuperaron datos
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    // Asignamos los valores a los controles
+                    tbIdRol.Text = row["IdRol"].ToString();
+                    tbNombreRol.Text = row["NombreRol"].ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron datos para el rol con el ID: " + vparametro,
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 
@@ -243,6 +314,7 @@ namespace Gestor_de_Citas
                 BEditar.Enabled = false;
                 BBuscar.Enabled = false;
                 BCancelar.Enabled = true;
+                //cbEstado.SelectedIndex = 0;
             }
             else
             {

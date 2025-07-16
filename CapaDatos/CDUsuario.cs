@@ -12,16 +12,16 @@ namespace CapaDatos
 {
     public class CDUsuario
     {
-        private int dIdUsuario, dIdEmpleado;
-        private String dUsuario, dClave, dRole, dEstado;
+        private int dIdUsuario, dIdEmpleado, dIdRol;
+        private String dUsuario, dClave, dEstado;
 
         public CDUsuario() { }
-        public CDUsuario(int pIdUsuario, string pUsuario, string pClave, string pRole, string pEstado, int pIdEmpleado)
+        public CDUsuario(int pIdUsuario, string pUsuario, string pClave, int pIdRol, string pEstado, int pIdEmpleado)
         {
             this.dIdUsuario = pIdUsuario;
             this.dUsuario = pUsuario;
             this.dClave = pClave;
-            this.dRole = pRole;
+            this.dIdRol = pIdRol;
             this.dEstado = pEstado;
             this.dIdEmpleado = pIdEmpleado;
         }
@@ -43,10 +43,10 @@ namespace CapaDatos
             set { dClave = value; }
         }
 
-        public string Role
+        public int IdRol
         {
-            get { return dRole; }
-            set { dRole = value; }
+            get { return dIdRol; }
+            set { dIdRol = value; }
         }
 
         public string Estado
@@ -61,6 +61,38 @@ namespace CapaDatos
             set { dIdEmpleado = value; }
         }
 
+        //public string Insertar(CDUsuario objUsuario)
+        //{
+        //    string mensaje = "";
+        //    SqlConnection sqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand micomando = new SqlCommand("UsuarioInsertar", sqlCon);
+        //        sqlCon.Open(); //Abro la conexión
+        //                       //indico que se ejecutara un procedimiento almacenado
+        //        micomando.CommandType = CommandType.StoredProcedure;
+        //        micomando.Parameters.AddWithValue("@pIdUsuario", objUsuario.IdUsuario);
+        //        micomando.Parameters.AddWithValue("@pUsuario", objUsuario.Usuario);
+        //        micomando.Parameters.AddWithValue("@pClave", objUsuario.Clave);
+        //        micomando.Parameters.AddWithValue("@pRole", objUsuario.Role);
+        //        micomando.Parameters.AddWithValue("@pEstado", objUsuario.Estado);
+        //        micomando.Parameters.AddWithValue("@pIdEmpleado", objUsuario.IdEmpleado);
+        //        mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Usuario insertados correctamente!" :
+        //                                                     "No se pudo insertar correctamente los datos del Usuario!";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mensaje = ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //            sqlCon.Close();
+        //    }
+        //    return mensaje;
+        //}
+
         public string Insertar(CDUsuario objUsuario)
         {
             string mensaje = "";
@@ -69,19 +101,35 @@ namespace CapaDatos
             {
                 sqlCon.ConnectionString = ConexionDB.miconexion;
                 SqlCommand micomando = new SqlCommand("UsuarioInsertar", sqlCon);
-                sqlCon.Open(); //Abro la conexión
-                               //indico que se ejecutara un procedimiento almacenado
+                sqlCon.Open(); 
                 micomando.CommandType = CommandType.StoredProcedure;
-                micomando.Parameters.AddWithValue("@pIdUsuario", objUsuario.IdUsuario);
+                //micomando.Parameters.AddWithValue("@pIdUsuario", objUsuario.IdUsuario);
                 micomando.Parameters.AddWithValue("@pUsuario", objUsuario.Usuario);
                 micomando.Parameters.AddWithValue("@pClave", objUsuario.Clave);
-                micomando.Parameters.AddWithValue("@pRole", objUsuario.Role);
+                micomando.Parameters.AddWithValue("@pIdRol", objUsuario.IdRol);
                 micomando.Parameters.AddWithValue("@pEstado", objUsuario.Estado);
                 micomando.Parameters.AddWithValue("@pIdEmpleado", objUsuario.IdEmpleado);
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Usuario insertados correctamente!" :
-                                                             "No se pudo insertar correctamente los datos del Usuario!";
+
+                SqlParameter outputId = new SqlParameter("@pIdUsuario", SqlDbType.Int);
+                outputId.Direction = ParameterDirection.Output;
+                micomando.Parameters.Add(outputId);
+
+                // Ejecutar el procedimiento
+                micomando.ExecuteNonQuery();
+
+                // Verificar si el procedimiento almacenado devolvió un error
+                int result = (int)micomando.Parameters["@pIdUsuario"].Value;
+
+                if (result == -1) // El usuario ya existe
+                {
+                    mensaje = "Error: El nombre de usuario ya está registrado.";
+                }
+                else
+                {
+                    mensaje = "Datos del Usuario insertados correctamente!";
+                }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 mensaje = ex.Message;
             }
@@ -101,20 +149,35 @@ namespace CapaDatos
             {
                 sqlCon.ConnectionString = ConexionDB.miconexion;
                 SqlCommand micomando = new SqlCommand("UsuarioActualizar", sqlCon);
-                sqlCon.Open();
                 micomando.CommandType = CommandType.StoredProcedure;
                 micomando.Parameters.AddWithValue("@pIdUsuario", objUsuario.IdUsuario);
                 micomando.Parameters.AddWithValue("@pUsuario", objUsuario.Usuario);
                 micomando.Parameters.AddWithValue("@pClave", objUsuario.Clave);
-                micomando.Parameters.AddWithValue("@pRole", objUsuario.Role);
+                micomando.Parameters.AddWithValue("@pIdRol", objUsuario.IdRol);
                 micomando.Parameters.AddWithValue("@pEstado", objUsuario.Estado);
                 micomando.Parameters.AddWithValue("@pIdEmpleado", objUsuario.IdEmpleado);
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Usuario actualizados correctamente!" :
-                 "No se pudo actualizar correctamente los datos del Usuarrio!";
+
+                sqlCon.Open();
+                micomando.ExecuteNonQuery(); // Ejecutar el procedimiento almacenado
+
+                // Si llega aquí, significa que no hubo errores de RAISERROR
+                mensaje = "Datos del Usuario actualizados correctamente!";
+            }
+            catch (SqlException ex)
+            {
+                // Capturar errores específicos de SQL Server
+                if (ex.Number == 50000) // Número de error para RAISERROR (puedes ajustarlo)
+                {
+                    mensaje = ex.Message; // Obtener el mensaje de RAISERROR
+                }
+                else
+                {
+                    mensaje = "Error de SQL Server: " + ex.Message; // Otros errores de SQL Server
+                }
             }
             catch (Exception ex)
             {
-                mensaje = ex.Message;
+                mensaje = "Error general: " + ex.Message; // Otros errores
             }
             finally
             {
@@ -124,7 +187,57 @@ namespace CapaDatos
             return mensaje;
         }
 
-        //Método para consultar datos filtrados de la tabla. Se recibe el valor del parámetro
+        //public string Actualizar(CDUsuario objUsuario)
+        //{
+        //    string mensaje = "";
+        //    SqlConnection sqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand micomando = new SqlCommand("UsuarioActualizar", sqlCon);
+        //        sqlCon.Open();
+        //        micomando.CommandType = CommandType.StoredProcedure;
+
+        //        // Agregar parámetros al comando
+        //        micomando.Parameters.AddWithValue("@pIdUsuario", objUsuario.IdUsuario);
+        //        micomando.Parameters.AddWithValue("@pUsuario", objUsuario.Usuario);
+        //        micomando.Parameters.AddWithValue("@pClave", objUsuario.Clave);
+        //        micomando.Parameters.AddWithValue("@pIdRol", objUsuario.IdRol);
+        //        micomando.Parameters.AddWithValue("@pEstado", objUsuario.Estado);
+        //        micomando.Parameters.AddWithValue("@pIdEmpleado", objUsuario.IdEmpleado);
+
+        //        // Leer los mensajes del procedimiento
+        //        SqlDataReader reader = micomando.ExecuteReader();
+
+        //        // Comprobar si se encontró un mensaje de éxito
+        //        if (reader.Read())
+        //        {
+        //            mensaje = reader[0].ToString();
+        //        }
+
+        //        reader.Close();
+        //    }
+        //    catch (SqlException sqlEx)
+        //    {
+        //        // Manejo específico de errores SQL
+        //        mensaje = "Error de base de datos: " + sqlEx.Message;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Manejo general de errores
+        //        mensaje = "Error: " + ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //        {
+        //            sqlCon.Close();
+        //        }
+        //    }
+
+        //    return mensaje;
+        //}
+
         public DataTable UsuarioConsultar(String miparametro)
         {
             DataTable dt = new DataTable(); 
@@ -146,39 +259,149 @@ namespace CapaDatos
                 dt = null; 
             }
             return dt; 
-        } 
+        }
 
-        public bool AutenticarUsuario(string usuario, string clave)
+        //public bool AutenticarUsuario(string usuario, string clave)
+        //{
+        //    bool autenticado = false;
+        //    SqlConnection sqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand sqlCommand = new SqlCommand("AutenticarUsuario", sqlCon);
+        //        sqlCommand.CommandType = CommandType.StoredProcedure;
+
+        //        sqlCommand.Parameters.AddWithValue("@Usuario", usuario);
+        //        sqlCommand.Parameters.AddWithValue("@Clave", clave);
+
+        //        sqlCon.Open();
+        //        int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
+
+        //        if (count == 1)
+        //        {
+        //            autenticado = true;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error al autenticar usuario: " + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //            sqlCon.Close();
+        //    }
+        //    return autenticado;
+        //}
+
+        //public string AutenticarUsuario(string usuario, string clave)
+        //{
+        //    string mensaje = "";
+        //    SqlConnection sqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand sqlCommand = new SqlCommand("AutenticarUsuario", sqlCon);
+        //        sqlCommand.CommandType = CommandType.StoredProcedure;
+
+        //        sqlCommand.Parameters.AddWithValue("@Usuario", usuario);
+        //        sqlCommand.Parameters.AddWithValue("@Clave", clave);
+
+        //        sqlCon.Open();
+        //        object result = sqlCommand.ExecuteScalar();
+
+        //        if (result != null)
+        //        {
+        //            mensaje = result.ToString(); // Guardar el mensaje recibido
+        //        }
+        //        else
+        //        {
+        //            mensaje = "Error: No se pudo autenticar el usuario.";
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mensaje = "Error al autenticar usuario: " + ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //            sqlCon.Close();
+        //    }
+        //    return mensaje;
+        //}
+
+        //public (string mensaje, string rol) AutenticarUsuario(string usuario, string clave)
+        //{
+        //    string mensaje = "";
+        //    string rol = "";
+        //    SqlConnection sqlCon = new SqlConnection();
+
+        //    try
+        //    {
+        //        sqlCon.ConnectionString = ConexionDB.miconexion;
+        //        SqlCommand sqlCommand = new SqlCommand("AutenticarUsuario", sqlCon);
+        //        sqlCommand.CommandType = CommandType.StoredProcedure;
+
+        //        sqlCommand.Parameters.AddWithValue("@Usuario", usuario);
+        //        sqlCommand.Parameters.AddWithValue("@Clave", clave);
+
+        //        sqlCon.Open();
+        //        SqlDataReader reader = sqlCommand.ExecuteReader();
+
+        //        if (reader.Read())
+        //        {
+        //            mensaje = reader["Mensaje"].ToString();
+        //            rol = reader["Role"] != DBNull.Value ? reader["Role"].ToString() : "";
+        //        }
+
+        //        reader.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mensaje = "Error al autenticar usuario: " + ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (sqlCon.State == ConnectionState.Open)
+        //            sqlCon.Close();
+        //    }
+
+        //    return (mensaje, rol);
+        //}
+
+        public (string mensaje, string rol) AutenticarUsuario(string usuario, string clave)
         {
-            bool autenticado = false;
-            SqlConnection sqlCon = new SqlConnection();
-            try
+            using (SqlConnection sqlCon = new SqlConnection(ConexionDB.miconexion))
             {
-                sqlCon.ConnectionString = ConexionDB.miconexion;
-                SqlCommand sqlCommand = new SqlCommand("AutenticarUsuario", sqlCon);
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-
-                sqlCommand.Parameters.AddWithValue("@Usuario", usuario);
-                sqlCommand.Parameters.AddWithValue("@Clave", clave);
-
-                sqlCon.Open();
-                int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
-
-                if (count == 1)
+                try
                 {
-                    autenticado = true;
+                    using (SqlCommand sqlCommand = new SqlCommand("AutenticarUsuario", sqlCon))
+                    {
+                        sqlCommand.CommandType = CommandType.StoredProcedure;
+                        sqlCommand.Parameters.AddWithValue("@Usuario", usuario);
+                        sqlCommand.Parameters.AddWithValue("@Clave", clave);
+
+                        sqlCon.Open();
+                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string mensaje = reader["Mensaje"].ToString();
+                                string rol = reader["Rol"] != DBNull.Value ? reader["Rol"].ToString() : "";
+                                return (mensaje, rol);
+                            }
+                        }
+                    }
+
+                    return ("Usuario no encontrado.", ""); // Si no hay resultados
+                }
+                catch (Exception ex)
+                {
+                    return ("Error al autenticar usuario: " + ex.Message, "");
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al autenticar usuario: " + ex.Message);
-            }
-            finally
-            {
-                if (sqlCon.State == ConnectionState.Open)
-                    sqlCon.Close();
-            }
-            return autenticado;
         }
+
     }
-}//Fin de la clase CDCliente
+}

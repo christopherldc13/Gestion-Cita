@@ -118,39 +118,79 @@ namespace Gestor_de_Citas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 SendKeys.Send("{TAB}");
             }
         }
 
         private void FBuscarEmpleado_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                               "Mensaje de JAC",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question,
-                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            //if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
+            //                   "Mensaje de JAC",
+            //                   MessageBoxButtons.YesNo,
+            //                   MessageBoxIcon.Question,
+            //                   MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //    e.Cancel = false;
+            //else
+            //    e.Cancel = true;
+        }
+
+        //private void MostrarDatos()
+        //{
+        //    valorparametro = tbBuscar.Text.Trim();
+        //    CNEmpleado objEmpleado = new CNEmpleado();
+        //    if (objEmpleado.ObtenerEmpleado(valorparametro) != null)
+        //    {
+        //        DGVDatos.DataSource = objEmpleado.ObtenerEmpleado(valorparametro);
+        //        DGVDatos.Columns[0].Width = 70;//IdEmpleado 
+        //        DGVDatos.Columns[1].Width = 100;//Nombre
+        //        DGVDatos.Columns[2].Width = 100;//Apellido
+        //        DGVDatos.Columns[3].Width = 100;//Telefono
+        //        DGVDatos.Columns[4].Width = 190;//Disponibilidad
+        //        DGVDatos.Columns[5].Width = 125;//Estado
+        //    }
+        //    else
+        //        MessageBox.Show("No se retorno ningun valor!");
+        //    DGVDatos.Refresh(); 
+        //}
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            valorparametro = tbBuscar.Text.Trim(); // Obtener el texto ingresado
+            vtieneparametro = string.IsNullOrEmpty(valorparametro) ? 0 : 1; // Si el texto está vacío, no hay filtro
+
+            MostrarDatos(); // Filtrar y mostrar los datos
         }
 
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();
             CNEmpleado objEmpleado = new CNEmpleado();
-            if (objEmpleado.ObtenerEmpleado(valorparametro) != null)
+
+            var datos = objEmpleado.ObtenerEmpleado(valorparametro);
+
+            if (datos != null)
             {
-                DGVDatos.DataSource = objEmpleado.ObtenerEmpleado(valorparametro);
-                DGVDatos.Columns[0].Width = 70; 
-                DGVDatos.Columns[1].Width = 100;
-                DGVDatos.Columns[2].Width = 100;
-                DGVDatos.Columns[3].Width = 100;
-                DGVDatos.Columns[4].Width = 190;
-                DGVDatos.Columns[5].Width = 125;
+                string[] headers = { "ID Empleado", "Nombre", "Apellido", "Teléfono", "Estado" };
+                int[] widths = { 70, 100, 100, 100, 190, 125 };
+
+                DGVDatos.DataSource = datos;
+
+                for (int i = 0; i < headers.Length && i < DGVDatos.Columns.Count; i++)
+                {
+                    DGVDatos.Columns[i].HeaderText = headers[i];
+                    DGVDatos.Columns[i].Width = widths[i];
+                    DGVDatos.AllowUserToResizeRows = false;
+                    DGVDatos.AllowUserToOrderColumns = false;
+                    DGVDatos.AllowUserToResizeColumns = false;
+                }
             }
             else
-                MessageBox.Show("No se retorno ningun valor!");
-            DGVDatos.Refresh(); 
+            {
+                MessageBox.Show("No se retornó ningún valor!");
+            }
+
+            DGVDatos.Refresh();
         }
     }
 }

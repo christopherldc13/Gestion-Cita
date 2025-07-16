@@ -29,33 +29,73 @@ namespace Gestor_de_Citas
             tbBuscar.Focus();
         }
 
+        //private void MostrarDatos()
+        //{
+        //    valorparametro = tbBuscar.Text.Trim();
+        //    CNPago objPago = new CNPago();
+        //    if (objPago.ObtenerPago(valorparametro) != null)
+        //    {
+        //        DGVDatos.DataSource = objPago.ObtenerPago(valorparametro);
+        //        DGVDatos.Columns[0].Width = 70; //IdCita
+        //        DGVDatos.Columns[1].Width = 65;//IdCliente
+        //        DGVDatos.Columns[2].Width = 85;//NombreCliente
+        //        DGVDatos.Columns[3].Width = 80;//ApeliidoCliente
+        //        DGVDatos.Columns[4].Width = 70;//Telefono
+        //        DGVDatos.Columns[5].Width = 70;//IdEmpleado
+        //        DGVDatos.Columns[6].Width = 55;//Nombre
+        //        DGVDatos.Columns[7].Width = 100;//Telefono
+        //        DGVDatos.Columns[8].Width = 80;//Telefono
+        //        DGVDatos.Columns[9].Width = 110;//Telefono
+        //        DGVDatos.Columns[10].Width = 80;//Estado
+        //    }
+        //    else
+        //        MessageBox.Show("No se retorno ningun valor!");
+        //    DGVDatos.Refresh(); 
+        //    LCantidadPago.Text = "Cantidad de Pagos: " + Convert.ToString(DGVDatos.RowCount); 
+        //    if (DGVDatos.RowCount <= 0) 
+        //    {
+        //        MessageBox.Show("Ningún dato que mostrar!"); 
+        //    }
+        //}
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            valorparametro = tbBuscar.Text.Trim(); // Obtener el texto ingresado
+            vtieneparametro = string.IsNullOrEmpty(valorparametro) ? 0 : 1; // Si el texto está vacío, no hay filtro
+
+            MostrarDatos(); // Filtrar y mostrar los datos
+        }
+
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();
             CNPago objPago = new CNPago();
-            if (objPago.ObtenerPago(valorparametro) != null)
+
+            var datos = objPago.ObtenerPago(valorparametro);
+
+            if (datos != null)
             {
-                DGVDatos.DataSource = objPago.ObtenerPago(valorparametro);
-                DGVDatos.Columns[0].Width = 70; //IdCita
-                DGVDatos.Columns[1].Width = 65;//IdCliente
-                DGVDatos.Columns[2].Width = 85;//NombreCliente
-                DGVDatos.Columns[3].Width = 80;//ApeliidoCliente
-                DGVDatos.Columns[4].Width = 70;//Telefono
-                DGVDatos.Columns[5].Width = 70;//IdEmpleado
-                DGVDatos.Columns[6].Width = 55;//Nombre
-                DGVDatos.Columns[7].Width = 100;//Telefono
-                DGVDatos.Columns[8].Width = 80;//Telefono
-                DGVDatos.Columns[9].Width = 110;//Telefono
-                DGVDatos.Columns[10].Width = 80;//Estado
+                string[] headers = { "ID Pago", "ID Cliente", "Cliente", "Apellido", "Correo", "ID Cita", "Fecha", "Hora", "Servicio", "Precio", "Método de Pago", "Estado" };
+                int[] widths = { 80, 65, 100, 80, 145, 75, 69, 70, 90, 60, 110, 70 }; // Añadí el ancho para "Precio"
+
+                DGVDatos.DataSource = datos;
+
+                for (int i = 0; i < headers.Length && i < DGVDatos.Columns.Count; i++)
+                {
+                    DGVDatos.Columns[i].HeaderText = headers[i];
+                    DGVDatos.Columns[i].Width = widths[i];
+                    DGVDatos.AllowUserToResizeRows = false;
+                    DGVDatos.AllowUserToOrderColumns = false;
+                    DGVDatos.AllowUserToResizeColumns = false;
+                    LCantidadPago.Text = "Cantidad de Pagos: " + Convert.ToString(DGVDatos.RowCount);
+                }
             }
             else
-                MessageBox.Show("No se retorno ningun valor!");
-            DGVDatos.Refresh(); 
-            LCantidadPago.Text = "Cantidad de Pagos: " + Convert.ToString(DGVDatos.RowCount); 
-            if (DGVDatos.RowCount <= 0) 
             {
-                MessageBox.Show("Ningún dato que mostrar!"); 
+                MessageBox.Show("No se retornó ningún valor!");
             }
+
+            DGVDatos.Refresh();
         }
 
         private void DGVDatos_CurrentCellChanged(object sender, EventArgs e)
@@ -110,6 +150,7 @@ namespace Gestor_de_Citas
 
         private void BConsultar_Click(object sender, EventArgs e)
         {
+            
             if (tbBuscar.Text != String.Empty) 
             {
                 vtieneparametro = 1; 
@@ -134,14 +175,14 @@ namespace Gestor_de_Citas
 
         private void ConsultaPago_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                               "Mensaje de JAC",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question,
-                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            //if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
+            //                   "Mensaje de JAC",
+            //                   MessageBoxButtons.YesNo,
+            //                   MessageBoxIcon.Question,
+            //                   MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //    e.Cancel = false;
+            //else
+            //    e.Cancel = true;
         }
     }
 }

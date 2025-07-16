@@ -11,6 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using CapaNegocios;
+using System.Globalization;
 
 namespace Gestor_de_Citas
 {
@@ -20,6 +21,7 @@ namespace Gestor_de_Citas
         public MantEmpleado()
         {
             InitializeComponent();
+            tbTelefono.TextChanged += tbTelefono_TextChanged; //Llama el evento que le da formato al numero
         }
 
         private void MantEmpleado_Load(object sender, EventArgs e)
@@ -27,15 +29,16 @@ namespace Gestor_de_Citas
             Program.nuevo = false; //Valores de las variables globales nuevo y modificar
             Program.modificar = false;
             HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
+
         }
 
         private void MantEmpleado_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("¡Esto hara salir del formulario! \n ¿Seguro que desea hacerlo?",
-                                "Mensaje de JAC",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Warning,
-                                MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                               "Mensaje de " + Program.copyright,
+                               MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question,
+                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 e.Cancel = false;
             else
                 e.Cancel = true;
@@ -57,17 +60,17 @@ namespace Gestor_de_Citas
 
         public void LimpiaObjetos()
         {
-            tbIdBarbero.Clear(); 
+            tbIdEmpleado.Clear(); 
             tbNombre.Clear(); 
             tbApellido.Clear(); 
             tbTelefono.Clear(); 
             tbDisponibilidad.Clear(); 
-            cbEstado.SelectedItem = 0; 
+            cbEstado.SelectedIndex = -1; 
         } 
 
         private void HabilitaControles(bool valor)
         {
-            tbIdBarbero.ReadOnly = true; 
+            tbIdEmpleado.Enabled = false; 
             tbNombre.Enabled = valor;
             tbApellido.Enabled = valor;
             tbTelefono.Enabled = valor;
@@ -100,7 +103,7 @@ namespace Gestor_de_Citas
 
         private void BEditar_Click(object sender, EventArgs e)
         {
-            if (!tbIdBarbero.Equals(""))
+            if (!tbIdEmpleado.Equals(""))
             {
                 Program.modificar = true; 
                 HabilitaBotones();
@@ -114,69 +117,71 @@ namespace Gestor_de_Citas
         private void BGuardar_Click(object sender, EventArgs e)
         {
             if (tbNombre.Text == String.Empty) 
-            { // el cursor en dicho textbox
+            { 
                 MessageBox.Show("Debe indicar el Nombre del Empleado!");
                 tbNombre.Focus();
+                return;
             }
             else
             if (tbApellido.Text == String.Empty)
             {
                 MessageBox.Show("Debe indicar el Apellido del Empleado!");
                 tbApellido.Focus();
+                return;
             }
             else
             if (tbTelefono.Text == String.Empty)
             {
                 MessageBox.Show("Debe indicar el Teléfono del Empleado!");
                 tbTelefono.Focus();
+                return;
             }
             else
             if (tbDisponibilidad.Text == String.Empty)
             {
                 MessageBox.Show("Debe indicar la Disponibilidad del Empleado!");
                 tbDisponibilidad.Focus();
+                return;
             }
             else
             if (cbEstado.Text == String.Empty)
             {
                 MessageBox.Show("Debe indicar el Estado del Empleado!");
                 cbEstado.Focus();
+                return;
             }
             else
             {
-                //Si todo es correcto procede a Insertar o actualizar según corresponda, usaremos las variables globales a toda la solución contenidas en Program.CS
-                if (Program.nuevo)//Si la variable nuevo llega con valor true se van a Insertar nuevos datos
+                if (Program.nuevo)
                 {
 
-                    mensaje = CNEmpleado.Insertar(Program.vidEmpleado, tbNombre.Text, tbApellido.Text,
-                     tbTelefono.Text, tbDisponibilidad.Text, cbEstado.Text);
+                    //mensaje = CNEmpleado.Insertar(Program.vidEmpleado, tbNombre.Text, tbApellido.Text,
+                    // tbTelefono.Text, tbDisponibilidad.Text, cbEstado.Text);
                 }
-                else //de lo contrario se Modificarán los datos del registro correspondiente
+                else 
                 {
-                    //Se llama al método Insertar de la clase CNSuplidor de la capa de negocio
-                    //pasándole como parámetros los valores leídos en los controles del formulario.
-                    // como: textbox, combobox, DateTimePicker, etc.
-                    //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
-                    mensaje = CNEmpleado.Actualizar(Program.vidEmpleado, tbNombre.Text, tbApellido.Text,
-                      tbTelefono.Text, tbDisponibilidad.Text, cbEstado.Text);
+
+                    //mensaje = CNEmpleado.Actualizar(Program.vidEmpleado, tbNombre.Text, tbApellido.Text,
+                    //  tbTelefono.Text, tbDisponibilidad.Text, cbEstado.Text);
                 }
-                //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
-                MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                MessageBox.Show(mensaje, "Mensaje de " + Program.copyright, MessageBoxButtons.OK,
+                MessageBoxIcon.None);
             }
 
-            //Se prepara todo para la próxima operación
-            Program.nuevo = false;
-            Program.modificar = false;
-            HabilitaBotones(); //Habilita los objetos y botones correspondientes
-            LimpiaObjetos(); //Llama al método LimpiaObjetos
+            if (mensaje.Contains("insertados correctamente") || mensaje.Contains("actualizados correctamente"))
+            {
+                Program.nuevo = false;
+                Program.modificar = false;
+                HabilitaBotones();
+                LimpiaObjetos();
+            }
         }
 
         private void MantEmpleado_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Esto evita que el sonido de la tecla sea reproducido
+                e.SuppressKeyPress = true;
                 SendKeys.Send("{TAB}");
             }
         }
@@ -185,43 +190,121 @@ namespace Gestor_de_Citas
         {
             Program.nuevo = false;
             Program.modificar = false;
-            HabilitaBotones(); //Habilita los objetos y botones correspondientes
-            LimpiaObjetos(); //Llama al método LimpiaObjetos
+            HabilitaBotones(); 
+            LimpiaObjetos(); 
         }
 
         private void BBuscar_Click(object sender, EventArgs e)
         {
-            //Creamos la instancia del formulario de búsqueda y lo mostramos
-            FBuscarEmpleado fConsultaBarbero = new FBuscarEmpleado();
-            fConsultaBarbero.ShowDialog();
-            if (Program.modificar) //Si se está en modo de edición
+            FBuscarEmpleado fBuscarEmpleado = new FBuscarEmpleado();
+            fBuscarEmpleado.ShowDialog();
+            if (Program.modificar) 
             {
-                RecuperaDatos(); //Llamo al método para recuperar el registro seleccionado
-                BEditar_Click(sender, e); //Llamo el método del botón Editar
+                RecuperaDatos(); 
+                BEditar_Click(sender, e); 
             }
-            else //Si no estamos en modo de edición no permite la acción.
+            else 
             {
-                LimpiaObjetos(); //Llama al método LimpiaObjetos
+                LimpiaObjetos(); 
                 BBuscar.Focus();
             }
+        }
+
+        private void PTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         public void RecuperaDatos()
         {
             string vparametro = Program.vidEmpleado.ToString();
             CNEmpleado cNEmpleado = new CNEmpleado();
-            DataTable dt = new DataTable(); //creamos un nuevo DataTable
-            dt = cNEmpleado.ObtenerEmpleado(vparametro); //Llenamos el DataTable
+            DataTable dt = new DataTable(); 
+            dt = cNEmpleado.ObtenerEmpleado(vparametro); 
 
             foreach (DataRow row in dt.Rows)
             {
-                tbIdBarbero.Text = row["ID"].ToString();
+                tbIdEmpleado.Text = row["ID"].ToString();
                 tbNombre.Text = row["Nombre"].ToString();
                 tbApellido.Text = row["Apellido"].ToString();
                 tbTelefono.Text = row["Telefono"].ToString();
                 tbDisponibilidad.Text = row["Disponibilidad"].ToString();
                 cbEstado.Text = row["Estado"].ToString();
             }
-        } //Fin del metodo RecuperarDatos
+        } 
+
+        private void tbTelefono_TextChanged(object sender, EventArgs e)
+        {
+            string numeros = new string(tbTelefono.Text.Where(char.IsDigit).ToArray());
+
+            if (numeros.Length > 10)
+                numeros = numeros.Substring(0, 10); // Limitar a 10 dígitos
+
+            string formattedNumber = FormatPhoneNumber(numeros);
+
+            // Solo actualizar el texto si ha cambiado realmente
+            if (tbTelefono.Text != formattedNumber)
+            {
+                tbTelefono.Text = formattedNumber;
+                tbTelefono.SelectionStart = formattedNumber.Length; // Mantener el cursor al final
+            }
+        }
+
+        private string FormatPhoneNumber(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return ""; // Si el input está vacío, no hay paréntesis ni formato
+            }
+            else if (input.Length <= 3)
+            {
+                return $"({input}";
+            }
+            else if (input.Length <= 6)
+            {
+                return $"({input.Substring(0, 3)}) {input.Substring(3)}";
+            }
+            else
+            {
+                return $"({input.Substring(0, 3)}) {input.Substring(3, 3)}-{input.Substring(6)}";
+            }
+        }
+
+        private void tbNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != '.')
+            {
+                e.Handled = true; // Bloquea la tecla si no es letra, espacio, guion o punto
+            }
+        }
+
+        private void tbApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbNombre_TextChanged(object sender, EventArgs e)
+        {
+            int cursorPos = tbNombre.SelectionStart;
+            tbNombre.Text = ToTitleCase(tbNombre.Text);
+            tbNombre.SelectionStart = cursorPos;
+        }
+
+        private void tbApellido_TextChanged(object sender, EventArgs e)
+        {
+            int cursorPos = tbApellido.SelectionStart;
+            tbApellido.Text = ToTitleCase(tbApellido.Text);
+            tbApellido.SelectionStart = cursorPos;
+        }
+
+        private string ToTitleCase(string text)
+        {
+            CultureInfo cultureInfo = CultureInfo.CurrentCulture;
+            TextInfo textInfo = cultureInfo.TextInfo;
+            return textInfo.ToTitleCase(text.ToLower());
+        }
     }
 }

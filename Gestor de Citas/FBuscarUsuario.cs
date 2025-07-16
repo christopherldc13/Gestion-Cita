@@ -22,14 +22,14 @@ namespace Gestor_de_Citas
 
         private void FConsultaUsuario_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                               "Mensaje de JAC",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question,
-                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            //if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
+            //                   "Mensaje de JAC",
+            //                   MessageBoxButtons.YesNo,
+            //                   MessageBoxIcon.Question,
+            //                   MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //    e.Cancel = false;
+            //else
+            //    e.Cancel = true;
         }
 
         private void FConsultaUsuario_Load(object sender, EventArgs e)
@@ -38,7 +38,9 @@ namespace Gestor_de_Citas
             vtieneparametro = 0;
             Program.vidUsuario = 0; 
             MostrarDatos(); 
-            tbBuscar.Focus(); 
+            tbBuscar.Focus();
+            DGVDatos.CellFormatting += DGVDatos_CellFormatting;
+
         }
 
         private void DGVDatos_CurrentCellChanged(object sender, EventArgs e)
@@ -130,7 +132,27 @@ namespace Gestor_de_Citas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            valorparametro = tbBuscar.Text.Trim(); // Obtener el texto ingresado
+            vtieneparametro = string.IsNullOrEmpty(valorparametro) ? 0 : 1; // Si el texto está vacío, no hay filtro
+
+            MostrarDatos(); // Filtrar y mostrar los datos
+        }
+
+        private void DGVDatos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Si estamos en la columna de "Clave"
+            if (e.ColumnIndex == DGVDatos.Columns["Clave"].Index && e.Value != null)
+            {
+                // Reemplazar la clave por asteriscos (basado en la longitud)
+                string clave = e.Value.ToString();
+                e.Value = new string('*', clave.Length);
             }
         }
 
@@ -138,19 +160,26 @@ namespace Gestor_de_Citas
         {
             valorparametro = tbBuscar.Text.Trim();
             CNUsuario objUsuario = new CNUsuario();
+
+            DGVDatos.AllowUserToResizeRows = false;
+            DGVDatos.AllowUserToOrderColumns = false;
+            DGVDatos.AllowUserToResizeColumns = false;
+
             if (objUsuario.ObtenerUsuario(valorparametro) != null)
             {
                 DGVDatos.DataSource = objUsuario.ObtenerUsuario(valorparametro);
                 DGVDatos.Columns[0].Width = 70; 
-                DGVDatos.Columns[1].Width = 200;
-                DGVDatos.Columns[2].Width = 90;
-                DGVDatos.Columns[3].Width = 100;
-                DGVDatos.Columns[4].Width = 125;
-                DGVDatos.Columns[5].Width = 125;
+                DGVDatos.Columns[1].Width = 125;
+                DGVDatos.Columns[2].Width = 125;
+                DGVDatos.Columns[3].Width = 70;
+                DGVDatos.Columns[4].Width = 90;
+                DGVDatos.Columns[5].Width = 100;
+                DGVDatos.Columns[6].Width = 70;
             }
             else
                 MessageBox.Show("No se retorno ningun valor!");
                 DGVDatos.Refresh(); 
+
         }
     }
 }

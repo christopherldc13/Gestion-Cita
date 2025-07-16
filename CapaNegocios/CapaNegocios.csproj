@@ -63,11 +63,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CNDisponibilidad.cs" />
     <Compile Include="CNEmpleado.cs" />
     <Compile Include="CNCita.cs" />
     <Compile Include="CNCliente.cs" />
     <Compile Include="CNEmpresa.cs" />
     <Compile Include="CNPago.cs" />
+    <Compile Include="CNRol.cs" />
     <Compile Include="CNServicio.cs" />
     <Compile Include="CNUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -40,6 +40,35 @@ namespace CapaNegocios
             return dt; 
         }
 
+        //Cuadro de Pagos: PENDIENTE y PAGADO
+        public static bool ObtenerEstadisticasPagosHoy(out int pendientes, out int pagadas)
+        {
+            CDPago obj = new CDPago();
+            return obj.ObtenerEstadisticasPagosHoy(out pendientes, out pagadas);
+        }
+
+
+        //Grafico 1, Ganancias Diarias
+        public static DataTable ObtenerGananciasDiariasChart()
+        {
+            CDPago obj = new CDPago();
+            return obj.ObtenerGananciasDiariasChart();
+        }
+
+        //Graficos 2, Ganancias Semanales
+        public static DataTable ObtenerGananciasSemanalesChart()
+        {
+            CDPago obj = new CDPago();
+            return obj.ObtenerGananciasSemanalesChart();
+        }
+
+        //Grafico 3, Grafico mensual, solo llega a los 6 meses
+        public static DataTable ObtenerGananciasMensualesChart()
+        {
+            return new CDPago().ObtenerGananciasMensualesChart();
+        }
+
+
     }
 }
 

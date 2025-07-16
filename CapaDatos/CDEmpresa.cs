@@ -76,8 +76,7 @@ namespace CapaDatos
             {
                 sqlCon.ConnectionString = ConexionDB.miconexion;
                 SqlCommand micomando = new SqlCommand("EmpresaInsertar", sqlCon);
-                sqlCon.Open(); //Abro la conexióna
-                               //indico que se ejecutara un procedimiento almacenado
+                sqlCon.Open(); 
                 micomando.CommandType = CommandType.StoredProcedure;
                 micomando.Parameters.AddWithValue("@pNombre", objEmpresa.Nombre);
                 micomando.Parameters.AddWithValue("@pTelefono", objEmpresa.Telefono);
@@ -117,8 +116,8 @@ namespace CapaDatos
                 micomando.Parameters.AddWithValue("@pCorreo", objEmpresa.Correo);
                 micomando.Parameters.AddWithValue("@pLogo", objEmpresa.Logo);
                 micomando.Parameters.AddWithValue("@pEslogan", objEmpresa.Eslogan);
-                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Pago actualizados correctamente!" :
-                 "No se pudo actualizar correctamente los datos del Pago!";
+                mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos de la Empresa actualizados correctamente!" :
+                 "No se pudo actualizar correctamente los datos de la empresa!";
             }
             catch (Exception ex)
             {
@@ -131,7 +130,7 @@ namespace CapaDatos
             }
             return mensaje;
         }
-        //Método para consultar datos filtrados de la tabla. Se recibe el valor del parámetro
+
         public DataTable EmpresaConsultar(String miparametro)
         {
             DataTable dt = new DataTable(); 
@@ -155,32 +154,32 @@ namespace CapaDatos
             return dt; 
         }
 
-        public string ObtenerRutaImagenDesdeBD()
-        {
-            string ruta = "";
-            SqlConnection sqlCon = new SqlConnection(ConexionDB.miconexion);
+        //public string ObtenerRutaImagenDesdeBD()
+        //{
+        //    string ruta = "";
+        //    SqlConnection sqlCon = new SqlConnection(ConexionDB.miconexion);
 
-            try
-            {
-                sqlCon.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Logo FROM Empresa WHERE IdEmpresa = 1", sqlCon);
-                SqlDataReader reader = cmd.ExecuteReader();
+        //    try
+        //    {
+        //        sqlCon.Open();
+        //        SqlCommand cmd = new SqlCommand("SELECT Logo FROM Empresa WHERE IdEmpresa = 1", sqlCon);
+        //        SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    ruta = reader["Logo"].ToString();
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener la imagen: " + ex.Message);
-            }
-            finally
-            {
-                sqlCon.Close();
-            }
-            return ruta;
-        }
+        //        if (reader.Read())
+        //        {
+        //            ruta = reader["Logo"].ToString();
+        //        }
+        //        reader.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error al obtener la imagen: " + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        sqlCon.Close();
+        //    }
+        //    return ruta;
+        //}
     }
 }

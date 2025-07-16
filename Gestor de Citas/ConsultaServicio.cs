@@ -22,14 +22,14 @@ namespace Gestor_de_Citas
 
         private void ConsultaServicio_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                               "Mensaje de JAC",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question,
-                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            //if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
+            //                   "Mensaje de JAC",
+            //                   MessageBoxButtons.YesNo,
+            //                   MessageBoxIcon.Question,
+            //                   MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //    e.Cancel = false;
+            //else
+            //    e.Cancel = true;
         }
 
         private void DGVDatos_CurrentCellChanged(object sender, EventArgs e)
@@ -114,27 +114,68 @@ namespace Gestor_de_Citas
             }
         }
 
+        //private void MostrarDatos()
+        //{
+        //    valorparametro = tbBuscar.Text.Trim();
+        //    CNServicio objServicio = new CNServicio();
+        //    if (objServicio.ObtenerServicio(valorparametro) != null)
+        //    {
+        //        DGVDatos.DataSource = objServicio.ObtenerServicio(valorparametro);
+        //        DGVDatos.Columns[0].Width = 80; //IdCita
+        //        DGVDatos.Columns[1].Width = 70;//IdCliente
+        //        DGVDatos.Columns[2].Width = 100;//NombreCliente
+        //        DGVDatos.Columns[3].Width = 90;//ApeliidoCliente
+
+        //    }
+        //    else
+        //        MessageBox.Show("No se retorno ningun valor!");
+        //    DGVDatos.Refresh(); 
+        //    LCantidadCita.Text = "Cantidad de Servicios: " + Convert.ToString(DGVDatos.RowCount); 
+        //    if (DGVDatos.RowCount <= 0) 
+        //    {
+        //        MessageBox.Show("Ningún dato que mostrar!"); 
+        //    }
+        //}
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            valorparametro = tbBuscar.Text.Trim(); // Obtener el texto ingresado
+            vtieneparametro = string.IsNullOrEmpty(valorparametro) ? 0 : 1; // Si el texto está vacío, no hay filtro
+
+            MostrarDatos(); // Filtrar y mostrar los datos
+        }
+
+
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();
             CNServicio objServicio = new CNServicio();
-            if (objServicio.ObtenerServicio(valorparametro) != null)
-            {
-                DGVDatos.DataSource = objServicio.ObtenerServicio(valorparametro);
-                DGVDatos.Columns[0].Width = 80; //IdCita
-                DGVDatos.Columns[1].Width = 70;//IdCliente
-                DGVDatos.Columns[2].Width = 100;//NombreCliente
-                DGVDatos.Columns[3].Width = 90;//ApeliidoCliente
 
+            var datos = objServicio.ObtenerServicio(valorparametro);
+
+            if (datos != null)
+            {
+                string[] headers = { "ID Servicio", "Nombre Servicio", "Precio", "Duración", "Estado" };
+                int[] widths = { 60, 240, 60, 100, 100 };
+
+                DGVDatos.DataSource = datos;
+
+                for (int i = 0; i < headers.Length && i < DGVDatos.Columns.Count; i++)
+                {
+                    DGVDatos.Columns[i].HeaderText = headers[i];
+                    DGVDatos.Columns[i].Width = widths[i];
+                    DGVDatos.AllowUserToResizeRows = false;
+                    DGVDatos.AllowUserToOrderColumns = false;
+                    DGVDatos.AllowUserToResizeColumns = false;
+                    LCantidadCita.Text = "Cantidad de Servicios: " + Convert.ToString(DGVDatos.RowCount);
+                }
             }
             else
-                MessageBox.Show("No se retorno ningun valor!");
-            DGVDatos.Refresh(); 
-            LCantidadCita.Text = "Cantidad de Servicios: " + Convert.ToString(DGVDatos.RowCount); 
-            if (DGVDatos.RowCount <= 0) 
             {
-                MessageBox.Show("Ningún dato que mostrar!"); 
+                MessageBox.Show("No se retornó ningún valor!");
             }
+
+            DGVDatos.Refresh();
         }
     }
 }

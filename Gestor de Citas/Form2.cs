@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace Gestor_de_Citas
 {
-    public partial class ReportPagoEstado : Form
+    public partial class Form2 : Form
     {
-        public ReportPagoEstado()
+        public Form2()
         {
             InitializeComponent();
-        }
-
-        private void ReportPagoEstado_Load(object sender, EventArgs e)
-        {
-
-            //this.reportViewer1.RefreshReport();
-        }
-
-        private void Buscar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

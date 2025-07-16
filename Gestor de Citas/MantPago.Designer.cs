@@ -38,7 +38,6 @@ namespace Gestor_de_Citas
             this.BGuardar = new System.Windows.Forms.Button();
             this.BNuevo = new System.Windows.Forms.Button();
             this.BBuscar = new System.Windows.Forms.Button();
-            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.tbIdCliente = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,7 +51,6 @@ namespace Gestor_de_Citas
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tbConceptoPago = new System.Windows.Forms.TextBox();
             this.tbIdCita = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.dtpHora = new System.Windows.Forms.DateTimePicker();
@@ -60,6 +58,9 @@ namespace Gestor_de_Citas
             this.tbPrecio = new System.Windows.Forms.TextBox();
             this.tbIdPago = new System.Windows.Forms.TextBox();
             this.bBuscarCita = new System.Windows.Forms.Button();
+            this.cbMetodo = new System.Windows.Forms.ComboBox();
+            this.cbEstado = new System.Windows.Forms.ComboBox();
+            this.tbCorreo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@ namespace Gestor_de_Citas
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.PBotones.SuspendLayout();
             this.PTitulo.SuspendLayout();
             this.SuspendLayout();
@@ -187,7 +189,7 @@ namespace Gestor_de_Citas
             this.BBuscar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
             this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BBuscar.Location = new System.Drawing.Point(241, 106);
+            this.BBuscar.Location = new System.Drawing.Point(230, 101);
             this.BBuscar.Name = "BBuscar";
             this.BBuscar.Size = new System.Drawing.Size(90, 45);
             this.BBuscar.TabIndex = 19;
@@ -197,34 +199,21 @@ namespace Gestor_de_Citas
             this.BBuscar.UseVisualStyleBackColor = false;
             this.BBuscar.Click += new System.EventHandler(this.BBuscar_Click);
             // 
-            // cbEstado
-            // 
-            this.cbEstado.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Items.AddRange(new object[] {
-            "Pendiente",
-            "Pagado"});
-            this.cbEstado.Location = new System.Drawing.Point(65, 253);
-            this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(248, 21);
-            this.cbEstado.TabIndex = 30;
-            this.toolTip1.SetToolTip(this.cbEstado, "Estado del pago del servicio");
-            // 
             // tbNombre
             // 
-            this.tbNombre.Location = new System.Drawing.Point(143, 374);
+            this.tbNombre.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNombre.Location = new System.Drawing.Point(141, 348);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(156, 20);
+            this.tbNombre.Size = new System.Drawing.Size(156, 24);
             this.tbNombre.TabIndex = 27;
             this.toolTip1.SetToolTip(this.tbNombre, "Nombre del Cliente");
             // 
             // tbIdCliente
             // 
-            this.tbIdCliente.Location = new System.Drawing.Point(144, 338);
+            this.tbIdCliente.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdCliente.Location = new System.Drawing.Point(142, 314);
             this.tbIdCliente.Name = "tbIdCliente";
-            this.tbIdCliente.Size = new System.Drawing.Size(94, 20);
+            this.tbIdCliente.Size = new System.Drawing.Size(94, 24);
             this.tbIdCliente.TabIndex = 26;
             this.toolTip1.SetToolTip(this.tbIdCliente, "Id del Cliente");
             // 
@@ -232,7 +221,7 @@ namespace Gestor_de_Citas
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(149, 224);
+            this.label7.Location = new System.Drawing.Point(147, 204);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 26);
             this.label7.TabIndex = 24;
@@ -242,7 +231,7 @@ namespace Gestor_de_Citas
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(51, 334);
+            this.label3.Location = new System.Drawing.Point(49, 314);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 26);
             this.label3.TabIndex = 20;
@@ -252,7 +241,7 @@ namespace Gestor_de_Citas
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(66, 116);
+            this.label2.Location = new System.Drawing.Point(64, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 26);
             this.label2.TabIndex = 18;
@@ -273,7 +262,7 @@ namespace Gestor_de_Citas
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(256, 8);
+            this.label1.Location = new System.Drawing.Point(248, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(312, 38);
             this.label1.TabIndex = 0;
@@ -284,9 +273,9 @@ namespace Gestor_de_Citas
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(34, 94);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(32, 89);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(318, 189);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(318, 183);
             this.flowLayoutPanel1.TabIndex = 73;
             // 
             // flowLayoutPanel3
@@ -294,16 +283,16 @@ namespace Gestor_de_Citas
             this.flowLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(34, 315);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(32, 295);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(318, 91);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(318, 119);
             this.flowLayoutPanel3.TabIndex = 81;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(52, 370);
+            this.label10.Location = new System.Drawing.Point(50, 346);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 26);
             this.label10.TabIndex = 82;
@@ -313,7 +302,7 @@ namespace Gestor_de_Citas
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(51, 80);
+            this.label11.Location = new System.Drawing.Point(49, 75);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(135, 26);
             this.label11.TabIndex = 83;
@@ -323,70 +312,67 @@ namespace Gestor_de_Citas
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(51, 302);
+            this.label13.Location = new System.Drawing.Point(49, 283);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(152, 26);
             this.label13.TabIndex = 85;
             this.label13.Text = "Datos del Cliente";
             // 
-            // tbConceptoPago
-            // 
-            this.tbConceptoPago.Location = new System.Drawing.Point(65, 185);
-            this.tbConceptoPago.Multiline = true;
-            this.tbConceptoPago.Name = "tbConceptoPago";
-            this.tbConceptoPago.Size = new System.Drawing.Size(248, 40);
-            this.tbConceptoPago.TabIndex = 86;
-            this.toolTip1.SetToolTip(this.tbConceptoPago, "Logo de la Empresa");
-            // 
             // tbIdCita
             // 
-            this.tbIdCita.Location = new System.Drawing.Point(468, 157);
+            this.tbIdCita.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdCita.Location = new System.Drawing.Point(466, 151);
             this.tbIdCita.Name = "tbIdCita";
-            this.tbIdCita.Size = new System.Drawing.Size(140, 20);
+            this.tbIdCita.Size = new System.Drawing.Size(140, 24);
             this.tbIdCita.TabIndex = 76;
             this.toolTip1.SetToolTip(this.tbIdCita, "Id de la Cita");
             // 
             // dtpFecha
             // 
+            this.dtpFecha.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(528, 201);
+            this.dtpFecha.Location = new System.Drawing.Point(526, 196);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(137, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(137, 24);
             this.dtpFecha.TabIndex = 77;
             this.toolTip1.SetToolTip(this.dtpFecha, "Fecha de la Cita");
             // 
             // dtpHora
             // 
+            this.dtpHora.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpHora.Location = new System.Drawing.Point(529, 242);
+            this.dtpHora.Location = new System.Drawing.Point(527, 237);
             this.dtpHora.Name = "dtpHora";
             this.dtpHora.ShowUpDown = true;
-            this.dtpHora.Size = new System.Drawing.Size(139, 20);
+            this.dtpHora.Size = new System.Drawing.Size(139, 24);
             this.dtpHora.TabIndex = 78;
             this.toolTip1.SetToolTip(this.dtpHora, "Hora de la Cita");
             this.dtpHora.Value = new System.DateTime(2024, 3, 23, 14, 2, 0, 0);
             // 
             // tbServicio
             // 
-            this.tbServicio.Location = new System.Drawing.Point(528, 284);
+            this.tbServicio.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbServicio.Location = new System.Drawing.Point(526, 279);
             this.tbServicio.Name = "tbServicio";
-            this.tbServicio.Size = new System.Drawing.Size(221, 20);
+            this.tbServicio.Size = new System.Drawing.Size(221, 24);
             this.tbServicio.TabIndex = 88;
             this.toolTip1.SetToolTip(this.tbServicio, "Id de la Cita");
             // 
             // tbPrecio
             // 
-            this.tbPrecio.Location = new System.Drawing.Point(528, 324);
+            this.tbPrecio.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPrecio.Location = new System.Drawing.Point(526, 319);
             this.tbPrecio.Name = "tbPrecio";
-            this.tbPrecio.Size = new System.Drawing.Size(147, 20);
+            this.tbPrecio.Size = new System.Drawing.Size(147, 24);
             this.tbPrecio.TabIndex = 91;
             this.toolTip1.SetToolTip(this.tbPrecio, "Id de la Cita");
             // 
             // tbIdPago
             // 
-            this.tbIdPago.Location = new System.Drawing.Point(104, 120);
+            this.tbIdPago.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdPago.Location = new System.Drawing.Point(99, 113);
             this.tbIdPago.Name = "tbIdPago";
-            this.tbIdPago.Size = new System.Drawing.Size(125, 20);
+            this.tbIdPago.Size = new System.Drawing.Size(125, 24);
             this.tbIdPago.TabIndex = 92;
             this.toolTip1.SetToolTip(this.tbIdPago, "Id del pago");
             // 
@@ -400,7 +386,7 @@ namespace Gestor_de_Citas
             this.bBuscarCita.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bBuscarCita.Image = ((System.Drawing.Image)(resources.GetObject("bBuscarCita.Image")));
             this.bBuscarCita.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.bBuscarCita.Location = new System.Drawing.Point(613, 145);
+            this.bBuscarCita.Location = new System.Drawing.Point(611, 139);
             this.bBuscarCita.Name = "bBuscarCita";
             this.bBuscarCita.Size = new System.Drawing.Size(90, 45);
             this.bBuscarCita.TabIndex = 74;
@@ -410,21 +396,65 @@ namespace Gestor_de_Citas
             this.bBuscarCita.UseVisualStyleBackColor = false;
             this.bBuscarCita.Click += new System.EventHandler(this.bBuscarCita_Click);
             // 
+            // cbMetodo
+            // 
+            this.cbMetodo.AutoCompleteCustomSource.AddRange(new string[] {
+            "Efectivo",
+            "Transferencia"});
+            this.cbMetodo.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.cbMetodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMetodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbMetodo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMetodo.FormattingEnabled = true;
+            this.cbMetodo.Items.AddRange(new object[] {
+            "Efectivo",
+            "Transferencia"});
+            this.cbMetodo.Location = new System.Drawing.Point(63, 175);
+            this.cbMetodo.Name = "cbMetodo";
+            this.cbMetodo.Size = new System.Drawing.Size(248, 25);
+            this.cbMetodo.TabIndex = 93;
+            this.toolTip1.SetToolTip(this.cbMetodo, "Estado del pago del servicio");
+            // 
+            // cbEstado
+            // 
+            this.cbEstado.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEstado.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEstado.FormattingEnabled = true;
+            this.cbEstado.Items.AddRange(new object[] {
+            "Pagado",
+            "Pendiente"});
+            this.cbEstado.Location = new System.Drawing.Point(63, 237);
+            this.cbEstado.Name = "cbEstado";
+            this.cbEstado.Size = new System.Drawing.Size(248, 25);
+            this.cbEstado.TabIndex = 30;
+            this.toolTip1.SetToolTip(this.cbEstado, "Estado del pago del servicio");
+            // 
+            // tbCorreo
+            // 
+            this.tbCorreo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCorreo.Location = new System.Drawing.Point(130, 381);
+            this.tbCorreo.Name = "tbCorreo";
+            this.tbCorreo.Size = new System.Drawing.Size(209, 24);
+            this.tbCorreo.TabIndex = 95;
+            this.toolTip1.SetToolTip(this.tbCorreo, "Correo");
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(112, 155);
+            this.label14.Location = new System.Drawing.Point(117, 145);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(159, 26);
+            this.label14.Size = new System.Drawing.Size(146, 26);
             this.label14.TabIndex = 87;
-            this.label14.Text = "Concepto de Pago";
+            this.label14.Text = "Método de Pago";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(432, 119);
+            this.label12.Location = new System.Drawing.Point(430, 114);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(141, 26);
             this.label12.TabIndex = 84;
@@ -435,7 +465,7 @@ namespace Gestor_de_Citas
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(430, 154);
+            this.label4.Location = new System.Drawing.Point(428, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 26);
             this.label4.TabIndex = 21;
@@ -445,7 +475,7 @@ namespace Gestor_de_Citas
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(550, 161);
+            this.label6.Location = new System.Drawing.Point(548, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 20);
             this.label6.TabIndex = 23;
@@ -454,7 +484,7 @@ namespace Gestor_de_Citas
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(429, 196);
+            this.label8.Location = new System.Drawing.Point(427, 191);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 26);
             this.label8.TabIndex = 79;
@@ -464,7 +494,7 @@ namespace Gestor_de_Citas
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(430, 239);
+            this.label9.Location = new System.Drawing.Point(428, 234);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 26);
             this.label9.TabIndex = 80;
@@ -475,7 +505,7 @@ namespace Gestor_de_Citas
             this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(415, 131);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(413, 126);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(357, 236);
             this.flowLayoutPanel2.TabIndex = 75;
@@ -484,7 +514,7 @@ namespace Gestor_de_Citas
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(431, 279);
+            this.label5.Location = new System.Drawing.Point(429, 275);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 26);
             this.label5.TabIndex = 89;
@@ -494,11 +524,21 @@ namespace Gestor_de_Citas
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(434, 320);
+            this.label15.Location = new System.Drawing.Point(432, 315);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(63, 26);
             this.label15.TabIndex = 90;
             this.label15.Text = "Precio";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(50, 378);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 26);
+            this.label16.TabIndex = 94;
+            this.label16.Text = "Correo";
             // 
             // MantPago
             // 
@@ -506,13 +546,15 @@ namespace Gestor_de_Citas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(801, 496);
+            this.Controls.Add(this.tbCorreo);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.cbMetodo);
             this.Controls.Add(this.tbIdPago);
             this.Controls.Add(this.tbPrecio);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbServicio);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.tbConceptoPago);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -565,7 +607,6 @@ namespace Gestor_de_Citas
         private System.Windows.Forms.Button BGuardar;
         private System.Windows.Forms.Button BNuevo;
         private System.Windows.Forms.Button BBuscar;
-        private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.TextBox tbIdCliente;
         private System.Windows.Forms.Label label7;
@@ -579,7 +620,6 @@ namespace Gestor_de_Citas
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TextBox tbConceptoPago;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label4;
@@ -596,5 +636,9 @@ namespace Gestor_de_Citas
         private System.Windows.Forms.TextBox tbPrecio;
         private System.Windows.Forms.TextBox tbIdPago;
         private System.Windows.Forms.Button bBuscarCita;
+        private System.Windows.Forms.ComboBox cbMetodo;
+        private System.Windows.Forms.ComboBox cbEstado;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tbCorreo;
     }
 }

@@ -31,14 +31,14 @@ namespace Gestor_de_Citas
 
         private void FConsultaCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                               "Mensaje de JAC",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question,
-                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            //if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
+            //                   "Mensaje de JAC",
+            //                   MessageBoxButtons.YesNo,
+            //                   MessageBoxIcon.Question,
+            //                   MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //    e.Cancel = false;
+            //else
+            //    e.Cancel = true;
         }
 
         private void DGVDatos_CurrentCellChanged(object sender, EventArgs e)
@@ -139,27 +139,67 @@ namespace Gestor_de_Citas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 SendKeys.Send("{TAB}");
             }
+        }
+
+        //private void MostrarDatos()
+        //{
+        //    valorparametro = tbBuscar.Text.Trim();
+        //    CNCliente objCliente = new CNCliente();
+        //    if (objCliente.ObtenerCliente(valorparametro) != null)
+        //    {
+        //        DGVDatos.DataSource = objCliente.ObtenerCliente(valorparametro);
+        //        DGVDatos.Columns[0].Width = 80; //IdCliente
+        //        DGVDatos.Columns[1].Width = 150;//Nombre
+        //        DGVDatos.Columns[2].Width = 150;//Apellido
+        //        DGVDatos.Columns[3].Width = 100;//Telefono
+        //        DGVDatos.Columns[4].Width = 175;//Correo
+        //        DGVDatos.Columns[5].Width = 125;//Estado
+        //    }
+        //    else
+        //        MessageBox.Show("No se retorno ningun valor!");
+        //        DGVDatos.Refresh(); 
+        //}
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            valorparametro = tbBuscar.Text.Trim(); // Obtener el texto ingresado
+            vtieneparametro = string.IsNullOrEmpty(valorparametro) ? 0 : 1; // Si el texto está vacío, no hay filtro
+
+            MostrarDatos(); // Filtrar y mostrar los datos
         }
 
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();
             CNCliente objCliente = new CNCliente();
-            if (objCliente.ObtenerCliente(valorparametro) != null)
+
+            var datos = objCliente.ObtenerCliente(valorparametro);
+
+            if (datos != null)
             {
-                DGVDatos.DataSource = objCliente.ObtenerCliente(valorparametro);
-                DGVDatos.Columns[0].Width = 80; //IdCliente
-                DGVDatos.Columns[1].Width = 150;
-                DGVDatos.Columns[2].Width = 150;
-                DGVDatos.Columns[3].Width = 100;
-                DGVDatos.Columns[4].Width = 175;
-                DGVDatos.Columns[5].Width = 125;
+                string[] headers = { "ID Cliente", "Nombre", "Apellido", "Teléfono", "Correo", "Estado" };
+                int[] widths = { 80, 150, 150, 100, 175, 125 };
+
+                DGVDatos.DataSource = datos;
+
+                for (int i = 0; i < headers.Length && i < DGVDatos.Columns.Count; i++)
+                {
+                    DGVDatos.Columns[i].HeaderText = headers[i];
+                    DGVDatos.Columns[i].Width = widths[i];
+                    DGVDatos.AllowUserToResizeRows = false;
+                    DGVDatos.AllowUserToOrderColumns = false;
+                    DGVDatos.AllowUserToResizeColumns = false;
+                }
             }
             else
-                MessageBox.Show("No se retorno ningun valor!");
-                DGVDatos.Refresh(); 
+            {
+                MessageBox.Show("No se retornó ningún valor!");
+            }
+
+            DGVDatos.Refresh();
         }
     }
 }

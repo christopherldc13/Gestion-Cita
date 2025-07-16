@@ -196,7 +196,7 @@ namespace Gestor_de_Citas
             this.BBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
             this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBuscar.Location = new System.Drawing.Point(404, 6);
+            this.BBuscar.Location = new System.Drawing.Point(405, 6);
             this.BBuscar.Name = "BBuscar";
             this.BBuscar.Size = new System.Drawing.Size(96, 32);
             this.BBuscar.TabIndex = 2;
@@ -218,10 +218,11 @@ namespace Gestor_de_Citas
             // 
             // tbBuscar
             // 
-            this.tbBuscar.Location = new System.Drawing.Point(199, 12);
+            this.tbBuscar.Location = new System.Drawing.Point(199, 13);
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(205, 20);
             this.tbBuscar.TabIndex = 0;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
             // 
             // panel1
             // 

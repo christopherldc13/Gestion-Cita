@@ -12,7 +12,7 @@ namespace Gestor_de_Citas.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.12.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,17 +20,6 @@ namespace Gestor_de_Citas.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\jhoan\\source\\repos\\G" +
-            "estion-Cita\\CapaDatos\\DBCita.mdf;Integrated Security=True")]
-        public string DBCitaConnectionString1 {
-            get {
-                return ((string)(this["DBCitaConnectionString1"]));
             }
         }
         
@@ -48,11 +37,23 @@ namespace Gestor_de_Citas.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-0LAM0C8\\SQLEXPRESS;Initial Catalog=DBCita;Persist Security In" +
-            "fo=True;User ID=sa;Password=1234;Encrypt=True;TrustServerCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sqlserver-gestor.database.windows.net;Initial Catalog=Gestor_Cita;Per" +
+            "sist Security Info=True;User ID=sql-gestor;Password=@Cristopher13;Encrypt=True;T" +
+            "rustServerCertificate=True")]
         public string DBCitaConnectionStringSQLSERVER {
             get {
                 return ((string)(this["DBCitaConnectionStringSQLSERVER"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=34.102.42.63;Initial Catalog=Gestor_Cita;Persist Security Info=True;U" +
+            "ser ID=sqlserver;Password=H.TMM8pe+}u@7m+?;TrustServerCertificate=True")]
+        public string Valor {
+            get {
+                return ((string)(this["Valor"]));
             }
         }
     }

@@ -7,11 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//para poder utilizar las instrucciones de SQL
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
-//Para acceder a la capa de negocio
 using CapaNegocios;
 
 namespace Gestor_de_Citas
@@ -22,14 +20,15 @@ namespace Gestor_de_Citas
         public MantEmpresa()
         {
             InitializeComponent();
+            tbTelefono.TextChanged += tbTelefono_TextChanged;
         }
 
         private void MantEmpresa_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("¡Esto hara salir del formulario! \n ¿Seguro que desea hacerlo?",
-                                "Mensaje de JAC",
+                                "Mensaje de " + Program.copyright,
                                 MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Warning,
+                                MessageBoxIcon.Question,
                                 MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 e.Cancel = false;
             else
@@ -44,27 +43,27 @@ namespace Gestor_de_Citas
         private void MantEmpresa_Load(object sender, EventArgs e)
         {
             
-            Program.nuevo = false; //Valores de las variables globales nuevo y modificar
+            Program.nuevo = false; 
             Program.modificar = false;
-            HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
+            HabilitaBotones(); 
 
         }
 
         public void LimpiaObjetos()
         {
-            tbIdEmpresa.Clear(); //Para limpiar TextBox.
-            tbNombre.Clear(); //Para limpiar TextBox.
-            tbTelefono.Clear(); //Para limpiar TextBox.
-            tbDireccion.Clear(); //Para limpiar TextBox.
-            tbCorreo.Clear(); //Para limpiar TextBox.
+            tbIdEmpresa.Clear(); 
+            tbNombre.Clear(); 
+            tbTelefono.Clear(); 
+            tbDireccion.Clear(); 
+            tbCorreo.Clear(); 
             tbLogo.Clear();
             tbEslogan.Clear();
-        } //Fin del método LimpiaObjetos
+        }
 
         //Habilita / inhabilita los objetos del formulario segun lo indicado por el parámetro valor
         private void HabilitaControles(bool valor)
         {
-            tbIdEmpresa.ReadOnly = true; //la propiedad ReadOnly hace de solo lectura un objeto
+            tbIdEmpresa.Enabled = false; //la propiedad ReadOnly hace de solo lectura un objeto
             tbNombre.Enabled = valor; //la propiedad Enabled habilita o inhabilita un objeto
             tbTelefono.Enabled = valor;
             tbDireccion.Enabled = valor;
@@ -75,11 +74,13 @@ namespace Gestor_de_Citas
 
         private void BNuevo_Click(object sender, EventArgs e)
         {
-            LimpiaObjetos(); //LLama al método LimpiaObjetos para prepararlos para la nueva entrada
-            Program.nuevo = true; //Se especifica que se agregará un nuevo registro
-            Program.modificar = false;
-            HabilitaBotones(); //Se habilitan solo aquellos botones que sean necesarios
-            tbNombre.Focus(); //Coloca el cursor en el TextBox indicado
+            MessageBox.Show("Esta Opción está deshabilitada, pulse buscar para editar los datos de la empresa", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //LimpiaObjetos(); //LLama al método LimpiaObjetos para prepararlos para la nueva entrada
+            //Program.nuevo = true; //Se especifica que se agregará un nuevo registro
+            //Program.modificar = false;
+            //HabilitaBotones(); //Se habilitan solo aquellos botones que sean necesarios
+            //tbNombre.Focus(); //Coloca el cursor en el TextBox indicado
         }
 
         private void BGuardar_Click(object sender, EventArgs e)
@@ -125,25 +126,20 @@ namespace Gestor_de_Citas
                 //Si todo es correcto procede a Insertar o actualizar según corresponda, usaremos las variables globales a toda la solución contenidas en Program.CS
                 if (Program.nuevo)//Si la variable nuevo llega con valor true se van a Insertar nuevos datos
                 {
-                   
-
                     mensaje = CNEmpresa.Insertar(Program.vidEmpresa, tbNombre.Text, tbTelefono.Text,
                      tbDireccion.Text, tbCorreo.Text, tbLogo.Text, tbEslogan.Text);
                 }
                 else //de lo contrario se Modificarán los datos del registro correspondiente
                 {
-                    //Se llama al método Insertar de la clase CNSuplidor de la capa de negocio
-                    //pasándole como parámetros los valores leídos en los controles del formulario.
-                    // como: textbox, combobox, DateTimePicker, etc.
-                    //Los parámetros se pasan en el orden en que se reciben y con el tipo de dato esperado
 
                     mensaje = CNEmpresa.Actualizar(Program.vidEmpresa, tbNombre.Text, tbTelefono.Text,
                     tbDireccion.Text, tbCorreo.Text, tbLogo.Text, tbEslogan.Text);
                 }
+                MessageBox.Show(mensaje, "Mensaje de " + Program.copyright, MessageBoxButtons.OK,
+               MessageBoxIcon.None);
+
             }
-            //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
-            MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
+
 
             //Se prepara todo para la próxima operación
             Program.nuevo = false;
@@ -250,6 +246,43 @@ namespace Gestor_de_Citas
                 BEditar.Enabled = false;
                 button2.Enabled = true;
                 BCancelar.Enabled = false;
+            }
+        }
+
+        private void tbTelefono_TextChanged(object sender, EventArgs e)
+        {
+            string numeros = new string(tbTelefono.Text.Where(char.IsDigit).ToArray());
+
+            if (numeros.Length > 10)
+                numeros = numeros.Substring(0, 10); // Limitar a 10 dígitos
+
+            string formattedNumber = FormatPhoneNumber(numeros);
+
+            // Solo actualizar el texto si ha cambiado realmente
+            if (tbTelefono.Text != formattedNumber)
+            {
+                tbTelefono.Text = formattedNumber;
+                tbTelefono.SelectionStart = formattedNumber.Length; // Mantener el cursor al final
+            }
+        }
+
+        private string FormatPhoneNumber(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return ""; // Si el input está vacío, no hay paréntesis ni formato
+            }
+            else if (input.Length <= 3)
+            {
+                return $"({input}";
+            }
+            else if (input.Length <= 6)
+            {
+                return $"({input.Substring(0, 3)}) {input.Substring(3)}";
+            }
+            else
+            {
+                return $"({input.Substring(0, 3)}) {input.Substring(3, 3)}-{input.Substring(6)}";
             }
         }
     }

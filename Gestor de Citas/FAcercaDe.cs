@@ -36,5 +36,10 @@ namespace Gestor_de_Citas
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

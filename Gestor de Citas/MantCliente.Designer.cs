@@ -58,7 +58,7 @@ namespace Gestor_de_Citas
             // 
             // PTitulo
             // 
-            this.PTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(107)))), ((int)(((byte)(123)))));
+            this.PTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(90)))));
             this.PTitulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PTitulo.Controls.Add(this.label1);
             this.PTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -71,7 +71,7 @@ namespace Gestor_de_Citas
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(239, 8);
+            this.label1.Location = new System.Drawing.Point(243, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(304, 38);
             this.label1.TabIndex = 0;
@@ -146,30 +146,34 @@ namespace Gestor_de_Citas
             // 
             // tbNombre
             // 
+            this.tbNombre.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNombre.Location = new System.Drawing.Point(64, 183);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(248, 20);
+            this.tbNombre.Size = new System.Drawing.Size(248, 24);
             this.tbNombre.TabIndex = 10;
             // 
             // tbApellido
             // 
+            this.tbApellido.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbApellido.Location = new System.Drawing.Point(64, 271);
             this.tbApellido.Name = "tbApellido";
-            this.tbApellido.Size = new System.Drawing.Size(248, 20);
+            this.tbApellido.Size = new System.Drawing.Size(248, 24);
             this.tbApellido.TabIndex = 11;
             // 
             // tbTelefono
             // 
+            this.tbTelefono.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTelefono.Location = new System.Drawing.Point(64, 360);
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(248, 20);
+            this.tbTelefono.Size = new System.Drawing.Size(248, 24);
             this.tbTelefono.TabIndex = 12;
             // 
             // tbCorreo
             // 
+            this.tbCorreo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCorreo.Location = new System.Drawing.Point(457, 188);
             this.tbCorreo.Name = "tbCorreo";
-            this.tbCorreo.Size = new System.Drawing.Size(263, 20);
+            this.tbCorreo.Size = new System.Drawing.Size(263, 24);
             this.tbCorreo.TabIndex = 13;
             // 
             // cbEstado
@@ -177,19 +181,19 @@ namespace Gestor_de_Citas
             this.cbEstado.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEstado.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
             this.cbEstado.Location = new System.Drawing.Point(492, 310);
             this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(188, 21);
+            this.cbEstado.Size = new System.Drawing.Size(188, 25);
             this.cbEstado.TabIndex = 15;
             // 
             // PBotones
             // 
-            this.PBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(107)))), ((int)(((byte)(123)))));
-            this.PBotones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(90)))));
             this.PBotones.Controls.Add(this.BSalir);
             this.PBotones.Controls.Add(this.BCancelar);
             this.PBotones.Controls.Add(this.BEditar);
@@ -197,8 +201,9 @@ namespace Gestor_de_Citas
             this.PBotones.Controls.Add(this.BNuevo);
             this.PBotones.Location = new System.Drawing.Point(-11, 430);
             this.PBotones.Name = "PBotones";
-            this.PBotones.Size = new System.Drawing.Size(798, 74);
+            this.PBotones.Size = new System.Drawing.Size(795, 82);
             this.PBotones.TabIndex = 16;
+            this.PBotones.Paint += new System.Windows.Forms.PaintEventHandler(this.PBotones_Paint);
             // 
             // BSalir
             // 
@@ -206,6 +211,7 @@ namespace Gestor_de_Citas
             this.BSalir.FlatAppearance.BorderSize = 0;
             this.BSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BSalir.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BSalir.Image = ((System.Drawing.Image)(resources.GetObject("BSalir.Image")));
             this.BSalir.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BSalir.Location = new System.Drawing.Point(681, 12);
@@ -223,6 +229,7 @@ namespace Gestor_de_Citas
             this.BCancelar.FlatAppearance.BorderSize = 0;
             this.BCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BCancelar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BCancelar.Image = ((System.Drawing.Image)(resources.GetObject("BCancelar.Image")));
             this.BCancelar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BCancelar.Location = new System.Drawing.Point(355, 12);
@@ -240,6 +247,7 @@ namespace Gestor_de_Citas
             this.BEditar.FlatAppearance.BorderSize = 0;
             this.BEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BEditar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BEditar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BEditar.Image = ((System.Drawing.Image)(resources.GetObject("BEditar.Image")));
             this.BEditar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BEditar.Location = new System.Drawing.Point(249, 12);
@@ -257,6 +265,7 @@ namespace Gestor_de_Citas
             this.BGuardar.FlatAppearance.BorderSize = 0;
             this.BGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BGuardar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BGuardar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BGuardar.Image = ((System.Drawing.Image)(resources.GetObject("BGuardar.Image")));
             this.BGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BGuardar.Location = new System.Drawing.Point(137, 12);
@@ -274,6 +283,7 @@ namespace Gestor_de_Citas
             this.BNuevo.FlatAppearance.BorderSize = 0;
             this.BNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNuevo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BNuevo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BNuevo.Image = ((System.Drawing.Image)(resources.GetObject("BNuevo.Image")));
             this.BNuevo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.BNuevo.Location = new System.Drawing.Point(37, 12);
@@ -335,7 +345,7 @@ namespace Gestor_de_Citas
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PTitulo);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;

@@ -8,7 +8,7 @@ namespace Gestor_de_Citas
 {
     static class Program
     {
-        //Variables globales para todo el proyecto/solución.
+        //Variables globales para todo el proyecto
         public static int vidCliente = 0; 
         public static int vidEmpleado = 0;
         public static int vidEmpresa = 0;
@@ -16,14 +16,18 @@ namespace Gestor_de_Citas
         public static int vidCita = 0;
         public static int vidPago = 0;
         public static int vidServicio = 0;
+        public static int vidRol = 0;
+        public static int vidDisponibilidad = 0;
         public static string usuario = "";
+        public static string copyright = "CitaExpress";
+        public static string Rol = "";
 
-        public static int vidDepto = 0; //colocar una por cada clave primaria que tengamos
-                                        //en nuestra base de datos
-        public static bool nuevo = false; //variable usada para identificar si se trabaja con
-                                          //un nuevo dato o no
-        public static bool modificar = false; //variable usada para identificar si se está
-                                              //modificando un dato o no
+        //variables globales booleanas
+                                       
+        public static bool nuevo = false; 
+                                         
+        public static bool modificar = false; 
+                                              
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -33,8 +37,6 @@ namespace Gestor_de_Citas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
-            //Application.Run(new Log_in());
         }
-
     }
 }

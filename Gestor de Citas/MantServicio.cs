@@ -11,6 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using CapaNegocios;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Gestor_de_Citas
 {
@@ -25,10 +26,10 @@ namespace Gestor_de_Citas
         private void MantServicio_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("¡Esto hara salir del formulario! \n ¿Seguro que desea hacerlo?",
-                                "Mensaje de JAC",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Warning,
-                                MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                               "Mensaje de" + " " + Program.copyright,
+                               MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question,
+                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 e.Cancel = false;
             else
                 e.Cancel = true;
@@ -43,25 +44,43 @@ namespace Gestor_de_Citas
             Program.nuevo = false; //Valores de las variables globales nuevo y modificar
             Program.modificar = false;
             HabilitaBotones(); //Se habilitarán los objetos y los botones necesarios.
-        }
+            textBox1.KeyPress += new KeyPressEventHandler(textBox1_KeyPress);
 
+        }
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada es un número (0-9) o la tecla de retroceso (Backspace)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es un número ni la tecla de retroceso, se cancela la acción
+                e.Handled = true;
+            }
+        }
         public void LimpiaObjetos()
         {
             tbIdServicio.Clear(); 
             tbNombreServicio.Clear(); 
-            cbEstado.SelectedItem = 0;
-            tbPrecio.Clear(); 
+            cbDuracion.SelectedIndex = -1;
+            textBox1.Clear();
+            comboBox2.SelectedIndex = -1;
 
         } 
 
         private void HabilitaControles(bool valor)
         {
-            tbIdServicio.ReadOnly = true; //la propiedad ReadOnly hace de solo lectura un objeto
+            tbIdServicio.Enabled = false; //la propiedad ReadOnly hace de solo lectura un objeto
             tbNombreServicio.Enabled = valor; //la propiedad Enabled habilita o inhabilita un objeto
-            tbPrecio.Enabled = valor;
-            cbEstado.Enabled = valor;
+            textBox1.Enabled = valor;
+            cbDuracion.Enabled = valor;
+            comboBox2.Enabled = valor;
             if (Program.nuevo)
-                cbEstado.SelectedIndex = 0;
+            {
+                comboBox2.SelectedIndex = 0;
+                comboBox2.Enabled = false;
+                cbDuracion.SelectedIndex = 0;
+            }
+                
+
         } //Fin del método HabilitaControles
 
         private void BBuscar_Click(object sender, EventArgs e)
@@ -73,6 +92,7 @@ namespace Gestor_de_Citas
             {
                 RecuperaDatos(); //Llamo al método para recuperar el registro seleccionado
                 BEditar_Click(sender, e); //Llamo el método del botón Editar
+                tbNombreServicio.Focus();
             }
             else //Si no estamos en modo de edición no permite la acción.
             {
@@ -81,24 +101,52 @@ namespace Gestor_de_Citas
             }
         }
 
+        //public void RecuperaDatos()
+        //{
+        //    string vparametro = Program.vidServicio.ToString();
+        //    CNServicio cNServicio = new CNServicio();
+        //    DataTable dt = new DataTable(); //creamos un nuevo DataTable
+        //    dt = cNServicio.ObtenerServicio(vparametro); //Llenamos el DataTable
+        //                                                 //Recorremos cada fila del DataTable asignando a los controles de edición los valores de
+        //                                                 //los campos correspondientes
+        //    foreach (DataRow row in dt.Rows)
+
+        //    {
+        //        tbIdServicio.Text = row["ID"].ToString();
+        //        tbNombreServicio.Text = row["NombreServicio"].ToString();
+        //        textBox1.Text = row["Precio"].ToString();
+        //        cbDuracion.Text = row["Duracion"].ToString();
+        //        comboBox2.Text = row["Estado"].ToString();
+
+
+        //    }
+        //} //Fin del metodo RecuperarDatos
+
         public void RecuperaDatos()
         {
             string vparametro = Program.vidServicio.ToString();
             CNServicio cNServicio = new CNServicio();
-            DataTable dt = new DataTable(); //creamos un nuevo DataTable
-            dt = cNServicio.ObtenerServicio(vparametro); //Llenamos el DataTable
-                                                         //Recorremos cada fila del DataTable asignando a los controles de edición los valores de
-                                                         //los campos correspondientes
-            foreach (DataRow row in dt.Rows)
+            DataTable dt = new DataTable(); // Creamos un nuevo DataTable
+            dt = cNServicio.ObtenerServicio(vparametro); // Llenamos el DataTable
 
+            // Recorremos cada fila del DataTable asignando a los controles de edición los valores de los campos correspondientes
+            foreach (DataRow row in dt.Rows)
             {
                 tbIdServicio.Text = row["ID"].ToString();
                 tbNombreServicio.Text = row["NombreServicio"].ToString();
-                tbPrecio.Text = row["Precio"].ToString();
-                cbEstado.Text = row["Estado"].ToString();
 
+                // Extraer solo los números del precio (quitando RD$, espacios u otros caracteres)
+                string precioNumerico = System.Text.RegularExpressions.Regex.Match(row["Precio"].ToString(), @"\d+").Value;
+                textBox1.Text = precioNumerico;
+
+                // Extraer solo los números de la duración (quitando "Min" u otras letras)
+                string duracionNumerica = System.Text.RegularExpressions.Regex.Match(row["Duracion"].ToString(), @"\d+").Value;
+                cbDuracion.Text = duracionNumerica;
+
+                comboBox2.Text = row["Estado"].ToString();
             }
-        } //Fin del metodo RecuperarDatos
+        } // Fin del método RecuperaDatos
+
 
         private void BCancelar_Click(object sender, EventArgs e)
         {
@@ -114,71 +162,79 @@ namespace Gestor_de_Citas
             Program.nuevo = true; //Se especifica que se agregará un nuevo registro
             Program.modificar = false;
             HabilitaBotones(); //Se habilitan solo aquellos botones que sean necesarios
+            //comboBox2.Enabled = false;
             tbNombreServicio.Focus(); //Coloca el cursor en el TextBox indicado
         }
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
-            //Validamos los datos requeridos entes de Insertar o Actualizar
-            if (tbNombreServicio.Text == String.Empty) //Si el textbox está vacío mostrar un error y ubicar
-            { // el cursor en dicho textbox
+            
+            if (tbNombreServicio.Text == String.Empty) 
+            { 
                 MessageBox.Show("Debe indicar el Nombre del Servicio!");
                 tbNombreServicio.Focus();
+                return;
             }
             else
-            if (tbPrecio.Text == String.Empty)
+            if (textBox1.Text == String.Empty)
             {
                 MessageBox.Show("Debe indicar el Precio del Servicio!");
-                tbPrecio.Focus();
+                textBox1.Focus();
+                return;
             }
             else
-            if (cbEstado.Text == String.Empty)
+            if (cbDuracion.Text == String.Empty)
+            {
+                MessageBox.Show("Debe de selecionar la duración del Servicio");
+                cbDuracion.Focus();
+                return;
+            }
+            else
+            if (comboBox2.Text == String.Empty)
             {
                 MessageBox.Show("Debe indicar el Estado del Servicio!");
-                cbEstado.Focus();
+                comboBox2.Focus();
+                return;
             }
             else
             {
-                //Si todo es correcto procede a Insertar o actualizar según corresponda, usaremos las variables globales a toda la solución contenidas en Program.CS
-                if (Program.nuevo)//Si la variable nuevo llega con valor true se van a Insertar nuevos datos
+                if (Program.nuevo)
                 {
-
-                    mensaje = CNServicio.Insertar(Program.vidServicio, tbNombreServicio.Text, Convert.ToInt32(tbPrecio.Text),
-                      cbEstado.Text);
+                    mensaje = CNServicio.Insertar(Program.vidServicio, tbNombreServicio.Text, Convert.ToInt32(textBox1.Text),
+                        Convert.ToInt32(cbDuracion.Text), comboBox2.Text);
                 }
-                else //de lo contrario se Modificarán los datos del registro correspondiente
+                else 
                 {
-
-                    mensaje = CNServicio.Actualizar(Program.vidServicio, tbNombreServicio.Text, Convert.ToInt32(tbPrecio.Text),
-                      cbEstado.Text);
+                    mensaje = CNServicio.Actualizar(Program.vidServicio, tbNombreServicio.Text, Convert.ToInt32(textBox1.Text),
+                        Convert.ToInt32(cbDuracion.Text), comboBox2.Text);
                 }
                 //Se muestra el mensaje devuelto por la capa de negocio respecto al resultado de la operación
-                MessageBox.Show(mensaje, "Mensaje de JAC", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                MessageBox.Show(mensaje, "Mensaje de " + Program.copyright, MessageBoxButtons.OK,
+                MessageBoxIcon.None);
             }
-
-            //Se prepara todo para la próxima operación
-            Program.nuevo = false;
-            Program.modificar = false;
-            HabilitaBotones(); //Habilita los objetos y botones correspondientes
-            LimpiaObjetos(); //Llama al método LimpiaObjetos
+            if (mensaje.Contains("insertados correctamente") || mensaje.Contains("actualizados correctamente"))
+            {
+                Program.nuevo = false;
+                Program.modificar = false;
+                HabilitaBotones();
+                LimpiaObjetos();
+            }
         }
 
         private void MantServicio_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Esto evita que el sonido de la tecla sea reproducido
+                e.SuppressKeyPress = true; 
                 SendKeys.Send("{TAB}");
             }
-
         }
 
         private void BEditar_Click(object sender, EventArgs e)
         {
             if (!tbIdServicio.Equals(""))
             {
-                Program.modificar = true; //el formulaario se prepara para modificar datos
+                Program.modificar = true;
                 HabilitaBotones();
             }
             else
@@ -187,25 +243,32 @@ namespace Gestor_de_Citas
             }
         }
 
+        private void PTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void HabilitaBotones()
         {
             if (Program.nuevo || Program.modificar)
             {
-                HabilitaControles(true); //Llamada al método para habilitar los objetos
+                HabilitaControles(true); 
                 BNuevo.Enabled = false;
                 BGuardar.Enabled = true;
                 BEditar.Enabled = false;
                 BBuscar.Enabled = false;
                 BCancelar.Enabled = true;
+                
             }
             else
             {
-                HabilitaControles(false); //Llamada al método para inhabilitar los objetos
+                HabilitaControles(false); 
                 BNuevo.Enabled = true;
                 BGuardar.Enabled = false;
                 BEditar.Enabled = false;
                 BBuscar.Enabled = true;
                 BCancelar.Enabled = false;
+                comboBox2.Enabled = false;
             }
         }
     }

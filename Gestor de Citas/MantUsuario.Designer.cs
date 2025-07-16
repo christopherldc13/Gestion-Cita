@@ -37,10 +37,8 @@ namespace Gestor_de_Citas
             this.BEditar = new System.Windows.Forms.Button();
             this.BGuardar = new System.Windows.Forms.Button();
             this.BNuevo = new System.Windows.Forms.Button();
-            this.BBuscar = new System.Windows.Forms.Button();
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.tbNombreEmpleado = new System.Windows.Forms.TextBox();
-            this.tbRol = new System.Windows.Forms.TextBox();
             this.tbClave = new System.Windows.Forms.TextBox();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.tbIdUsuario = new System.Windows.Forms.TextBox();
@@ -56,7 +54,18 @@ namespace Gestor_de_Citas
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tbIdEmpleado = new System.Windows.Forms.TextBox();
             this.bBuscarEmpleado = new System.Windows.Forms.Button();
+            this.BBuscar = new System.Windows.Forms.Button();
+            this.bBuscarRol = new System.Windows.Forms.Button();
+            this.tbIdRol = new System.Windows.Forms.TextBox();
+            this.tbNombreRol = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.PBotones.SuspendLayout();
             this.PTitulo.SuspendLayout();
             this.SuspendLayout();
@@ -166,85 +175,66 @@ namespace Gestor_de_Citas
             this.BNuevo.UseVisualStyleBackColor = true;
             this.BNuevo.Click += new System.EventHandler(this.BNuevo_Click);
             // 
-            // BBuscar
-            // 
-            this.BBuscar.BackColor = System.Drawing.Color.Transparent;
-            this.BBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BBuscar.FlatAppearance.BorderSize = 0;
-            this.BBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BBuscar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BBuscar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
-            this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BBuscar.Location = new System.Drawing.Point(266, 98);
-            this.BBuscar.Name = "BBuscar";
-            this.BBuscar.Size = new System.Drawing.Size(131, 45);
-            this.BBuscar.TabIndex = 19;
-            this.BBuscar.Text = "&Buscar Usuario";
-            this.BBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.BBuscar, "Buscar Usuario");
-            this.BBuscar.UseVisualStyleBackColor = false;
-            this.BBuscar.Click += new System.EventHandler(this.BBuscar_Click);
-            // 
             // cbEstado
             // 
             this.cbEstado.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEstado.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbEstado.Location = new System.Drawing.Point(488, 173);
+            this.cbEstado.Location = new System.Drawing.Point(83, 364);
             this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(235, 21);
+            this.cbEstado.Size = new System.Drawing.Size(235, 25);
             this.cbEstado.TabIndex = 30;
             // 
             // tbNombreEmpleado
             // 
-            this.tbNombreEmpleado.Location = new System.Drawing.Point(490, 359);
+            this.tbNombreEmpleado.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNombreEmpleado.Location = new System.Drawing.Point(485, 366);
             this.tbNombreEmpleado.Name = "tbNombreEmpleado";
-            this.tbNombreEmpleado.Size = new System.Drawing.Size(234, 20);
+            this.tbNombreEmpleado.Size = new System.Drawing.Size(234, 24);
             this.tbNombreEmpleado.TabIndex = 29;
+            this.tbNombreEmpleado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.tbNombreEmpleado, "Nombre del Empledo ");
-            // 
-            // tbRol
-            // 
-            this.tbRol.Location = new System.Drawing.Point(66, 350);
-            this.tbRol.Name = "tbRol";
-            this.tbRol.Size = new System.Drawing.Size(236, 20);
-            this.tbRol.TabIndex = 28;
-            this.toolTip1.SetToolTip(this.tbRol, "Rol del Usuario");
             // 
             // tbClave
             // 
-            this.tbClave.Location = new System.Drawing.Point(66, 269);
+            this.tbClave.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbClave.Location = new System.Drawing.Point(84, 273);
             this.tbClave.Name = "tbClave";
-            this.tbClave.Size = new System.Drawing.Size(236, 20);
+            this.tbClave.Size = new System.Drawing.Size(236, 24);
             this.tbClave.TabIndex = 27;
+            this.tbClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.tbClave, "Clave");
             // 
             // tbUsuario
             // 
-            this.tbUsuario.Location = new System.Drawing.Point(66, 187);
+            this.tbUsuario.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsuario.Location = new System.Drawing.Point(82, 193);
             this.tbUsuario.Name = "tbUsuario";
-            this.tbUsuario.Size = new System.Drawing.Size(236, 20);
+            this.tbUsuario.Size = new System.Drawing.Size(236, 24);
             this.tbUsuario.TabIndex = 26;
+            this.tbUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.tbUsuario, "Usuario");
             // 
             // tbIdUsuario
             // 
-            this.tbIdUsuario.Location = new System.Drawing.Point(100, 108);
+            this.tbIdUsuario.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdUsuario.Location = new System.Drawing.Point(99, 119);
             this.tbIdUsuario.Name = "tbIdUsuario";
-            this.tbIdUsuario.Size = new System.Drawing.Size(160, 20);
+            this.tbIdUsuario.Size = new System.Drawing.Size(124, 24);
             this.tbIdUsuario.TabIndex = 25;
+            this.tbIdUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.tbIdUsuario, "Id del Usuario");
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(563, 315);
+            this.label7.Location = new System.Drawing.Point(559, 330);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(82, 26);
             this.label7.TabIndex = 24;
@@ -254,27 +244,27 @@ namespace Gestor_de_Citas
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(565, 135);
+            this.label6.Location = new System.Drawing.Point(453, 72);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 26);
+            this.label6.Size = new System.Drawing.Size(40, 26);
             this.label6.TabIndex = 23;
-            this.label6.Text = "Estado";
+            this.label6.Text = "Rol";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(158, 313);
+            this.label5.Location = new System.Drawing.Point(161, 329);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 26);
+            this.label5.Size = new System.Drawing.Size(68, 26);
             this.label5.TabIndex = 22;
-            this.label5.Text = "Rol";
+            this.label5.Text = "Estado";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(147, 232);
+            this.label4.Location = new System.Drawing.Point(167, 234);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 26);
             this.label4.TabIndex = 21;
@@ -284,7 +274,7 @@ namespace Gestor_de_Citas
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(139, 154);
+            this.label3.Location = new System.Drawing.Point(159, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 26);
             this.label3.TabIndex = 20;
@@ -294,7 +284,7 @@ namespace Gestor_de_Citas
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(63, 104);
+            this.label2.Location = new System.Drawing.Point(60, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 26);
             this.label2.TabIndex = 18;
@@ -326,17 +316,19 @@ namespace Gestor_de_Citas
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(20, 85);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(38, 85);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(761, 319);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(330, 319);
             this.flowLayoutPanel1.TabIndex = 73;
             // 
             // tbIdEmpleado
             // 
-            this.tbIdEmpleado.Location = new System.Drawing.Point(490, 270);
+            this.tbIdEmpleado.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdEmpleado.Location = new System.Drawing.Point(491, 295);
             this.tbIdEmpleado.Name = "tbIdEmpleado";
-            this.tbIdEmpleado.Size = new System.Drawing.Size(234, 20);
+            this.tbIdEmpleado.Size = new System.Drawing.Size(114, 24);
             this.tbIdEmpleado.TabIndex = 75;
+            this.tbIdEmpleado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.tbIdEmpleado, "Nombre del Empledo ");
             // 
             // bBuscarEmpleado
@@ -349,7 +341,7 @@ namespace Gestor_de_Citas
             this.bBuscarEmpleado.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bBuscarEmpleado.Image = ((System.Drawing.Image)(resources.GetObject("bBuscarEmpleado.Image")));
             this.bBuscarEmpleado.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.bBuscarEmpleado.Location = new System.Drawing.Point(663, 210);
+            this.bBuscarEmpleado.Location = new System.Drawing.Point(608, 283);
             this.bBuscarEmpleado.Name = "bBuscarEmpleado";
             this.bBuscarEmpleado.Size = new System.Drawing.Size(90, 45);
             this.bBuscarEmpleado.TabIndex = 76;
@@ -359,21 +351,161 @@ namespace Gestor_de_Citas
             this.bBuscarEmpleado.UseVisualStyleBackColor = false;
             this.bBuscarEmpleado.Click += new System.EventHandler(this.bBuscarEmpleado_Click);
             // 
+            // BBuscar
+            // 
+            this.BBuscar.BackColor = System.Drawing.Color.Transparent;
+            this.BBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BBuscar.FlatAppearance.BorderSize = 0;
+            this.BBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BBuscar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBuscar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
+            this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.BBuscar.Location = new System.Drawing.Point(229, 108);
+            this.BBuscar.Name = "BBuscar";
+            this.BBuscar.Size = new System.Drawing.Size(89, 45);
+            this.BBuscar.TabIndex = 19;
+            this.BBuscar.Text = "&Buscar";
+            this.BBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.BBuscar, "Buscar Usuario");
+            this.BBuscar.UseVisualStyleBackColor = false;
+            this.BBuscar.Click += new System.EventHandler(this.BBuscar_Click);
+            // 
+            // bBuscarRol
+            // 
+            this.bBuscarRol.BackColor = System.Drawing.Color.Transparent;
+            this.bBuscarRol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bBuscarRol.FlatAppearance.BorderSize = 0;
+            this.bBuscarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bBuscarRol.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscarRol.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bBuscarRol.Image = ((System.Drawing.Image)(resources.GetObject("bBuscarRol.Image")));
+            this.bBuscarRol.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.bBuscarRol.Location = new System.Drawing.Point(606, 106);
+            this.bBuscarRol.Name = "bBuscarRol";
+            this.bBuscarRol.Size = new System.Drawing.Size(87, 45);
+            this.bBuscarRol.TabIndex = 77;
+            this.bBuscarRol.Text = "&Buscar";
+            this.bBuscarRol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.bBuscarRol, "Buscar Usuario");
+            this.bBuscarRol.UseVisualStyleBackColor = false;
+            this.bBuscarRol.Click += new System.EventHandler(this.bBuscarRol_Click);
+            // 
+            // tbIdRol
+            // 
+            this.tbIdRol.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdRol.Location = new System.Drawing.Point(491, 117);
+            this.tbIdRol.Name = "tbIdRol";
+            this.tbIdRol.Size = new System.Drawing.Size(114, 24);
+            this.tbIdRol.TabIndex = 78;
+            this.tbIdRol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.tbIdRol, "Id del Rol");
+            // 
+            // tbNombreRol
+            // 
+            this.tbNombreRol.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNombreRol.Location = new System.Drawing.Point(482, 192);
+            this.tbNombreRol.Name = "tbNombreRol";
+            this.tbNombreRol.Size = new System.Drawing.Size(234, 24);
+            this.tbNombreRol.TabIndex = 79;
+            this.tbNombreRol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.tbNombreRol, "Rol");
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(538, 220);
+            this.label8.Location = new System.Drawing.Point(458, 294);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 26);
+            this.label8.Size = new System.Drawing.Size(34, 26);
             this.label8.TabIndex = 74;
-            this.label8.Text = "ID Empleado";
+            this.label8.Text = "ID";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(434, 85);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(330, 146);
+            this.flowLayoutPanel2.TabIndex = 80;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(435, 258);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(330, 146);
+            this.flowLayoutPanel3.TabIndex = 81;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(451, 246);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(96, 26);
+            this.label9.TabIndex = 82;
+            this.label9.Text = "Empleado";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(453, 115);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 26);
+            this.label10.TabIndex = 83;
+            this.label10.Text = "ID";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(530, 157);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(140, 26);
+            this.label11.TabIndex = 84;
+            this.label11.Text = "Rol del Usuario";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(55, 73);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(77, 26);
+            this.label12.TabIndex = 85;
+            this.label12.Text = "Usuario";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(88, 299);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 21);
+            this.checkBox1.TabIndex = 86;
+            this.checkBox1.Text = "Ver clave";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // MantUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 493);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.tbNombreRol);
+            this.Controls.Add(this.tbIdRol);
+            this.Controls.Add(this.bBuscarRol);
             this.Controls.Add(this.bBuscarEmpleado);
             this.Controls.Add(this.tbIdEmpleado);
             this.Controls.Add(this.label8);
@@ -381,7 +513,6 @@ namespace Gestor_de_Citas
             this.Controls.Add(this.BBuscar);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.tbNombreEmpleado);
-            this.Controls.Add(this.tbRol);
             this.Controls.Add(this.tbClave);
             this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.tbIdUsuario);
@@ -393,6 +524,8 @@ namespace Gestor_de_Citas
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PTitulo);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayoutPanel2);
+            this.Controls.Add(this.flowLayoutPanel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -424,7 +557,6 @@ namespace Gestor_de_Citas
         private System.Windows.Forms.Button BBuscar;
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.TextBox tbNombreEmpleado;
-        private System.Windows.Forms.TextBox tbRol;
         private System.Windows.Forms.TextBox tbClave;
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.TextBox tbIdUsuario;
@@ -441,5 +573,15 @@ namespace Gestor_de_Citas
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbIdEmpleado;
         private System.Windows.Forms.Button bBuscarEmpleado;
+        private System.Windows.Forms.Button bBuscarRol;
+        private System.Windows.Forms.TextBox tbIdRol;
+        private System.Windows.Forms.TextBox tbNombreRol;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

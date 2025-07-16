@@ -70,6 +70,7 @@
     <Reference Include="System">
       <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -80,11 +81,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CDDisponibilidad.cs" />
     <Compile Include="CDEmpleado.cs" />
     <Compile Include="CDCita.cs" />
     <Compile Include="CDCliente.cs" />
     <Compile Include="CDEmpresa.cs" />
     <Compile Include="CDPago.cs" />
+    <Compile Include="CDRol.cs" />
     <Compile Include="CDServicios.cs" />
     <Compile Include="CDUsuario.cs" />
     <Compile Include="ConexionDB.cs" />

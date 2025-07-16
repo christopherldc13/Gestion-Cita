@@ -63,6 +63,7 @@ namespace Gestor_de_Citas
             // 
             // tbEslogan
             // 
+            this.tbEslogan.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEslogan.Location = new System.Drawing.Point(522, 289);
             this.tbEslogan.Multiline = true;
             this.tbEslogan.Name = "tbEslogan";
@@ -82,6 +83,7 @@ namespace Gestor_de_Citas
             // 
             // tbLogo
             // 
+            this.tbLogo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLogo.Location = new System.Drawing.Point(522, 142);
             this.tbLogo.Multiline = true;
             this.tbLogo.Name = "tbLogo";
@@ -101,41 +103,46 @@ namespace Gestor_de_Citas
             // 
             // tbCorreo
             // 
+            this.tbCorreo.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCorreo.Location = new System.Drawing.Point(125, 373);
             this.tbCorreo.Name = "tbCorreo";
-            this.tbCorreo.Size = new System.Drawing.Size(320, 20);
+            this.tbCorreo.Size = new System.Drawing.Size(320, 24);
             this.tbCorreo.TabIndex = 76;
             this.toolTip1.SetToolTip(this.tbCorreo, "Correo de la Empresa");
             // 
             // tbDireccion
             // 
-            this.tbDireccion.Location = new System.Drawing.Point(125, 294);
+            this.tbDireccion.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDireccion.Location = new System.Drawing.Point(127, 294);
             this.tbDireccion.Name = "tbDireccion";
-            this.tbDireccion.Size = new System.Drawing.Size(320, 20);
+            this.tbDireccion.Size = new System.Drawing.Size(318, 24);
             this.tbDireccion.TabIndex = 75;
             this.toolTip1.SetToolTip(this.tbDireccion, "Dirección de la Empresa");
             // 
             // tbTelefono
             // 
-            this.tbTelefono.Location = new System.Drawing.Point(126, 219);
+            this.tbTelefono.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTelefono.Location = new System.Drawing.Point(127, 219);
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(178, 20);
+            this.tbTelefono.Size = new System.Drawing.Size(177, 24);
             this.tbTelefono.TabIndex = 74;
             this.toolTip1.SetToolTip(this.tbTelefono, "Telefono de la Empresa");
             // 
             // tbNombre
             // 
-            this.tbNombre.Location = new System.Drawing.Point(126, 146);
+            this.tbNombre.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNombre.Location = new System.Drawing.Point(128, 149);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(320, 20);
+            this.tbNombre.Size = new System.Drawing.Size(318, 24);
             this.tbNombre.TabIndex = 73;
             this.toolTip1.SetToolTip(this.tbNombre, "Nombre de la Empresa");
             // 
             // tbIdEmpresa
             // 
+            this.tbIdEmpresa.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbIdEmpresa.Location = new System.Drawing.Point(81, 94);
             this.tbIdEmpresa.Name = "tbIdEmpresa";
-            this.tbIdEmpresa.Size = new System.Drawing.Size(162, 20);
+            this.tbIdEmpresa.Size = new System.Drawing.Size(78, 24);
             this.tbIdEmpresa.TabIndex = 72;
             this.toolTip1.SetToolTip(this.tbIdEmpresa, "Id Empresa");
             // 
@@ -152,7 +159,7 @@ namespace Gestor_de_Citas
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(47, 368);
+            this.label6.Location = new System.Drawing.Point(47, 369);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 26);
             this.label6.TabIndex = 70;
@@ -162,7 +169,7 @@ namespace Gestor_de_Citas
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(39, 289);
+            this.label5.Location = new System.Drawing.Point(39, 291);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 26);
             this.label5.TabIndex = 69;
@@ -172,7 +179,7 @@ namespace Gestor_de_Citas
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(37, 213);
+            this.label4.Location = new System.Drawing.Point(37, 217);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 26);
             this.label4.TabIndex = 68;
@@ -182,7 +189,7 @@ namespace Gestor_de_Citas
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 141);
+            this.label3.Location = new System.Drawing.Point(40, 147);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 26);
             this.label3.TabIndex = 67;
@@ -192,7 +199,7 @@ namespace Gestor_de_Citas
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(44, 90);
+            this.label2.Location = new System.Drawing.Point(44, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 26);
             this.label2.TabIndex = 65;
@@ -200,7 +207,7 @@ namespace Gestor_de_Citas
             // 
             // PBotones
             // 
-            this.PBotones.BackColor = System.Drawing.Color.SlateGray;
+            this.PBotones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(107)))), ((int)(((byte)(123)))));
             this.PBotones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PBotones.Controls.Add(this.BCancelar);
             this.PBotones.Controls.Add(this.BSalir);
@@ -305,24 +312,24 @@ namespace Gestor_de_Citas
             // 
             // PTitulo
             // 
-            this.PTitulo.BackColor = System.Drawing.Color.SlateGray;
+            this.PTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(107)))), ((int)(((byte)(123)))));
             this.PTitulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PTitulo.Controls.Add(this.label1);
             this.PTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.PTitulo.Location = new System.Drawing.Point(-18, 0);
+            this.PTitulo.Location = new System.Drawing.Point(-12, 0);
             this.PTitulo.Name = "PTitulo";
-            this.PTitulo.Size = new System.Drawing.Size(832, 62);
+            this.PTitulo.Size = new System.Drawing.Size(826, 62);
             this.PTitulo.TabIndex = 63;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(189, 8);
+            this.label1.Location = new System.Drawing.Point(218, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(453, 38);
+            this.label1.Size = new System.Drawing.Size(388, 38);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Mantenimiento Empresa";
+            this.label1.Text = "Registro de Empresa";
             // 
             // button2
             // 
@@ -332,7 +339,7 @@ namespace Gestor_de_Citas
             this.button2.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(252, 84);
+            this.button2.Location = new System.Drawing.Point(169, 84);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 45);
             this.button2.TabIndex = 82;

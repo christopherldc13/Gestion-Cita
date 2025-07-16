@@ -196,7 +196,6 @@ namespace Gestor_de_Citas
             this.BConsultar.Text = "Consultar";
             this.BConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BConsultar.UseVisualStyleBackColor = false;
-            this.BConsultar.Click += new System.EventHandler(this.BConsultar_Click);
             // 
             // label2
             // 
@@ -215,6 +214,7 @@ namespace Gestor_de_Citas
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(196, 20);
             this.tbBuscar.TabIndex = 0;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged_1);
             // 
             // panel1
             // 
@@ -230,7 +230,7 @@ namespace Gestor_de_Citas
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(150, 16);
+            this.label1.Location = new System.Drawing.Point(146, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(588, 38);
             this.label1.TabIndex = 0;

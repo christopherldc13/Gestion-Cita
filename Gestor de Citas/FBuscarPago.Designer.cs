@@ -199,7 +199,7 @@ namespace Gestor_de_Citas
             this.BBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
             this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBuscar.Location = new System.Drawing.Point(407, 4);
+            this.BBuscar.Location = new System.Drawing.Point(407, 5);
             this.BBuscar.Name = "BBuscar";
             this.BBuscar.Size = new System.Drawing.Size(99, 32);
             this.BBuscar.TabIndex = 2;
@@ -225,6 +225,7 @@ namespace Gestor_de_Citas
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(196, 20);
             this.tbBuscar.TabIndex = 0;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
             // 
             // panel1
             // 
@@ -240,7 +241,7 @@ namespace Gestor_de_Citas
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(304, 9);
+            this.label1.Location = new System.Drawing.Point(295, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(364, 38);
             this.label1.TabIndex = 0;

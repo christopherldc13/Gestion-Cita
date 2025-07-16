@@ -39,15 +39,17 @@ namespace Gestor_de_Citas
             this.BGuardar = new System.Windows.Forms.Button();
             this.BNuevo = new System.Windows.Forms.Button();
             this.tbIdServicio = new System.Windows.Forms.TextBox();
-            this.tbPrecio = new System.Windows.Forms.TextBox();
             this.tbNombreServicio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.BBuscar = new System.Windows.Forms.Button();
+            this.cbDuracion = new System.Windows.Forms.ComboBox();
             this.PTitulo.SuspendLayout();
             this.PBotones.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -63,6 +65,7 @@ namespace Gestor_de_Citas
             this.PTitulo.Name = "PTitulo";
             this.PTitulo.Size = new System.Drawing.Size(642, 62);
             this.PTitulo.TabIndex = 2;
+            this.PTitulo.Paint += new System.Windows.Forms.PaintEventHandler(this.PTitulo_Paint);
             // 
             // label1
             // 
@@ -99,7 +102,7 @@ namespace Gestor_de_Citas
             this.BSalir.Location = new System.Drawing.Point(622, 12);
             this.BSalir.Name = "BSalir";
             this.BSalir.Size = new System.Drawing.Size(76, 45);
-            this.BSalir.TabIndex = 5;
+            this.BSalir.TabIndex = 4;
             this.BSalir.Text = "&Salir";
             this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSalir.UseVisualStyleBackColor = true;
@@ -113,7 +116,7 @@ namespace Gestor_de_Citas
             this.BCancelar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BCancelar.Image = ((System.Drawing.Image)(resources.GetObject("BCancelar.Image")));
             this.BCancelar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BCancelar.Location = new System.Drawing.Point(407, 12);
+            this.BCancelar.Location = new System.Drawing.Point(408, 12);
             this.BCancelar.Name = "BCancelar";
             this.BCancelar.Size = new System.Drawing.Size(104, 45);
             this.BCancelar.TabIndex = 3;
@@ -130,7 +133,7 @@ namespace Gestor_de_Citas
             this.BEditar.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BEditar.Image = ((System.Drawing.Image)(resources.GetObject("BEditar.Image")));
             this.BEditar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BEditar.Location = new System.Drawing.Point(311, 12);
+            this.BEditar.Location = new System.Drawing.Point(308, 12);
             this.BEditar.Name = "BEditar";
             this.BEditar.Size = new System.Drawing.Size(90, 45);
             this.BEditar.TabIndex = 2;
@@ -175,30 +178,25 @@ namespace Gestor_de_Citas
             // 
             // tbIdServicio
             // 
-            this.tbIdServicio.Location = new System.Drawing.Point(69, 106);
+            this.tbIdServicio.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbIdServicio.Location = new System.Drawing.Point(69, 108);
             this.tbIdServicio.Name = "tbIdServicio";
-            this.tbIdServicio.Size = new System.Drawing.Size(134, 20);
-            this.tbIdServicio.TabIndex = 18;
-            // 
-            // tbPrecio
-            // 
-            this.tbPrecio.Location = new System.Drawing.Point(206, 231);
-            this.tbPrecio.Name = "tbPrecio";
-            this.tbPrecio.Size = new System.Drawing.Size(100, 20);
-            this.tbPrecio.TabIndex = 20;
+            this.tbIdServicio.Size = new System.Drawing.Size(134, 24);
+            this.tbIdServicio.TabIndex = 1;
             // 
             // tbNombreServicio
             // 
-            this.tbNombreServicio.Location = new System.Drawing.Point(218, 164);
+            this.tbNombreServicio.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNombreServicio.Location = new System.Drawing.Point(214, 153);
             this.tbNombreServicio.Name = "tbNombreServicio";
-            this.tbNombreServicio.Size = new System.Drawing.Size(327, 20);
-            this.tbNombreServicio.TabIndex = 21;
+            this.tbNombreServicio.Size = new System.Drawing.Size(327, 24);
+            this.tbNombreServicio.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(33, 102);
+            this.label2.Location = new System.Drawing.Point(33, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 26);
             this.label2.TabIndex = 22;
@@ -208,7 +206,7 @@ namespace Gestor_de_Citas
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 161);
+            this.label3.Location = new System.Drawing.Point(30, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(182, 26);
             this.label3.TabIndex = 23;
@@ -218,7 +216,7 @@ namespace Gestor_de_Citas
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(34, 226);
+            this.label4.Location = new System.Drawing.Point(31, 194);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(163, 26);
             this.label4.TabIndex = 24;
@@ -228,33 +226,55 @@ namespace Gestor_de_Citas
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(435, 207);
+            this.label5.Location = new System.Drawing.Point(449, 210);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 26);
             this.label5.TabIndex = 25;
             this.label5.Text = "Estado";
             // 
-            // cbEstado
-            // 
-            this.cbEstado.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cbEstado.Location = new System.Drawing.Point(387, 238);
-            this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(188, 21);
-            this.cbEstado.TabIndex = 26;
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.BBuscar);
             this.panel1.Location = new System.Drawing.Point(19, 84);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(598, 196);
-            this.panel1.TabIndex = 27;
+            this.panel1.Size = new System.Drawing.Size(598, 199);
+            this.panel1.TabIndex = 8;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox2.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.comboBox2.Location = new System.Drawing.Point(371, 156);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(188, 25);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(182, 113);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 24);
+            this.textBox1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(13, 153);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 26);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Duración";
             // 
             // BBuscar
             // 
@@ -266,27 +286,48 @@ namespace Gestor_de_Citas
             this.BBuscar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BBuscar.Image = ((System.Drawing.Image)(resources.GetObject("BBuscar.Image")));
             this.BBuscar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.BBuscar.Location = new System.Drawing.Point(196, 10);
+            this.BBuscar.Location = new System.Drawing.Point(189, 14);
             this.BBuscar.Name = "BBuscar";
             this.BBuscar.Size = new System.Drawing.Size(90, 45);
-            this.BBuscar.TabIndex = 20;
+            this.BBuscar.TabIndex = 5;
             this.BBuscar.Text = "&Buscar";
             this.BBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BBuscar.UseVisualStyleBackColor = false;
             this.BBuscar.Click += new System.EventHandler(this.BBuscar_Click);
+            // 
+            // cbDuracion
+            // 
+            this.cbDuracion.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.cbDuracion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDuracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbDuracion.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDuracion.FormattingEnabled = true;
+            this.cbDuracion.Items.AddRange(new object[] {
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "55",
+            "60"});
+            this.cbDuracion.Location = new System.Drawing.Point(124, 238);
+            this.cbDuracion.Name = "cbDuracion";
+            this.cbDuracion.Size = new System.Drawing.Size(152, 25);
+            this.cbDuracion.TabIndex = 9;
             // 
             // MantServicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 377);
-            this.Controls.Add(this.cbEstado);
+            this.Controls.Add(this.cbDuracion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbNombreServicio);
-            this.Controls.Add(this.tbPrecio);
             this.Controls.Add(this.tbIdServicio);
             this.Controls.Add(this.PBotones);
             this.Controls.Add(this.PTitulo);
@@ -306,6 +347,7 @@ namespace Gestor_de_Citas
             this.PTitulo.PerformLayout();
             this.PBotones.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,14 +364,16 @@ namespace Gestor_de_Citas
         private System.Windows.Forms.Button BGuardar;
         private System.Windows.Forms.Button BNuevo;
         private System.Windows.Forms.TextBox tbIdServicio;
-        private System.Windows.Forms.TextBox tbPrecio;
         private System.Windows.Forms.TextBox tbNombreServicio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BBuscar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbDuracion;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

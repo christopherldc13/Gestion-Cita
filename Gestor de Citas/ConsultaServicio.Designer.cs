@@ -191,7 +191,7 @@ namespace Gestor_de_Citas
             this.BConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BConsultar.Location = new System.Drawing.Point(575, 6);
             this.BConsultar.Name = "BConsultar";
-            this.BConsultar.Size = new System.Drawing.Size(110, 32);
+            this.BConsultar.Size = new System.Drawing.Size(114, 32);
             this.BConsultar.TabIndex = 2;
             this.BConsultar.Text = "Consultar";
             this.BConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -211,10 +211,11 @@ namespace Gestor_de_Citas
             // 
             // tbBuscar
             // 
-            this.tbBuscar.Location = new System.Drawing.Point(373, 12);
+            this.tbBuscar.Location = new System.Drawing.Point(373, 13);
             this.tbBuscar.Name = "tbBuscar";
             this.tbBuscar.Size = new System.Drawing.Size(196, 20);
             this.tbBuscar.TabIndex = 0;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
             // 
             // panel1
             // 
@@ -230,7 +231,7 @@ namespace Gestor_de_Citas
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(338, 18);
+            this.label1.Location = new System.Drawing.Point(335, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(557, 38);
             this.label1.TabIndex = 0;

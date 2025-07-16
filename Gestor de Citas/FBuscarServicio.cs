@@ -23,14 +23,14 @@ namespace Gestor_de_Citas
 
         private void FBuscarServicio_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                               "Mensaje de JAC",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question,
-                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            //if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
+            //                   "Mensaje de JAC",
+            //                   MessageBoxButtons.YesNo,
+            //                   MessageBoxIcon.Question,
+            //                   MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //    e.Cancel = false;
+            //else
+            //    e.Cancel = true;
         }
 
         private void DGVDatos_CurrentCellChanged(object sender, EventArgs e)
@@ -136,28 +136,73 @@ namespace Gestor_de_Citas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 SendKeys.Send("{TAB}");
             }
+        }
+
+        private void DGVDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        //private void MostrarDatos()
+        //{
+        //    valorparametro = tbBuscar.Text.Trim();
+        //    CNServicio objServicio = new CNServicio();
+        //    if (objServicio.ObtenerServicio(valorparametro) != null)
+        //    {
+        //        DGVDatos.DataSource = objServicio.ObtenerServicio(valorparametro);
+        //        DGVDatos.Columns[0].Width = 60; //IdServicio
+        //        DGVDatos.Columns[1].Width = 240;//NombreServicio
+        //        DGVDatos.Columns[2].Width = 60;//Precio
+        //        DGVDatos.Columns[3].Width = 100;//Duracion
+        //        DGVDatos.Columns[4].Width = 100;//Estado
+        //        //DGVDatos.Columns[5].Width = 125;
+        //    }
+        //    else
+        //        MessageBox.Show("No se retorno ningun valor!");
+        //    DGVDatos.Refresh(); //Se refresca el DataGripView
+
+        //}
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            valorparametro = tbBuscar.Text.Trim(); // Obtener el texto ingresado
+            vtieneparametro = string.IsNullOrEmpty(valorparametro) ? 0 : 1; // Si el texto está vacío, no hay filtro
+
+            MostrarDatos(); // Filtrar y mostrar los datos
         }
 
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();
             CNServicio objServicio = new CNServicio();
-            if (objServicio.ObtenerServicio(valorparametro) != null)
+
+            var datos = objServicio.ObtenerServicio(valorparametro);
+
+            if (datos != null)
             {
-                DGVDatos.DataSource = objServicio.ObtenerServicio(valorparametro);
-                DGVDatos.Columns[0].Width = 60; //IdServicio
-                DGVDatos.Columns[1].Width = 240;//NombreServicio
-                DGVDatos.Columns[2].Width = 60;//Precio
-                DGVDatos.Columns[3].Width = 100;//Estado
-                //DGVDatos.Columns[4].Width = 125;
-                //DGVDatos.Columns[5].Width = 125;
+                string[] headers = { "ID Servicio", "Nombre Servicio", "Precio", "Duración", "Estado" };
+                int[] widths = { 60, 240, 60, 100, 100 };
+
+                DGVDatos.DataSource = datos;
+
+                for (int i = 0; i < headers.Length && i < DGVDatos.Columns.Count; i++)
+                {
+                    DGVDatos.Columns[i].HeaderText = headers[i];
+                    DGVDatos.Columns[i].Width = widths[i];
+                    DGVDatos.AllowUserToResizeRows = false;
+                    DGVDatos.AllowUserToOrderColumns = false;
+                    DGVDatos.AllowUserToResizeColumns = false;
+                }
             }
             else
-                MessageBox.Show("No se retorno ningun valor!");
-            DGVDatos.Refresh(); //Se refresca el DataGripView
+            {
+                MessageBox.Show("No se retornó ningún valor!");
+            }
 
+            DGVDatos.Refresh();
         }
     }
 }

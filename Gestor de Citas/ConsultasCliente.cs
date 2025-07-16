@@ -15,6 +15,7 @@ namespace Gestor_de_Citas
     {
         public int indice = 0, vtieneparametro = 0;
         public string valorparametro = "";
+
         public ConsultasCliente()
         {
             InitializeComponent();
@@ -22,55 +23,49 @@ namespace Gestor_de_Citas
 
         private void ConsultasCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Esto hara salir del formulario! \n Seguro que desea hacerlo?",
-                               "Mensaje de JAC",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question,
-                               MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
+            // Puedes agregar la lógica de confirmación de cierre si lo deseas
         }
 
         private void ConsultasCliente_Load(object sender, EventArgs e)
         {
             valorparametro = "";
             vtieneparametro = 0;
-            Program.vidUsuario = 0; 
-            MostrarDatos(); 
-            tbBuscar.Focus(); 
+            Program.vidUsuario = 0;
+            MostrarDatos();
+            tbBuscar.Focus();
         }
 
         private void DGVDatos_CurrentCellChanged(object sender, EventArgs e)
         {
-            if (DGVDatos.CurrentRow != null) 
-                indice = DGVDatos.CurrentRow.Index; 
+            if (DGVDatos.CurrentRow != null)
+                indice = DGVDatos.CurrentRow.Index;
         }
 
         private void bSalir_Click(object sender, EventArgs e)
         {
-            Close(); 
+            Close();
         }
 
         private void BConsultar_Click(object sender, EventArgs e)
         {
-            if (tbBuscar.Text != String.Empty) 
+            // Ya no es necesario, ya que vamos a usar el evento TextChanged para filtrar mientras escriben
+            if (tbBuscar.Text != String.Empty)
             {
-                vtieneparametro = 1; 
+                vtieneparametro = 1;
                 valorparametro = "%" + tbBuscar.Text.Trim() + "%";
             }
-            else 
+            else
             {
-                vtieneparametro = 0; 
-                valorparametro = ""; 
+                vtieneparametro = 0;
+                valorparametro = "";
             }
-            MostrarDatos(); 
-            tbBuscar.Focus(); 
+            MostrarDatos();
+            tbBuscar.Focus();
         }
 
         private void bPrimero_Click(object sender, EventArgs e)
         {
-            if (DGVDatos.Rows.Count > 1) 
+            if (DGVDatos.Rows.Count > 1)
             {
                 indice = 0;
                 DGVDatos.CurrentCell = DGVDatos.Rows[indice].Cells[DGVDatos.CurrentCell.ColumnIndex];
@@ -79,31 +74,28 @@ namespace Gestor_de_Citas
 
         private void bAnterior_Click(object sender, EventArgs e)
         {
-            if (indice > 0) 
+            if (indice > 0)
             {
                 indice = indice - 1;
-                DGVDatos.CurrentCell =
-                DGVDatos.Rows[indice].Cells[DGVDatos.CurrentCell.ColumnIndex];
+                DGVDatos.CurrentCell = DGVDatos.Rows[indice].Cells[DGVDatos.CurrentCell.ColumnIndex];
             }
         }
 
         private void bSiguiente_Click(object sender, EventArgs e)
         {
-            if (indice < this.DGVDatos.RowCount - 1) 
+            if (indice < this.DGVDatos.RowCount - 1)
             {
                 indice++;
-                DGVDatos.CurrentCell =
-               DGVDatos.Rows[indice].Cells[DGVDatos.CurrentCell.ColumnIndex];
+                DGVDatos.CurrentCell = DGVDatos.Rows[indice].Cells[DGVDatos.CurrentCell.ColumnIndex];
             }
         }
 
         private void bUltimo_Click(object sender, EventArgs e)
         {
-            if (indice < this.DGVDatos.RowCount - 1) 
+            if (indice < this.DGVDatos.RowCount - 1)
             {
-                indice = DGVDatos.Rows.Count - 1; 
-                DGVDatos.CurrentCell =
-               DGVDatos.Rows[indice].Cells[DGVDatos.CurrentCell.ColumnIndex];
+                indice = DGVDatos.Rows.Count - 1;
+                DGVDatos.CurrentCell = DGVDatos.Rows[indice].Cells[DGVDatos.CurrentCell.ColumnIndex];
             }
         }
 
@@ -111,32 +103,51 @@ namespace Gestor_de_Citas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 SendKeys.Send("{TAB}");
             }
+        }
+
+        // Evento TextChanged para filtrar los datos mientras el usuario escribe en el TextBox
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            valorparametro = tbBuscar.Text.Trim(); // Obtener el texto ingresado
+            vtieneparametro = string.IsNullOrEmpty(valorparametro) ? 0 : 1; // Si el texto está vacío, no hay filtro
+
+            MostrarDatos(); // Filtrar y mostrar los datos
         }
 
         private void MostrarDatos()
         {
             valorparametro = tbBuscar.Text.Trim();
             CNCliente objCliente = new CNCliente();
-            if (objCliente.ObtenerCliente(valorparametro) != null)
+
+            var datos = objCliente.ObtenerCliente(valorparametro); // Pasar el parámetro de búsqueda a la función
+
+            if (datos != null)
             {
-                DGVDatos.DataSource = objCliente.ObtenerCliente(valorparametro);
-                DGVDatos.Columns[0].Width = 80; 
-                DGVDatos.Columns[1].Width = 200;
-                DGVDatos.Columns[2].Width = 225;
-                DGVDatos.Columns[3].Width = 100;
-                DGVDatos.Columns[4].Width = 125;
-                DGVDatos.Columns[5].Width = 125;
+                string[] headers = { "ID Cliente", "Nombre", "Apellido", "Teléfono", "Correo", "Estado" };
+                int[] widths = { 80, 150, 150, 100, 175, 125 };
+
+                DGVDatos.DataSource = datos;
+
+                // Configurar las columnas
+                for (int i = 0; i < headers.Length && i < DGVDatos.Columns.Count; i++)
+                {
+                    DGVDatos.Columns[i].HeaderText = headers[i];
+                    DGVDatos.Columns[i].Width = widths[i];
+                    DGVDatos.AllowUserToResizeRows = false;
+                    DGVDatos.AllowUserToOrderColumns = false;
+                    DGVDatos.AllowUserToResizeColumns = false;
+                    LCantidadCliente.Text = "Cantidad de Clientes: " + Convert.ToString(DGVDatos.RowCount);
+                }
             }
             else
-                MessageBox.Show("No se retorno ningun valor!");
-            DGVDatos.Refresh(); 
-            LCantidadCliente.Text = "Cantidad de Clientes: " + Convert.ToString(DGVDatos.RowCount); 
-            if (DGVDatos.RowCount <= 0) //Si no se obtienen datos de retorno
             {
-                MessageBox.Show("Ningún dato que mostrar!"); //Se muestra un mensaje de error
+                MessageBox.Show("No se retornó ningún valor!");
             }
+
+            DGVDatos.Refresh();
         }
     }
 }

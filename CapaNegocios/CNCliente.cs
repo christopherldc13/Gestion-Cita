@@ -24,6 +24,7 @@ namespace CapaNegocios
             objCliente.Estado = pEstado;
             return objCliente.Insertar(objCliente);
         } 
+
         public static string Actualizar(int pIdCliente, string pNombre, string pApellido, string pTelefono,
          string pCorreo, string pEstado)
         {
@@ -44,5 +45,13 @@ namespace CapaNegocios
             dt = objCliente.ClienteConsultar(miparametro);
             return dt; 
         }
+
+        //Cuadro de Cliente: Cliente activos
+        public static int ObtenerCantidadClientesActivos()
+        {
+            CDCliente objCliente = new CDCliente();
+            return objCliente.ObtenerCantidadClientesActivos();
+        }
+
     }
 }

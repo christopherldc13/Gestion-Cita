@@ -47,27 +47,6 @@ namespace CapaNegocios
             return dt; 
         }
 
-        //public bool AutenticarUsuario(string usuario, string clave)
-        //{
-        //    bool autenticado = false;
-        //    CDUsuario objUsuario = new CDUsuario();
-        //    try
-        //    {
-        //        autenticado = objUsuario.AutenticarUsuario(usuario, clave);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("Error al autenticar usuario desde la capa de negocios: " + ex.Message);
-        //    }
-        //    return autenticado;
-        //}
-
-        //public string AutenticarUsuario(string usuario, string clave)
-        //{
-        //    CDUsuario objUsuario = new CDUsuario();
-        //    return objUsuario.AutenticarUsuario(usuario, clave);
-        //}
-
         public (string mensaje, string rol) AutenticarUsuario(string usuario, string clave)
         {
             CDUsuario objUsuario = new CDUsuario();

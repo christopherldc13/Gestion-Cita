@@ -63,6 +63,7 @@ namespace CapaNegocios
         }
 
         //Cuadro de Pagos: Ganancias diarias
+        //OJO A ESTO, SE DEBE DE REVISAR Y ELIMINAR
         public static decimal ObtenerGananciaDiaria()
         {
             return new CDCita().ObtenerGananciaDiaria();
@@ -108,8 +109,7 @@ namespace CapaNegocios
             }
             catch (SqlException)
             {
-                // Aquí puedes manejar el error de forma silenciosa
-                // Si no se desea hacer nada en caso de error, se puede omitir este bloque
+                
             }
             catch (Exception)
             {
@@ -117,7 +117,7 @@ namespace CapaNegocios
             }
             finally
             {
-                // Asegurarse de cerrar la conexión
+                
                 if (sqlCon.State == ConnectionState.Open)
                     sqlCon.Close();
             }

@@ -68,7 +68,6 @@ namespace CapaNegocios
             return new CDPago().ObtenerGananciasMensualesChart();
         }
 
-
     }
 }
 

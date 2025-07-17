@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace CapaNegocios
 {
-    // Cambié 'class' por 'public class' para hacerla accesible desde otras clases
     public class CNDisponibilidad
     {
         public static string Insertar(int pIdEmpleado, string pDiaSemana, DateTime pHoraInicio, DateTime pHoraFin)

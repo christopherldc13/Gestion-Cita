@@ -93,35 +93,6 @@ namespace CapaDatos
             return mensaje;
         }
 
-        //public string Actualizar(CDPago objPago)
-        //{
-        //    string mensaje = "";
-        //    SqlConnection sqlCon = new SqlConnection();
-        //    try
-        //    {
-        //        sqlCon.ConnectionString = ConexionDB.miconexion;
-        //        SqlCommand micomando = new SqlCommand("PagoActualizar", sqlCon);
-        //        sqlCon.Open();
-        //        micomando.CommandType = CommandType.StoredProcedure;
-        //        micomando.Parameters.AddWithValue("@pIdPago", objPago.IdPago);
-        //        micomando.Parameters.AddWithValue("@pIdCita", objPago.IdCita);
-        //        micomando.Parameters.AddWithValue("@pConceptoPago", objPago.ConceptoPago);
-        //        micomando.Parameters.AddWithValue("@pEstado", objPago.Estado);
-        //        mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Pago actualizados correctamente!" :
-        //         "No se pudo actualizar correctamente los datos del Pago!";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        mensaje = ex.Message;
-        //    }
-        //    finally
-        //    {
-        //        if (sqlCon.State == ConnectionState.Open)
-        //            sqlCon.Close();
-        //    }
-        //    return mensaje;
-        //}
-
         public string Actualizar(CDPago objPago)
         {
             string mensaje = "";
@@ -140,7 +111,6 @@ namespace CapaDatos
                 // Ejecutar el procedimiento y obtener el valor de retorno
                 int result = micomando.ExecuteNonQuery();
 
-                // Revisar si la ejecución fue exitosa o no
                 if (result == 1)
                 {
                     mensaje = "Datos del Pago actualizados correctamente!";
@@ -159,7 +129,6 @@ namespace CapaDatos
                 }
                 else
                 {
-                    // Para otros errores de SQL
                     mensaje = "Error de SQL: " + ex.Message;
                 }
             }
@@ -195,7 +164,7 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                dt = null; //Si ocurre algun error se anula el DataTable
+                dt = null; 
             }
             return dt; 
         }

@@ -46,11 +46,5 @@ namespace CapaNegocios
             dt = objEmpresa.EmpresaConsultar(miparametro);
             return dt; 
         }
-
-        //public static string ObtenerRutaLogo()
-        //{
-        //    CDEmpresa objEmpresa = new CDEmpresa();
-        //    return objEmpresa.ObtenerRutaImagenDesdeBD();
-        //}
     }
 }

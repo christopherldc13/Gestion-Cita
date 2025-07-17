@@ -208,7 +208,6 @@ namespace CapaDatos
             return mensaje;
         }
 
-
         public string Actualizar(CDCita objCita)
         {
             string mensaje = "";
@@ -252,12 +251,10 @@ namespace CapaDatos
             }
             catch (SqlException ex)
             {
-                // Capturar errores de SQL (como violaciones de restricciones)
                 mensaje = "ADVERTENCIA: " + ex.Message;
             }
             catch (Exception ex)
             {
-                // Capturar otros errores
                 mensaje = "Error: " + ex.Message;
             }
             finally

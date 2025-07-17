@@ -24,8 +24,6 @@ namespace GUI_MODERNISTA
             tbBienvenido.Text = ("Bienvenido: "+ Program.usuario);
         }
 
-       
-
         private void Form1_Load(object sender, EventArgs e)
         {
             copyright.Text = $"Copyright {Program.copyright} {DateTime.Now.Year}, La Vega Rep. Dom.";
@@ -33,6 +31,7 @@ namespace GUI_MODERNISTA
             timerOcultar.Interval = 200; // Pequeño retraso para evitar parpadeos
             timerOcultar.Tick += TimerOcultar_Tick;
             cargarcuadro();
+
             //Carga los Chart
             CargarGraficoCitas(); 
             CargarChartGananciasDiarias();
@@ -57,7 +56,7 @@ namespace GUI_MODERNISTA
             temporizador.Start();
         }
 
-        //Cuadros del dashbord
+        //Cuadros del DASHBOARD
         private void cargarcuadro()
         {
             //Cuadro de Cliente: Cliente activos
@@ -84,8 +83,6 @@ namespace GUI_MODERNISTA
             //Cuadro de Pagos: Ganancias diarias
             decimal ganancias = CNCita.ObtenerGananciaDiaria();
             label8.Text = "RD$ " + ganancias.ToString("N2", new CultureInfo("es-DO"));
-
-
         }
 
         //Grafico de cargar citas Cancelada y Realizadas en el año
@@ -800,6 +797,19 @@ namespace GUI_MODERNISTA
         {
             MantServicio mantServicio = new MantServicio();
             mantServicio.ShowDialog();
+        }
+
+        private void BarraTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnCerrar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog(); ;
         }
     }
 }

@@ -113,35 +113,6 @@ namespace CapaDatos
             return mensaje;
         }
 
-
-        //public string Actualizar(CDServicio objServicio)
-        //{
-        //    string mensaje = "";
-        //    SqlConnection sqlCon = new SqlConnection();
-        //    try
-        //    {
-        //        sqlCon.ConnectionString = ConexionDB.miconexion;
-        //        SqlCommand micomando = new SqlCommand("ServicioActualizar", sqlCon);
-        //        sqlCon.Open();
-        //        micomando.CommandType = CommandType.StoredProcedure;
-        //        micomando.Parameters.AddWithValue("@pIdServicio", objServicio.IdServicio);
-        //        micomando.Parameters.AddWithValue("@pNombreServicio", objServicio.NombreServicio);
-        //        micomando.Parameters.AddWithValue("@pPrecio", objServicio.Precio);
-        //        micomando.Parameters.AddWithValue("@pEstado", objServicio.Estado);
-        //        mensaje = micomando.ExecuteNonQuery() == 1 ? "Datos del Servicio actualizados correctamente!" :
-        //         "No se pudo actualizar correctamente los datos del Servicio!";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        mensaje = ex.Message;
-        //    }
-        //    finally
-        //    {
-        //        if (sqlCon.State == ConnectionState.Open)
-        //            sqlCon.Close();
-        //    }
-        //    return mensaje;
-        //}
         public string Actualizar(CDServicio objServicio)
         {
             string mensaje = "";

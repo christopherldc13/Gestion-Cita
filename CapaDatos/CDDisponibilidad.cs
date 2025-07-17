@@ -154,7 +154,7 @@ namespace CapaDatos
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.Connection = new ConexionDB().dbconexion;
                 sqlCmd.Connection.Open();
-                sqlCmd.CommandText = "DisponibilidadConsultar"; // Asegúrate de que este procedimiento almacenado exista
+                sqlCmd.CommandText = "DisponibilidadConsultar"; 
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@pvalor", miparametro);
                 leerDatos = sqlCmd.ExecuteReader();
@@ -179,7 +179,7 @@ namespace CapaDatos
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.Connection = new ConexionDB().dbconexion;
                 sqlCmd.Connection.Open();
-                sqlCmd.CommandText = "DisponibilidadConsultarRegistro"; // Asegúrate de que este procedimiento almacenado exista
+                sqlCmd.CommandText = "DisponibilidadConsultarRegistro"; 
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@pvalor", miparametro);
                 leerDatos = sqlCmd.ExecuteReader();
